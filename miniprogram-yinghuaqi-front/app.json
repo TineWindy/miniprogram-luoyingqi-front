@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#fbd2d2",
+    "list": [
+      {
+        "iconPath": "images/baoming_uns.png",
+        "selectedIconPath": "images/baoming_sel.png",
+        "pagePath": "pages/index/index",
+        "text": "契约"
+      },
+      {
+        "iconPath": "images/task_uns.png",
+        "selectedIconPath": "images/task_sel.png",
+        "pagePath": "pages/index/index",
+        "text": "契约"
+      }
+    ]
+  }
+}
