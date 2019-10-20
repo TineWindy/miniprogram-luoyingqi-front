@@ -1,7 +1,7 @@
 <view>
   <text>\n\n\n\n\n</text>
 </view>
-<form>
+<form bindsubmit="submitBaoming">
 
   <view class="cu-form-group margin-top">
     <text>
@@ -53,6 +53,16 @@
       </view>
     </picker>
   </view>
+  <view>
+    <view class="cu-form-group">
+      <view class="title">您日常生活的着装风格是？</view>
+      <picker bindchange="wearPickerChange" value="{{index}}" range="{{wearPicker}}">
+        <view class="picker">
+          {{wearIndex?wearPicker[wearIndex]:'请选择着装情况'}}
+        </view>
+      </picker>
+    </view>
+  </view>
   <view class="cu-form-group">
     <view class="title">手机号码</view>
     <input name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
@@ -71,30 +81,12 @@
     <button class="cu-btn bg-green shadow" disabled="{{!getVerifyCode}}" bindtap="getVerifyCodeTap">{{getVerifyCode?'获取验证码':'30s后重试'}}</button>
   </view>
 
-  <view wx:if="{{genderIndex > 0}}">
-    <view class="cu-form-group">
-      <view class="title">您日常生活的妆容是？</view>
-      <picker bindchange="makeupPickerChange" value="{{index}}" range="{{makeupPicker}}">
-        <view class="picker">
-          {{makeupIndex?makeupPicker[makeupIndex]:'请选择妆容情况'}}
-        </view>
-      </picker>
-    </view>
-  </view>
-  <view wx:elif="{{genderIndex}}">
-    <view class="cu-form-group">
-      <view class="title">您日常生活的着装风格是？</view>
-      <picker bindchange="wearPickerChange" value="{{index}}" range="{{wearPicker}}">
-        <view class="picker">
-          {{wearIndex?wearPicker[wearIndex]:'请选择着装情况'}}
-        </view>
-      </picker>
-    </view>
-  </view>
 
   <checkbox-group bindchange="dateMethodsChange">
     <view class="cu-form-group margin-top">
-      <view class="title"><text>课余时间您的休闲方式是？\n（最多选3项）</text></view>
+      <view class="title">
+        <text>课余时间您的休闲方式是？\n（最多选3项）</text>
+      </view>
       <button class="cu-btn bg-green shadow" bindtap="dateMethodSelect">选择</button>
     </view>
     <view wx:if="{{dateMethodCanSelect}}" wx:for="{{dateMethodsCheckbox}}" wx:key="item">
@@ -127,7 +119,9 @@
 
   <checkbox-group bindchange="characterChange">
     <view class="cu-form-group margin-top">
-      <view class="title"><text>以下哪些词汇符合您的个人特点？\n（请选择5项）</text></view>
+      <view class="title">
+        <text>以下哪些词汇符合您的个人特点？\n（请选择5项）</text>
+      </view>
       <button class="cu-btn bg-green shadow" bindtap="characterSelect">选择</button>
     </view>
     <view wx:if="{{characterCanSelect}}" wx:for="{{characterCheckbox}}" wx:key="item">
@@ -148,15 +142,17 @@
     </text>
   </view>
 
-  <checkbox-group bindchange="hobbyChange">
+  <checkbox-group bindchange="hobbyChange" name="myHobby">
     <view class="cu-form-group margin-top">
-      <view class="title"><text>您有哪些个人爱好？\n（请最多选择5项）</text></view>
+      <view class="title">
+        <text>您有哪些个人爱好？\n（请最多选择5项）</text>
+      </view>
       <button class="cu-btn bg-green shadow" bindtap="hobbySelect">选择</button>
     </view>
     <view wx:if="{{hobbyCanSelect}}" wx:for="{{hobbyCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
-        <checkbox value="{{item.value}}"/>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
       </view>
     </view>
     <view wx:if="{{hobbyCanSelect}}">
@@ -171,20 +167,164 @@
     </text>
   </view>
 
-  <checkbox-group bindchange="hobbyChange">
+  <checkbox-group bindchange="hardDemandChange">
     <view class="cu-form-group margin-top">
-      <view class="title"><text>您对对方的硬性条件。该项对匹配影响很大，请谨慎填写</text></view>
-      <button class="cu-btn bg-green shadow" bindtap="hobbySelect">选择</button>
+      <view class="title">
+        <text>您对对方的硬性条件。该项对匹配影响很大，请谨慎填写</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="hardDemandSelect">选择</button>
     </view>
-    <view wx:if="{{hobbyCanSelect}}" wx:for="{{hobbyCheckbox}}" wx:key="item">
+    <view wx:if="{{hardDemandCanSelect}}" wx:for="{{hardDemandCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
-        <checkbox value="{{item.value}}"/>
+        <checkbox value="{{item.value}}" checked="{{item.available}}" />
       </view>
     </view>
-    <view wx:if="{{hobbyCanSelect}}">
-      <button class="cu-btn bg-green shadow" bindtap="hobbySelected">完成</button>
+    <view wx:if="{{hardDemandCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="hardDemandSelected">完成</button>
     </view>
-  </checkbox-group>  
+  </checkbox-group>
+
+  <checkbox-group bindchange="anotherGradeChange" wx:if="{{hardDemandCheckbox[0].available}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text>您认为哪些年级是必要项？</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="anotherGradeSelect">选择</button>
+    </view>
+    <view wx:if="{{anotherGradeCanSelect}}" wx:for="{{anotherGradeCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{anotherGradeCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="anotherGradeSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <checkbox-group bindchange="anotherRegionChange" wx:if="{{hardDemandCheckbox[1].available}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text>您认为哪些学部是必要项？</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="anotherRegionSelect">选择</button>
+    </view>
+    <view wx:if="{{anotherRegionCanSelect}}" wx:for="{{anotherRegionCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{anotherRegionCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="anotherRegionSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <view class="cu-form-group " wx:if="{{hardDemandCheckbox[2].available}}">
+    <view class="title">身高</view>
+    <input name="anotherHeightMin" placeholder="最低身高:cm"></input>
+    <input name="heianotherHeightMax" placeholder="最高身高:cm"></input>
+  </view>
+
+  <!-- 第五模块 -->
+  <view class="cu-form-group margin-top ">
+    <text>
+      4. 您觉得哪些条件能成为ta的加分项？（加分项填写内容请勿与硬性条件冲突哦）
+    </text>
+  </view>
+
+  <checkbox-group bindchange="bonusDemandChange">
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text>（加分项填写内容请勿与硬性条件冲突哦）</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="bonusDemandSelect">选择</button>
+    </view>
+    <view wx:if="{{bonusDemandCanSelect}}" wx:for="{{bonusDemandCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.available}}" />
+      </view>
+    </view>
+    <view wx:if="{{bonusDemandCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="bonusDemandSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <view class="cu-form-group " wx:if="{{bonusDemandCheckbox[0].available}}">
+    <view class="title">身高</view>
+    <input name="anotherHeightMinBonus" placeholder="最低身高:cm"></input>
+    <input name="heianotherHeightMaxBonus" placeholder="最高身高:cm"></input>
+  </view>
+
+  <view wx:if="{{bonusDemandCheckbox[1].available}}">
+    <view class="cu-form-group">
+      <view class="title">什么样的外表情况是加分项？</view>
+      <picker bindchange="makeupPickerChange" value="{{index}}" range="{{makeupPicker}}">
+        <view class="picker">
+          {{makeupIndex?makeupPicker[makeupIndex]:'请选择外表情况'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <checkbox-group bindchange="anotherDateMethodChange" wx:if="{{bonusDemandCheckbox[2].available}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text>课余时间的休闲方式是？\n（最多选3项）</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="anotherDateMethodSelect">选择</button>
+    </view>
+    <view wx:if="{{anotherDateMethodCanSelect}}" wx:for="{{anotherDateMethodCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disable}}" />
+      </view>
+    </view>
+    <view wx:if="{{anotherDateMethodCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="anotherDateMethodSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <checkbox-group bindchange="anotherCharacterChange" wx:if="{{bonusDemandCheckbox[3].available}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text>您认为哪些性格标签是加分项？</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="anotherCharacterSelect">选择</button>
+    </view>
+    <view wx:if="{{anotherCharacterCanSelect}}" wx:for="{{anotherCharacterCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{anotherCharacterCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="anotherCharacterSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <checkbox-group bindchange="anotherHobbyChange" name="anotherHobby" wx:if="{{bonusDemandCheckbox[4].available}}">
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text>您有哪些个人爱好？\n（请最多选择5项）</text>
+      </view>
+      <button class="cu-btn bg-green shadow" bindtap="anotherHobbySelect">选择</button>
+    </view>
+    <view wx:if="{{anotherHobbyCanSelect}}" wx:for="{{anotherHobbyCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{anotherHobbyCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="anotherHobbySelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <view class="cu-form-group margin-top">
+    <button class="cu-btn bg-green shadow" formType="submit">Submit</button>
+  </view>
 
 </form>

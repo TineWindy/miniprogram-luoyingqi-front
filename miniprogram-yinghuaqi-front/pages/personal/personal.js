@@ -48,9 +48,9 @@ Page({
     phoneNumber: '',
     getVerifyCode: true,
     makeupIndex: null,
-    makeupPicker: ["淡妆", "素颜", "浓妆"],
+    makeupPicker: ["基本整洁（素颜）", "轻微留意（淡妆）", "非常看重（精致装扮）"],
     wearIndex: null,
-    wearPicker: ["基本整洁", "稍稍留意一下穿搭", "注重衣着搭配"],
+    wearPicker: ["基本整洁（素颜）", "轻微留意（淡妆）", "非常看重（精致装扮）"],
     characterCanSelect: false,
     characterNum: 0,
     characterCheckbox: [{
@@ -141,8 +141,8 @@ Page({
         value: "科技"
       }
     ],
-    hardDemandCheckbox: [
-      {
+    hardDemandCanSelect: false,
+    hardDemandCheckbox: [{
         name: "grade",
         value: "年级",
         available: false
@@ -158,7 +158,180 @@ Page({
         available: false
       },
     ],
-    bonusDemandCheckbox: [],
+    bonusDemandCanSelect: false,
+    bonusDemandCheckbox: [
+      {
+        value: "身高",
+        available: false
+      },
+      {
+        value: "外表",
+        available: false
+      },
+      {
+        value: "课余休闲",
+        available: false
+      },
+      {
+        value: "性格特点",
+        available: false
+      },
+      {
+        value: "爱好",
+        available: false
+      },
+    ],
+    anotherDateMethodCanSelect: false,
+    anotherDateMethodCheckbox: [{
+        name: "movie",
+        value: "看电影",
+      },
+      {
+        name: "eat",
+        value: "吃货",
+      },
+      {
+        name: "ktv",
+        value: "KTV",
+      },
+      {
+        name: "hang",
+        value: "闲逛",
+      },
+      {
+        name: "study",
+        value: "学习",
+      },
+      {
+        name: "game",
+        value: "游戏",
+      },
+      {
+        name: "rest",
+        value: "休息"
+      }
+    ],
+    anotherCharacterCanSelect: false,
+    anotherCharacterCheckbox: [{
+        value: "活泼",
+      },
+      {
+        value: "稳重"
+      },
+      {
+        value: "理性"
+      },
+      {
+        value: "感性"
+      },
+      {
+        value: "幽默"
+      },
+      {
+        value: "正经"
+      },
+      {
+        value: "粗线条"
+      },
+      {
+        value: "敏感"
+      },
+      {
+        value: "佛系"
+      },
+      {
+        value: "较真"
+      },
+      {
+        value: "粘人"
+      },
+      {
+        value: "独处"
+      },
+      {
+        value: "热闹"
+      },
+      {
+        value: "文静",
+      },
+      {
+        value: "A"
+      },
+      {
+        value: "小受"
+      }
+    ],
+    anotherHobbyCanSelect: false,
+    anotherHobbyCheckbox: [{
+        value: "二次元"
+      },
+      {
+        value: "游戏"
+      },
+      {
+        value: "体育"
+      },
+      {
+        value: "影像"
+      },
+      {
+        value: "舞蹈"
+      },
+      {
+        value: "音乐"
+      },
+      {
+        value: "文学"
+      },
+      {
+        value: "吃货"
+      },
+      {
+        value: "学习"
+      },
+      {
+        value: "小动物"
+      },
+      {
+        value: "天文"
+      },
+      {
+        value: "科技"
+      }
+    ],
+    anotherGradeCanSelect: false,
+    anotherGradeCheckbox: [
+      {
+        value: "大一"
+      },
+      {
+        value: "大二"
+      },
+      {
+        value: "大三"
+      },
+      {
+        value: "大四"
+      },
+      {
+        value: "研究生"
+      },
+    ],
+    anotherRegionCanSelect: false,
+    anotherRegionCheckbox: [
+      {
+        value: "文理学部"
+      },
+      {
+        value: "工学部"
+      },
+      {
+        value: "信息学部"
+      },
+      {
+        value: "医学部"
+      },
+    ],
   },
 
   gradePickerChange: function(e) {
@@ -179,7 +352,7 @@ Page({
     });
   },
 
-  dateMethodSelected: function (e) {
+  dateMethodSelected: function(e) {
     this.setData({
       dateMethodCanSelect: false,
     });
@@ -227,7 +400,7 @@ Page({
     });
   },
   hobbySelected: function(e) {
-    if (this.data.hobbyNum > 5) {
+    if (this.data.hobbyNum > 6) {
       wx.showModal({
         title: '错误',
         content: '请最多选择五项内容',
@@ -239,6 +412,105 @@ Page({
     }
   },
 
+  hardDemandChange: function(e) {
+    changeHardDemand(this, e);
+  },
+  hardDemandSelect: function(e) {
+    this.setData({
+      hardDemandCanSelect: true,
+    });
+  },
+  hardDemandSelected: function(e) {
+    this.setData({
+      hardDemandCanSelect: false,
+    });
+  },
+
+  bonusDemandChange: function(e) {
+    changeBonusDemand(this, e);
+  },
+  bonusDemandSelect: function(e) {
+    this.setData({
+      bonusDemandCanSelect: true,
+    });
+  },
+  bonusDemandSelected: function(e) {
+    this.setData({
+      bonusDemandCanSelect: false,
+    });
+  },
+
+  anotherDateMethodSelect: function(e) {
+    this.setData({
+      anotherDateMethodCanSelect: true,
+    });
+  },
+  anotherDateMethodSelected: function(e) {
+    this.setData({
+      anotherDateMethodCanSelect: false,
+    });
+  },
+  anotherDateMethodChange: function(e) {
+    changeAnotherDateMethod(this, e);
+  },
+
+  anotherCharacterChange: function(e) {
+    changeAnotherCharacter(this, e);
+  },
+  anotherCharacterSelect: function(e) {
+    this.setData({
+      anotherCharacterCanSelect: true,
+    });
+  },
+  anotherCharacterSelected: function(e) {
+    this.setData({
+      anotherCharacterCanSelect: false,
+    });
+
+  },
+
+  anotherHobbyChange: function(e) {
+    changeAnotherHobby(this, e);
+  },
+  anotherHobbySelect: function(e) {
+    this.setData({
+      anotherHobbyCanSelect: true,
+    });
+  },
+  anotherHobbySelected: function(e) {
+    this.setData({
+      anotherHobbyCanSelect: false,
+    });
+  },
+
+  anotherGradeChange: function (e) {
+    changeAnotherGrade(this, e);
+  },
+  anotherGradeSelect: function (e) {
+    this.setData({
+      anotherGradeCanSelect: true,
+    });
+  },
+  anotherGradeSelected: function (e) {
+    this.setData({
+      anotherGradeCanSelect: false,
+    });
+  },
+
+  anotherRegionChange: function (e) {
+    changeAnotherRegion(this, e);
+  },
+  anotherRegionSelect: function (e) {
+    this.setData({
+      anotherRegionCanSelect: true,
+    });
+  },
+  anotherRegionSelected: function (e) {
+    this.setData({
+      anotherRegionCanSelect: false,
+    });
+  },
+
   // 获取验证码
   getVerifyCodeTap: function(e) {
     getVerifyCodeFunc(this, e);
@@ -247,6 +519,10 @@ Page({
     this.setData({
       phoneNumber: e.detail.value,
     });
+  },
+
+  submitBaoming: function(e) {
+    console.log(e);
   },
 
   /**
@@ -278,10 +554,9 @@ function changeRegion(body, e) {
   })
 }
 
-// 改变约会方式
+// 改变课余休闲
 function changeDateMethods(body, e) {
   var dateMethodsCheckbox = body.data.dateMethodsCheckbox;
-  console.log(e);
   dateMethodsCheckbox = componentFuncs.limitCheckBox(e.detail.value, dateMethodsCheckbox, 3);
   body.setData({
     dateMethodsCheckbox: dateMethodsCheckbox,
@@ -292,10 +567,68 @@ function changeDateMethods(body, e) {
 function changeCharacter(body, e) {
   var characterCheckbox = body.data.characterCheckbox;
   characterCheckbox = componentFuncs.limitCheckBox(e.detail.value, characterCheckbox, 5);
-  console.log(characterCheckbox);
   body.setData({
     characterCheckbox: characterCheckbox,
     characterNum: e.detail.value.length,
+  });
+}
+
+// 改变爱好
+function changeHobby(body, e) {
+  var hobbyCheckbox = body.data.hobbyCheckbox;
+  hobbyCheckbox = componentFuncs.limitCheckBox(e.detail.value, hobbyCheckbox, 5);
+  body.setData({
+    hobbyCheckbox: hobbyCheckbox
+  });
+}
+
+// 改变硬性条件
+function changeHardDemand(body, e) {
+  var hardDmand = body.data.hardDemandCheckbox;
+  for (var i = 0; i < hardDmand.length; i++) {
+    hardDmand[i].available = false;
+    for (var j = 0; j < e.detail.value.length; j++) {
+      if (e.detail.value[j] == hardDmand[i].value) {
+        hardDmand[i].available = true;
+      }
+    }
+  }
+  body.setData({
+    hardDemandCheckbox: hardDmand,
+  });
+}
+
+// 改变硬性条件：年级
+function changeAnotherGrade(body, e) {
+  var anotherGradeCheckbox = body.data.anotherGradeCheckbox;
+  anotherGradeCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherGradeCheckbox, 10);
+  body.setData({
+    anotherGradeCheckbox: anotherGradeCheckbox,
+  });
+}
+
+// 改变硬性条件：学部
+function changeAnotherRegion(body, e) {
+  var anotherRegionCheckbox = body.data.anotherRegionCheckbox;
+  anotherRegionCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherRegionCheckbox, 10);
+  body.setData({
+    anotherRegionCheckbox: anotherRegionCheckbox,
+  });
+}
+
+// 改变加分项
+function changeBonusDemand(body, e) {
+  var bonusDemand = body.data.bonusDemandCheckbox;
+  for (var i = 0; i < bonusDemand.length; i++) {
+    bonusDemand[i].available = false;
+    for (var j = 0; j < e.detail.value.length; j++) {
+      if (e.detail.value[j] == bonusDemand[i].value) {
+        bonusDemand[i].available = true;
+      }
+    }
+  }
+  body.setData({
+    bonusDemandCheckbox: bonusDemand,
   });
 }
 
@@ -311,6 +644,33 @@ function changeWear(body, e) {
   body.setData({
     wearIndex: e.detail.value
   })
+}
+
+// 改变加分项：课余休闲
+function changeAnotherDateMethod(body, e) {
+  var anotherDateMethodCheckbox = body.data.anotherDateMethodCheckbox;
+  anotherDateMethodCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherDateMethodCheckbox, 3);
+  body.setData({
+    anotherDateMethodCheckbox: anotherDateMethodCheckbox,
+  });
+}
+
+// 改变加分项：性格
+function changeAnotherCharacter(body, e) {
+  var anotherCharacterCheckbox = body.data.anotherCharacterCheckbox;
+  anotherCharacterCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherCharacterCheckbox, 5);
+  body.setData({
+    anotherCharacterCheckbox: anotherCharacterCheckbox,
+  });
+}
+
+// 改变加分项：爱好
+function changeAnotherHobby(body, e) {
+  var anotherHobbyCheckbox = body.data.anotherHobbyCheckbox;
+  anotherHobbyCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherHobbyCheckbox, 5);
+  body.setData({
+    anotherHobbyCheckbox: anotherHobbyCheckbox
+  });
 }
 
 // 获取验证码
