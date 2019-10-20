@@ -11,23 +11,23 @@
 
   <view class="cu-form-group margin-top">
     <view class="title">姓名</view>
-    <input name="name" placeholder="输入您的姓名"></input>
+    <input name="NAME" placeholder="输入您的姓名"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">学号</view>
-    <input name="sckoolNumber" placeholder="输入13位学号"></input>
+    <input type="number" name="SCHOOLNUMBER" placeholder="输入13位学号"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">学院</view>
-    <input name="school" placeholder="输入您的学院"></input>
+    <input name="COLLEGE" placeholder="输入您的学院"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">身高</view>
-    <input name="height" placeholder="输入您的身高:cm"></input>
+    <input type="number" name="HEIGHT" placeholder="输入您的身高:cm"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">QQ</view>
-    <input name="qq" placeholder="输入您的QQ号"></input>
+    <input type="number" name="QQ" placeholder="输入您的QQ号"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">性别</view>
@@ -56,7 +56,7 @@
   <view>
     <view class="cu-form-group">
       <view class="title">您日常生活的着装风格是？</view>
-      <picker bindchange="wearPickerChange" value="{{index}}" range="{{wearPicker}}">
+      <picker bindchange="wearPickerChange" value="wearPicker{{index}}" range="{{wearPicker}}">
         <view class="picker">
           {{wearIndex?wearPicker[wearIndex]:'请选择着装情况'}}
         </view>
@@ -65,7 +65,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">手机号码</view>
-    <input name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
+    <input type="number" name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
     <view class="cu-capsule radius">
       <view class="cu-tag bg-blue">
         +86
@@ -82,7 +82,7 @@
   </view>
 
 
-  <checkbox-group bindchange="dateMethodsChange">
+  <checkbox-group bindchange="dateMethodsChange" name="RELAXING_WAY">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>课余时间您的休闲方式是？\n（最多选3项）</text>
@@ -117,7 +117,7 @@
     </text>
   </view>
 
-  <checkbox-group bindchange="characterChange">
+  <checkbox-group bindchange="characterChange" name="CHARACTER">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>以下哪些词汇符合您的个人特点？\n（请选择5项）</text>
@@ -142,7 +142,7 @@
     </text>
   </view>
 
-  <checkbox-group bindchange="hobbyChange" name="myHobby">
+  <checkbox-group bindchange="hobbyChange" name="HOBBY">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>您有哪些个人爱好？\n（请最多选择5项）</text>
@@ -185,7 +185,7 @@
     </view>
   </checkbox-group>
 
-  <checkbox-group bindchange="anotherGradeChange" wx:if="{{hardDemandCheckbox[0].available}}">
+  <checkbox-group bindchange="anotherGradeChange" wx:if="{{hardDemandCheckbox[0].available}}" name="PD_GRADE">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>您认为哪些年级是必要项？</text>
@@ -203,7 +203,7 @@
     </view>
   </checkbox-group>
 
-  <checkbox-group bindchange="anotherRegionChange" wx:if="{{hardDemandCheckbox[1].available}}">
+  <checkbox-group bindchange="anotherRegionChange" wx:if="{{hardDemandCheckbox[1].available}}" name="PD_LIVING_LOCATION">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>您认为哪些学部是必要项？</text>
@@ -223,8 +223,8 @@
 
   <view class="cu-form-group " wx:if="{{hardDemandCheckbox[2].available}}">
     <view class="title">身高</view>
-    <input name="anotherHeightMin" placeholder="最低身高:cm"></input>
-    <input name="heianotherHeightMax" placeholder="最高身高:cm"></input>
+    <input name="PD_HEIGHT_MIN" placeholder="最低身高:cm"></input>
+    <input name="PD_HEIGHT_MAX" placeholder="最高身高:cm"></input>
   </view>
 
   <!-- 第五模块 -->
@@ -254,8 +254,8 @@
 
   <view class="cu-form-group " wx:if="{{bonusDemandCheckbox[0].available}}">
     <view class="title">身高</view>
-    <input name="anotherHeightMinBonus" placeholder="最低身高:cm"></input>
-    <input name="heianotherHeightMaxBonus" placeholder="最高身高:cm"></input>
+    <input name="PB_HEIGHT_MIN" placeholder="最低身高:cm"></input>
+    <input name="PB_HEIGHT_MAX" placeholder="最高身高:cm"></input>
   </view>
 
   <view wx:if="{{bonusDemandCheckbox[1].available}}">
@@ -269,7 +269,7 @@
     </view>
   </view>
 
-  <checkbox-group bindchange="anotherDateMethodChange" wx:if="{{bonusDemandCheckbox[2].available}}">
+  <checkbox-group bindchange="anotherDateMethodChange" wx:if="{{bonusDemandCheckbox[2].available}}" name="PB_RELAXING_WAY">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>课余时间的休闲方式是？\n（最多选3项）</text>
@@ -287,7 +287,7 @@
     </view>
   </checkbox-group>
 
-  <checkbox-group bindchange="anotherCharacterChange" wx:if="{{bonusDemandCheckbox[3].available}}">
+  <checkbox-group bindchange="anotherCharacterChange" wx:if="{{bonusDemandCheckbox[3].available}}" name="PB_CHARACTER">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>您认为哪些性格标签是加分项？</text>
@@ -305,7 +305,7 @@
     </view>
   </checkbox-group>
 
-  <checkbox-group bindchange="anotherHobbyChange" name="anotherHobby" wx:if="{{bonusDemandCheckbox[4].available}}">
+  <checkbox-group bindchange="anotherHobbyChange" name="anotherHobby" wx:if="{{bonusDemandCheckbox[4].available}}" name="PB_HOBBY">
     <view class="cu-form-group margin-top">
       <view class="title">
         <text>您有哪些个人爱好？\n（请最多选择5项）</text>

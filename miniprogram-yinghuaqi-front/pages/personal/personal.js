@@ -522,7 +522,37 @@ Page({
   },
 
   submitBaoming: function(e) {
-    console.log(e);
+    var map=e.detail.value;
+    var data=this.data;
+
+    // 将picker中的内容添加进map中this.wearPicker[this.wearIndex]
+    map["APPEARANCE"] = data.wearPicker[data.wearIndex];
+    map["GENDER"] = data.genderPicker[data.genderIndex];
+    map["LIVING_LOCATION"] = data.regionPicker[data.regionIndex];
+    map["GRADE"]=data.gradePicker[data.gradeIndex];
+
+    // 若在加分项中选中了外表
+    if (data.makeupIndex!=null&&data.bonusDemandCheckbox[1].available==true){
+      map["PB_APPEARANCE"] =data.makeupPicker[data.makeupIndex];
+    }
+    
+
+    // 判断map中所有参数是否不合规
+    for(var key in map){
+      if(!assertNotNull(map[key])){
+          wx.showModal({
+            title: '数据错误',
+            content: '您有未填写的内容\r\n请仔细检查一遍您的报名表哦',
+            showCancel: false,
+          });
+
+          return;
+      }
+    }
+
+    console.log(map);
+    
+    //submitApplyInformation(e.detail.value);
   },
 
   /**
@@ -712,4 +742,35 @@ function refreshVerifyCode(body) {
   body.setData({
     getVerifyCode: true,
   })
+}
+
+//判空
+function assertNotNull(data) {
+  if (typeof (data) == "undefined" || data == null || data === '') {
+    return false;
+  }
+
+  return true;
+}
+
+function submitApplyInformation(map){
+  httpFuncs.yhjRequest(
+    '/user/apply',
+    map,
+    function (res) {
+      wx.showModal({
+        title: '提示',
+        content: '您已报名成功,是否查看报名信息',
+        success(res) {
+          if (res.confirm) {
+            //跳转至报名详情页面
+            wx.navigateTo({
+              url: ''
+            })
+          }
+        }
+      })
+    },
+    'post'
+  );
 }
