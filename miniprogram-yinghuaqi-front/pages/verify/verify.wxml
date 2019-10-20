@@ -1,0 +1,31 @@
+<view>
+  <text>\n\n\n\n\n</text>
+</view>
+
+<form bindsubmit="sendVerifyCodeTap">
+
+  <view class="cu-form-group magin-top">
+    输入您在其它平台报名填写的手机号码进行验证。
+  </view>
+  <view class="cu-form-group">
+    <view class="title">手机号码</view>
+    <input name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
+    <view class="cu-capsule radius">
+      <view class="cu-tag bg-blue">
+        +86
+      </view>
+      <view class="cu-tag line-blue">
+        中国大陆
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">验证码</view>
+    <input name="verifyCode" placeholder="获取并输入验证码" />
+    <button class="cu-btn bg-green shadow" disabled="{{!getVerifyCode}}" bindtap="getVerifyCodeTap">{{getVerifyCode?'获取验证码':'30s后重试'}}</button>
+  </view>
+  <view class="cu-form-group">
+    <button class="cu-btn bg-green shadow" formType="submit">提交</button>
+  </view>
+
+</form>

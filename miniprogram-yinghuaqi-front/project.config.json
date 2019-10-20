@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -61,6 +61,27 @@
 					"id": 1,
 					"name": "报名信息",
 					"pathName": "pages/personal/personal",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "查看报名信息",
+					"pathName": "pages/applyinfo/applyinfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "快速验证",
+					"pathName": "pages/verify/verify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "暗恋通道",
+					"pathName": "pages/lover/lover",
 					"query": "",
 					"scene": null
 				}

@@ -1,21 +1,21 @@
-// pages/baoming/baoming.js
+// pages/applyinfo/applyinfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isApplied: false,
   },
 
-  // 缘分降临
+  // 立即报名
   applyTap: function(e) {
     apply(this, e);
   },
 
-  // 暗恋通道
-  loverTap: function(e) {
-    lover(this, e);
+  // 快速验证
+  verifyTap: function(e) {
+    verify(this, e);
   },
 
   /**
@@ -26,16 +26,16 @@ Page({
   },
 })
 
-// 跳转到报名界面
+// 跳转报名界面
 function apply(body, e) {
   wx.navigateTo({
-    url: '../personal/personal',
-  });
+    url: '../baoming/baoming',
+  })
 }
 
-// 跳转到暗恋界面
-function lover(body, e) {
+// 跳转快速验证界面
+function verify(body, e) {
   wx.navigateTo({
-    url: '../lover/lover',
+    url: '../verify/verify',
   })
 }

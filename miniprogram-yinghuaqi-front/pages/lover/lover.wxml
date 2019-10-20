@@ -1,0 +1,18 @@
+<view>
+  <text>\n\n\n\n\n</text>
+</view>
+
+<form bindsubmit="sendVerifyCodeTap">
+
+  <view class="cu-form-group magin-top">
+    输入您心目中的那个 ta 的姓名，如果恰好 ta 也参加了这个活动也通过“暗恋通道”填写了您的名字，那说明你们命中注定会在一起！
+  </view>
+  <view class="cu-form-group">
+    <view class="title">ta 的姓名</view>
+    <input name="name" placeholder="请输入ta的姓名" />
+  </view>
+  <view class="cu-form-group">
+    <button class="cu-btn bg-green shadow" formType="submit">提交</button>
+  </view>
+
+</form>

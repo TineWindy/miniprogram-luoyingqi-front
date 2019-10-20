@@ -14,7 +14,7 @@ Page({
 
   },
 
-  onLoad: function () {
+  onLoad: function() {
     getWxUserInfo(this);
     getActivityInfo(this);
   },
@@ -26,16 +26,19 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+
+  // 查看我的报名
+  myApplyInfoTap: function(e) {
+    getMyApplyInfo(this, e);
   }
 })
 
 // 获取活动信息
 function getActivityInfo(body) {
   httpFuncs.yhjRequest(
-    "/version/getActivityInfo",
-    {},
-    function(res) {
-    },
+    "/version/getActivityInfo", {},
+    function(res) {},
     "get"
   );
 }
@@ -68,4 +71,11 @@ function getWxUserInfo(body) {
       }
     })
   }
+}
+
+// 获取报名信息
+function getMyApplyInfo(body, e) {
+  wx.navigateTo({
+    url: '../applyinfo/applyinfo',
+  })
 }

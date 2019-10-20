@@ -20,7 +20,7 @@
     <view style="padding-top:5px">结果公布时间：2019.11.08 20:00</view>
   </view>
 
-  <button class="baoming">
+  <button class="baoming" bindtap="myApplyInfoTap">
     <span class='wenzi'>
       查看我的报名
     </span>
