@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    ApiHost: "https://127.0.0.1:8080",
   }
 })

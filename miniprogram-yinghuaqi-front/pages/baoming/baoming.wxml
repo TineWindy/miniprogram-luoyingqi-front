@@ -1,0 +1,33 @@
+<view>
+
+  <image class="des_image" src="../../images/baoming_options.png" mode='widthFix'></image>
+
+  <view class="yuanfen">
+    <text>
+      如果您是独自前来，渴望一段缘分；\n 请点击下面左侧按钮，我们将根据您的需求为您匹配合适的 ta！
+    </text>
+  </view>
+
+  <view class="anlian">
+    <text>
+      若您已有心仪对象，且 ta 也参加了本次活动；\n 请点击下面右侧按钮，我们将见证这段美妙的缘分！
+    </text>
+  </view>
+
+  <button class="baoming">
+    <span class='wenzi'>
+      查看我的报名
+    </span>
+    <image src='../../images/button1.png' mode='widthFix'>
+    </image>
+  </button>
+
+  <button class="qiyue">
+    <span class='wenzi'>
+      查看我的契约
+    </span>
+    <image src='../../images/button2.png' mode='widthFix'>
+    </image>
+  </button>
+
+</view>

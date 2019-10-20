@@ -1,0 +1,190 @@
+<view>
+  <text>\n\n\n\n\n</text>
+</view>
+<form>
+
+  <view class="cu-form-group margin-top">
+    <text>
+      1. 基本信息
+    </text>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">姓名</view>
+    <input name="name" placeholder="输入您的姓名"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">学号</view>
+    <input name="sckoolNumber" placeholder="输入13位学号"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">学院</view>
+    <input name="school" placeholder="输入您的学院"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">身高</view>
+    <input name="height" placeholder="输入您的身高:cm"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">QQ</view>
+    <input name="qq" placeholder="输入您的QQ号"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">性别</view>
+    <picker bindchange="genderPickerChange" value="{{index}}" range="{{genderPicker}}">
+      <view class="picker">
+        {{genderIndex?genderPicker[genderIndex]:'选择您的性别'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">年级</view>
+    <picker bindchange="gradePickerChange" value="{{index}}" range="{{gradePicker}}">
+      <view class="picker">
+        {{gradeIndex?gradePicker[gradeIndex]:'选择您的年级'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">所在学部</view>
+    <picker bindchange="regionPickerChange" value="{{index}}" range="{{regionPicker}}">
+      <view class="picker">
+        {{regionIndex?regionPicker[regionIndex]:'选择您的学部'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">手机号码</view>
+    <input name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
+    <view class="cu-capsule radius">
+      <view class="cu-tag bg-blue">
+        +86
+      </view>
+      <view class="cu-tag line-blue">
+        中国大陆
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">验证码</view>
+    <input name="verifyCode" placeholder="获取并输入验证码" />
+    <button class="cu-btn bg-green shadow" disabled="{{!getVerifyCode}}" bindtap="getVerifyCodeTap">{{getVerifyCode?'获取验证码':'30s后重试'}}</button>
+  </view>
+
+  <view wx:if="{{genderIndex > 0}}">
+    <view class="cu-form-group">
+      <view class="title">您日常生活的妆容是？</view>
+      <picker bindchange="makeupPickerChange" value="{{index}}" range="{{makeupPicker}}">
+        <view class="picker">
+          {{makeupIndex?makeupPicker[makeupIndex]:'请选择妆容情况'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view wx:elif="{{genderIndex}}">
+    <view class="cu-form-group">
+      <view class="title">您日常生活的着装风格是？</view>
+      <picker bindchange="wearPickerChange" value="{{index}}" range="{{wearPicker}}">
+        <view class="picker">
+          {{wearIndex?wearPicker[wearIndex]:'请选择着装情况'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <checkbox-group bindchange="dateMethodsChange">
+    <view class="cu-form-group margin-top">
+      <view class="title"><text>课余时间您的休闲方式是？\n（最多选3项）</text></view>
+      <button class="cu-btn bg-green shadow" bindtap="dateMethodSelect">选择</button>
+    </view>
+    <view wx:if="{{dateMethodCanSelect}}" wx:for="{{dateMethodsCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disable}}" />
+      </view>
+    </view>
+    <view wx:if="{{dateMethodCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="dateMethodSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <view class="cu-bar bg-white margin-top ">
+    <view class="action ">
+      图片上传
+    </view>
+    <view class="action ">
+      {{imgList.length}}/4
+    </view>
+  </view>
+
+
+  <!-- 第二模块 -->
+  <view class="cu-form-group margin-top ">
+    <text>
+      2. 您的性格特点
+    </text>
+  </view>
+
+  <checkbox-group bindchange="characterChange">
+    <view class="cu-form-group margin-top">
+      <view class="title"><text>以下哪些词汇符合您的个人特点？\n（请选择5项）</text></view>
+      <button class="cu-btn bg-green shadow" bindtap="characterSelect">选择</button>
+    </view>
+    <view wx:if="{{characterCanSelect}}" wx:for="{{characterCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{characterCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="characterSelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <!-- 第三模块 -->
+  <view class="cu-form-group margin-top ">
+    <text>
+      3. 您的个人爱好
+    </text>
+  </view>
+
+  <checkbox-group bindchange="hobbyChange">
+    <view class="cu-form-group margin-top">
+      <view class="title"><text>您有哪些个人爱好？\n（请最多选择5项）</text></view>
+      <button class="cu-btn bg-green shadow" bindtap="hobbySelect">选择</button>
+    </view>
+    <view wx:if="{{hobbyCanSelect}}" wx:for="{{hobbyCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}"/>
+      </view>
+    </view>
+    <view wx:if="{{hobbyCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="hobbySelected">完成</button>
+    </view>
+  </checkbox-group>
+
+  <!-- 第四模块 -->
+  <view class="cu-form-group margin-top ">
+    <text>
+      4. 您对配偶的硬性条件
+    </text>
+  </view>
+
+  <checkbox-group bindchange="hobbyChange">
+    <view class="cu-form-group margin-top">
+      <view class="title"><text>您对对方的硬性条件。该项对匹配影响很大，请谨慎填写</text></view>
+      <button class="cu-btn bg-green shadow" bindtap="hobbySelect">选择</button>
+    </view>
+    <view wx:if="{{hobbyCanSelect}}" wx:for="{{hobbyCheckbox}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.value}}</view>
+        <checkbox value="{{item.value}}"/>
+      </view>
+    </view>
+    <view wx:if="{{hobbyCanSelect}}">
+      <button class="cu-btn bg-green shadow" bindtap="hobbySelected">完成</button>
+    </view>
+  </checkbox-group>  
+
+</form>
