@@ -9,6 +9,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+
+    //加分项权重
+    normalSrc: '../../images/no-star.png',
+    selectedSrc: '../../images/full-star.png',
+    stars:[0,1,2,3,4],
+
     gradeIndex: null,
     gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
     genderIndex: null,
@@ -554,10 +560,6 @@ Page({
       }
     }
 
-    console.log(data);
-
-    console.log(map);
-    
     submitApplyInformation(map);
   },
 
@@ -804,11 +806,17 @@ function submitApplyInformation(map){
       wx.showModal({
         title: '提示',
         content: '您已报名成功,是否查看报名信息',
+
         success(res) {
           if (res.confirm) {
             //跳转至报名详情页面
-            wx.navigateTo({
-              url: ''
+            wx.reLaunch({
+              url: '../applyinfo/applyinfo'
+            })
+          }else{
+            //返回首页
+            wx.reLaunch({
+              url: '../qiyue/qiyue',
             })
           }
         }

@@ -32,4 +32,109 @@
 </view>
 
 <view wx:else>
+  <view>
+    <text>\n\n\n\n</text>
+  </view>
+
+  <view class="weui-cells weui-cells_after-title weui-shadow ">
+    <view class="weui-panel__hd">您的基本信息</view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">姓名</view>
+      <text class="weui-text-subhead">{{name}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">学号</view>
+      <text class="weui-text-subhead">{{schoolNumber}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">学院</view>
+      <text class="weui-text-subhead">{{college}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">QQ</view>
+      <text class="weui-text-subhead">{{qq}}</text>
+
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">手机号码</view>
+      <text class="weui-text-subhead">{{phone}}</text>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">性别</view>
+      <text class="weui-text-subhead">{{gender}}</text>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">身高</view>
+      <text class="weui-text-subhead">{{height}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">年级</view>
+      <text class="weui-text-subhead">{{grade}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">所在学部</view>
+      <text class="weui-text-subhead">{{living_location}}</text>
+    </view>
+
+  </view>
+
+  <view class="weui-cells weui-cells_after-title weui-shadow ">
+    <view class="weui-panel__hd">您的更多信息</view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">日常着装风格</view>
+      <text class="weui-text-subhead">{{appearance}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">休闲方式</view>
+      <text class="weui-text-subhead">{{relaxing_way}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">性格</view>
+      <text class="weui-text-subhead">{{character}}</text>
+    </view>
+
+    <view class="weui-cell">
+      <view class="weui-cell__bd weui-text-subhead">爱好</view>
+      <text class="weui-text-subhead">{{hobby}}</text>
+    </view>
+
+  </view>
+
+  <view class="weui-cells weui-cells_after-title weui-shadow ">
+    <view class="weui-panel__hd">您对TA的硬性条件</view>
+    <view wx:for="{{hardDemandArray}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.name}}</view>
+        <text class="weui-text-subhead">{{item.value}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells weui-cells_after-title weui-shadow ">
+    <view class="weui-panel__hd">您对TA的加分项</view>
+    <view wx:for="{{bonusDemandArray}}" wx:key="item">
+      <view class="cu-form-group">
+        <view class="title">{{item.name}}</view>
+        <text class="weui-text-subhead">{{item.value}}</text>
+
+        <view class="weui-cell__bd weui-text-subhead">该项权重</view>
+        <text class="weui-text-subhead">{{item.weight}}</text>
+
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class="weui-cell" style="border-top: 1px solid #efcbcc;">
+    <button class="weui-btn btn_finish" bindtap="bindCancel">取消报名</button>
+  </view>
 </view>

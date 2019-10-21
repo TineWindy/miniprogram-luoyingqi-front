@@ -34,6 +34,14 @@ button {
   
 }
 
+
+.star-image {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  src: "../../images/no-star.png";
+}
+
 .weui-cells:before {
   top: 0;
   border-top: 0rpx solid #d9d9d9;
