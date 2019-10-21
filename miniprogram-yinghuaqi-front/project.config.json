@@ -48,10 +48,10 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "报名",
 					"pathName": "pages/baoming/baoming",
 					"query": "",
@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "暗恋通道",
 					"pathName": "pages/lover/lover",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personal/personal",
+					"pathName": "pages/personal/personal",
 					"query": "",
 					"scene": null
 				}

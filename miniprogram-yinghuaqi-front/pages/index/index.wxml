@@ -1,0 +1,41 @@
+<view class="yinghuaqi">
+<view class="intro1">
+  <span style='color:red;'>I
+  </span>ntro.
+</view>
+
+<view class="wen_an">
+  两人记忆的烛光委实过于微弱,两人的话语也不似十四年前那般清晰。结果连句话也没说便擦身而过，径直消失在人群中，永远永远。
+</view>
+
+<!-- 不滚动版本图片暂时隐藏 -->
+
+<image class="des_image" src="../../images/description_image1.png" mode='widthFix'></image>
+
+<image class="calender" src="../../images/calender2.png" mode='widthFix'></image>
+
+
+<view class="ddl">
+  <view>报名截止时间：2019.11.05 20:00</view>
+  <view style="padding-top:5px">结果公布时间：2019.11.08 20:00</view>
+</view>
+
+<button class="baoming" > 
+ <span class='wenzi'>
+  查看我的报名
+  </span>
+  <image src='../../images/button1.png' mode='widthFix'>
+  </image>
+ 
+</button>
+
+<button class="qiyue"> 
+<span class='wenzi'>
+  查看我的契约
+  </span>
+  <image src='../../images/button2.png' mode='widthFix'>
+  </image>
+</button>
+
+
+</view>
