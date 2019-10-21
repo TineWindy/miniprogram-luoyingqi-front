@@ -522,8 +522,12 @@ Page({
   },
 
   submitBaoming: function(e) {
+
+    console.log(e);
     var map=e.detail.value;
     var data=this.data;
+
+  
 
     // 将picker中的内容添加进map中this.wearPicker[this.wearIndex]
     map["APPEARANCE"] = data.wearPicker[data.wearIndex];
@@ -542,7 +546,7 @@ Page({
       if(!assertNotNull(map[key])){
           wx.showModal({
             title: '数据错误',
-            content: '您有未填写的内容\r\n请仔细检查一遍您的报名表哦',
+            content: generateTips(key),
             showCancel: false,
           });
 
@@ -550,9 +554,11 @@ Page({
       }
     }
 
+    console.log(data);
+
     console.log(map);
     
-    //submitApplyInformation(e.detail.value);
+    submitApplyInformation(map);
   },
 
   /**
@@ -750,7 +756,44 @@ function assertNotNull(data) {
     return false;
   }
 
+  if(data instanceof Array && data.length==0){
+    return false;
+  }
+
   return true;
+}
+//填写提示生成
+function generateTips(key){
+  if(key.indexOf("PD_")==0){
+    var str = "您的硬性要求中该项不符合条件:"
+    return str + getChineseWord(key.substr(3));
+  }else if(key.indexOf("PB_")==0){
+    var str = "您的加分要求中该项不符合条件:"
+    return str + getChineseWord(key.substr(3));
+  }else{
+    var str = "您的个人描述中该项不符合条件:"
+    return str + getChineseWord(key);
+  }  
+}
+
+function getChineseWord(key){
+  switch(key){
+    case "NAME":return "姓名";
+    case "SCHOOLNUMBER": return "学号";
+    case "COLLEGE": return "学院";
+    case "HEIGHT": return "身高";
+    case "HEIGHT_MIN": return "身高最小值";
+    case "HEIGHT_MAX": return "身高最大值";
+    case "QQ": return "QQ";
+    case "GENDER": return "性别";
+    case "CHARACTER": return "性格";
+    case "HOBBY": return "爱好";
+    case "RELAXING_WAY": return "休闲方式";
+    case "PHONE": return "手机号码";
+    case "verifyCode": return "验证码";
+    case "LIVING_LOCATION": return "所在学部";
+    case "APPEARANCE": return "着装风格";
+  }
 }
 
 function submitApplyInformation(map){

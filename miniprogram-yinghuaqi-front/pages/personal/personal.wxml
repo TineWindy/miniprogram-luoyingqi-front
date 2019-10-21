@@ -65,7 +65,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">手机号码</view>
-    <input type="number" name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
+    <input type="number" name="PHONENUMBER" placeholder="输入您的手机号码" bindinput="getPhone"></input>
     <view class="cu-capsule radius">
       <view class="cu-tag bg-blue">
         +86
@@ -89,7 +89,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="dateMethodSelect">选择</button>
     </view>
-    <view wx:if="{{dateMethodCanSelect}}" wx:for="{{dateMethodsCheckbox}}" wx:key="item">
+    <view wx:hidden="{{dateMethodCanSelect}}" wx:for="{{dateMethodsCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disable}}" />
@@ -124,7 +124,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="characterSelect">选择</button>
     </view>
-    <view wx:if="{{characterCanSelect}}" wx:for="{{characterCheckbox}}" wx:key="item">
+    <view wx:hidden="{{characterCanSelect}}" wx:for="{{characterCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" />
@@ -149,7 +149,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="hobbySelect">选择</button>
     </view>
-    <view wx:if="{{hobbyCanSelect}}" wx:for="{{hobbyCheckbox}}" wx:key="item">
+    <view wx:hidden="{{hobbyCanSelect}}" wx:for="{{hobbyCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" />
@@ -174,7 +174,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="hardDemandSelect">选择</button>
     </view>
-    <view wx:if="{{hardDemandCanSelect}}" wx:for="{{hardDemandCheckbox}}" wx:key="item">
+    <view wx:hidden="{{hardDemandCanSelect}}" wx:for="{{hardDemandCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.available}}" />
@@ -192,7 +192,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="anotherGradeSelect">选择</button>
     </view>
-    <view wx:if="{{anotherGradeCanSelect}}" wx:for="{{anotherGradeCheckbox}}" wx:key="item">
+    <view wx:hidden="{{anotherGradeCanSelect}}" wx:for="{{anotherGradeCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" />
@@ -210,7 +210,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="anotherRegionSelect">选择</button>
     </view>
-    <view wx:if="{{anotherRegionCanSelect}}" wx:for="{{anotherRegionCheckbox}}" wx:key="item">
+    <view wx:hidden="{{anotherRegionCanSelect}}" wx:for="{{anotherRegionCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" />
@@ -276,7 +276,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="anotherDateMethodSelect">选择</button>
     </view>
-    <view wx:if="{{anotherDateMethodCanSelect}}" wx:for="{{anotherDateMethodCheckbox}}" wx:key="item">
+    <view wx:hidden="{{anotherDateMethodCanSelect}}" wx:for="{{anotherDateMethodCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disable}}" />
@@ -294,7 +294,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="anotherCharacterSelect">选择</button>
     </view>
-    <view wx:if="{{anotherCharacterCanSelect}}" wx:for="{{anotherCharacterCheckbox}}" wx:key="item">
+    <view wx:hidden="{{anotherCharacterCanSelect}}" wx:for="{{anotherCharacterCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" />
@@ -312,7 +312,7 @@
       </view>
       <button class="cu-btn bg-green shadow" bindtap="anotherHobbySelect">选择</button>
     </view>
-    <view wx:if="{{anotherHobbyCanSelect}}" wx:for="{{anotherHobbyCheckbox}}" wx:key="item">
+    <view wx:hidden="{{anotherHobbyCanSelect}}" wx:for="{{anotherHobbyCheckbox}}" wx:key="item">
       <view class="cu-form-group">
         <view class="title">{{item.value}}</view>
         <checkbox value="{{item.value}}" checked="{{item.checked}}" />
