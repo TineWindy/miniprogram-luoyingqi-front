@@ -108,23 +108,34 @@ function getChineseWord(key) {
       return "所在学部";
     case "APPEARANCE":
       return "着装风格";
+    case "GRADE":
+      return "年级"
   }
 }
 
-function parseArrayValue(values) {
-  var str = JSON.parse(values);
+// 将每一项的数据解析成一般格式
+function parseDataValue(values) {
+  var string = "";
+  if (values.indexOf("[") == 0) {
+    var str = JSON.parse(values);
 
-  if (str instanceof Array) {
-    var string = "";
-    for (var value of str) {
-      string += value + "|"
+    if (str instanceof Array) {
+      for (var value of str) {
+        string += value + "|"
+      }
     }
+  } else if (values.indexOf("{") == 0) {
+    //身高
+    var str = JSON.parse(values);
 
-    return string;
+    var min = str["MIN"];
+    var max = str["MAX"];
+
+    string = min + "~" + max;
   } else {
-    return str;
+    string = values;
   }
-
+  return string;
 }
 
 // 设置data里的硬性条件和加分项
@@ -140,7 +151,7 @@ function setPersonalDemand(demand, body) {
   for (var key in hardDemandJson) {
     var data = {
       name: getChineseWord(key),
-      value: parseArrayValue(hardDemandJson[key])
+      value: parseDataValue(hardDemandJson[key])
     }
 
     hdArray.push(data);
@@ -156,8 +167,8 @@ function setPersonalDemand(demand, body) {
 
     var data = {
       name: getChineseWord(key),
-      value: dataJson["BONUS_VALUE"],
-      weight: dataJson["BONUS_WEIGHT"]
+      value: parseDataValue(dataJson["BONUS_DEMAND_VALUE"]),
+      weight: dataJson["BONUS_DEMAND_WEIGHT"]
     }
 
     bdArray.push(data);
@@ -187,9 +198,9 @@ function dataInit(data, body) {
       grade: personalDes["GRADE"],
       living_location: personalDes["LIVING_LOCATION"],
       appearance: personalDes["APPEARANCE"],
-      relaxing_way: parseArrayValue(personalDes["RELAXING_WAY"]),
-      character: parseArrayValue(personalDes["CHARACTER"]),
-      hobby: parseArrayValue(personalDes["HOBBY"])
+      relaxing_way: parseDataValue(personalDes["RELAXING_WAY"]),
+      character: parseDataValue(personalDes["CHARACTER"]),
+      hobby: parseDataValue(personalDes["HOBBY"])
     })
 
     setPersonalDemand(data.personalDemand, body);

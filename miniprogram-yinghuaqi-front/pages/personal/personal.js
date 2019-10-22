@@ -17,10 +17,10 @@ Page({
     selectedSrc: '../../images/full-star.png',
     stars: [0, 1, 2, 3, 4],
 
-    schoolKeyWord:'schoolcard',
-    personalKeyWord:'personal',
-    personalImageUrl:'',
-    schoolCardImageUrl:'',
+    schoolKeyWord: 'schoolcard',
+    personalKeyWord: 'personal',
+    personalImageUrl: '',
+    schoolCardImageUrl: '',
 
     gradeIndex: null,
     gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
@@ -195,6 +195,7 @@ Page({
     ],
     evaluate_contant: ["身高", "外表", "课余休闲", "性格特点", "爱好"],
     stars: [0, 1, 2, 3, 4],
+    starsKeyWord: ["PB_HEIGHT_WEIGHT", "PB_APPEARANCE_WEIGHT", "PB_RELAXING_WAY_WEIGHT", "PB_CHARACTER_WEIGHT", "PB_HOBBY_WEIGHT"],
     normalSrc: '../../images/no-star.png',
     selectedSrc: '../../images/full-star.png',
     halfSrc: '../../images/half-star.png',
@@ -539,12 +540,10 @@ Page({
   },
 
   submitBaoming: function(e) {
-
     console.log(e);
+
     var map = e.detail.value;
     var data = this.data;
-
-
 
     // 将picker中的内容添加进map中this.wearPicker[this.wearIndex]
     map["APPEARANCE"] = data.wearPicker[data.wearIndex];
@@ -558,8 +557,43 @@ Page({
     }
 
     //添加个人和校园卡图片的url
-    map["personalImageUrl"]=data.personalImageUrl;
-    map["schoolCardImageUrl"]=data.schoolCardImageUrl;
+    map["personalImageUrl"] = data.personalImageUrl;
+    map["schoolCardImageUrl"] = data.schoolCardImageUrl;
+
+    // 单独分析身高的权重
+    if (data.bonusDemandCheckbox[0].available){
+      if (data.scores[0] >= 0) {
+        //放入map中
+        map["PB_HEIGHT_MAX_WEIGHT"] = data.scores[0];
+        map["PB_HEIGHT_MIN_WEIGHT"] = data.scores[0];
+      } else {
+        wx.showModal({
+          title: '数据错误',
+          content: '您的加分项身高的权重未设置值',
+          showCancel: false,
+        });
+
+        return;
+      }
+    }
+
+    // 将选择的加分项的权重放入map中
+    for (var i = 1; i < data.bonusDemandCheckbox.length; i++) {
+      if (data.bonusDemandCheckbox[i].available) {
+        if (data.scores[i] >= 0) {
+          //放入map中
+          map[data.starsKeyWord[i]] = data.scores[i];
+        } else {
+          wx.showModal({
+            title: '数据错误',
+            content: '您的加分项' + data.evaluate_contant[i] + '的权重未设置值',
+            showCancel: false,
+          });
+
+          return;
+        }
+      }
+    }
 
     // 判断map中所有参数是否不合规
     for (var key in map) {
@@ -591,20 +625,19 @@ Page({
   },
 
   //上传个人照片
-  bindUploadPersonalImage:function(){
-    chooseImage(this,this.data.personalKeyWord);
+  bindUploadPersonalImage: function() {
+    chooseImage(this, this.data.personalKeyWord);
   },
 
   //上传校园卡照片
-  bindUploadschoolCardImage: function () {
+  bindUploadschoolCardImage: function() {
     chooseImage(this, this.data.schoolKeyWord);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-  },
+  onLoad: function(options) {},
 })
 
 // 改变年级
@@ -789,7 +822,7 @@ function refreshVerifyCode(body) {
 
 //判空
 function assertNotNull(data) {
-  if (typeof(data) == "undefined" || data == null || data === '') {
+  if (typeof(data) == "undefined" || data == null || data === ''||data==="") {
     return false;
   }
 
@@ -808,7 +841,7 @@ function generateTips(key) {
     var str = "您的加分要求中该项不符合条件:"
     return str + getChineseWord(key.substr(3));
   } else {
-    var str = "您的个人描述中该项不符合条件:"
+    var str = "您的个人信息中该项不符合条件:"
     return str + getChineseWord(key);
   }
 }
@@ -832,7 +865,7 @@ function getChineseWord(key) {
     case "GENDER":
       return "性别";
     case "CHARACTER":
-      return "性格";
+      return "个人特点";
     case "HOBBY":
       return "爱好";
     case "RELAXING_WAY":
@@ -845,6 +878,10 @@ function getChineseWord(key) {
       return "所在学部";
     case "APPEARANCE":
       return "着装风格";
+    case "schoolCardImageUrl":
+      return "校园卡图片";
+    case "personalImageUrl":
+      return "个人图片";
   }
 }
 
@@ -877,35 +914,37 @@ function submitApplyInformation(map) {
 }
 
 //获取域名
-function getDomain(content){
-  switch(content){
-    case "schoolcard": return 'pzirthaju.bkt.clouddn.com';  
-    case "personal": return 'pzirl3svw.bkt.clouddn.com';
+function getDomain(content) {
+  switch (content) {
+    case "schoolcard":
+      return 'pzirthaju.bkt.clouddn.com';
+    case "personal":
+      return 'pzirl3svw.bkt.clouddn.com';
   }
 }
 
 
 //生成token,并调用上传接口
-function getToken(body,content,filePath){
+function getToken(body, content, filePath) {
   var getTokenUrl = app.globalData.ApiHost + '/user/getToken?content=' + content;
 
   wx.request({
     url: getTokenUrl,
-    success(res){
+    success(res) {
       var token = res.data.uptoken;
-      uploadImage(body,content,token,filePath);
+      uploadImage(body, content, token, filePath);
     }
   })
 }
 
 //七牛云上传图片接口
-function uploadImage(body, content, token, filePath){
+function uploadImage(body, content, token, filePath) {
   qiniuUploader.upload(filePath, (res) => {
-    if(content==body.data.personalKeyWord){
+    if (content == body.data.personalKeyWord) {
       body.setData({
         personalImageUrl: res.imageURL,
       });
-    } else if (content ==body.data.schoolKeyWord){
+    } else if (content == body.data.schoolKeyWord) {
       body.setData({
         schoolCardImageUrl: res.imageURL,
       });
@@ -918,40 +957,39 @@ function uploadImage(body, content, token, filePath){
       mask: true
     })
   }, {
-      region: 'SCN',
-      domain: getDomain(content), // // bucket 域名
-      uptoken: token, // 从指定 url 通过 HTTP GET 获取 uptoken
-    }, (res) => {
-    }, () => {
-      // 取消上传
-    }, () => {
-      // `before` 上传前执行的操作
-    }, (err) => {
-      // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
-    });
+    region: 'SCN',
+    domain: getDomain(content), // // bucket 域名
+    uptoken: token, // 从指定 url 通过 HTTP GET 获取 uptoken
+  }, (res) => {}, () => {
+    // 取消上传
+  }, () => {
+    // `before` 上传前执行的操作
+  }, (err) => {
+    // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+  });
 }
 
 //选择图片
-function chooseImage(body,content) {
+function chooseImage(body, content) {
 
   // 选择图片
   wx.chooseImage({
     count: 1,
-    sourceType:['album'],
-    success: function (res) {
-      var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B                    
+    sourceType: ['album'],
+    success: function(res) {
+      var tempFilesSize = res.tempFiles[0].size; //获取图片的大小，单位B                    
       //图片小于或者等于4M时 可以执行获取图片
-      if(tempFilesSize>1024*1024*4){
+      if (tempFilesSize > 1024 * 1024 * 4) {
         wx.showModal({
           title: '提示',
           content: '当前图片过大，请选择4M以下的图片',
-          showCancel:false
+          showCancel: false
         })
         return;
       }
 
       var filePath = res.tempFilePaths[0];
-      
+
       getToken(body, content, filePath);
     }
   })
