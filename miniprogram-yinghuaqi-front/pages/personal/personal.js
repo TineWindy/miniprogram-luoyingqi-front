@@ -2,6 +2,8 @@
 
 var componentFuncs = require("../../utils/ComponentUtil.js");
 var httpFuncs = require("../../utils/HttpUtils.js");
+const qiniuUploader = require("../../utils/qiniuUploader");
+const app = getApp()
 
 Page({
 
@@ -14,6 +16,11 @@ Page({
     normalSrc: '../../images/no-star.png',
     selectedSrc: '../../images/full-star.png',
     stars: [0, 1, 2, 3, 4],
+
+    schoolKeyWord:'schoolcard',
+    personalKeyWord:'personal',
+    personalImageUrl:'',
+    schoolCardImageUrl:'',
 
     gradeIndex: null,
     gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
@@ -550,6 +557,9 @@ Page({
       map["PB_APPEARANCE"] = data.makeupPicker[data.makeupIndex];
     }
 
+    //添加个人和校园卡图片的url
+    map["personalImageUrl"]=data.personalImageUrl;
+    map["schoolCardImageUrl"]=data.schoolCardImageUrl;
 
     // 判断map中所有参数是否不合规
     for (var key in map) {
@@ -580,11 +590,20 @@ Page({
 
   },
 
+  //上传个人照片
+  bindUploadPersonalImage:function(){
+    chooseImage(this,this.data.personalKeyWord);
+  },
+
+  //上传校园卡照片
+  bindUploadschoolCardImage: function () {
+    chooseImage(this, this.data.schoolKeyWord);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
   },
 })
 
@@ -732,7 +751,6 @@ function changeAnotherHobby(body, e) {
 function getVerifyCodeFunc(body, form) {
   var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
 
-  console.log("yeah");
   // 获取验证码
   if (mobile.test(body.data.phoneNumber)) {
     // 冻结前端获取验证码30s
@@ -856,4 +874,85 @@ function submitApplyInformation(map) {
     },
     'post'
   );
+}
+
+//获取域名
+function getDomain(content){
+  switch(content){
+    case "schoolcard": return 'pzirthaju.bkt.clouddn.com';  
+    case "personal": return 'pzirl3svw.bkt.clouddn.com';
+  }
+}
+
+
+//生成token,并调用上传接口
+function getToken(body,content,filePath){
+  var getTokenUrl = app.globalData.ApiHost + '/user/getToken?content=' + content;
+
+  wx.request({
+    url: getTokenUrl,
+    success(res){
+      var token = res.data.uptoken;
+      uploadImage(body,content,token,filePath);
+    }
+  })
+}
+
+//七牛云上传图片接口
+function uploadImage(body, content, token, filePath){
+  qiniuUploader.upload(filePath, (res) => {
+    if(content==body.data.personalKeyWord){
+      body.setData({
+        personalImageUrl: res.imageURL,
+      });
+    } else if (content ==body.data.schoolKeyWord){
+      body.setData({
+        schoolCardImageUrl: res.imageURL,
+      });
+    }
+  }, (error) => {
+    wx.showToast({
+      title: '图片上传失败，请稍后重试',
+      icon: 'none',
+      duration: 3000,
+      mask: true
+    })
+  }, {
+      region: 'SCN',
+      domain: getDomain(content), // // bucket 域名
+      uptoken: token, // 从指定 url 通过 HTTP GET 获取 uptoken
+    }, (res) => {
+    }, () => {
+      // 取消上传
+    }, () => {
+      // `before` 上传前执行的操作
+    }, (err) => {
+      // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+    });
+}
+
+//选择图片
+function chooseImage(body,content) {
+
+  // 选择图片
+  wx.chooseImage({
+    count: 1,
+    sourceType:['album'],
+    success: function (res) {
+      var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B                    
+      //图片小于或者等于4M时 可以执行获取图片
+      if(tempFilesSize>1024*1024*4){
+        wx.showModal({
+          title: '提示',
+          content: '当前图片过大，请选择4M以下的图片',
+          showCancel:false
+        })
+        return;
+      }
+
+      var filePath = res.tempFilePaths[0];
+      
+      getToken(body, content, filePath);
+    }
+  })
 }

@@ -127,6 +127,7 @@ function parseArrayValue(values) {
 
 }
 
+// 设置data里的硬性条件和加分项
 function setPersonalDemand(demand, body) {
   console.log(demand);
   var personalDemand = JSON.parse(demand);
@@ -169,11 +170,11 @@ function setPersonalDemand(demand, body) {
 
 }
 
+// 从后台读取报名信息后显示在页面上
 function dataInit(data, body) {
   console.log(data);
   if (assertNotNull(data)) {
     var personalDes = JSON.parse(data.personalDes);
-
     body.setData({
       isApplied: true,
       name: data.name,
@@ -199,6 +200,7 @@ function dataInit(data, body) {
   }
 }
 
+// 从后台获取报名信息
 function getApplyInfo(body) {
   httpFuncs.yhjRequest(
     '/user/getApplyInfo',
@@ -210,6 +212,7 @@ function getApplyInfo(body) {
   );
 }
 
+// 取消报名
 function cancelApply() {
   httpFuncs.yhjRequest(
     '/user/cancelApply',
