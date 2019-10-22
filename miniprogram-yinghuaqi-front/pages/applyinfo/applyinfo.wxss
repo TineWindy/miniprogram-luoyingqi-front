@@ -67,16 +67,6 @@ icon {
   vertical-align: middle;
 }
 
-button::after{ 
-    border: none; 
-}
-
-button {
-    margin-top: 100px;
-    width: 600rpx;
-    border-radius: 30px;
-    padding: 0rpx 100rpx;
-}
 
 .weui-cells {
   position: relative;

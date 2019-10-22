@@ -11,10 +11,10 @@ Page({
   },
 
   // 获取验证码
-  getVerifyCodeTap: function (e) {
+  getVerifyCodeTap: function(e) {
     getVerifyCodeFunc(this, e);
   },
-  getPhone: function (e) {
+  getPhone: function(e) {
     this.setData({
       phoneNumber: e.detail.value,
     });
@@ -28,7 +28,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 })
@@ -44,13 +44,13 @@ function getVerifyCodeFunc(body, form) {
     body.setData({
       getVerifyCode: false,
     });
-    setTimeout(refreshVerifyCode, 3000, body);
+    setTimeout(refreshVerifyCode, 30000, body);
 
     httpFuncs.yhjRequest(
       '/user/getVerifyCode', {
         phone: body.data.phoneNumber
       },
-      function (res) {
+      function(res) {
         wx.showToast({
           title: '发送成功，请注意查收',
           icon: 'none',
@@ -67,6 +67,7 @@ function getVerifyCodeFunc(body, form) {
     });
   }
 }
+
 function refreshVerifyCode(body) {
   body.setData({
     getVerifyCode: true,
@@ -76,12 +77,18 @@ function refreshVerifyCode(body) {
 // 提交验证码
 function sendVerifyCode(body, e) {
   httpFuncs.yhjRequest(
-    "/user/relateRegisterInfo",
+    "/user/fastVerify",
     e.detail.value,
     function(res) {
-      wx.redirectTo({
-        url: '../applyinfo/applyinfo',
-      });
+      wx.showModal({
+        title: '成功',
+        content: '电话验证成功，您可以查看自己的报名信息和匹配结果',
+        success: function(e) {
+          wx.reLaunch({
+            url: '../qiyue/qiyue',
+          });
+        }
+      })
     },
     'get'
   );

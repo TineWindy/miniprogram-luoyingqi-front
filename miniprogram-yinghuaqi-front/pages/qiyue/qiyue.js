@@ -11,7 +11,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
+    apply_end_time: '2019.11.03 23:59',
+    result_publish_time: '2019.11.05 20:00',
   },
 
   onLoad: function() {
@@ -38,7 +39,12 @@ Page({
 function getActivityInfo(body) {
   httpFuncs.yhjRequest(
     "/version/getActivityInfo", {},
-    function(res) {},
+    function(res) {
+      body.setData({
+        apply_end_time: res.resultObj.time.APPLY_END_TIME,
+        result_publish_time: res.resultObj.time.RESULT_PUBLISH_TIME,
+      });
+    },
     "get"
   );
 }

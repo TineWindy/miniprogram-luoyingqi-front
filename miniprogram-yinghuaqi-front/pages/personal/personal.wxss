@@ -1,9 +1,13 @@
 /* pages/personal/personal.wxss */
+
 /*!
  * WeUI v1.1.1 (https://github.com/weui/weui-wxss)
  * Copyright 2017 Tencent, Inc.
  * Licensed under the MIT license
  */
+
+
+
 
 page {
   line-height: 1.6;
@@ -14,16 +18,34 @@ icon {
   vertical-align: middle;
 }
 
-button::after{ 
-    border: none; 
+button::after {
+  border: none;
 }
 
 button {
-    margin-top: 100px;
-    width: 600rpx;
-    border-radius: 30px;
-    padding: 0rpx 100rpx;
+  margin-top: 100px;
+  width: 600rpx;
+  border-radius: 30px;
+  padding: 0rpx 100rpx;
 }
+
+
+.starText {
+  position: absolute;
+}
+
+.star-image {
+  /* position: absolute; */
+  margin-left: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.starBox {
+  position: absolute;
+  margin-left: 100rpx;
+}
+
+
 
 .weui-cells {
   position: relative;
@@ -31,9 +53,7 @@ button {
   background-color: #fff;
   line-height: 1.41176471;
   font-size: 17px;
-  
 }
-
 
 .star-image {
   position: absolute;
@@ -71,7 +91,7 @@ button {
 
 .weui-cells_after-title {
   margin-top: 1px;
-  border-radius: 2%
+  border-radius: 2%;
 }
 
 .weui-cells__tips {
@@ -1084,7 +1104,7 @@ button {
   z-index: 500;
   top: 0;
   width: 100%;
-  border-bottom: 1rpx solid #CCC;
+  border-bottom: 1rpx solid #ccc;
 }
 
 .weui-navbar__item {
@@ -1096,7 +1116,6 @@ button {
   padding: 13px 0;
   text-align: center;
   font-size: 0;
-  
 }
 
 .weui-navbar__item.weui-bar__item_on {
@@ -1106,7 +1125,6 @@ button {
 .weui-navbar__slider {
   position: absolute;
   content: " ";
-  
   left: 0;
   bottom: 0;
   width: 6em;
@@ -1127,13 +1145,11 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
-  
 }
 
 .weui-tab {
   position: relative;
   height: 100%;
-  
 }
 
 .weui-tab__panel {
@@ -1227,8 +1243,8 @@ button {
   white-space: nowrap;
 }
 
-.weui-text-subhead{
-  color: #333333
+.weui-text-subhead {
+  color: #333;
 }
 
 .weui-shadow {
@@ -1236,21 +1252,17 @@ button {
   margin: 20px;
 }
 
-
-.bg{
+.bg {
   background: url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/ce2c447b7c65a9a6ea8a3c367f7bf99f92a1872b38ba6ca35a44fd09c30a754a1b3a45d4268158c2385159027392d914?pictype=scale&from=30111&version=3.3.3.3&uin=349422664&fname=bg.jpg&size=1024') no-repeat;
   width: 100%;
-
   background-size: 100% 100%;
-
-  
 }
 
-.bgs{
+.bgs {
   background: url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/ce2c447b7c65a9a6ea8a3c367f7bf99f92a1872b38ba6ca35a44fd09c30a754a1b3a45d4268158c2385159027392d914?pictype=scale&from=30111&version=3.3.3.3&uin=349422664&fname=bg.jpg&size=1024') no-repeat;
 }
 
-.text-count-display{
+.text-count-display {
   padding: 2%;
 }
 
@@ -1258,7 +1270,7 @@ button {
   border-radius: 5px;
 }
 
-.textarea-count textarea{
+.textarea-count textarea {
   width: 100%;
 }
 
@@ -1290,7 +1302,7 @@ button {
   background-color: #000;
   opacity: 0;
   RIGHT: 2rpx;
-  top:-20rpx;
+  top: -20rpx;
   width: 50rpx;
   height: 50rpx;
   border: 0 solid #f00;

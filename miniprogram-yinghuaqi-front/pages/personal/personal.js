@@ -13,7 +13,7 @@ Page({
     //加分项权重
     normalSrc: '../../images/no-star.png',
     selectedSrc: '../../images/full-star.png',
-    stars:[0,1,2,3,4],
+    stars: [0, 1, 2, 3, 4],
 
     gradeIndex: null,
     gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
@@ -165,8 +165,7 @@ Page({
       },
     ],
     bonusDemandCanSelect: false,
-    bonusDemandCheckbox: [
-      {
+    bonusDemandCheckbox: [{
         value: "身高",
         available: false
       },
@@ -187,6 +186,13 @@ Page({
         available: false
       },
     ],
+    evaluate_contant: ["身高", "外表", "课余休闲", "性格特点", "爱好"],
+    stars: [0, 1, 2, 3, 4],
+    normalSrc: '../../images/no-star.png',
+    selectedSrc: '../../images/full-star.png',
+    halfSrc: '../../images/half-star.png',
+    score: 0,
+    scores: [-1, -1, -1, -1, -1],
     anotherDateMethodCanSelect: false,
     anotherDateMethodCheckbox: [{
         name: "movie",
@@ -306,8 +312,7 @@ Page({
       }
     ],
     anotherGradeCanSelect: false,
-    anotherGradeCheckbox: [
-      {
+    anotherGradeCheckbox: [{
         value: "大一"
       },
       {
@@ -324,8 +329,7 @@ Page({
       },
     ],
     anotherRegionCanSelect: false,
-    anotherRegionCheckbox: [
-      {
+    anotherRegionCheckbox: [{
         value: "文理学部"
       },
       {
@@ -489,29 +493,29 @@ Page({
     });
   },
 
-  anotherGradeChange: function (e) {
+  anotherGradeChange: function(e) {
     changeAnotherGrade(this, e);
   },
-  anotherGradeSelect: function (e) {
+  anotherGradeSelect: function(e) {
     this.setData({
       anotherGradeCanSelect: true,
     });
   },
-  anotherGradeSelected: function (e) {
+  anotherGradeSelected: function(e) {
     this.setData({
       anotherGradeCanSelect: false,
     });
   },
 
-  anotherRegionChange: function (e) {
+  anotherRegionChange: function(e) {
     changeAnotherRegion(this, e);
   },
-  anotherRegionSelect: function (e) {
+  anotherRegionSelect: function(e) {
     this.setData({
       anotherRegionCanSelect: true,
     });
   },
-  anotherRegionSelected: function (e) {
+  anotherRegionSelected: function(e) {
     this.setData({
       anotherRegionCanSelect: false,
     });
@@ -530,37 +534,50 @@ Page({
   submitBaoming: function(e) {
 
     console.log(e);
-    var map=e.detail.value;
-    var data=this.data;
+    var map = e.detail.value;
+    var data = this.data;
 
-  
+
 
     // 将picker中的内容添加进map中this.wearPicker[this.wearIndex]
     map["APPEARANCE"] = data.wearPicker[data.wearIndex];
     map["GENDER"] = data.genderPicker[data.genderIndex];
     map["LIVING_LOCATION"] = data.regionPicker[data.regionIndex];
-    map["GRADE"]=data.gradePicker[data.gradeIndex];
+    map["GRADE"] = data.gradePicker[data.gradeIndex];
 
     // 若在加分项中选中了外表
-    if (data.makeupIndex!=null&&data.bonusDemandCheckbox[1].available==true){
-      map["PB_APPEARANCE"] =data.makeupPicker[data.makeupIndex];
+    if (data.makeupIndex != null && data.bonusDemandCheckbox[1].available == true) {
+      map["PB_APPEARANCE"] = data.makeupPicker[data.makeupIndex];
     }
-    
+
 
     // 判断map中所有参数是否不合规
-    for(var key in map){
-      if(!assertNotNull(map[key])){
-          wx.showModal({
-            title: '数据错误',
-            content: generateTips(key),
-            showCancel: false,
-          });
+    for (var key in map) {
+      if (!assertNotNull(map[key])) {
+        wx.showModal({
+          title: '数据错误',
+          content: generateTips(key),
+          showCancel: false,
+        });
 
-          return;
+        return;
       }
     }
 
     submitApplyInformation(map);
+  },
+
+  //点击左边,半颗星
+  selectStar: function(e) {
+    console.log(e);
+    var score = e.currentTarget.dataset.score;
+
+    this.data.scores[e.currentTarget.dataset.idx] = score,
+      this.setData({
+        scores: this.data.scores,
+        score: score
+      })
+
   },
 
   /**
@@ -754,55 +771,70 @@ function refreshVerifyCode(body) {
 
 //判空
 function assertNotNull(data) {
-  if (typeof (data) == "undefined" || data == null || data === '') {
+  if (typeof(data) == "undefined" || data == null || data === '') {
     return false;
   }
 
-  if(data instanceof Array && data.length==0){
+  if (data instanceof Array && data.length == 0) {
     return false;
   }
 
   return true;
 }
 //填写提示生成
-function generateTips(key){
-  if(key.indexOf("PD_")==0){
+function generateTips(key) {
+  if (key.indexOf("PD_") == 0) {
     var str = "您的硬性要求中该项不符合条件:"
     return str + getChineseWord(key.substr(3));
-  }else if(key.indexOf("PB_")==0){
+  } else if (key.indexOf("PB_") == 0) {
     var str = "您的加分要求中该项不符合条件:"
     return str + getChineseWord(key.substr(3));
-  }else{
+  } else {
     var str = "您的个人描述中该项不符合条件:"
     return str + getChineseWord(key);
-  }  
-}
-
-function getChineseWord(key){
-  switch(key){
-    case "NAME":return "姓名";
-    case "SCHOOLNUMBER": return "学号";
-    case "COLLEGE": return "学院";
-    case "HEIGHT": return "身高";
-    case "HEIGHT_MIN": return "身高最小值";
-    case "HEIGHT_MAX": return "身高最大值";
-    case "QQ": return "QQ";
-    case "GENDER": return "性别";
-    case "CHARACTER": return "性格";
-    case "HOBBY": return "爱好";
-    case "RELAXING_WAY": return "休闲方式";
-    case "PHONE": return "手机号码";
-    case "verifyCode": return "验证码";
-    case "LIVING_LOCATION": return "所在学部";
-    case "APPEARANCE": return "着装风格";
   }
 }
 
-function submitApplyInformation(map){
+function getChineseWord(key) {
+  switch (key) {
+    case "NAME":
+      return "姓名";
+    case "SCHOOLNUMBER":
+      return "学号";
+    case "COLLEGE":
+      return "学院";
+    case "HEIGHT":
+      return "身高";
+    case "HEIGHT_MIN":
+      return "身高最小值";
+    case "HEIGHT_MAX":
+      return "身高最大值";
+    case "QQ":
+      return "QQ";
+    case "GENDER":
+      return "性别";
+    case "CHARACTER":
+      return "性格";
+    case "HOBBY":
+      return "爱好";
+    case "RELAXING_WAY":
+      return "休闲方式";
+    case "PHONE":
+      return "手机号码";
+    case "verifyCode":
+      return "验证码";
+    case "LIVING_LOCATION":
+      return "所在学部";
+    case "APPEARANCE":
+      return "着装风格";
+  }
+}
+
+function submitApplyInformation(map) {
   httpFuncs.yhjRequest(
     '/user/apply',
     map,
-    function (res) {
+    function(res) {
       wx.showModal({
         title: '提示',
         content: '您已报名成功,是否查看报名信息',
@@ -813,7 +845,7 @@ function submitApplyInformation(map){
             wx.reLaunch({
               url: '../applyinfo/applyinfo'
             })
-          }else{
+          } else {
             //返回首页
             wx.reLaunch({
               url: '../qiyue/qiyue',

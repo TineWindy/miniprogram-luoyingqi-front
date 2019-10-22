@@ -248,9 +248,8 @@
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="bonusDemandSelect"> </button>
         </view>
-
       </view>
-      <view hidden="{{!bonusDemandCanSelect}}" wx:for="{{bonusDemandCheckbox}}" wx:key="item">
+      <view hidden="{{!bonusDemandCanSelect}}" wx:for="{{bonusDemandCheckbox}}" wx:key="item" >
         <view class="cu-form-group">
           <view class="title">{{item.value}}</view>
           <checkbox value="{{item.value}}" checked="{{item.available}}" />
@@ -260,6 +259,27 @@
         <button class="weui-btn btn_finish" bindtap="bonusDemandSelected">完成</button>
       </view>
     </checkbox-group>
+
+    <view class='cu-form-group'>这些加分项在你心中的权重是怎样的？ </view>
+
+    <view >
+      <!--外层循环控制有几个评价条目  -->
+        <block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
+          <view class='cu-form-group' hidden="{{!bonusDemandCheckbox[idx].available}}">
+            <view class='starText'>{{item}}</view>
+            <!--星星评价  -->
+            <view class='starScore'>
+              <!--内层循环展示每个评价条目的星星  -->
+              <view wx:for="{{stars}}" wx:key=''>
+                <image class="star-image" style="left: {{item*70}}rpx;" src="{{scores[idx] > item ?selectedSrc : normalSrc}}" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectStar"> 
+                </image>
+              </view>
+            </view>
+          </view>
+        </block>
+    </view>
+
+    <view class='cu-form-group'>--- </view>
 
     <view class="cu-form-group " wx:if="{{bonusDemandCheckbox[0].available}}">
       <view class="weui-cell">身高</view>

@@ -16,8 +16,8 @@
 
 
   <view class="ddl">
-    <view>报名截止时间：2019.11.05 20:00</view>
-    <view style="padding-top:5px">结果公布时间：2019.11.08 20:00</view>
+    <view>报名截止时间：{{apply_end_time}}</view>
+    <view style="padding-top:5px">结果公布时间：{{result_publish_time}}</view>
   </view>
 
   <button class="baoming" bindtap="myApplyInfoTap">
@@ -28,7 +28,7 @@
     </image>
   </button>
 
-  <button class="qiyue">
+  <button class="qiyue" hidden="{{true}}">
     <span class='wenzi'>
       查看我的契约
     </span>
