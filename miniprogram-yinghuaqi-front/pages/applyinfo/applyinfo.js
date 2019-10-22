@@ -22,8 +22,14 @@ Page({
     appearance: '',
     relaxing_way: '',
     character: '',
-    hobby: ''
+    hobby: '',
 
+    // 加分项星星
+    normalSrc: '../../images/no-star.png',
+    selectedSrc: '../../images/full-star.png',
+    stars: [0, 1, 2, 3, 4],
+    score: '',
+    scores: [],
   },
 
   // 立即报名

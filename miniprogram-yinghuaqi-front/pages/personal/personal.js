@@ -561,7 +561,7 @@ Page({
     map["schoolCardImageUrl"] = data.schoolCardImageUrl;
 
     // 单独分析身高的权重
-    if (data.bonusDemandCheckbox[0].available){
+    if (data.bonusDemandCheckbox[0].available) {
       if (data.scores[0] >= 0) {
         //放入map中
         map["PB_HEIGHT_MAX_WEIGHT"] = data.scores[0];
@@ -822,7 +822,7 @@ function refreshVerifyCode(body) {
 
 //判空
 function assertNotNull(data) {
-  if (typeof(data) == "undefined" || data == null || data === ''||data==="") {
+  if (typeof(data) == "undefined" || data == null || data === '' || data === "") {
     return false;
   }
 
@@ -933,6 +933,14 @@ function getToken(body, content, filePath) {
     success(res) {
       var token = res.data.uptoken;
       uploadImage(body, content, token, filePath);
+    },
+    fail(){
+      wx.showToast({
+        title: '图片上传失败，请稍后重试',
+        icon: 'none',
+        duration: 3000,
+        mask: true
+      })
     }
   })
 }
@@ -940,6 +948,13 @@ function getToken(body, content, filePath) {
 //七牛云上传图片接口
 function uploadImage(body, content, token, filePath) {
   qiniuUploader.upload(filePath, (res) => {
+    wx.showToast({
+      title: '图片上传成功',
+      icon: 'none',
+      duration: 3000,
+      mask: true
+    })
+
     if (content == body.data.personalKeyWord) {
       body.setData({
         personalImageUrl: res.imageURL,
@@ -949,6 +964,7 @@ function uploadImage(body, content, token, filePath) {
         schoolCardImageUrl: res.imageURL,
       });
     }
+
   }, (error) => {
     wx.showToast({
       title: '图片上传失败，请稍后重试',

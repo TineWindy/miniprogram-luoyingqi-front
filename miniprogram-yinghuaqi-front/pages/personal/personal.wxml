@@ -63,7 +63,7 @@
       <view class="weui-cell__bd weui-text-subhead">您日常生活的着装风格是？</view>
       <picker bindchange="wearPickerChange" value="wearPicker{{index}}" range="{{wearPicker}}">
         <view class="picker">
-          {{wearIndex?wearPicker[wearIndex]:'请选择着装情况'}}
+          {{wearIndex?wearPicker[wearIndex]:'选择着装情况'}}
         </view>
       </picker>
     </view>
@@ -110,7 +110,7 @@
 
     <view class="cu-bar bg-white margin-top ">
       <view class="action " bindtap="bindUploadPersonalImage">
-        个人图片上传
+        个人图片上传(请点击这里哦)
       </view>
       <view class="action ">
         4M以内
@@ -119,7 +119,7 @@
 
     <view class="cu-bar bg-white margin-top ">
       <view class="action " bindtap="bindUploadschoolCardImage">
-        校园卡图片上传
+        校园卡图片上传(请点击这里哦)
       </view>
       <view class="action ">
         4M以内
@@ -179,7 +179,7 @@
     <checkbox-group bindchange="hardDemandChange">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>您对对方的硬性条件。该项对匹配影响很大，请谨慎填写</text>
+          <text>您对对方的硬性条件 \n该项对匹配影响很大，请谨慎填写</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="hardDemandSelect"> </button>
@@ -246,8 +246,8 @@
   </view>
 
   <view class="weui-cells weui-cells_after-title weui-shadow ">
-    <view class="weui-panel__hd">您觉得哪些条件能成为ta的加分项？（加分项填写内容请勿与硬性条件冲突哦）
-    </view>
+    <text class="weui-panel__hd">您觉得哪些条件能成为ta的加分项？
+    </text>
 
     <checkbox-group bindchange="bonusDemandChange">
       <view class="weui-cell">
@@ -258,7 +258,7 @@
           <button class="weui-btn btn_choose" bindtap="bonusDemandSelect"> </button>
         </view>
       </view>
-      <view hidden="{{!bonusDemandCanSelect}}" wx:for="{{bonusDemandCheckbox}}" wx:key="item" >
+      <view hidden="{{!bonusDemandCanSelect}}" wx:for="{{bonusDemandCheckbox}}" wx:key="item">
         <view class="cu-form-group">
           <view class="title">{{item.value}}</view>
           <checkbox value="{{item.value}}" checked="{{item.available}}" />
@@ -269,23 +269,23 @@
       </view>
     </checkbox-group>
 
-    <view class='cu-form-group'>这些加分项在你心中的权重是怎样的？ </view>
+    <view class='cu-form-group weui-text-subhead'>这些加分项在你心中的权重是怎样的？ </view>
 
-    <view >
+    <view>
       <!--外层循环控制有几个评价条目  -->
-        <block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
-          <view class='cu-form-group' hidden="{{!bonusDemandCheckbox[idx].available}}">
-            <view class='starText'>{{item}}</view>
-            <!--星星评价  -->
-            <view class='starScore'>
-              <!--内层循环展示每个评价条目的星星  -->
-              <view wx:for="{{stars}}" wx:key=''>
-                <image class="star-image" style="left: {{item*70}}rpx;" src="{{scores[idx] > item ?selectedSrc : normalSrc}}" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectStar"> 
-                </image>
-              </view>
+      <block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
+        <view class='cu-form-group' hidden="{{!bonusDemandCheckbox[idx].available}}">
+          <view class='starText'>{{item}}</view>
+          <!--星星评价  -->
+          <view class='starScore'>
+            <!--内层循环展示每个评价条目的星星  -->
+            <view wx:for="{{stars}}" wx:key=''>
+              <image class="star-image" style="left: {{item*70}}rpx;" src="{{scores[idx] > item ?selectedSrc : normalSrc}}" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectStar">
+              </image>
             </view>
           </view>
-        </block>
+        </view>
+      </block>
     </view>
 
     <view class='cu-form-group'>--- </view>
@@ -310,7 +310,7 @@
     <checkbox-group bindchange="anotherDateMethodChange" wx:if="{{bonusDemandCheckbox[2].available}}" name="PB_RELAXING_WAY">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>课余时间的休闲方式是？\n（最多选3项）</text>
+          <text>您认为哪些休闲方式是加分项？\n（请最多选3项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="anotherDateMethodSelect"> </button>
@@ -330,7 +330,7 @@
     <checkbox-group bindchange="anotherCharacterChange" wx:if="{{bonusDemandCheckbox[3].available}}" name="PB_CHARACTER">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>您认为哪些性格标签是加分项？</text>
+          <text>您认为哪些性格标签是加分项？\n（请最多选5项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="anotherCharacterSelect"> </button>
@@ -350,7 +350,7 @@
     <checkbox-group bindchange="anotherHobbyChange" name="anotherHobby" wx:if="{{bonusDemandCheckbox[4].available}}" name="PB_HOBBY">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>您有哪些个人爱好？\n（请最多选择5项）</text>
+          <text>您觉得哪些爱好是加分项？\n（请最多选择5项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="anotherHobbySelect"> </button>

@@ -75,7 +75,7 @@ function yhjRequest(url, params, success, method) {
           resolve(null);
         } else if (res.data.resultCode !== 'SUCCESS') {
           wx.showModal({
-            title: '小问题',
+            title: '应用错误',
             content: res.data.resultDesc || '请求出错',
             showCancel: false,
           });
