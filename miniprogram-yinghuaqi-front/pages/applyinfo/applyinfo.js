@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isApplied: true,
+    isApplied: false,
     hardDemandArray:[],
     bonusDemandArray:[],
     name:'',
@@ -93,12 +93,16 @@ function getChineseWord(key) {
     case "verifyCode": return "验证码";
     case "LIVING_LOCATION": return "所在学部";
     case "APPEARANCE": return "着装风格";
+    case "MIN": return "最小值";
+    case "MAX": return "最大值";
   }
 }
 
+//将数组数据解析成字符串格式
 function parseArrayValue(values){
   var str=JSON.parse(values);
 
+  //若str是数组格式
   if(str instanceof Array){
     var string="";
     for (var value of str) {
@@ -107,11 +111,13 @@ function parseArrayValue(values){
 
     return string;
   }else{
+    //非数组格式直接返回值
     return str;
   }
   
 }
 
+//设置data里的硬性条件和加分项
 function setPersonalDemand(demand,body){
   console.log(demand);
   var personalDemand=JSON.parse(demand);
@@ -140,7 +146,7 @@ function setPersonalDemand(demand,body){
 
     var data = {
       name: getChineseWord(key),
-      value: dataJson["BONUS_VALUE"],
+      value: parseArrayValue(dataJson["BONUS_VALUE"]),
       weight:dataJson["BONUS_WEIGHT"]
     }
 
@@ -154,8 +160,9 @@ function setPersonalDemand(demand,body){
   
 }
 
+//从后台读取报名信息后显示在页面上
 function dataInit(data,body){
-  console.log(data);
+
   if(assertNotNull(data)){
     var personalDes=JSON.parse(data.personalDes);
 
@@ -184,6 +191,7 @@ function dataInit(data,body){
   }
 }
 
+//从后台获取报名信息
 function getApplyInfo(body){
   httpFuncs.yhjRequest(
     '/user/getApplyInfo',
@@ -195,6 +203,7 @@ function getApplyInfo(body){
   );
 }
 
+//取消报名
 function cancelApply(){
   httpFuncs.yhjRequest(
     '/user/cancelApply',

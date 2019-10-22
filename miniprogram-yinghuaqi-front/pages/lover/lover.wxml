@@ -1,5 +1,5 @@
 <view>
-  <text>\n\n\n\n\n</text>
+  <text>\n\n\n\n\n\n</text>
 </view>
 
 <form bindsubmit="sendVerifyCodeTap">
