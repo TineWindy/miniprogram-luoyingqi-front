@@ -12,9 +12,9 @@
     <text>
       暗恋通道。\n 情侣或相信缘分的用户请点击“暗恋通道”进行报名！
     </text>
-  </view>
+  </view> 
 
-  <button class="baoming" bindtap="applyTap">
+  <button class="baoming"  bindtap="applyTap">
       缘分降临
   </button>
 

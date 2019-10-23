@@ -101,5 +101,12 @@ background-size:100% ;
   border: none;
 }
 
-
-
+.contract {
+  position: absolute;
+  /* left: 180rpx; */
+  text-align: center;
+  top:1370rpx;
+  font-size: 20rpx;
+  color:gray;
+  width: 100%;
+}

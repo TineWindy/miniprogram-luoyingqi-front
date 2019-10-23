@@ -38,7 +38,9 @@ page {
   top: 1250rpx;
   left: 80rpx;
   width: 35%;
-  background-color: #fdf8f6;
+  /* background-color: #fdf8f6; */
+  color:white;
+  background-color: #efcbcc;
 }
 
 .baoming::after {
@@ -60,6 +62,8 @@ page {
   right: 110rpx;
   width: 35%;
   background-color: #fdf8f6;
+  color:white;
+  background-color: #efcbcc;
 }
 
 .qiyue::after {

@@ -1280,7 +1280,7 @@ button {
   display: flex;
   justify-content: left;
   border-radius: 5px;
-  font-size: 30rpx;
+  font-size: 28rpx;
   width: 30%;
 }
 

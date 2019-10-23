@@ -11,8 +11,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    apply_end_time: '2019.11.03 23:59',
-    result_publish_time: '2019.11.05 20:00',
+    apply_end_time: '',
+    result_publish_time: '',
   },
 
   onLoad: function() {

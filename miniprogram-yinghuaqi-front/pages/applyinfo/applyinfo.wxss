@@ -49,7 +49,7 @@ page {
   background-color: #fdf8f6;
 }
 
-.qiyue::after {
+.verify::after {
   border: none;
 }
 

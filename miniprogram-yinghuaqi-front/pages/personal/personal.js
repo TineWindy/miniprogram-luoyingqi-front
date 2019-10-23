@@ -25,7 +25,7 @@ Page({
     schoolCardImageSuccess: false,
 
     gradeIndex: null,
-    gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
+    gradePicker: ["大一", "大二", "大三", "大四", "大五", "研究生"],
     genderIndex: null,
     genderPicker: ["男", "女"],
     regionIndex: null,
@@ -87,9 +87,6 @@ Page({
         value: "正经"
       },
       {
-        value: "粗线条"
-      },
-      {
         value: "敏感"
       },
       {
@@ -139,7 +136,9 @@ Page({
         value: "呆萌"
       }, {
         value: "皮"
-      }
+      }, {
+        value: "粗线条"
+      },
     ],
     hobbyCanSelect: false,
     hobbyNum: 0,
@@ -382,6 +381,9 @@ Page({
       },
       {
         value: "大四"
+      },
+      {
+        value: "大五"
       },
       {
         value: "研究生"

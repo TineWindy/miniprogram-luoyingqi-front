@@ -60,7 +60,7 @@
     </view>
 
     <view class="weui-cell">
-      <view class="weui-cell__bd weui-text-subhead">您日常生活中对外表会？</view>
+      <view class="weui-cell__bd weui-text-subhead">您日常生活中的仪容情况？</view>
       <picker bindchange="wearPickerChange" value="wearPicker{{index}}" range="{{wearPicker}}">
         <view class="picker">
           {{wearIndex?wearPicker[wearIndex]:'选择外表情况'}}
@@ -84,7 +84,7 @@
     </view>
 
     <view class="weui-cell">
-      <button class="weui-btn btn_yanzhengma shadow" style="" disabled="{{!getVerifyCode}}" bindtap="getVerifyCodeTap">{{getVerifyCode?'获取验证码':'30s后重试'}}</button>
+      <button class="weui-btn btn_yanzhengma shadow" disabled="{{!getVerifyCode}}" bindtap="getVerifyCodeTap">{{getVerifyCode?'获取验证码':'30s后重试'}}</button>
       <input name="verifyCode" placeholder="获取并输入验证码" placeholder-class="align" style='text-align:right' />
     </view>
 
@@ -142,10 +142,14 @@
           <button class="weui-btn btn_choose" bindtap="characterSelect"> </button>
         </view>
       </view>
-      <view hidden="{{!characterCanSelect}}" wx:for="{{characterCheckbox}}" wx:key="item">
-        <view class="cu-form-group">
+      <view hidden="{{!characterCanSelect}}" wx:for="{{characterCheckbox}}" wx:key="item" wx:for-index="idx">
+        <view class="cu-form-group" wx:if="{{idx%3==0}}">
           <view class="title">{{item.value}}</view>
           <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="title">{{characterCheckbox[idx+1].value}}</view>
+          <checkbox value="{{characterCheckbox[idx+1].value}}" wx:if="{{characterCheckbox[idx+1].value}}" checked="{{characterCheckbox[idx+1].checked}}" />
+          <view class="title">{{characterCheckbox[idx+2].value}}</view>
+          <checkbox value="{{characterCheckbox[idx+2].value}}"  wx:if="{{characterCheckbox[idx+1].value}}" checked="{{characterCheckbox[idx+2].checked}}" />
         </view>
       </view>
       <view wx:if="{{characterCanSelect}}">
@@ -176,12 +180,12 @@
 
 
   <view class="weui-cells weui-cells_after-title weui-shadow ">
-    <view class="weui-panel__hd">您对配偶的硬性条件</view>
+    <view class="weui-panel__hd">硬性要求</view>
 
     <checkbox-group bindchange="hardDemandChange">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>您对对方的硬性条件 \n该项对匹配影响很大，请谨慎填写</text>
+          <text>您对配偶的硬性要求 \n这些项对匹配影响很大，请谨慎填写！！</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="hardDemandSelect"> </button>
@@ -248,13 +252,13 @@
   </view>
 
   <view class="weui-cells weui-cells_after-title weui-shadow ">
-    <text class="weui-panel__hd">您觉得哪些条件能成为ta的加分项？
+    <text class="weui-panel__hd">加分项
     </text>
 
     <checkbox-group bindchange="bonusDemandChange">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>(加分项填写内容请勿与硬性条件冲突哦）</text>
+          <text>您觉得哪些条件是ta的加分项？\n (加分项填写内容请勿与硬性条件冲突哦）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="bonusDemandSelect"> </button>
@@ -338,10 +342,14 @@
           <button class="weui-btn btn_choose" bindtap="anotherCharacterSelect"> </button>
         </view>
       </view>
-      <view hidden="{{!anotherCharacterCanSelect}}" wx:for="{{anotherCharacterCheckbox}}" wx:key="item">
-        <view class="cu-form-group">
+      <view hidden="{{!anotherCharacterCanSelect}}" wx:for="{{anotherCharacterCheckbox}}" wx:key="item" wx:for-index="idx">
+        <view class="cu-form-group" wx:if="{{idx%3==0}}">
           <view class="title">{{item.value}}</view>
           <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="title">{{anotherCharacterCheckbox[idx+1].value}}</view>
+          <checkbox value="{{anotherCharacterCheckbox[idx+1].value}}" wx:if="{{anotherCharacterCheckbox[idx+1].value}}" checked="{{anotherCharacterCheckbox[idx+1].checked}}" />
+          <view class="title">{{anotherCharacterCheckbox[idx+2].value}}</view>
+          <checkbox value="{{anotherCharacterCheckbox[idx+2].value}}"  wx:if="{{anotherCharacterCheckbox[idx+1].value}}" checked="{{anotherCharacterCheckbox[idx+2].checked}}" />
         </view>
       </view>
       <view wx:if="{{anotherCharacterCanSelect}}">
