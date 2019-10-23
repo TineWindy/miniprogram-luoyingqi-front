@@ -142,6 +142,6 @@
 
 
   <view class="weui-cell" style="border-top: 1px solid #efcbcc;">
-    <button class="weui-btn btn_finish" bindtap="bindCancel">取消报名</button>
+    <button class="weui-btn btn_finish last_btn" bindtap="bindCancel">取消报名</button>
   </view>
 </view>

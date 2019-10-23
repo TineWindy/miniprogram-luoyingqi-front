@@ -43,7 +43,7 @@ Page({
       },
       {
         name: "hang",
-        value: "闲逛",
+        value: "游玩",
       },
       {
         name: "study",
@@ -61,9 +61,9 @@ Page({
     phoneNumber: '',
     getVerifyCode: true,
     makeupIndex: null,
-    makeupPicker: ["基本整洁（素颜）", "轻微留意（淡妆）", "非常看重（精致装扮）"],
+    makeupPicker: ["男-基本整洁/女-素颜", "男-轻微留意/女-淡妆", "男-非常看重/女-精致装扮"],
     wearIndex: null,
-    wearPicker: ["基本整洁（素颜）", "轻微留意（淡妆）", "非常看重（精致装扮）"],
+    wearPicker: ["男-基本整洁/女-素颜", "男-轻微留意/女-淡妆", "男-非常看重/女-精致装扮"],
     characterCanSelect: false,
     characterNum: 0,
     characterCheckbox: [{
@@ -216,7 +216,7 @@ Page({
       },
       {
         name: "hang",
-        value: "闲逛",
+        value: "游玩",
       },
       {
         name: "study",
@@ -304,7 +304,7 @@ Page({
         value: "文学"
       },
       {
-        value: "吃货"
+        value: "美食"
       },
       {
         value: "学习"

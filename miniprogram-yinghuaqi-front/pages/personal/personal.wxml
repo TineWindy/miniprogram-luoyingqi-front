@@ -60,10 +60,10 @@
     </view>
 
     <view class="weui-cell">
-      <view class="weui-cell__bd weui-text-subhead">您日常生活的着装风格是？</view>
+      <view class="weui-cell__bd weui-text-subhead">您日常生活中对外表会？</view>
       <picker bindchange="wearPickerChange" value="wearPicker{{index}}" range="{{wearPicker}}">
         <view class="picker">
-          {{wearIndex?wearPicker[wearIndex]:'选择着装情况'}}
+          {{wearIndex?wearPicker[wearIndex]:'选择外表情况'}}
         </view>
       </picker>
     </view>
@@ -370,7 +370,7 @@
 
 
   <view class="weui-cell" style="border-top: 1px solid #efcbcc;">
-    <button class="weui-btn btn_finish" formType="submit">提交</button>
+    <button class="weui-btn btn_finish last_btn" formType="submit">提交</button>
   </view>
 
 </form>
