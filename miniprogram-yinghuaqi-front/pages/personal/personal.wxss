@@ -111,7 +111,6 @@ button {
 .weui-cell:before {
   content: " ";
   position: absolute;
-  left: 0;
   top: 0;
   right: 0;
   height: 1px;
@@ -165,8 +164,6 @@ button {
   border-style: solid;
   -webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
   transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
-  position: relative;
-  top: -2px;
   position: absolute;
   top: 50%;
   margin-top: -4px;
@@ -307,7 +304,6 @@ button {
 .weui-form-preview__hd:after {
   content: " ";
   position: absolute;
-  left: 0;
   bottom: 0;
   right: 0;
   height: 1px;
@@ -424,8 +420,6 @@ button {
   border-style: solid;
   -webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
   transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
-  position: relative;
-  top: -2px;
   position: absolute;
   top: 50%;
   right: 15px;
@@ -756,8 +750,6 @@ button {
   border-left: 1rpx solid #c7c7c7;
   color: #c7c7c7;
   left: -.65em;
-  top: 0.36em;
-  bottom: 0.36em;
 }
 
 .weui-footer__link:first-child:before {
@@ -974,7 +966,6 @@ button {
   height: 1px;
   border-top: 1rpx solid #e5e5e5;
   color: #e5e5e5;
-  left: 15px;
 }
 
 .weui-media-box:first-child:before {
@@ -989,7 +980,6 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
-  word-wrap: break-word;
   word-break: break-all;
 }
 
@@ -1126,8 +1116,6 @@ button {
   background-color: #40aeb4;
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 .weui-navbar__title {
