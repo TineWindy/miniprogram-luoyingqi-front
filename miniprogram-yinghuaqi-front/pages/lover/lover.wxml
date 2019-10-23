@@ -12,24 +12,14 @@
     <input name="name" placeholder="请输入ta的姓名" />
   </view>
   
-  <view class="weui-cell">
-    <view class="weui-cell__bd weui-text-subhead">手机号码</view>
+  <view class="cu-form-group">
+    <view class="title">手机号码</view>
     <input name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
-    <!-->
-    <view class="cu-capsule radius">
-      <view class="cu-tag bg-blue">
-        +86
-      </view>
-      <view class="cu-tag line-blue">
-        中国大陆
-      </view>
-    </view>
-    -->
   </view>
 
-  <view class="weui-cell">
+  <view class="cu-form-group">
     <button class="weui-btn btn_yanzhengma shadow" disabled="{{!getVerifyCode}}" bindtap="getVerifyCodeTap">{{getVerifyCode?'获取验证码':'30s后重试'}}</button>
-    <input name="verifyCode" placeholder="获取并输入验证码" />
+    <input name="verifyCode" placeholder="获取并输入验证码" style="margin-left:30rpx"/>
   </view>
 
 

@@ -38,27 +38,31 @@ function secretApply(body, e) {
   wx.showModal({
     title: '提示',
     content: '确认后就无法再次报名，请谨慎操作！',
-    success: function(e) {
-      httpFuncs.yhjRequest(
-        '/user/secretLove',
-        e.detail.value,
-        function(res) {
-          wx.showToast({
-            title: '报名成功',
-            icon: 'none',
-            duration: 2000,
-          });
-          setTimeout(
-            function(params) {
-              wx.reLaunch({
-                url: '../qiyue/qiyue',
-              });
-            },
-            2000
-          );
-        },
-        'get'
-      );
+    success(res) {
+      if (res.confirm) {
+        // 确认后提交暗恋报名信息
+        httpFuncs.yhjRequest(
+          '/user/secretLove',
+          e.detail.value,
+          function(res) {
+            wx.showToast({
+              title: '报名成功',
+              icon: 'none',
+              duration: 2000,
+            });
+            setTimeout(
+              function(params) {
+                wx.reLaunch({
+                  url: '../qiyue/qiyue',
+                });
+              },
+              2000
+            );
+          },
+          'get'
+        );
+      }
+
     }
   })
 }

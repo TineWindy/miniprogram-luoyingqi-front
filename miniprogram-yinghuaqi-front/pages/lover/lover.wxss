@@ -39,5 +39,5 @@
   justify-content: left;
   border-radius: 5px;
   font-size: 30rpx;
-  width: 30%;
+  width: 27%;
 }

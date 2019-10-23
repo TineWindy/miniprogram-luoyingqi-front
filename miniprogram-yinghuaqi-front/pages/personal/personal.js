@@ -892,21 +892,13 @@ function submitApplyInformation(map) {
     function(res) {
       wx.showModal({
         title: '提示',
-        content: '您已报名成功,是否查看报名信息',
+        content: '您已报名成功!',
+        showCancel: false
+      })
 
-        success(res) {
-          if (res.confirm) {
-            //跳转至报名详情页面
-            wx.reLaunch({
-              url: '../applyinfo/applyinfo'
-            })
-          } else {
-            //返回首页
-            wx.reLaunch({
-              url: '../qiyue/qiyue',
-            })
-          }
-        }
+      // 返回首页
+      wx.reLaunch({
+        url: '../qiyue/qiyue',
       })
     },
     'post'
@@ -934,7 +926,7 @@ function getToken(body, content, filePath) {
       var token = res.data.uptoken;
       uploadImage(body, content, token, filePath);
     },
-    fail(){
+    fail() {
       wx.showToast({
         title: '图片上传失败，请稍后重试',
         icon: 'none',

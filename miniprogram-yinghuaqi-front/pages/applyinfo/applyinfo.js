@@ -234,24 +234,26 @@ function cancelApply() {
   wx.showModal({
     title: '提示',
     content: '您正在取消您的报名，请谨慎操作',
-    success: function(e) {
-      httpFuncs.yhjRequest(
-        '/user/cancelApply',
-        '',
-        function (res) {
-          wx.showModal({
-            title: '取消成功',
-            content: '您已取消此次报名',
-            showCancel: false,
-          });
+    success(res) {
+      if (res.confirm) {
+        httpFuncs.yhjRequest(
+          '/user/cancelApply',
+          '',
+          function(res) {
+            wx.showModal({
+              title: '取消成功',
+              content: '您已取消此次报名',
+              showCancel: false,
+            });
 
-          //返回首页
-          wx.reLaunch({
-            url: '../qiyue/qiyue',
-          })
-        },
-        'GET'
-      );
+            //返回首页
+            wx.reLaunch({
+              url: '../qiyue/qiyue',
+            })
+          },
+          'GET'
+        );
+      }
     }
   })
 }
