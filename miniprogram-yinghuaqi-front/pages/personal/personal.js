@@ -448,10 +448,10 @@ Page({
     });
   },
   characterSelected: function(e) {
-    if (this.data.characterNum < 5) {
+    if (this.data.characterNum > 6) {
       wx.showModal({
         title: '错误',
-        content: '请选择五项内容',
+        content: '请最多选择六项内容',
       })
     } else {
       this.setData({
@@ -469,10 +469,10 @@ Page({
     });
   },
   hobbySelected: function(e) {
-    if (this.data.hobbyNum > 6) {
+    if (this.data.hobbyNum > 4) {
       wx.showModal({
         title: '错误',
-        content: '请最多选择五项内容',
+        content: '请最多选择四项内容',
       })
     } else {
       this.setData({
@@ -715,7 +715,7 @@ function changeRegion(body, e) {
 // 改变课余休闲
 function changeDateMethods(body, e) {
   var dateMethodsCheckbox = body.data.dateMethodsCheckbox;
-  dateMethodsCheckbox = componentFuncs.limitCheckBox(e.detail.value, dateMethodsCheckbox, 3);
+  dateMethodsCheckbox = componentFuncs.limitCheckBox(e.detail.value, dateMethodsCheckbox, 4);
   body.setData({
     dateMethodsCheckbox: dateMethodsCheckbox,
   });
@@ -724,7 +724,7 @@ function changeDateMethods(body, e) {
 // 改变性格
 function changeCharacter(body, e) {
   var characterCheckbox = body.data.characterCheckbox;
-  characterCheckbox = componentFuncs.limitCheckBox(e.detail.value, characterCheckbox, 5);
+  characterCheckbox = componentFuncs.limitCheckBox(e.detail.value, characterCheckbox, 6);
   body.setData({
     characterCheckbox: characterCheckbox,
     characterNum: e.detail.value.length,
@@ -807,7 +807,7 @@ function changeWear(body, e) {
 // 改变加分项：课余休闲
 function changeAnotherDateMethod(body, e) {
   var anotherDateMethodCheckbox = body.data.anotherDateMethodCheckbox;
-  anotherDateMethodCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherDateMethodCheckbox, 3);
+  anotherDateMethodCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherDateMethodCheckbox, 4);
   body.setData({
     anotherDateMethodCheckbox: anotherDateMethodCheckbox,
   });
@@ -816,7 +816,7 @@ function changeAnotherDateMethod(body, e) {
 // 改变加分项：性格
 function changeAnotherCharacter(body, e) {
   var anotherCharacterCheckbox = body.data.anotherCharacterCheckbox;
-  anotherCharacterCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherCharacterCheckbox, 5);
+  anotherCharacterCheckbox = componentFuncs.limitCheckBox(e.detail.value, anotherCharacterCheckbox, 6);
   body.setData({
     anotherCharacterCheckbox: anotherCharacterCheckbox,
   });
