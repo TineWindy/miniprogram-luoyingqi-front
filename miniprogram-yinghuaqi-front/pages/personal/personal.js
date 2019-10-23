@@ -21,8 +21,8 @@ Page({
     personalKeyWord: 'personal',
     personalImageUrl: '',
     schoolCardImageUrl: '',
-    personalImageSuccess:false,
-    schoolCardImageSuccess:false,
+    personalImageSuccess: false,
+    schoolCardImageSuccess: false,
 
     gradeIndex: null,
     gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
@@ -115,6 +115,30 @@ Page({
       },
       {
         value: "小受"
+      }, {
+        value: '温柔'
+      }, {
+        value: "腼腆"
+      }, {
+        value: "耐心"
+      }, {
+        value: "不拘小节"
+      }, {
+        value: "细心"
+      }, {
+        value: "慢热"
+      }, {
+        value: "阳光开朗"
+      }, {
+        value: "爽朗"
+      }, {
+        value: "善解人意"
+      }, {
+        value: "体贴"
+      }, {
+        value: "呆萌"
+      }, {
+        value: "皮"
       }
     ],
     hobbyCanSelect: false,
@@ -281,7 +305,32 @@ Page({
       },
       {
         value: "小受"
+      }, {
+        value: '温柔'
+      }, {
+        value: "腼腆"
+      }, {
+        value: "耐心"
+      }, {
+        value: "不拘小节"
+      }, {
+        value: "细心"
+      }, {
+        value: "慢热"
+      }, {
+        value: "阳光开朗"
+      }, {
+        value: "爽朗"
+      }, {
+        value: "善解人意"
+      }, {
+        value: "体贴"
+      }, {
+        value: "呆萌"
+      }, {
+        value: "皮"
       }
+
     ],
     anotherHobbyCanSelect: false,
     anotherHobbyCheckbox: [{
@@ -947,12 +996,12 @@ function uploadImage(body, content, token, filePath) {
     if (content == body.data.personalKeyWord) {
       body.setData({
         personalImageUrl: res.imageURL,
-        personalImageSuccess:true,
+        personalImageSuccess: true,
       });
     } else if (content == body.data.schoolKeyWord) {
       body.setData({
         schoolCardImageUrl: res.imageURL,
-        schoolCardImageSuccess:true,
+        schoolCardImageSuccess: true,
       });
     }
 
@@ -997,7 +1046,7 @@ function chooseImage(body, content) {
   })
 }
 
-function uploadImageFail(body){
+function uploadImageFail(body) {
   wx.showToast({
     title: '图片上传失败，请稍后重试',
     icon: 'none',
@@ -1006,7 +1055,7 @@ function uploadImageFail(body){
   })
 
   body.setData({
-    personalImageSuccess:false,
-    schoolCardImageSuccess:false,
+    personalImageSuccess: false,
+    schoolCardImageSuccess: false,
   })
 }

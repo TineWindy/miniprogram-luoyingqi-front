@@ -91,7 +91,7 @@
     <checkbox-group bindchange="dateMethodsChange" name="RELAXING_WAY">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>课余时间您的休闲方式是？\n（最多选3项）</text>
+          <text>课余时间您的休闲方式是？\n（最多选4项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="dateMethodSelect"> </button>
@@ -136,7 +136,7 @@
     <checkbox-group bindchange="characterChange" name="CHARACTER">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>以下哪些词汇符合您的个人特点？\n（请选择5项）</text>
+          <text>以下哪些词汇符合您的个人特点？\n（请最多选择6项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="characterSelect"> </button>
@@ -312,7 +312,7 @@
     <checkbox-group bindchange="anotherDateMethodChange" wx:if="{{bonusDemandCheckbox[2].available}}" name="PB_RELAXING_WAY">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>您认为哪些休闲方式是加分项？\n（请最多选3项）</text>
+          <text>您认为哪些休闲方式是加分项？\n（请最多选4项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="anotherDateMethodSelect"> </button>
@@ -332,7 +332,7 @@
     <checkbox-group bindchange="anotherCharacterChange" wx:if="{{bonusDemandCheckbox[3].available}}" name="PB_CHARACTER">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">
-          <text>您认为哪些性格标签是加分项？\n（请最多选5项）</text>
+          <text>您认为哪些性格标签是加分项？\n（请最多选6项）</text>
         </view>
         <view class="arrow">
           <button class="weui-btn btn_choose" bindtap="anotherCharacterSelect"> </button>
