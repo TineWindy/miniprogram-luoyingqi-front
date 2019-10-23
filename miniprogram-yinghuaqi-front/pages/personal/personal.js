@@ -952,7 +952,7 @@ function uploadImage(body, content, token, filePath) {
     } else if (content == body.data.schoolKeyWord) {
       body.setData({
         schoolCardImageUrl: res.imageURL,
-        schoolCardImageUrl:true,
+        schoolCardImageSuccess:true,
       });
     }
 
