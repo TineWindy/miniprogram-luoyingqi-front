@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "暗恋通道",
 					"pathName": "pages/lover/lover",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "任务",
+					"pathName": "pages/task/task",
 					"query": "",
 					"scene": null
 				}
