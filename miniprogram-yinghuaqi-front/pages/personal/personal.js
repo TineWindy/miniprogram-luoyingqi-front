@@ -790,7 +790,7 @@ function getVerifyCodeFunc(body, form) {
     body.setData({
       getVerifyCode: false,
     });
-    setTimeout(refreshVerifyCode, 3000, body);
+    setTimeout(refreshVerifyCode, 30000, body);
 
     httpFuncs.yhjRequest(
       '/user/getVerifyCode', {
