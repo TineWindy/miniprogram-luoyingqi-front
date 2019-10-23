@@ -10,9 +10,8 @@
   <view class="cu-form-group">
     <view class="title">ta 的姓名</view>
     <input name="name" placeholder="请输入ta的姓名" />
-
-
   </view>
+  
   <view class="weui-cell">
     <view class="weui-cell__bd weui-text-subhead">手机号码</view>
     <input name="phone" placeholder="输入您的手机号码" bindinput="getPhone"></input>
