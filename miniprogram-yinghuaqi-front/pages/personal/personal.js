@@ -21,6 +21,8 @@ Page({
     personalKeyWord: 'personal',
     personalImageUrl: '',
     schoolCardImageUrl: '',
+    personalImageSuccess:false,
+    schoolCardImageSuccess:false,
 
     gradeIndex: null,
     gradePicker: ["大一", "大二", "大三", "大四", "研究生"],
@@ -927,12 +929,7 @@ function getToken(body, content, filePath) {
       uploadImage(body, content, token, filePath);
     },
     fail() {
-      wx.showToast({
-        title: '图片上传失败，请稍后重试',
-        icon: 'none',
-        duration: 3000,
-        mask: true
-      })
+      uploadImageFail(body);
     }
   })
 }
@@ -950,20 +947,17 @@ function uploadImage(body, content, token, filePath) {
     if (content == body.data.personalKeyWord) {
       body.setData({
         personalImageUrl: res.imageURL,
+        personalImageSuccess:true,
       });
     } else if (content == body.data.schoolKeyWord) {
       body.setData({
         schoolCardImageUrl: res.imageURL,
+        schoolCardImageUrl:true,
       });
     }
 
   }, (error) => {
-    wx.showToast({
-      title: '图片上传失败，请稍后重试',
-      icon: 'none',
-      duration: 3000,
-      mask: true
-    })
+    uploadImageFail(body);
   }, {
     region: 'SCN',
     domain: getDomain(content), // // bucket 域名
@@ -995,10 +989,24 @@ function chooseImage(body, content) {
         })
         return;
       }
-
       var filePath = res.tempFilePaths[0];
 
+      // 从后台获取上传凭证
       getToken(body, content, filePath);
     }
+  })
+}
+
+function uploadImageFail(body){
+  wx.showToast({
+    title: '图片上传失败，请稍后重试',
+    icon: 'none',
+    duration: 3000,
+    mask: true
+  })
+
+  body.setData({
+    personalImageSuccess:false,
+    schoolCardImageSuccess:false,
   })
 }
