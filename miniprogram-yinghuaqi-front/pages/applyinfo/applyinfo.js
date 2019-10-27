@@ -111,7 +111,7 @@ function getChineseWord(key) {
     case "verifyCode":
       return "验证码";
     case "LIVING_LOCATION":
-      return "所在学部";
+      return "学部";
     case "APPEARANCE":
       return "着装风格";
     case "GRADE":

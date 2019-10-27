@@ -1,6 +1,11 @@
-<view class="yinghuaqi">
   <view class="intro1">
-    <span style='color:red;'>
-    </span>敬请期待
+    <text>
+    敬请期待
+    </text>
   </view>
+
+<view class="contract">
+  <text>
+  "珞樱契"团队持续招聘：\n 产品设计、小程序前端 \n 邮件：weifengyoulei@foxmail.com
+  </text>
 </view>

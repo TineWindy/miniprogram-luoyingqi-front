@@ -132,7 +132,7 @@
 
   <view class="weui-cells weui-cells_after-title weui-shadow ">
     <view class="weui-panel__hd">进一步了解</view>
-
+ 
     <checkbox-group bindchange="characterChange" name="CHARACTER">
       <view class="weui-cell">
         <view class="weui-cell__bd weui-text-subhead">

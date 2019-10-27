@@ -6,14 +6,22 @@ background-size:100% ;
 
 }
 .intro1{
-  color:black;
+  color:#efcbcc;
   font-size: 2.3em;
   position: absolute;
-  top:600rpx;
+  text-align: center;
+  top:500rpx;
   left:260rpx;
   display: flex;
   font-weight:bold;
 }
 
-
+.contract {
+  position: absolute;
+  text-align: center;
+  top:700rpx;
+  font-size: 20rpx;
+  color:gray;
+  width: 100%;
+}
 

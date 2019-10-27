@@ -89,7 +89,7 @@
       <view class="title">日常着装风格</view>
       <text class="weui-text-subhead">{{appearance}}</text>
     </view>
-
+ 
     <view class="cu-form-group">
       <view class="title">休闲方式</view>
       <text class="weui-text-subhead">{{relaxing_way}}</text>
@@ -129,8 +129,8 @@
           <!--内层循环展示每个评价条目的星星  -->
           <view class='cu-form-group'>
             <view class="title">该项权重</view>
-            <block wx:for="{{stars}}" wx:key='' style="margin:center">
-              <image class="star-image" style="left: {{index*70}}rpx;" src="{{index < keyWord.weight ?selectedSrc : normalSrc}}">
+            <block class="starView" wx:for="{{stars}}" wx:key='' style="margin:center">
+              <image class="star-image" style="left: {{(index+1)*70}}rpx;" src="{{index < keyWord.weight ?selectedSrc : normalSrc}}">
               </image>
             </block>
           </view>

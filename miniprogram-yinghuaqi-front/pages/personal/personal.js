@@ -450,16 +450,9 @@ Page({
     });
   },
   characterSelected: function(e) {
-    if (this.data.characterNum > 6) {
-      wx.showModal({
-        title: '错误',
-        content: '请最多选择六项内容',
-      })
-    } else {
-      this.setData({
-        characterCanSelect: false,
-      });
-    }
+    this.setData({
+      characterCanSelect: false,
+    });
   },
 
   hobbyChange: function(e) {
@@ -725,6 +718,7 @@ function changeDateMethods(body, e) {
 
 // 改变性格
 function changeCharacter(body, e) {
+  console.log(e);
   var characterCheckbox = body.data.characterCheckbox;
   characterCheckbox = componentFuncs.limitCheckBox(e.detail.value, characterCheckbox, 6);
   body.setData({

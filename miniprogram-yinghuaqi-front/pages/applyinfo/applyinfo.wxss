@@ -78,6 +78,7 @@ icon {
 
 .star-image {
   position: absolute;
+  margin-left: 100rpx;
   width: 40rpx;
   height: 40rpx;
   src: "../../images/no-star.png";
@@ -1377,4 +1378,12 @@ icon {
   right: 20px;
   transform: rotate(135deg);
   top: 20px;
+}
+
+.title {
+  width: 250rpx;
+}
+
+.starView {
+  margin-left: 1000rpx;
 }
