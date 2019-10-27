@@ -7,7 +7,8 @@
     "pages/applyinfo/applyinfo",
     "pages/verify/verify",
     "pages/lover/lover",
-    "pages/task/task"
+    "pages/task/task",
+    "pages/matchinfo/matchinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -90,6 +90,12 @@
 					"name": "任务",
 					"pathName": "pages/task/task",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "契约展示",
+					"pathName": "pages/matchinfo/matchinfo",
 					"scene": null
 				}
 			]
