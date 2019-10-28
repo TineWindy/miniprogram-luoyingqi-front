@@ -7,18 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status: '',
-    image: '',
-    name: 'hxy',
+    image: '../../images/baoming_sel_back.png',
+    name: '珞樱契',
     gender: 'MALE',
     grade: '大一',
-    contact: 'qq 1670142089\nphone 15282329012',
-    description: '他是微风有泪',
+    contact: 'email:weifengyoulei@foxmail.com',
+    description: '欢迎加入珞樱契团队',
+    status: 'MATCH_NOT_VERIFY',
+    activity: '',
   },
 
   /** 接受按钮  */
   acceptTap: function(e) {
-    agreeMatchInfo();
+    agreeMatchInfo(this);
   },
 
   /** 拒绝按钮 */
@@ -40,22 +41,7 @@ function getMatchInfo(body) {
     '/user/getMatchInfo',
     '',
     function(res) {
-      var data = res.resultObj;
-
-      // 获取状态 
-      var status = data.status;
-
-      if (status == "MATCH_NO_VERIFY") {
-        // TODO 提示用户去没有报名信息，需要验证
-      } else if (status == "MATCH_NO_SUCCESS") {
-        // TODO 提示用户匹配未成功
-      } else if (status == "MATCH_CANCELED") {
-        // TODO 提示用户匹配未成功
-      } else if (status == "MATCH_SUCCESS") {
-        // 渲染
-        dataInit(data, body);
-      }
-
+      dataInit(res.resultObj, body);
     },
     'GET'
   );
@@ -64,6 +50,8 @@ function getMatchInfo(body) {
 // 渲染
 function dataInit(data, body) {
   body.setData({
+    status: data.status,
+    activity: data.activity,
     name: data.loverName,
     gender: data.loverGender,
     grade: data.loverGrade,
@@ -107,7 +95,7 @@ function cancelMatchInfo() {
 }
 
 // 同意匹配
-function agreeMatchInfo() {
+function agreeMatchInfo(body) {
   httpFuncs.yhjRequest(
     '/user/agreeMatch',
     '',
@@ -116,6 +104,9 @@ function agreeMatchInfo() {
         title: '操作成功',
         content: '您已同意此次匹配',
         showCancel: false,
+      });
+      body.setData({
+        status: 'MATCHED_RECEIVED',
       });
     },
     'GET'

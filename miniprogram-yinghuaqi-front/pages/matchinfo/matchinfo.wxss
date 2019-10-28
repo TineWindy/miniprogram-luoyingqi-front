@@ -53,3 +53,20 @@ background-size:100% ;
   top: 1220rpx;
   width: 30%;
 }
+
+.receive_text{
+  position: absolute;
+  text-align: center;
+  top: 1220rpx;
+  left: 170rpx;
+  right: 170rpx;
+  color: #f4acae;
+}
+
+.toast_text{
+  position: absolute;
+  text-align: center;
+  left: 135rpx;
+  right: 135rpx;
+  top: 700rpx;
+}

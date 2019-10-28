@@ -28,7 +28,7 @@
     </image>
   </button>
 
-  <button class="qiyue" hidden="{{true}}">
+  <button class="qiyue" bindtap="myMatchInfoTap">
     <span class='wenzi'>
       查看我的契约
     </span>
@@ -40,5 +40,5 @@
 </view>
 
 <view class="contract">
-  <text>---计算机学院女生部，qq：3219064867---</text>
+  <text>---计算机学院女生部，qq：3219064867---\n</text>
 </view>

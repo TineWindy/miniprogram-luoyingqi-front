@@ -105,8 +105,9 @@ background-size:100% ;
   position: absolute;
   /* left: 180rpx; */
   text-align: center;
-  top:1370rpx;
+  top:1600rpx;
   font-size: 20rpx;
   color:gray;
   width: 100%;
+  margin-bottom: 20rpx;
 }

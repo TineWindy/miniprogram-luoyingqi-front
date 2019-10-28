@@ -32,6 +32,11 @@ Page({
   // 查看我的报名
   myApplyInfoTap: function(e) {
     getMyApplyInfo(this, e);
+  },
+
+  // 查看我的契约
+  myMatchInfoTap: function(e) {
+    getMyMatchInfo(this, e);
   }
 })
 
@@ -83,5 +88,12 @@ function getWxUserInfo(body) {
 function getMyApplyInfo(body, e) {
   wx.navigateTo({
     url: '../applyinfo/applyinfo',
+  })
+}
+
+// 获取契约信息
+function getMyMatchInfo(body, e) {
+  wx.navigateTo({
+    url: '../matchinfo/matchinfo',
   })
 }

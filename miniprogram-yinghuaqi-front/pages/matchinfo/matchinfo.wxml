@@ -1,6 +1,26 @@
-<view>
 
-  <image class="touxiang" src="http://pzirl3svw.bkt.clouddn.com/tmp_570e50b3b0663216f4cb6761b266f18500424dd1fd3f7758.jpg" mode="widthFix" />
+
+<view wx:if="{{status=='MATCH_NOT_VERIFY'}}" class="toast_text">
+  <text>
+    抱歉，我们未能找到您的报名信息；\n 请返回首页，进入“查看我的报名”，确认报名信息是否无误.
+  </text>
+</view>
+
+<view wx:elif="{{status=='MATCH_NOT_SUCCESS'}}" class="toast_text">
+  <text>
+    抱歉，本次活动中暂无与您的个人描述和要求非常匹配的对象；\n 欢迎您持续关注并参与后续线下活动。\n {{activity}}
+  </text>
+</view>
+
+<view wx:elif="{{status=='MATCH_CANCELED'}}" class="toast_text">
+  <text>
+    抱歉，本次匹配已被您或对方因事取消；\n 欢迎您持续关注并参与后续线下活动。\n {{activity}}
+  </text>
+</view>
+
+<view wx:else>
+
+  <image class="touxiang" src="{{image}}" mode="widthFix" />
   <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' />
 
   <view class="info">
@@ -38,7 +58,7 @@
     <text>{{description}}</text>
   </view>
 
-  <view>
+  <view wx:if="{{status=='MATCHED_NOT_RECEIVED'}}">
 
     <view class="accept">
       <image src="../../images/accept.png" mode='widthFix' bindtap="acceptTap" />
@@ -48,6 +68,9 @@
       <image src="../../images/reject.png" mode='widthFix' bindtap="rejectTap" />
     </view>
 
+  </view>
+  <view wx:else class="receive_text">
+    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n {{activity}}</text>
   </view>
 
 </view>
