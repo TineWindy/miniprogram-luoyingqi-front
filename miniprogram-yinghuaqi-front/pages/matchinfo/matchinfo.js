@@ -1,4 +1,6 @@
 // pages/matchinfo/matchinfo.js
+var httpFuncs = require("../../utils/HttpUtils.js");
+
 Page({
 
   /**
@@ -10,35 +12,38 @@ Page({
     name: 'hxy',
     gender: 'MALE',
     grade: '大一',
-    contract: 'qq 1670142089\nphone 15282329012',
+    contact: 'qq 1670142089\nphone 15282329012',
     description: '他是微风有泪',
   },
 
   /** 接受按钮  */
   acceptTap: function(e) {
+    agreeMatchInfo();
   },
 
   /** 拒绝按钮 */
-
   rejectTap: function(e) {
+    cancelMatchInfo();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    getMatchInfo(this);
   },
 })
 
 //获取匹配结果
 function getMatchInfo(body) {
   httpFuncs.yhjRequest(
-    '/user/getApplyInfo',
+    '/user/getMatchInfo',
     '',
     function(res) {
+      var data = res.resultObj;
+
       // 获取状态 
-      var status = res.status;
+      var status = data.status;
 
       if (status == "MATCH_NO_VERIFY") {
         // TODO 提示用户去没有报名信息，需要验证
@@ -48,7 +53,7 @@ function getMatchInfo(body) {
         // TODO 提示用户匹配未成功
       } else if (status == "MATCH_SUCCESS") {
         // 渲染
-        dataInit(res.lover);
+        dataInit(data, body);
       }
 
     },
@@ -57,8 +62,15 @@ function getMatchInfo(body) {
 }
 
 // 渲染
-function dataInit(data) {
-
+function dataInit(data, body) {
+  body.setData({
+    name: data.loverName,
+    gender: data.loverGender,
+    grade: data.loverGrade,
+    contact: data.loverContact,
+    description: data.loverPersonalDesc,
+    image: data.loverPhoto
+  })
 }
 
 
@@ -77,12 +89,15 @@ function cancelMatchInfo() {
               title: '取消成功',
               content: '您已取消此次匹配',
               showCancel: false,
+              success(res) {
+                if (res.confirm) {
+                  //返回首页
+                  wx.reLaunch({
+                    url: '../qiyue/qiyue',
+                  })
+                }
+              }
             });
-
-            //返回首页
-            wx.reLaunch({
-              url: '../qiyue/qiyue',
-            })
           },
           'GET'
         );
@@ -92,7 +107,7 @@ function cancelMatchInfo() {
 }
 
 // 同意匹配
-function agree() {
+function agreeMatchInfo() {
   httpFuncs.yhjRequest(
     '/user/agreeMatch',
     '',

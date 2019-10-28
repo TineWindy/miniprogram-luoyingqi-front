@@ -1,53 +1,53 @@
 <view>
 
   <image class="touxiang" src="http://pzirl3svw.bkt.clouddn.com/tmp_570e50b3b0663216f4cb6761b266f18500424dd1fd3f7758.jpg" mode="widthFix" />
-  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix'/>
+  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' />
 
-  <view class="info"> 
+  <view class="info">
     <text>姓 名</text>
   </view>
-  <view class="info_item"> 
+  <view class="info_item">
     <text>{{name}}</text>
   </view>
 
-  <view class="info" style="margin-top:100rpx"> 
+  <view class="info" style="margin-top:100rpx">
     <text>性 别</text>
   </view>
-  <view class="info_item" style="margin-top:100rpx"> 
+  <view class="info_item" style="margin-top:100rpx">
     <text>{{gender}}</text>
   </view>
 
-  <view class="info" style="margin-top:200rpx"> 
+  <view class="info" style="margin-top:200rpx">
     <text>年 级</text>
   </view>
-  <view class="info_item" style="margin-top:200rpx"> 
+  <view class="info_item" style="margin-top:200rpx">
     <text>{{grade}}</text>
   </view>
 
-  <view class="info" style="margin-top:300rpx"> 
+  <view class="info" style="margin-top:300rpx">
     <text>联 络</text>
   </view>
-  <view class="info_item" style="margin-top:300rpx"> 
-    <text>{{contract}}</text>
+  <view class="info_item" style="margin-top:300rpx">
+    <text>{{contact}}</text>
   </view>
 
-  <view class="info" style="margin-top:400rpx"> 
+  <view class="info" style="margin-top:400rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info" style="margin-top:450rpx;color:#566268"> 
+  <view class="info" style="margin-top:450rpx;color:#566268">
     <text>{{description}}</text>
   </view>
 
   <view>
-  
+
     <view class="accept">
-      <image src="../../images/accept.png" mode='widthFix' bindtap="acceptTap"/>
+      <image src="../../images/accept.png" mode='widthFix' bindtap="acceptTap" />
     </view>
 
     <view class="reject">
-      <image src="../../images/reject.png" mode='widthFix' bindtap="rejectTap"/>
+      <image src="../../images/reject.png" mode='widthFix' bindtap="rejectTap" />
     </view>
-  
+
   </view>
 
 </view>

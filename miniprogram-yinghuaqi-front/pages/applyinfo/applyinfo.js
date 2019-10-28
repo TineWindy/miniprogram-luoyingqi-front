@@ -244,12 +244,15 @@ function cancelApply() {
               title: '取消成功',
               content: '您已取消此次报名',
               showCancel: false,
+              success(res) {
+                if (res.confirm) {
+                  //返回首页
+                  wx.reLaunch({
+                    url: '../qiyue/qiyue',
+                  })
+                }
+              }
             });
-
-            //返回首页
-            wx.reLaunch({
-              url: '../qiyue/qiyue',
-            })
           },
           'GET'
         );

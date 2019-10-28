@@ -940,12 +940,15 @@ function submitApplyInformation(map) {
       wx.showModal({
         title: '提示',
         content: '您已报名成功!',
-        showCancel: false
-      })
-
-      // 返回首页
-      wx.reLaunch({
-        url: '../qiyue/qiyue',
+        showCancel: false,
+        success(res) {
+          if (res.confirm) {
+            //返回首页
+            wx.reLaunch({
+              url: '../qiyue/qiyue',
+            })
+          }
+        }
       })
     },
     'post'
