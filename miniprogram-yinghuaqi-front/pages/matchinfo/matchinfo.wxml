@@ -58,7 +58,7 @@
     <text>{{description}}</text>
   </view>
 
-  <view wx:if="{{status=='MATCHED_NOT_RECEIVED'}}">
+  <view wx:if="{{status=='MATCH_SUCCESS_NOT_RECEIVED'}}">
 
     <view class="accept">
       <image src="../../images/accept.png" mode='widthFix' bindtap="acceptTap" />

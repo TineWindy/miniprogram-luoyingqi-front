@@ -41,7 +41,9 @@ function getMatchInfo(body) {
     '/user/getMatchInfo',
     '',
     function(res) {
-      dataInit(res.resultObj, body);
+      if (res.resultObj.status == 'MATCH_SUCCESS_NOT_RECEIVED' || res.resultObj.status == 'MATCH_SUCCESS_RECEIVED') {
+        dataInit(res.resultObj, body);
+      }
     },
     'GET'
   );

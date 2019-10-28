@@ -28,6 +28,7 @@ background-size:100% ;
   position: absolute;
   top: 650rpx;
   left: 70rpx;
+  right: 20rpx;
   color:gray;
   font-size: 30rpx;
 }
