@@ -47,6 +47,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 6,
 			"list": [
@@ -95,6 +99,13 @@
 				{
 					"id": -1,
 					"name": "契约展示",
+					"pathName": "pages/matchinfo/matchinfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "匹配结果",
 					"pathName": "pages/matchinfo/matchinfo",
 					"scene": null
 				}
