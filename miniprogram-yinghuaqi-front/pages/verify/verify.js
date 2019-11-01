@@ -35,7 +35,7 @@ Page({
 
 // 获取验证码
 function getVerifyCodeFunc(body, form) {
-  var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+  var mobile = /^[1]([3-9])[0-9]{9}$/;
 
   console.log("yeah");
   // 获取验证码

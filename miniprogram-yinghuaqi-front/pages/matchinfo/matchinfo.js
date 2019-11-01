@@ -15,6 +15,7 @@ Page({
     description: '欢迎加入珞樱契团队',
     status: 'MATCH_NOT_VERIFY',
     activity: '',
+    coupleNumber: '001',
   },
 
   /** 接受按钮  */
@@ -59,7 +60,8 @@ function dataInit(data, body) {
     grade: data.loverGrade,
     contact: data.loverContact,
     description: data.loverPersonalDesc,
-    image: data.loverPhoto
+    image: data.loverPhoto,
+    coupleNumber: data.coupleNumber,
   })
 }
 

@@ -21,7 +21,14 @@
 <view wx:else>
 
   <image class="touxiang" src="{{image}}" mode="widthFix" />
-  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' />
+  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> 
+
+  <view class="info" style="margin-top:-100rpx">
+    <text>情侣编号</text>
+  </view>
+  <view class="info_item" style="margin-top:-100rpx;margin-left:30rpx;">
+    <text>{{coupleNumber}}</text>
+  </view>
 
   <view class="info">
     <text>姓 名</text>

@@ -10,7 +10,7 @@
 
   <view class="anlian">
     <text>
-      暗恋通道。\n 情侣或相信缘分的用户请点击“暗恋通道”进行报名！
+      暗恋通道。\n 情侣或相信缘分的用户qq：3219064867 报名！
     </text>
   </view> 
 
@@ -18,7 +18,7 @@
       缘分降临
   </button>
 
-  <button class="qiyue" bindtap="loverTap">
+  <button class="qiyue" bindtap="loverTap" disabled="{{true}}">
       暗恋通道
   </button>
 
