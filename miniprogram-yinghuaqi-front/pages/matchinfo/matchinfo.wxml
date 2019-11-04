@@ -20,28 +20,27 @@
 
 <view wx:else>
 
-  <image class="touxiang" src="{{image}}" mode="widthFix" />
   <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> 
 
   <view class="info" style="margin-top:-100rpx">
-    <text>情侣编号</text>
+    <text>契约编号</text>
   </view>
   <view class="info_item" style="margin-top:-100rpx;margin-left:30rpx;">
     <text>{{coupleNumber}}</text>
   </view>
 
   <view class="info">
-    <text>姓 名</text>
+    <text>契约匹配度</text>
   </view>
-  <view class="info_item">
-    <text>{{name}}</text>
+  <view class="info_item" style="margin-left:70rpx;">
+    <text>{{score}}</text>
   </view>
 
   <view class="info" style="margin-top:100rpx">
-    <text>性 别</text>
+    <text>姓 名</text>
   </view>
   <view class="info_item" style="margin-top:100rpx">
-    <text>{{gender}}</text>
+    <text>{{name}}</text>
   </view>
 
   <view class="info" style="margin-top:200rpx">
@@ -61,7 +60,7 @@
   <view class="info" style="margin-top:400rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info" style="margin-top:450rpx;color:#566268">
+  <view class="info" style="margin-top:450rpx;color:#e55c4d">
     <text>{{description}}</text>
   </view>
 

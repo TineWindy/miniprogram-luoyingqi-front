@@ -9,10 +9,8 @@ background-size:100% ;
 .touxiang_border{
   position: absolute;
   right:45rpx;
-  top: 650rpx;
+  top: 400rpx;
   width:40%;
-  /* height:60% */
-/*unfinished*/
 }
 
 .touxiang{
@@ -37,7 +35,7 @@ background-size:100% ;
   position: absolute;
   top: 650rpx;
   left: 170rpx;
-  color:#566268;
+  color:#e55c4d;
   font-size: 30rpx;
 }
 
