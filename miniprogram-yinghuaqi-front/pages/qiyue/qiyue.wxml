@@ -20,7 +20,7 @@
     <view style="padding-top:5px">结果公布时间：{{result_publish_time}}</view>
   </view>
 
-  <button class="baoming" bindtap="myApplyInfoTap">
+  <button class="qiyue" bindtap="myApplyInfoTap">
     <span class='wenzi'>
       查看我的报名
     </span>
@@ -28,7 +28,7 @@
     </image>
   </button>
 
-  <button class="qiyue" bindtap="myMatchInfoTap">
+  <button class="baoming" bindtap="myMatchInfoTap">
     <span class='wenzi'>
       查看我的契约
     </span>

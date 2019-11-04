@@ -2,25 +2,11 @@
 
   <view class="wenan_apply">
     <text>
-    抱歉，我们未找到您的报名信息！ \n 若您之前未报过名，请点击“立即报名”进行报名。 \n 若您是通过“暗恋通道”报名，我们不会展示。
+    抱歉，我们未找到您的报名信息！ \n 若您之前在其它平台如“问卷星”处报过名了，\n 请点击“快速验证”进行简单快速的验证。
   </text>
   </view>
 
-  <button class="baoming" bindtap="applyTap">
-    <span class='wenzi'>
-      立即报名
-    </span>
-    <image src='../../images/button1.png' mode='widthFix'>
-    </image>
-  </button>
-
-  <view class="wenan_verify">
-    <text>
-    若您之前在其它平台如“问卷星”处报过名了，\n 请点击“快速验证”进行简单快速的验证。
-    </text>
-  </view>
-
-  <button class="verify" bindtap="verifyTap">
+  <button class="baoming" bindtap="verifyTap">
     <span class='wenzi'>
       快速验证
     </span>

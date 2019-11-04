@@ -13,7 +13,7 @@ Page({
     grade: '大一',
     contact: 'email:weifengyoulei@foxmail.com',
     description: '欢迎加入珞樱契团队',
-    status: '',
+    status: 'MATCH_NOT_VERIFY',
     activity: '',
     coupleNumber: '001',
     score: '99',

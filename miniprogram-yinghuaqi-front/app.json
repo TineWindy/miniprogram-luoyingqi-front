@@ -1,9 +1,6 @@
 {
   "pages": [
     "pages/qiyue/qiyue",
-    "pages/logs/logs",
-    "pages/baoming/baoming",
-    "pages/personal/personal",
     "pages/applyinfo/applyinfo",
     "pages/verify/verify",
     "pages/task/task",
