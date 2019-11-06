@@ -146,7 +146,6 @@ function parseDataValue(values) {
 
 // 设置data里的硬性条件和加分项
 function setPersonalDemand(demand, body) {
-  console.log(demand);
   var personalDemand = JSON.parse(demand);
 
   // 解析硬性要求
@@ -189,9 +188,8 @@ function setPersonalDemand(demand, body) {
 
 // 从后台读取报名信息后显示在页面上
 function dataInit(data, body) {
-  console.log(data);
   if (assertNotNull(data)) {
-    var personalDes = JSON.parse(data.personalDes);
+    //  先设置基本信息
     body.setData({
       isApplied: true,
       name: data.name,
@@ -200,16 +198,28 @@ function dataInit(data, body) {
       qq: data.qq,
       phone: data.phone,
       gender: data.gender,
-      height: personalDes["HEIGHT"],
-      grade: personalDes["GRADE"],
-      living_location: personalDes["LIVING_LOCATION"],
-      appearance: personalDes["APPEARANCE"],
-      relaxing_way: parseDataValue(personalDes["RELAXING_WAY"]),
-      character: parseDataValue(personalDes["CHARACTER"]),
-      hobby: parseDataValue(personalDes["HOBBY"])
     })
 
-    setPersonalDemand(data.personalDemand, body);
+    // 设置个人进一步信息
+    if (assertNotNull(data.personalDes)) {
+      var personalDes = JSON.parse(data.personalDes);
+
+      body.setData({
+        height: personalDes["HEIGHT"],
+        grade: personalDes["GRADE"],
+        living_location: personalDes["LIVING_LOCATION"],
+        appearance: personalDes["APPEARANCE"],
+        relaxing_way: parseDataValue(personalDes["RELAXING_WAY"]),
+        character: parseDataValue(personalDes["CHARACTER"]),
+        hobby: parseDataValue(personalDes["HOBBY"])
+      })
+    }
+
+    // 设置个人要求
+    if (assertNotNull(data.personalDemand)) {
+      setPersonalDemand(data.personalDemand, body);
+    }
+
   } else {
     body.setData({
       isApplied: false,

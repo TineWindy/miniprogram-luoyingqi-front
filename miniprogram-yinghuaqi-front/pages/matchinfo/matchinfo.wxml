@@ -8,13 +8,13 @@
 
 <view wx:elif="{{status=='MATCH_NOT_SUCCESS'}}" class="toast_text">
   <text>
-    抱歉，本次活动中暂无与您的个人描述和要求非常匹配的对象；\n 欢迎您持续关注并参与后续线下活动。\n {{activity}}
+    抱歉，本次活动中暂无与您的个人描述和要求非常匹配的对象；\n 欢迎您持续关注并参与后续线下活动。\n {{message}}
   </text>
 </view>
 
 <view wx:elif="{{status=='MATCH_CANCELED'}}" class="toast_text">
   <text>
-    抱歉，本次匹配已被您或对方因事取消；\n 欢迎您持续关注并参与后续线下活动。\n {{activity}}
+    抱歉，本次匹配已被您或对方因事取消；\n 欢迎您持续关注并参与后续线下活动。\n {{message}}
   </text>
 </view>
 
@@ -76,7 +76,7 @@
 
   </view>
   <view wx:else class="receive_text">
-    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n {{activity}}</text>
+    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n {{message}}</text>
   </view>
 
 </view>
