@@ -1,5 +1,3 @@
-
-
 <view wx:if="{{status=='MATCH_NOT_VERIFY'}}" class="toast_text">
   <text>
     抱歉，我们未能找到您的报名信息；\n 请返回首页，进入“查看我的报名”，确认报名信息是否无误.
@@ -8,19 +6,25 @@
 
 <view wx:elif="{{status=='MATCH_NOT_SUCCESS'}}" class="toast_text">
   <text>
-    抱歉，本次活动中暂无与您的个人描述和要求非常匹配的对象；\n 欢迎您持续关注并参与后续线下活动。\n {{message}}
+    抱歉，本次活动中暂无与您的个人描述和  要求非常匹配的对象；\n 欢迎您持续关注并参与后续线下活动。\n 
+  </text>
+  <text style="color:#f4acae">
+  {{message}}
   </text>
 </view>
 
 <view wx:elif="{{status=='MATCH_CANCELED'}}" class="toast_text">
   <text>
-    抱歉，本次匹配已被您或对方因事取消；\n 欢迎您持续关注并参与后续线下活动。\n {{message}}
+    抱歉，本次匹配被您或对方因事取消；\n 欢迎您持续关注并参与后续线下活动。\n
+  </text>
+  <text style="color:#f4acae">
+  {{message}}
   </text>
 </view>
 
 <view wx:else>
 
-  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> 
+  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' />
 
   <view class="info" style="margin-top:-100rpx">
     <text>契约编号</text>

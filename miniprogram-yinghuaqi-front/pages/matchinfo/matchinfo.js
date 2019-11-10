@@ -14,7 +14,7 @@ Page({
     contact: 'email:weifengyoulei@foxmail.com',
     description: '欢迎加入珞樱契团队',
     status: 'MATCH_NOT_VERIFY',
-    messsage: '',
+    message: '',
     coupleNumber: '001',
     score: '99',
   },
@@ -53,7 +53,7 @@ function getMatchInfo(body) {
 function dataInit(data, body) {
   body.setData({
     status: data.status,
-    messsage: data.messsage,
+    message: data.message,
     name: data.loverName,
     gender: data.loverGender,
     grade: data.loverGrade,
