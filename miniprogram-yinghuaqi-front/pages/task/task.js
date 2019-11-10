@@ -22,7 +22,7 @@ Page({
     })
   },
 
-  onShow: function(e) {
+  onLoad: function(e) {
     dataInit(this, e);
   }
 
