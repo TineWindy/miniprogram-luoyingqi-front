@@ -9,9 +9,9 @@ Page({
     taskContent: '今天的活动是要干什么呢',
     taskRule: '今天的活动要怎么进行呢',
     taskProfit: '今天的活动有什么奖励呢',
-    uploadPic: 'yhj',
+    uploadPic: '',
     score: '',
-    taskPic: ''
+    taskPic: 'http://q0qwx6bsz.bkt.clouddn.com/taskpic.png',
   },
 
   uploadPic: function(e) {
@@ -61,12 +61,6 @@ function submit(body, e) {
     },
     'GET'
   );
-}
-
-//获取域名
-function getDomain(type) {
-  // todo 
-  return '';
 }
 
 //生成token,并调用上传接口

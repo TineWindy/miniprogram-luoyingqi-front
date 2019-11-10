@@ -1,5 +1,3 @@
-<!-- <cu-custom bgColor="bg-gradual-green" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">日志</view></cu-custom> -->
-
 <view class="cu-timeline task">
   <view class="cu-item text-green">
     <view class="bg-gradual-green content shadow">
@@ -41,7 +39,7 @@
       </view>
     </view>
   </view>
-  <view class="cu-item text-green">
+  <view class="cu-item text-green" wx:if="{{uploadPic != null && uploadPic != ''}}">
     <view class="bg-green content shadow">
       <view class="cu-capsule radius">
         <button class="cu-tag bg-white text-green" bindtap="uploadPic">上传图片</button>
@@ -55,9 +53,9 @@
         <view class="cu-tag bg-white text-green">参与情况</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>分数（刷新有一定延迟时间）：{{score}}</view>
-        <view>
-          <image src="{{taskPic}}"></image>
+        <view>分数（刷新有一定延迟）：{{score}}</view>
+        <view class="task-pic">
+          <image src="{{taskPic}}" mode="widthFix" />
         </view>
       </view>
     </view>

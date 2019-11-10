@@ -6,3 +6,6 @@ page {
   background: white;
 }
 
+.task-pic {
+  width: 70%;
+}

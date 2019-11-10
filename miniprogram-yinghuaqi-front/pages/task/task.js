@@ -4,12 +4,15 @@ var httpFuncs = require("../../utils/HttpUtils.js");
 Page({
 
   data: {
+    backImgs: [
+      'http://q0qwx6bsz.bkt.clouddn.com/taskpic.png',
+      'http://q0qwx6bsz.bkt.clouddn.com/taskBack2.png',
+      'http://q0qwx6bsz.bkt.clouddn.com/taskBack3.png'
+    ],
     backPic: '',
     taskList: [{
-      taskName: '任务列表',
-      img: 'https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg',
-      taskId: '/indexes/indexes',
-    }, ]
+      taskName: '任务列表'
+    }]
   },
 
   toChild: function(e) {
