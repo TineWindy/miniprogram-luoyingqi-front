@@ -13,12 +13,13 @@ Page({
   },
 
   toChild: function(e) {
+    console.log(e);
     wx.navigateTo({
-      url: '/pages/singletask/singletask?taskId=' + e.currentTarget.dataset.taskId
+      url: '/pages/singletask/singletask?taskId=' + e.currentTarget.dataset.taskid
     })
   },
 
-  onload: function(e) {
+  onShow: function(e) {
     dataInit(this, e);
   }
 
@@ -26,11 +27,11 @@ Page({
 
 function dataInit(body, e) {
   httpFuncs.yhjRequest(
-    '/task/getAllTaks',
+    '/task/getAllTasks',
     '',
     function(res) {
       body.setData({
-        taskList: res,
+        taskList: res.resultObj,
       });
     },
     'get'

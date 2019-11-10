@@ -35,9 +35,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    // ApiHost: "https://127.0.0.1:8081",
+    ApiHost: "https://127.0.0.1:8080",
     // ApiHost: "https://172.20.10.3:8080",
-    ApiHost: "https://www.weifengyoulei.cn:8080",
+    // ApiHost: "https://www.weifengyoulei.cn:8080",
     // ApiHost: "https://192.168.43.8:8080",
   }
 })

@@ -27,7 +27,7 @@
         <view class="cu-tag bg-white text-green">活动规则</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>{{taskRull}}</view>
+        <view>{{taskRule}}</view>
       </view>
     </view>
   </view>
@@ -41,7 +41,7 @@
       </view>
     </view>
   </view>
-  <view class="cu-item text-green" wx:if="{{(taskPic == null || taskPic == '') && uploadPic != null && uploadPic != ''}}">
+  <view class="cu-item text-green">
     <view class="bg-green content shadow">
       <view class="cu-capsule radius">
         <button class="cu-tag bg-white text-green" bindtap="uploadPic">上传图片</button>
@@ -56,6 +56,9 @@
       </view>
       <view class="margin-top-sm text-content">
         <view>分数（刷新有一定延迟时间）：{{score}}</view>
+        <view>
+          <image src="{{taskPic}}"></image>
+        </view>
       </view>
     </view>
   </view>

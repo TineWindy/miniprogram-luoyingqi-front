@@ -1,4 +1,7 @@
 var httpFuncs = require("../../utils/HttpUtils.js");
+var qiniuUploader = require("../../utils/qiniuUploader.js")
+var app = getApp();
+
 Page({
   data: {
     taskId: '',
@@ -12,31 +15,32 @@ Page({
   },
 
   uploadPic: function(e) {
-    chooseImage(this, '');
+    chooseImage(this, 'task');
   },
 
   confirmSubmit: function(e) {
     submit(this, e);
   },
 
-  onLoad: function (e) {
+  onLoad: function(e) {
     this.setData({
       taskId: e.taskId
     });
+    var that = this;
     httpFuncs.yhjRequest(
-      '/task/getTaskById',
-      {
+      '/task/getTaskById', {
         taskId: e.taskId
       },
       function(res) {
-        this.setData({
-          taskName: res.taskName,
-          taskContent: res.taskContent,
-          taskRule: res.taskRule,
-          taskProfit: res.taskProfit,
-          uploadPic: res.uploadPic,
-          score: res.score,
-          taskPic: res.taskPic,
+        console.log(res);
+        that.setData({
+          taskName: res.resultObj.taskName,
+          taskContent: res.resultObj.taskContent,
+          taskRule: res.resultObj.taskRule,
+          taskProfit: res.resultObj.taskProfit,
+          uploadPic: res.resultObj.uploadPic,
+          score: res.resultObj.score,
+          taskPic: res.resultObj.taskPic,
         });
       }
     );
@@ -45,18 +49,14 @@ Page({
 
 function submit(body, e) {
   httpFuncs.yhjRequest(
-    '/task/finishTask',
-    {
+    '/task/finishTask', {
       taskId: body.data.taskId,
-      picUrl: taskPic
+      picUrl: body.data.taskPic
     },
     function(res) {
       wx.showModal({
         title: '操作成功',
         content: '上传图片成功',
-      }),
-      wx.redirectTo({
-        url: 'pages/singletask/singletask',
       })
     },
     'GET'
@@ -68,9 +68,10 @@ function getDomain(type) {
   // todo 
   return '';
 }
+
 //生成token,并调用上传接口
 function getToken(body, type, filePath) {
-  var getTokenUrl = app.globalData.ApiHost + '/user/getToken?type=' + type;
+  var getTokenUrl = app.globalData.ApiHost + '/user/getToken?content=' + type;
 
   wx.request({
     url: getTokenUrl,
@@ -94,23 +95,26 @@ function uploadImage(body, type, token, filePath) {
       mask: true
     })
 
+
     body.setData({
-      taskPic: res.imgUrl,
+      taskPic: 'http://' + res.imageURL,
     });
+
+    console.log(body.data.uploadPic);
 
   }, (error) => {
     uploadImageFail(body);
   }, {
-      region: 'SCN',
-      domain: getDomain(type), // // bucket 域名
-      uptoken: token, // 从指定 url 通过 HTTP GET 获取 uptoken
-    }, (res) => { }, () => {
-      // 取消上传
-    }, () => {
-      // `before` 上传前执行的操作
-    }, (err) => {
-      // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
-    });
+    region: 'SCN',
+    domain: body.data.uploadPic, // // bucket 域名
+    uptoken: token, // 从指定 url 通过 HTTP GET 获取 uptoken
+  }, (res) => {}, () => {
+    // 取消上传
+  }, () => {
+    // `before` 上传前执行的操作
+  }, (err) => {
+    // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+  });
 }
 
 //选择图片
@@ -120,7 +124,7 @@ function chooseImage(body, type) {
   wx.chooseImage({
     count: 1,
     sourceType: ['album'],
-    success: function (res) {
+    success: function(res) {
       var tempFilesSize = res.tempFiles[0].size; //获取图片的大小，单位B                    
       //图片小于或者等于4M时 可以执行获取图片
       if (tempFilesSize > 1024 * 1024 * 4) {

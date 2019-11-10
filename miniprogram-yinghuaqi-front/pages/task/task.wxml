@@ -17,7 +17,7 @@
     </view>
   </cu-custom> -->
   <view class="cu-card">
-    <view class="cu-item bg-img shadow-blur" style="background-image:url('http://q0qwx6bsz.bkt.clouddn.com/taskpic.png')" bindtap="toChild" data-taskid="{{item.taskid}}" wx:for="{{taskList}}" wx:key>
+    <view class="cu-item bg-img shadow-blur" style="background-image:url('http://q0qwx6bsz.bkt.clouddn.com/taskpic.png')" bindtap="toChild" data-taskId="{{item.id}}" wx:for="{{taskList}}" wx:key>
       <view class="cardTitle">
         {{item.taskName}}
       </view>
