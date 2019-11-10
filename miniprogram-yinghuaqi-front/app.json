@@ -4,7 +4,8 @@
     "pages/applyinfo/applyinfo",
     "pages/verify/verify",
     "pages/task/task",
-    "pages/matchinfo/matchinfo"
+    "pages/matchinfo/matchinfo",
+    "pages/singletask/singletask"
   ],
   "window": {
     "backgroundTextStyle": "light",

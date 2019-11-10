@@ -1,0 +1,8 @@
+.task {
+  margin-top: 150rpx;
+}
+
+page {
+  background: white;
+}
+

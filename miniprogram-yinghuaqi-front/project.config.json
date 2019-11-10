@@ -102,6 +102,12 @@
 					"pathName": "pages/matchinfo/matchinfo",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "任务详情",
+					"pathName": "pages/singletask/singletask",
+					"scene": null
 				}
 			]
 		}
