@@ -10,8 +10,8 @@ Page({
     taskRule: '今天的活动要怎么进行呢',
     taskProfit: '今天的活动有什么奖励呢',
     uploadPic: '',
-    score: '',
-    taskPic: 'http://q0qwx6bsz.bkt.clouddn.com/taskpic.png',
+    score: '暂无',
+    taskPic: '',
   },
 
   uploadPic: function(e) {

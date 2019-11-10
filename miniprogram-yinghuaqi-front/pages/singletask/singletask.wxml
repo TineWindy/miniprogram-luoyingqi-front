@@ -45,6 +45,9 @@
         <button class="cu-tag bg-white text-green" bindtap="uploadPic">上传图片</button>
         <view class="cu-tag line-white" bindtap="confirmSubmit">确认提交</view>
       </view>
+      <view class="margin-top-sm text-content">
+        <view>请点击“上传图片”上传活动图片，然后检查后点击“确认提交”</view>
+      </view>
     </view>
   </view>
   <view class="cu-item text-green" wx:if="{{taskPic != null && taskPic != ''}}">
