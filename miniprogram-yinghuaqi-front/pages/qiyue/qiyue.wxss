@@ -101,12 +101,12 @@ background-size:100% ;
   border: none;
 }
 
-.contract {
+.contact {
   position: absolute;
   /* left: 180rpx; */
   text-align: center;
-  top:1600rpx;
-  font-size: 20rpx;
+  top: 900rpx;
+  font-size: 30rpx;
   color:gray;
   width: 100%;
   margin-bottom: 20rpx;

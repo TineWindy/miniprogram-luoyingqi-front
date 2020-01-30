@@ -4,7 +4,7 @@
   <view slot="content">武大头条</view>
 </cu-custom>
 
-
+ 
 <view class="cu-bar search bg-white">
     <view class="search-form round">
       <text class="cuIcon-search"></text>

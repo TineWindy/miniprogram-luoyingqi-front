@@ -1,12 +1,7 @@
 {
   "pages": [
     "pages/qiyue/qiyue",
-    "pages/timeline/timeline",
-    "pages/applyinfo/applyinfo",
-    "pages/verify/verify",
-    "pages/task/task",
-    "pages/matchinfo/matchinfo",
-    "pages/singletask/singletask"
+    "pages/timeline/timeline"
   ],
   "window": {
     "backgroundTextStyle": "light",

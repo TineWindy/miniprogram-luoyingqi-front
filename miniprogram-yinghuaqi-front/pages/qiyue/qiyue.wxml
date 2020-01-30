@@ -12,33 +12,10 @@
 
   <image class="des_image" src="../../images/description_image1.png" mode='widthFix'></image>
 
-  <image class="calender" src="../../images/calender2.png" mode='widthFix'></image>
-
-
-  <view class="ddl">
-    <view>报名截止时间：{{apply_end_time}}</view>
-    <view style="padding-top:5px">结果公布时间：{{result_publish_time}}</view>
-  </view>
-
-  <button class="qiyue" bindtap="myApplyInfoTap">
-    <span class='wenzi'>
-      查看我的报名
-    </span>
-    <image src='../../images/button1.png' mode='widthFix'>
-    </image>
-  </button>
-
-  <button class="baoming" bindtap="myMatchInfoTap">
-    <span class='wenzi'>
-      查看我的契约
-    </span>
-    <image src='../../images/button2.png' mode='widthFix'>
-    </image>
-  </button>
-
+  <view class=""> </view>
 
 </view>
 
-<view class="contract">
-  <text>---计算机学院女生部，qq：3219064867---\n</text>
+<view class="contact">
+  <text>---三月樱花开，我们再签契约书---\n</text>
 </view>
