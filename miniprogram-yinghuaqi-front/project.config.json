@@ -18,11 +18,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx3ea08542e77319c9",
+	"appid": "wx9f4f11dd326a999a",
 	"projectname": "yinghuaqi",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -52,7 +53,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -107,6 +108,13 @@
 					"id": -1,
 					"name": "任务详情",
 					"pathName": "pages/singletask/singletask",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/timeline/timeline",
+					"pathName": "pages/timeline/timeline",
 					"scene": null
 				}
 			]

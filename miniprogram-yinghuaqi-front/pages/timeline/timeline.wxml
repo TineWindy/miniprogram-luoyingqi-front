@@ -1,0 +1,35 @@
+<!--pages/timeline/timeline.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">武大头条</view>
+</cu-custom>
+
+
+<view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round">搜索</button>
+    </view>
+</view>
+
+<block wx:for="{{list1}}">
+  <view class="cu-timeline">
+    <view class="cu-time">{{item.timeDay}}</view>
+    <view class="cu-item">
+      <view class="content" catchtap="toInfo">
+        <view class="first">
+          <view class="_title"><text class="title">{{item.title}}</text></view>
+          <view class="cu-capsule radius">
+            <view class="cu-tag bg-cyan">{{item.timeWu}}</view>
+            <view class="cu-tag line-cyan">{{item.timeSecond}}</view>
+          </view>
+        </view>
+        <view class="margin-top">{{item.text}}</view>
+        <view class="source">{{item.source}}</view>
+      </view>
+    </view>
+  </view>
+</block>

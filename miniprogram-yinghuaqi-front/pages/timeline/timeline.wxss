@@ -1,0 +1,30 @@
+/* pages/timeline/timeline.wxss */
+page{
+  background-color: white;
+}
+.cu-capsule{
+  display: inline-flex;
+  /*vertical-align: middle;*/
+  margin-left: 5rpx;
+}
+.radius{
+  border-radius:6rpx;
+}
+.first{
+  display: flex;
+  width: 550rpx;
+}
+._title{
+  width:450rpx;
+}
+.title{
+  font-size: 18px;
+  font-weight: bold;
+}
+.source{
+  margin-left: 420rpx;
+}
+.cu-time{
+  font-size: 20px;
+  margin-left:10rpx;
+}
