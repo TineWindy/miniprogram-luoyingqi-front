@@ -4,32 +4,37 @@
   <view slot="content">武大头条</view>
 </cu-custom>
 
- 
-<view class="cu-bar search bg-white">
-    <view class="search-form round">
-      <text class="cuIcon-search"></text>
-      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+ <view class="head">
+  <view class="item_1" wx:if="{{tab == 0}}">
+    <view class="recommend selected" catchtap="changeTabTo_0">
+      <text class="_1">推荐</text>
     </view>
-    <view class="action">
-      <button class="cu-btn bg-green shadow-blur round">搜索</button>
-    </view>
-</view>
-
-<block wx:for="{{list1}}">
-  <view class="cu-timeline">
-    <view class="cu-time">{{item.timeDay}}</view>
-    <view class="cu-item">
-      <view class="content" catchtap="toInfo">
-        <view class="first">
-          <view class="_title"><text class="title">{{item.title}}</text></view>
-          <view class="cu-capsule radius">
-            <view class="cu-tag bg-cyan">{{item.timeWu}}</view>
-            <view class="cu-tag line-cyan">{{item.timeSecond}}</view>
-          </view>
-        </view>
-        <view class="margin-top">{{item.text}}</view>
-        <view class="source">{{item.source}}</view>
-      </view>
+    <view class="activity" catchtap="changeTabTo_1">
+      <text class="_1">活动</text>
     </view>
   </view>
-</block>
+
+  <view class="item_1" wx:if="{{tab == 1}}">
+    <view class="recommend" catchtap="changeTabTo_0">
+      <text class="_1">推荐</text>
+    </view>
+    <view class="activity selected" catchtap="changeTabTo_1">
+      <text class="_1">活动</text>
+    </view>
+  </view>
+  
+ </view>
+
+<view class="tab_0" wx:if="{{tab == 0}}">
+  <!--新闻样本-->
+  <view class="news" wx:for="{{list}}">
+    <view><text style="font-size:14px;">{{item.type}}</text></view>
+    <view><text class="title">{{item.title}}</text></view>
+    <view>{{item.text}}</view>
+    <view class="source"><text space="true">{{item.source}}     {{item.time}}</text></view>
+  </view>
+</view>
+
+<view wx:if="{{tab==1}}" class="contact tab_1">
+  <text>--敬请期待--\n</text>
+</view>

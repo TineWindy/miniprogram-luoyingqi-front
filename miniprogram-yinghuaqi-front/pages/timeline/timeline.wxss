@@ -2,29 +2,63 @@
 page{
   background-color: white;
 }
-.cu-capsule{
-  display: inline-flex;
-  /*vertical-align: middle;*/
-  margin-left: 5rpx;
-}
-.radius{
-  border-radius:6rpx;
-}
-.first{
+/*头部tab*/
+.head{
+  position: fixed;
+  width: 100%;
   display: flex;
-  width: 550rpx;
+  padding-top: 15rpx;
+  border-bottom:1px solid rgb(201, 199, 199); 
+  background-color: white;
+  z-index: 10;
+  height: 90rpx;
 }
-._title{
-  width:450rpx;
+.item_1{
+  display: flex;
 }
-.title{
-  font-size: 18px;
+.recommend{
+  padding: 5rpx;
+  margin-left: 260rpx;
+}
+.selected{
+  border-bottom: 4px solid blue;
+}
+.activity{
+  padding: 5rpx;
+  margin-left: 60rpx;
+}
+._1{
+  font-size: 17px;
   font-weight: bold;
 }
-.source{
-  margin-left: 420rpx;
+/*新闻板块*/
+.tab_0{
+  margin-top:120rpx;
 }
-.cu-time{
-  font-size: 20px;
-  margin-left:10rpx;
+.news{
+  background-color:white;
+  height: 310rpx;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 0 7px gainsboro;
+}
+.title{
+  font-size: 16.5px;
+  font-weight: bold;
+  line-height: 30px;
+}
+.source{
+  position: relative;
+  bottom: -40rpx;
+}
+/*活动板块*/
+.contact {
+  position: absolute;
+  /* left: 180rpx; */
+  text-align: center;
+  top: 650rpx;
+  font-size: 30rpx;
+  color:gray;
+  width: 100%;
+  margin-bottom: 20rpx;
 }

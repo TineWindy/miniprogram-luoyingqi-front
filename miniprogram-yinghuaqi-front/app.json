@@ -25,7 +25,7 @@
         "iconPath": "images/task_uns_back.png",
         "selectedIconPath": "images/task_sel_back.png",
         "pagePath": "pages/timeline/timeline",
-        "text": "任务"
+        "text": "首页"
       }
     ]
   },
