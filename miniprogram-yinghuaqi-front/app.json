@@ -1,14 +1,14 @@
 {
   "pages": [
     "pages/qiyue/qiyue",
-    "pages/timeline/timeline"
+    "pages/timeline/timeline",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {

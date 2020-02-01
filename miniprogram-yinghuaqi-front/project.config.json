@@ -23,8 +23,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx9f4f11dd326a999a",
-	"projectname": "yinghuaqi",
+	"appid": "wx3ea08542e77319c9",
+	"projectname": "miniprogram-yinghuaqi-front",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -115,6 +115,13 @@
 					"id": -1,
 					"name": "pages/timeline/timeline",
 					"pathName": "pages/timeline/timeline",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detail/detail",
+					"pathName": "pages/detail/detail",
 					"scene": null
 				}
 			]
