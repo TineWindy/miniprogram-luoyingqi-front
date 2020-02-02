@@ -1,38 +1,35 @@
 <!--pages/timeline/timeline.wxml-->
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-pink" isBack="{{flase}}">
   <view slot="backText">返回</view>
   <view slot="content">武大头条</view>
 </cu-custom>
 
  <view class="head">
-  <view class="item_1" wx:if="{{tab == 0}}">
-    <view class="recommend selected" catchtap="changeTabTo_0">
+  <view class="item">
+    <view class="recommend" catchtap="changeTabTo_0">
       <text class="_1">推荐</text>
+      <view class="bottom" wx:if="{{tab == 0}}"></view>
     </view>
     <view class="activity" catchtap="changeTabTo_1">
       <text class="_1">活动</text>
+      <view class="bottom"  wx:if="{{tab == 1}}"></view>
     </view>
   </view>
-
-  <view class="item_1" wx:if="{{tab == 1}}">
-    <view class="recommend" catchtap="changeTabTo_0">
-      <text class="_1">推荐</text>
-    </view>
-    <view class="activity selected" catchtap="changeTabTo_1">
-      <text class="_1">活动</text>
-    </view>
-  </view>
-  
  </view>
 
 <view class="tab_0" wx:if="{{tab == 0}}">
   <!--新闻样本-->
-  <view class="news" wx:for="{{list}}">
-    <view><text style="font-size:14px;">{{item.type}}</text></view>
-    <view><text class="title">{{item.title}}</text></view>
-    <view>{{item.text}}</view>
-    <view class="source"><text space="true">{{item.source}}     {{item.time}}</text></view>
-  </view>
+  <block wx:for="{{list}}">
+    <view class="news" id="{{item.id}}" catchtap="toDetail">
+      <view class="type"><text style="font-size:12.5px;">{{item.type}}</text></view>
+      <view class="_title"><text class="title">{{item.title}}</text></view>
+      <view class="_digest"><text class="digest">{{item.digest}}</text></view>
+      <view class="sourceAndPublishTime">
+        <view class="_source"><text class="source" decode="{{true}}">{{item.source}}</text></view>
+        <view class="_publishTime"><text class="publishTime">{{item.publishTime}}</text></view>
+      </view>
+    </view>
+  </block>
 </view>
 
 <view wx:if="{{tab==1}}" class="contact tab_1">

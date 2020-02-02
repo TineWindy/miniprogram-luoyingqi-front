@@ -13,15 +13,18 @@ page{
   z-index: 10;
   height: 90rpx;
 }
-.item_1{
+.item{
   display: flex;
 }
 .recommend{
   padding: 5rpx;
   margin-left: 260rpx;
 }
-.selected{
-  border-bottom: 4px solid blue;
+.bottom{
+  margin-left:8rpx; 
+  height: 4px;
+  width: 65rpx;
+  background-color: blue;
 }
 .activity{
   padding: 5rpx;
@@ -35,21 +38,43 @@ page{
 .tab_0{
   margin-top:120rpx;
 }
+.type{
+  height: 40rpx;
+  margin-bottom: 5rpx;
+}
 .news{
   background-color:white;
-  height: 310rpx;
-  margin: 10px;
-  padding: 10px;
+  /*height: 310rpx;*/
+  margin: 20rpx;
+  padding: 20rpx;
   box-shadow: 0 0 7px gainsboro;
 }
+._title{
+  margin-top:10rpx;
+  margin-bottom: 10rpx; 
+}
 .title{
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: bold;
-  line-height: 30px;
+}
+._digest{
+  height: 100rpx;
+}
+.digest{
+  font-size: 11px;
 }
 .source{
-  position: relative;
-  bottom: -40rpx;
+  font-size: 9px;
+}
+.sourceAndPublishTime{
+  display: flex;
+}
+._publishTime{
+  position: absolute;
+  right: 41rpx;
+}
+.publishTime{
+  font-size: 9px;
 }
 /*活动板块*/
 .contact {
