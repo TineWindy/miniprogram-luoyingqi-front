@@ -53,61 +53,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": -1,
 			"list": [
-				{
-					"id": 0,
-					"name": "报名",
-					"pathName": "pages/baoming/baoming",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "报名信息",
-					"pathName": "pages/personal/personal",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "查看报名信息",
-					"pathName": "pages/applyinfo/applyinfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "快速验证",
-					"pathName": "pages/verify/verify",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "暗恋通道",
-					"pathName": "pages/lover/lover",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "任务",
-					"pathName": "pages/task/task",
-					"query": "",
-					"scene": null
-				},
 				{
 					"id": -1,
 					"name": "契约展示",
 					"pathName": "pages/matchinfo/matchinfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "任务详情",
-					"pathName": "pages/singletask/singletask",
 					"query": "",
 					"scene": null
 				},
@@ -122,6 +73,14 @@
 					"id": -1,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "信息详情",
+					"pathName": "pages/detail/detail",
+					"query": "id=1",
 					"scene": null
 				}
 			]

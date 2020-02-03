@@ -16,8 +16,8 @@ Page({
   },
 
   onLoad: function() {
-    getWxUserInfo(this);
-    getActivityInfo(this);
+    // getWxUserInfo(this);
+    // getActivityInfo(this);
   },
 
   getUserInfo: function(e) {

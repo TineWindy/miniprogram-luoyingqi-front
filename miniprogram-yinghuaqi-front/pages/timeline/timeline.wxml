@@ -1,37 +1,51 @@
 <!--pages/timeline/timeline.wxml-->
-<cu-custom bgColor="bg-gradual-pink" isBack="{{flase}}">
+<cu-custom bgColor="bg-gradual-blue" isBack="{{flase}}">
   <view slot="backText">返回</view>
-  <view slot="content">武大头条</view>
+  <view slot="content">珈信</view>
 </cu-custom>
 
- <view class="head">
+<view class="head">
   <view class="item">
     <view class="recommend" catchtap="changeTabTo_0">
       <text class="_1">推荐</text>
       <view class="bottom" wx:if="{{tab == 0}}"></view>
     </view>
     <view class="activity" catchtap="changeTabTo_1">
-      <text class="_1">活动</text>
-      <view class="bottom"  wx:if="{{tab == 1}}"></view>
+      <text class="_1">订阅</text>
+      <view class="bottom" wx:if="{{tab == 1}}"></view>
     </view>
   </view>
- </view>
+</view>
 
 <view class="tab_0" wx:if="{{tab == 0}}">
   <!--新闻样本-->
   <block wx:for="{{list}}">
     <view class="news" id="{{item.id}}" catchtap="toDetail">
-      <view class="type"><text style="font-size:12.5px;">{{item.type}}</text></view>
-      <view class="_title"><text class="title">{{item.title}}</text></view>
-      <view class="_digest"><text class="digest">{{item.digest}}</text></view>
+      <view class="type">
+        <text style="font-size:12.5px;">{{item.type}}</text>
+      </view>
+      <view class="_title">
+        <text class="title">{{item.title}}</text>
+      </view>
+      <view class="_digest">
+        <text class="digest">{{item.digest}}</text>
+      </view>
+      <!-- <image class="logo" src="../../images/NEWS.png" mode="widthFix" /> -->
       <view class="sourceAndPublishTime">
-        <view class="_source"><text class="source" decode="{{true}}">{{item.source}}</text></view>
-        <view class="_publishTime"><text class="publishTime">{{item.publishTime}}</text></view>
+        <view class="_source">
+          <text class="source" decode="{{true}}">{{item.source}}</text>
+        </view>
+        <view class="_publishTime">
+          <text class="publishTime">{{item.publishTime}}</text>
+        </view>
       </view>
     </view>
   </block>
 </view>
 
 <view wx:if="{{tab==1}}" class="contact tab_1">
-  <text>--敬请期待--\n</text>
+  <text>--本功能下期开放--\n
+  本产品内容均来自互联网，若无意侵权请联系：\n
+  weifengyoulei@foxmail.com
+  </text>
 </view>

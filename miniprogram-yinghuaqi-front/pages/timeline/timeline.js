@@ -7,8 +7,8 @@ var dayTime = require("../../utils/util.js")
 Page({
   //页面的初始数据
   data: {
-    page:0,
-    tab:0,
+    page: 0,
+    tab: 0,
     list: [],
     list1: []
   },
@@ -16,51 +16,64 @@ Page({
   onLoad: function(options) {
     getTotalList(this);
   },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.setData({
+      page: 0
+    });
+    getTotalList(this);
+  },
+
   //触底加载
-  onReachBottom:function(){
+  onReachBottom: function() {
     getMoreList(this);
   },
   //进入详情页面
   toDetail: function(e) {
-    myToDetail(this,e)
+    myToDetail(this, e)
   },
   //改变tab页为“推荐”
-  changeTabTo_0:function(e){
+  changeTabTo_0: function(e) {
     this.setData({
-      tab:0
+      tab: 0
     })
   },
   //改变tab页为“活动”
-  changeTabTo_1: function () {
+  changeTabTo_1: function() {
     this.setData({
       tab: 1
     })
   }
 })
 //获取数据列表
-function getTotalList(body){
-  let nextPage = body.data.page+1;
+function getTotalList(body) {
+  let nextPage = body.data.page + 1;
   httpFuncs.yhjRequest(
-    '/timeline/getAllTimeline',{page:body.data.page},
-    function (res){
-      let _list = res.resultObj.map(e=>myPublishTime(e))
+    '/timeline/getAllTimeline', {
+      page: body.data.page
+    },
+    function(res) {
+      let _list = res.resultObj.map(e => myPublishTime(e))
       body.setData({
-        list:_list,
-        page:nextPage
+        list: _list,
+        page: nextPage
       })
     },
     'GET'
   );
 }
 //触底增加list数据
-function getMoreList(body){
+function getMoreList(body) {
   let oldList = body.data.list;
-  if(oldList.length<=120){
+  if (oldList.length <= 120) {
     let nextPage = body.data.page + 1;
     httpFuncs.yhjRequest(
-      '/timeline/getAllTimeline', { page: body.data.page},
-      function (res) {
-        let _list = res.resultObj.map(e=>myPublishTime(e))
+      '/timeline/getAllTimeline', {
+        page: body.data.page
+      },
+      function(res) {
+        let _list = res.resultObj.map(e => myPublishTime(e))
         body.setData({
           list: oldList.concat(_list),
           page: nextPage
@@ -68,23 +81,24 @@ function getMoreList(body){
       },
       'GET'
     );
-  } else{
+  } else {
     wx.showToast({
       title: '我是有底线滴',
-      icon:'none'
+      icon: 'none'
     })
   }
 }
 //进入详情页面
-function myToDetail(body,e){
+function myToDetail(body, e) {
   var id = e.currentTarget.id
   wx.navigateTo({
-    url: '../detail/detail?id' + id,
-  }) 
+    url: '../detail/detail?id=' + id,
+  })
 }
 //publishTime的处理
-function myPublishTime(e){
+function myPublishTime(e) {
   let date = new Date(e.publishTime);
+  console.log(e.publishTime);
   let nowDate = new Date();
   let _publishTime = dayTime.formatTime(date);
   let _nowDate = dayTime.formatTime(nowDate);
