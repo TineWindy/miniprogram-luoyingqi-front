@@ -10,7 +10,6 @@ Page({
     page: 0,
     tab: 0,
     list: [],
-    list1: []
   },
   //生命周期函数--监听页面加载
   onLoad: function(options) {
@@ -29,10 +28,12 @@ Page({
   onReachBottom: function() {
     getMoreList(this);
   },
+
   //进入详情页面
   toDetail: function(e) {
-    myToDetail(this, e)
+    toDetailTimelineInfo(this, e)
   },
+
   //改变tab页为“推荐”
   changeTabTo_0: function(e) {
     this.setData({
@@ -46,15 +47,17 @@ Page({
     })
   }
 })
+
 //获取数据列表
 function getTotalList(body) {
-  let nextPage = body.data.page + 1;
+  let nextPage = parseInt(body.data.page) + 1;
+
   httpFuncs.yhjRequest(
     '/timeline/getAllTimeline', {
       page: body.data.page
     },
     function(res) {
-      let _list = res.resultObj.map(e => myPublishTime(e))
+      let _list = res.resultObj.map(e => showTimelineInfo(e))
       body.setData({
         list: _list,
         page: nextPage
@@ -63,17 +66,20 @@ function getTotalList(body) {
     'GET'
   );
 }
+
 //触底增加list数据
 function getMoreList(body) {
   let oldList = body.data.list;
-  if (oldList.length <= 120) {
-    let nextPage = body.data.page + 1;
+
+  if (oldList.length <= 100) {
+    let nextPage = parseInt(body.data.page) + 1;
+
     httpFuncs.yhjRequest(
       '/timeline/getAllTimeline', {
         page: body.data.page
       },
       function(res) {
-        let _list = res.resultObj.map(e => myPublishTime(e))
+        let _list = res.resultObj.map(e => showTimelineInfo(e))
         body.setData({
           list: oldList.concat(_list),
           page: nextPage
@@ -83,32 +89,26 @@ function getMoreList(body) {
     );
   } else {
     wx.showToast({
-      title: '我是有底线滴',
+      title: '我也是有底线滴',
       icon: 'none'
     })
   }
 }
+
 //进入详情页面
-function myToDetail(body, e) {
+function toDetailTimelineInfo(body, e) {
   var id = e.currentTarget.id
   wx.navigateTo({
     url: '../detail/detail?id=' + id,
   })
 }
-//publishTime的处理
-function myPublishTime(e) {
-  let date = new Date(e.publishTime);
-  console.log(e.publishTime);
-  let nowDate = new Date();
-  let _publishTime = dayTime.formatTime(date);
-  let _nowDate = dayTime.formatTime(nowDate);
-  if (_publishTime.substring(0, 10) == _nowDate.substring(0, 10)) {
-    _publishTime = '今天  ' + _publishTime.substring(11, 16)
-  } else if (_publishTime.substring(0, 7) == _nowDate.substring(0, 7) && Number(_nowDate.substring(8, 10)) - Number(_publishTime.substring(8, 10)) == 1) {
-    _publishTime = '昨天  ' + _publishTime.substring(11, 16)
-  } else {
-    _publishTime = _publishTime.substring(0, 16)
-  }
+
+// 展示timeline的信息
+function showTimelineInfo(e) {
+
+  // 处理发布时间
+  let _publishTime = timeProcess(e.publishTime);
+
   return {
     id: e.id,
     digest: e.digest,
@@ -118,4 +118,39 @@ function myPublishTime(e) {
     title: e.title,
     type: e.type
   }
+}
+
+// 时间处理
+function timeProcess(time) {
+  // 首先对时间进行处理
+  time = time.replace(/-/g, '/');
+
+  let date = new Date(time);
+  let nowDate = new Date();
+  let _time = "";
+
+  // 特殊处理昨天和今天的时间
+  if (date.getFullYear() == nowDate.getFullYear() && date.getMonth() == nowDate.getMonth()) {
+    if (date.getDay() == nowDate.getDay()) {
+      _time = '今天  ';
+
+    } else if (date.getDay() == nowDate.getDay() - 1) {
+      _time = '昨天  ';
+    } else {
+      return time;
+    }
+    _time += date.getHours() + ":";
+
+    if (date.getMinutes() < 10) {
+      // 对不足个位数的分钟进行填充
+      _time += "0";
+    }
+
+    _time += date.getMinutes();
+
+    return _time;
+  }
+
+  return time;
+
 }
