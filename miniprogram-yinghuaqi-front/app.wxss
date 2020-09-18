@@ -4,5 +4,9 @@
 @import "/wxParse/wxParse.wxss";
 
 page{
-  background-color:white;
+  background-color:rgb(248, 246, 246);
 }
+/*背景颜色*/
+/*Page{
+  background-color: rgb(250, 239, 239);
+}*/

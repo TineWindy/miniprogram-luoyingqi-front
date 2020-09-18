@@ -1,0 +1,54 @@
+
+/* 个人页面的头部 */
+.UCenter {
+  top:-40rpx;
+  height: 550rpx;
+  display: flex;
+  justify-content: center;
+  padding-top: 40rpx;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+/*头部背景*/
+#UCenter-bg{
+  position: absolute;
+  height:500rpx;
+  width:100%;
+  z-index: -1;
+}
+/*头部用户头像*/
+#home-icon{
+  position: absolute;
+  border-radius: 50%;
+  width:150rpx;
+  height:150rpx;
+  top:197rpx;
+}
+.UCenter image {
+  width: 200rpx;
+  height: 200rpx;
+}
+/*波浪*/
+.UCenter .gif-wave{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  mix-blend-mode: screen;  
+  height: 100rpx;   
+}
+/*底部选择框（二级页面）*/
+.radius{
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.menu{
+  border: 1px solid rgb(238, 235, 235);
+  box-shadow: 0 0 7px rgb(238, 235, 235);
+}

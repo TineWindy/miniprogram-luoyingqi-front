@@ -2,12 +2,14 @@
   "pages": [
     "pages/qiyue/qiyue",
     "pages/timeline/timeline",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/me/me",
+    "pages/changeUserInfo/changeUserInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "珞樱契",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
@@ -26,6 +28,12 @@
         "selectedIconPath": "images/task_sel_back.png",
         "pagePath": "pages/timeline/timeline",
         "text": "珈信"
+      },
+      {
+        "iconPath": "images/me_0.png",
+        "selectedIconPath": "images/me_1.png",
+        "pagePath": "pages/me/me",
+        "text": "我的"
       }
     ]
   },

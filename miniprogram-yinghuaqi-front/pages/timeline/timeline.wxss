@@ -1,82 +1,9 @@
 /* pages/timeline/timeline.wxss */
-page{
-  background-color: white;
+Page{
+  background-color: rgb(243, 240, 240);
 }
-/*头部tab*/
-.head{
-  position: fixed;
-  width: 100%;
-  display: flex;
-  padding-top: 15rpx;
-  border-bottom:1px solid rgb(201, 199, 199); 
-  background-color: white;
-  z-index: 10;
-  height: 90rpx;
-}
-.item{
-  display: flex;
-}
-.recommend{
-  padding: 5rpx;
-  margin-left: 260rpx;
-}
-.bottom{
-  margin-left:8rpx; 
-  height: 4px;
-  width: 65rpx;
-  background-color: blue;
-}
-.activity{
-  padding: 5rpx;
-  margin-left: 60rpx;
-}
-._1{
-  font-size: 17px;
-  font-weight: bold;
-}
-/*新闻板块*/
-.tab_0{
-  margin-top:120rpx;
-}
-.type{
-  height: 40rpx;
-  margin-bottom: 5rpx;
-  color: #485ae7;
-}
-.news{
-  background-color:white;
-  /*height: 310rpx;*/
-  margin: 20rpx;
-  padding: 20rpx;
-  box-shadow: 0 0 7px gainsboro;
-}
-._title{
-  margin-top:10rpx;
-  margin-bottom: 10rpx; 
-}
-.title{
-  font-size:35rpx;
-  font-weight: bold;
-}
-._digest{
-  height: 90rpx;
-}
-.digest{
-  font-size: 30rpx;
-}
-.source{
-  font-size: 25rpx;
-}
-.sourceAndPublishTime{
-  display: flex;
-}
-._publishTime{
-  position: absolute;
-  right: 41rpx;
-}
-.publishTime{
-  font-size: 25rpx;
-}
+
+
 /*活动板块*/
 .contact {
   position: absolute;
@@ -87,12 +14,4 @@ page{
   color:gray;
   width: 100%;
   margin-bottom: 20rpx;
-}
-
-.logo {
-  position: relative;
-  top: 0rpx;
-  left: 0;
-  /* width: 100%; */
-  /* height: 100%; */
 }

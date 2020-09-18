@@ -1,0 +1,57 @@
+/* pages/changeUserInfo/changeUserInfo.wxss */
+Page{
+  background-color: white;
+}
+/*头部用户头像*/
+.uImg{
+  width: 100%;
+  margin:40rpx 0 40rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.uImgC{
+  width: 25%;
+  border-radius: 50%;
+}
+/*列表*/
+.list{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.listC{
+  width: 90%;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(235, 233, 233);
+  border-radius:20px;
+  margin-bottom: 40rpx;
+}
+.radius{
+  border-top:1px solid rgb(235, 233, 233);
+  border-radius:20px;
+}
+.listCView{
+  margin:0;
+  height: 80rpx;
+}
+.listCSubmitDiv{
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgb(235, 233, 233);
+}
+.listCSubmit{
+  width: 45%;
+  height: 70rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgb(226, 192, 192);
+}
+.shadow text{
+  color: black;
+}

@@ -1,0 +1,34 @@
+<!--头部导航栏-->
+<cu-custom bgColor="bg-pink">
+	<view slot="content" class="text-black">{{hasUser?userInfo.nickName:'请先登陆~'}}</view>
+</cu-custom>
+<!--头像展示区-->
+<view class="UCenter">
+		<image src="/images/meTopBox.jpeg" id="UCenter-bg"></image>
+		<image src="{{userInfo.avatarUrl}}" wx:if="{{hasUser}}" id="home-icon" mode="scaleToFill"></image>
+    <button size="mini" open-type="getUserInfo" wx:if="{{!hasUser}}" bindgetuserinfo="signOn">点击登陆</button>
+		<image src="https://s1.ax1x.com/2020/05/02/JxAJIK.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+<!--底部二级页面入口-->
+<block wx:if="{{hasUser}}">
+<view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content txt" bindtap="changeUserInfo">
+        <text class="cuIcon-profile text-yellow"></text>
+        <text class="text-grey">个人信息</text>
+      </view>
+    </view>
+  <view class="cu-item arrow">
+    <view class="content">
+      <text class="cuIcon-favor text-yellow"></text>
+      <text class="text-grey">联系我们</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class="content">
+      <text class="cuIcon-appreciate text-yellow"></text>
+      <text class="text-grey">关于我们</text>
+    </view>
+  </view>
+</view>
+</block>

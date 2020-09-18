@@ -18,6 +18,19 @@ Page({
   onLoad: function() {
     // getWxUserInfo(this);
     // getActivityInfo(this);
+    //获取用户授权信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success: res2 => {
+              app.globalData.userInfo = res2.userInfo
+              console.log(app.globalData)
+            }
+          })
+        }
+      }
+    })
   },
 
   getUserInfo: function(e) {

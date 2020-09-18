@@ -7,26 +7,34 @@ var dayTime = require("../../utils/util.js")
 Page({
   //页面的初始数据
   data: {
+    itemChooce:["推荐","订阅"],
+    TabCur: 0,
+    scrollLeft:0,
     page: 0,
-    tab: 0,
-    list: [],
+    list: []
   },
   //生命周期函数--监听页面加载
   onLoad: function(options) {
-    getTotalList(this);
+    //getTotalList(this);
   },
-
+  //切换头部TAB
+  tabSelect(e) {
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      scrollLeft: (e.currentTarget.dataset.id-1)*60
+    })
+  },
   // 下拉刷新
   onPullDownRefresh: function() {
     this.setData({
       page: 0
     });
-    getTotalList(this);
+    //getTotalList(this);
   },
 
   //触底加载
   onReachBottom: function() {
-    getMoreList(this);
+    //getMoreList(this);
   },
 
   //进入详情页面
