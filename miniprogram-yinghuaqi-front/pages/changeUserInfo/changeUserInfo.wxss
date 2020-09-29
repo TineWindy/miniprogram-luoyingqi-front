@@ -23,7 +23,7 @@ Page{
 .listC{
   width: 90%;
   background-color: white;
-  box-shadow: 0 0 10px rgb(235, 233, 233);
+  box-shadow: 0 0 12px rgb(230, 228, 228);
   border-radius:20px;
   margin-bottom: 40rpx;
 }
@@ -41,7 +41,6 @@ Page{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid rgb(235, 233, 233);
 }
 .listCSubmit{
   width: 45%;
@@ -54,4 +53,7 @@ Page{
 }
 .shadow text{
   color: black;
+}
+.borderTop{
+  border-bottom: 1px solid rgb(235, 233, 233);
 }

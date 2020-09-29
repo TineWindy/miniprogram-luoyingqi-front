@@ -13,6 +13,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     apply_end_time: '',
     result_publish_time: '',
+    week:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+    day:["8","9","10","11","12","13","14","15","16","17","18","19","20"]
   },
 
   onLoad: function() {
@@ -44,12 +46,22 @@ Page({
 
   // 查看我的报名
   myApplyInfoTap: function(e) {
-    getMyApplyInfo(this, e);
+    //getMyApplyInfo(this, e); 不跳转
+    wx.showToast({
+      title: '不在活动时间范围内~',
+      icon:'none',
+      duration:1500
+    })
   },
 
   // 查看我的契约
   myMatchInfoTap: function(e) {
-    getMyMatchInfo(this, e);
+    //getMyMatchInfo(this, e); 不跳转
+    wx.showToast({
+      title: '不在活动时间范围内~',
+      icon:'none',
+      duration:1500
+    })
   }
 })
 

@@ -7,11 +7,14 @@ var dayTime = require("../../utils/util.js")
 Page({
   //页面的初始数据
   data: {
-    itemChooce:["推荐","订阅"],
+    itemChooce:["推送","推广"],
     TabCur: 0,
     scrollLeft:0,
     page: 0,
-    list: []
+    list: [],
+    recommendList:[{type:"武汉大学",startShowTime:"Yesterday",coverPicture:"http://stc.zjol.com.cn/g1/M001ADBCggSDljh3V2ABu4uAACHhmjTrNk798.jpg?width=720&height=528",title:"i了i了,武汉大学2020级研究生开学典礼来袭！",introduction:"珞珈山下一段青春，强国路上一生奋斗"},
+    {type:"武汉大学",startShowTime:"Yesterday",coverPicture:"http://stc.zjol.com.cn/g1/M001ADBCggSDljh3V2ABu4uAACHhmjTrNk798.jpg?width=720&height=528",title:"i了i了,武汉大学2020级研究生开学典礼来袭！",introduction:"珞珈山下一段青春，强国路上一生奋斗"},
+    {type:"武汉大学",startShowTime:"Yesterday",coverPicture:"http://stc.zjol.com.cn/g1/M001ADBCggSDljh3V2ABu4uAACHhmjTrNk798.jpg?width=720&height=528",title:"i了i了,武汉大学2020级研究生开学典礼来袭！",introduction:"珞珈山下一段青春，强国路上一生奋斗"}]
   },
   //生命周期函数--监听页面加载
   onLoad: function(options) {
@@ -40,19 +43,6 @@ Page({
   //进入详情页面
   toDetail: function(e) {
     toDetailTimelineInfo(this, e)
-  },
-
-  //改变tab页为“推荐”
-  changeTabTo_0: function(e) {
-    this.setData({
-      tab: 0
-    })
-  },
-  //改变tab页为“活动”
-  changeTabTo_1: function() {
-    this.setData({
-      tab: 1
-    })
   }
 })
 

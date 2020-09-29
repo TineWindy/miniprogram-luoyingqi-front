@@ -16,6 +16,45 @@
 
 </view>
 
-<view class="contact">
-  <text>---三月樱花开，我们再签契约书---\n</text>
+<!--活动时间-->
+<view class="activityTimeDiv">
+  <view class="avtivityTime">
+
+    <!--活动时间的头部 November-->
+    <view class="avtivityTimeHead">November.</view>
+
+    <!--活动时间的中间部分 星期名称-->
+    <view class="activityTimeBody">
+      <block wx:for="{{week}}" wx:key="index">
+      <text class="activityTimeItem activityTimeItemWeek">{{item}}</text>
+      </block>
+    </view>
+
+    <!--活动时间的尾部部分 日期-->
+    <view class="activityTimeTail">
+      <block wx:for="{{day}}" wx:key="index">
+        <view class="activityTimeItem activityTimeDay {{index==3?'left':''}} {{index>3&&index<6?'total':''}} {{index==6?'right':''}} {{index==7?'left':''}} {{index>7&&index<9?'total':''}} {{index==9?'right':''}}">{{item}}</view>
+      </block>
+    </view>
+  </view>
 </view>
+
+<!--按钮-->
+<button class="qiyue" bindtap="myApplyInfoTap">
+  <span class='wenzi'>
+    查看我的报名
+  </span>
+  <image src='../../images/button1.png' mode='widthFix'>
+  </image>
+</button>
+
+<button class="baoming" bindtap="myMatchInfoTap">
+  <span class='wenzi'>
+    查看我的契约
+  </span>
+  <image src='../../images/button2.png' mode='widthFix'>
+  </image>
+</button>
+
+
+

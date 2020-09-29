@@ -3,7 +3,58 @@ Page{
   background-color: rgb(243, 240, 240);
 }
 
-
+/*推荐部分*/
+.recommendDiv{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.recommendItem{
+  width: 95%;
+  background-color: white;
+  box-shadow: 0 0 8px rgb(231, 230, 230);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.recommendHead{
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 10rpx 20rpx 10rpx;
+}
+.recommendType{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recommendType text{
+  font-size: 17px;
+  font-weight: 500;
+}
+.recommendCoverPicture{
+  width: 100%;
+}
+.recommendTail{
+  width: 92%;
+  padding: 26rpx 10rpx 20rpx 10rpx;
+}
+.recommendTitle{
+  width: 100%;
+  font-size: 16.5px;
+  line-height: 60rpx;
+  font-weight: 500;
+}
+.recommendLight{
+  color: rgb(139, 139, 139);
+}
 /*活动板块*/
 .contact {
   position: absolute;

@@ -22,7 +22,7 @@ page {
 	--blue: #0081ff;
 	--purple: #6739b6;
 	--mauve: #9c26b0;
-	--pink: rgb(248, 194, 203);  /*修改后*/
+	--pink: #efcbcb;  /*修改后*/
 	--brown: #a5673f;
 	--grey: #8799a3;
 	--black: #333333;
