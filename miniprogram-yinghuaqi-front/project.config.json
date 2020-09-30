@@ -6,16 +6,16 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
-		"enhance": false,
-		"nodeModules": true,
 		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -32,7 +32,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx9f4f11dd326a999a",
+	"appid": "wx3ea08542e77319c9",
 	"projectname": "miniprogram-yinghuaqi-front",
 	"debugOptions": {
 		"hidedInDevtools": []

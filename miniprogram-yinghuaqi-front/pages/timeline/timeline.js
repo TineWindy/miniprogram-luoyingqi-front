@@ -7,90 +7,99 @@ var dayTime = require("../../utils/util.js")
 Page({
   //页面的初始数据
   data: {
-    itemChooce:["推送","推广"],
+    itemChooce: ["推送", "推广"],
     TabCur: 0,
-    scrollLeft:0,  
-    currentType:'push', // 默认推送页面
+    scrollLeft: 0,
+    currentType: 'push', // 默认推送页面
     promotionList: [],
-    pushList:[],
+    pushList: [],
     pushCurPage: 0,
-    promotionCurPage:0,
+    promotionCurPage: 0,
   },
   //生命周期函数--监听页面加载
-  onLoad: function(options) {
+  onLoad: function (options) {
     getArticleByType(this);
   },
   //切换头部TAB
   tabSelect(e) {
     this.setData({
       TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id-1)*60,
-      currentType: TabCur==0?'push':'promotion'
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
+      currentType: this.data.TabCur == 0 ? 'push' : 'promotion'
     })
   },
   // 下拉刷新
-  onPullDownRefresh: function() {
-    this.setData({
-      page: 0
-    });
-    //getTotalList(this);
+  onPullDownRefresh: function () {
+    // 清0再重新获取
+    if (this.data.currentType == 'push') {
+      this.setData({
+        pushCurPage: 0
+      })
+
+    } else if (this.data.currentType == 'promotion') {
+      this.setData({
+        promotionCurPage: 0
+      })
+    }
+
+    getArticleByType(this);
   },
 
   //触底加载
-  onReachBottom: function() {
-    //getMoreList(this);
+  onReachBottom: function () {
+    getArticleByType(this);
   },
 
   //进入详情页面
-  toDetail: function(e) {
+  toDetail: function (e) {
     toDetailArticle(this, e)
   }
 })
 
 //获取数据列表
 function getArticleByType(body) {
-  let curPage,typeList;
+  let curPage, typeList;
 
-  if (body.data.currentType=='push'){
+  if (body.data.currentType == 'push') {
     curPage = parseInt(body.data.pushCurPage);
     typeList = body.data.pushList;
 
-  }else if (body.data.currentType=='promotion'){
+  } else if (body.data.currentType == 'promotion') {
     curPage = parseInt(body.data.pushCurPage);
     typeList = body.data.promotionList;
 
-  }else{
+  } else {
     wx.showToast({
       title: '加载错误',
-      icon:'none',
-      duration:3000
+      icon: 'none',
+      duration: 3000
     })
     return;
   }
 
   httpFuncs.yhjRequest(
     '/article/gerArticlesByType', {
-      type: body.data.currentType,
-      start: curPage * 10,
-      end: (curPage+1) *10
-    },
-    function(res) {
-      let _list = res.resultObj.map(e => ArticleProcess(e));
-      typeList = typeList.concat(_list);
+    type: body.data.currentType,
+    start: curPage * 10,
+    end: (curPage + 1) * 10 -1
+  },
+    function (res) {
+      if (res.resultObj != null && res.resultObj.length != 0) {
+        let _list = res.resultObj.map(e => ArticleProcess(e));
+        typeList = typeList.concat(_list);
 
-      body.setData({
-        curPage: curPage + 1
-      })
+        if (body.data.currentType == 'push') {
+          body.setData({
+            pushCurPage: curPage + 1,
+            pushList: typeList
+          })
 
-      if (body.data.currentType=='push'){
-        body.setData({
-          pushList:typeList
-        })
-    
-      }else if (body.data.currentType=='promotion'){
-        body.setData({
-          promotionList:typeList
-        })
+        } else if (body.data.currentType == 'promotion') {
+          body.setData({
+            promotionCurPage: curPage + 1,
+            promotionList: typeList
+          })
+        }
       }
     },
     'GET'
@@ -103,7 +112,7 @@ function toDetailArticle(body, e) {
   var url = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.url));
   var id = e.currentTarget.dataset.id;
   wx.navigateTo({
-    url: '../detail/detail?url=' + url+'&id='+id,
+    url: '../detail/detail?url=' + url + '&id=' + id,
   })
 }
 

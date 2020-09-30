@@ -49,6 +49,6 @@ App({
   globalData: {
     userInfo: null,
     //ApiHost: "http://127.0.0.1:8080",
-    ApiHost: "http://10.132.128.75:8080",
+    ApiHost: "https://www.luoyingqi.work:8080",
   }
 })
