@@ -12,20 +12,23 @@
 <!--底部二级页面入口-->
 <block wx:if="{{hasUser}}">
 <view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
-      <view class="content txt" bindtap="changeUserInfo">
-        <text class="cuIcon-profile text-yellow"></text>
-        <text class="text-grey">个人信息</text>
-      </view>
-    </view>
-  <view class="cu-item arrow">
+
+  <view class="cu-item arrow" bindtap="changeUserInfo">
     <view class="content">
+      <text class="cuIcon-profile text-yellow"></text>
+      <text class="text-grey">个人信息</text>
+    </view>
+  </view>
+
+  <button class="cu-item arrow" open-type="contact">
+    <view class="content butCenter">
       <text class="cuIcon-favor text-yellow"></text>
       <text class="text-grey">联系我们</text>
     </view>
-  </view>
-  <view class="cu-item arrow">
-    <view class="content" bindtap="aboutUs">
+  </button>
+
+  <view class="cu-item arrow" bindtap="aboutUs">
+    <view class="content">
       <text class="cuIcon-appreciate text-yellow"></text>
       <text class="text-grey">关于我们</text>
     </view>

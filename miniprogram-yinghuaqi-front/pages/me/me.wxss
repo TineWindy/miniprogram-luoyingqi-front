@@ -52,3 +52,8 @@
   border: 1px solid rgb(238, 235, 235);
   box-shadow: 0 0 7px rgb(238, 235, 235);
 }
+/*联系客服*/
+.butCenter{
+  display: flex;
+  justify-content: start;
+}

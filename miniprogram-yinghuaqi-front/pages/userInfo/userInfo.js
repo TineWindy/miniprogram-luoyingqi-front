@@ -38,7 +38,6 @@ Page({
 
   //改变性别
   PickerChangeGender: function (e) {
-    console.log(e);
     this.setData({
       genderIndex: e.detail.value
     })
