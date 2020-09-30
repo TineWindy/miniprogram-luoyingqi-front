@@ -9,22 +9,23 @@ Page({
   data: {
     itemChooce:["推送","推广"],
     TabCur: 0,
-    scrollLeft:0,
-    page: 0,
-    list: [],
-    recommendList:[{type:"武汉大学",startShowTime:"Yesterday",coverPicture:"http://stc.zjol.com.cn/g1/M001ADBCggSDljh3V2ABu4uAACHhmjTrNk798.jpg?width=720&height=528",title:"i了i了,武汉大学2020级研究生开学典礼来袭！",introduction:"珞珈山下一段青春，强国路上一生奋斗"},
-    {type:"武汉大学",startShowTime:"Yesterday",coverPicture:"http://stc.zjol.com.cn/g1/M001ADBCggSDljh3V2ABu4uAACHhmjTrNk798.jpg?width=720&height=528",title:"i了i了,武汉大学2020级研究生开学典礼来袭！",introduction:"珞珈山下一段青春，强国路上一生奋斗"},
-    {type:"武汉大学",startShowTime:"Yesterday",coverPicture:"http://stc.zjol.com.cn/g1/M001ADBCggSDljh3V2ABu4uAACHhmjTrNk798.jpg?width=720&height=528",title:"i了i了,武汉大学2020级研究生开学典礼来袭！",introduction:"珞珈山下一段青春，强国路上一生奋斗"}]
+    scrollLeft:0,  
+    currentType:'push', // 默认推送页面
+    promotionList: [],
+    pushList:[],
+    pushCurPage: 0,
+    promotionCurPage:0,
   },
   //生命周期函数--监听页面加载
   onLoad: function(options) {
-    //getTotalList(this);
+    getArticleByType(this);
   },
   //切换头部TAB
   tabSelect(e) {
     this.setData({
       TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id-1)*60
+      scrollLeft: (e.currentTarget.dataset.id-1)*60,
+      currentType: TabCur==0?'push':'promotion'
     })
   },
   // 下拉刷新
@@ -42,78 +43,82 @@ Page({
 
   //进入详情页面
   toDetail: function(e) {
-    toDetailTimelineInfo(this, e)
+    toDetailArticle(this, e)
   }
 })
 
 //获取数据列表
-function getTotalList(body) {
-  let nextPage = parseInt(body.data.page) + 1;
+function getArticleByType(body) {
+  let curPage,typeList;
+
+  if (body.data.currentType=='push'){
+    curPage = parseInt(body.data.pushCurPage);
+    typeList = body.data.pushList;
+
+  }else if (body.data.currentType=='promotion'){
+    curPage = parseInt(body.data.pushCurPage);
+    typeList = body.data.promotionList;
+
+  }else{
+    wx.showToast({
+      title: '加载错误',
+      icon:'none',
+      duration:3000
+    })
+    return;
+  }
 
   httpFuncs.yhjRequest(
-    '/timeline/getAllTimeline', {
-      page: body.data.page
+    '/article/gerArticlesByType', {
+      type: body.data.currentType,
+      start: curPage * 10,
+      end: (curPage+1) *10
     },
     function(res) {
-      let _list = res.resultObj.map(e => showTimelineInfo(e))
+      let _list = res.resultObj.map(e => ArticleProcess(e));
+      typeList = typeList.concat(_list);
+
       body.setData({
-        list: _list,
-        page: nextPage
+        curPage: curPage + 1
       })
+
+      if (body.data.currentType=='push'){
+        body.setData({
+          pushList:typeList
+        })
+    
+      }else if (body.data.currentType=='promotion'){
+        body.setData({
+          promotionList:typeList
+        })
+      }
     },
     'GET'
   );
 }
 
-//触底增加list数据
-function getMoreList(body) {
-  let oldList = body.data.list;
-
-  if (oldList.length <= 100) {
-    let nextPage = parseInt(body.data.page) + 1;
-
-    httpFuncs.yhjRequest(
-      '/timeline/getAllTimeline', {
-        page: body.data.page
-      },
-      function(res) {
-        let _list = res.resultObj.map(e => showTimelineInfo(e))
-        body.setData({
-          list: oldList.concat(_list),
-          page: nextPage
-        })
-      },
-      'GET'
-    );
-  } else {
-    wx.showToast({
-      title: '我也是有底线滴',
-      icon: 'none'
-    })
-  }
-}
-
 //进入详情页面
-function toDetailTimelineInfo(body, e) {
-  var id = e.currentTarget.id
+function toDetailArticle(body, e) {
+  // url较长,需要特殊处理
+  var url = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.url));
+  var id = e.currentTarget.dataset.id;
   wx.navigateTo({
-    url: '../detail/detail?id=' + id,
+    url: '../detail/detail?url=' + url+'&id='+id,
   })
 }
 
-// 展示timeline的信息
-function showTimelineInfo(e) {
-
+// 处理文章时间
+function ArticleProcess(e) {
   // 处理发布时间
-  let _publishTime = timeProcess(e.publishTime);
+  let _startShowTime = timeProcess(e.startShowTime);
 
   return {
     id: e.id,
-    digest: e.digest,
-    contentUrl: e.contentUrl,
-    publishTime: _publishTime,
-    source: e.source,
     title: e.title,
+    introduction: e.introduction,
+    startShowTime: _startShowTime,
+    coverPicture: e.coverPicture,
+    sourceUrl: e.sourceUrl,
     type: e.type
   }
 }

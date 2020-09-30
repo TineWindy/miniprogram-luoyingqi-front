@@ -11,7 +11,7 @@ function userLogin() {
     success(res) {
       if (res.code) {
         wx.request({
-          url: baseUrl + '/user/loginin',
+          url: baseUrl + '/user/innerlogin',
           method: 'GET',
           data: {
             userCode: res.code
@@ -19,7 +19,7 @@ function userLogin() {
           success: function (res) {
             if (res.data.resultCode == 'SUCCESS') {
               // 将openId 与 session 存入本地存储和全局变量
-              var openId = res.data.resultObj.user.openId;
+              var openId = res.data.resultObj.userId;
               var session = res.data.resultObj.session;
               // 存入本地存储
               wx.setStorage({
@@ -54,7 +54,7 @@ function yhjRequest(url, params, success, method) {
   var header = {
     'content-type': 'application/json',
     'session': session,
-    'openId': openId,
+    'userId': openId,
   }
 
 

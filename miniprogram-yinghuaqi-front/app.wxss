@@ -1,7 +1,6 @@
 /**app.wxss**/
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
-@import "/wxParse/wxParse.wxss";
 
 page{
   background-color:rgb(248, 246, 246);

@@ -1,0 +1,86 @@
+<!--pages/changeUserInfo/changeUserInfo.wxml-->
+<cu-custom bgColor="bg-pink" isBack="true">
+	<view slot="content" class="text-black">个人信息</view>
+</cu-custom>
+
+<!--头部用户头像-->
+<view class="uImg">
+  <image class="uImgC" mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
+</view>
+<!--列表-->
+<view class="list">
+  <view class="listC">
+  <form catchsubmit="submitInfo">
+    <!--姓名-->
+    <view class="cu-form-group margin-top listCView radius">
+      <view class="title">姓名</view>
+      <input class="inputStyle" name="name" placeholder="{{userInfo.nickName}}" value="{{name}}" disabled="{{!isUpdating}}"></input>
+    </view>
+    <!--性别-->
+    <view class="cu-form-group margin-top listCView">
+      <view class="title">性别</view>
+      <picker name="gender" bindchange="PickerChangeGender" value="{{genderIndex}}" range="{{genderList}}" disabled="{{!isUpdating}}">
+        <view class="picker">
+          {{genderList[genderIndex]}}
+        </view>
+      </picker>
+	  </view>
+    <!--生日-->
+    <view class="cu-form-group">
+      <view class="title">生日</view>
+      <picker name="birthday" mode="date" value="{{date}}" bindchange="DateChange" disabled="{{!isUpdating}}">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+	  </view>
+
+    <!--QQ号-->
+    <view class="cu-form-group margin-top listCView">
+      <view class="title">QQ号</view>
+      <input class="inputStyle" name="qq" placeholder="请输入您的QQ号" type="number" value="{{qq}}" disabled="{{!isUpdating}}"></input>
+    </view>
+
+    <!--手机号-->
+    <view class="cu-form-group listCView borderTop">
+      <view class="title">手机号</view>
+      <input class="inputStyle" name="phone" placeholder="请输入您的手机号" type="number" value="{{phone}}" disabled="{{!isUpdating}}"></input>
+      <!-- <button class="cu-btn bg-pink shadow" bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" size="mini"><text>一键获取</text></button> -->
+	  </view>
+    <!--学校-->
+    <view class="cu-form-group listCView borderTop">
+      <view class="title">学校</view>
+      <picker name="school" bindchange="PickerChangeSchool" value="{{schoolIndex}}" range="{{school}}" disabled="{{!isUpdating}}">
+        <view class="picker">
+          {{school[schoolIndex]}}
+        </view>
+      </picker>
+	  </view>
+
+    <!--学院-->
+    <view class="cu-form-group listCView borderTop">
+      <view class="title">学院</view>
+      <picker name="college" bindchange="PickerChangeCollege" value="{{collegeIndex}}" range="{{college}}" disabled="{{!isUpdating}}">
+        <view class="picker">
+          {{college[collegeIndex]}}
+        </view>
+      </picker>
+	  </view>
+
+    <!--学号-->
+    <view class="cu-form-group margin-top listCView">
+      <view class="title">学号</view>
+      <input class="inputStyle" name="schoolNumber" placeholder="请输入您的学号~" type="number" value="{{schoolNumber}}" disabled="{{!isUpdating}}"></input>
+    </view>
+    <!--提交-->
+    <view >
+      <view class="listCSubmitDiv" wx:if="{{isUpdating}}">
+      <button formType="submit" class="cu-btn bg-pink shadow listCSubmit"><text>提交</text></button>
+      </view>
+      <view class="listCSubmitDiv" wx:if="{{!isUpdating}}">
+            <button bindtap="updateInfo" class="cu-btn bg-pink shadow listCSubmit"><text>修改</text></button>
+      </view>
+    </view>
+  </form>
+  </view>
+</view>

@@ -4,7 +4,7 @@
     "pages/timeline/timeline",
     "pages/detail/detail",
     "pages/me/me",
-    "pages/changeUserInfo/changeUserInfo"
+    "pages/userInfo/userInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

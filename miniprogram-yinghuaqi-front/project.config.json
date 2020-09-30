@@ -6,6 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -15,20 +16,23 @@
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useIsolateContext": true,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx9f4f11dd326a999a",
+	"appid": "wx3ea08542e77319c9",
 	"projectname": "miniprogram-yinghuaqi-front",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -68,15 +72,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/timeline/timeline",
-					"pathName": "pages/timeline/timeline",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/detail/detail",
+					"id": 1,
+					"name": "文章详细页面",
 					"pathName": "pages/detail/detail",
 					"query": "",
 					"scene": null
@@ -89,9 +86,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/changeUserInfo/changeUserInfo",
+					"id": 3,
+					"name": "个人信息修改页面",
 					"pathName": "pages/changeUserInfo/changeUserInfo",
+					"query": "",
 					"scene": null
 				}
 			]

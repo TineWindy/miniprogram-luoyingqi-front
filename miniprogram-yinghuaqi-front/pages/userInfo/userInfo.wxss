@@ -57,3 +57,7 @@ Page{
 .borderTop{
   border-bottom: 1px solid rgb(235, 233, 233);
 }
+
+.inputStyle{
+  text-align:right;
+}

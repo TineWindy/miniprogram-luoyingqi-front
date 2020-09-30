@@ -12,6 +12,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -47,9 +48,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    // ApiHost: "http://127.0.0.1:8080",
-    // ApiHost: "https://172.20.10.3:8080",
-    ApiHost: "https://www.doneei.club:8080",
-    // ApiHost: "https://192.168.43.8:8080",
+    //ApiHost: "http://127.0.0.1:8080",
+    ApiHost: "http://10.132.128.75:8080",
   }
 })

@@ -1,3 +1,5 @@
+const HttpUtils = require("../../utils/HttpUtils")
+
 const app = getApp()
 Page({
   data: {
@@ -20,7 +22,15 @@ Page({
   //修改个人信息
   changeUserInfo:function(e){
     wx.navigateTo({
-      url: '../changeUserInfo/changeUserInfo',
+      url: '../userInfo/userInfo',
+    })
+  },
+
+  aboutUs:function(e){
+    wx.showToast({
+      title: '敬请期待',
+      duration:2000
     })
   }
 })
+

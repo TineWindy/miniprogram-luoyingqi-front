@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp();
 const ApiHost = app.globalData.ApiHost;
-var httpFuncs = require("../../utils/HttpUtils.js")
+const HttpUtils = require("../../utils/HttpUtils.js");
 
 
 Page({
@@ -18,21 +18,22 @@ Page({
   },
 
   onLoad: function() {
+    login();
     // getWxUserInfo(this);
     // getActivityInfo(this);
     //获取用户授权信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']){
-          wx.getUserInfo({
-            success: res2 => {
-              app.globalData.userInfo = res2.userInfo
-              console.log(app.globalData)
-            }
-          })
-        }
-      }
-    })
+    // wx.getSetting({
+    //   success: res => {
+    //     if (res.authSetting['scope.userInfo']){
+    //       wx.getUserInfo({
+    //         success: res2 => {
+    //           app.globalData.userInfo = res2.userInfo
+    //           console.log(app.globalData)
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
 
   getUserInfo: function(e) {
@@ -121,4 +122,15 @@ function getMyMatchInfo(body, e) {
   wx.navigateTo({
     url: '../matchinfo/matchinfo',
   })
+}
+
+function login(){
+  HttpUtils.yhjRequest(
+    '/user/login',
+    '',
+    function(res){
+      console.log('登录成功');
+    },
+    'get'
+  );
 }

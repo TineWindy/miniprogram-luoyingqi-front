@@ -25,7 +25,7 @@
     </view>
   </view>
   <view class="cu-item arrow">
-    <view class="content">
+    <view class="content" bindtap="aboutUs">
       <text class="cuIcon-appreciate text-yellow"></text>
       <text class="text-grey">关于我们</text>
     </view>

@@ -1,18 +1,1 @@
-<!--pages/detail/detail.wxml-->
-<import src="../../wxParse/wxParse.wxml" />
-
-<view>
-  <view class="title">{{title}}</view>
-  <view class="author">
-    <text>
-    本文内容来自公众号：
-    </text>
-  </view>
-  <view class="author">
-    <text class="source"> {{source}} {{publishTime}} \n\n </text>
-  </view>
-</view>
-
-<view class="wxParse">
-  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
-</view>
+<web-view src="{{sourceUrl}}"></web-view>

@@ -11,8 +11,8 @@
 <!--展示内容-->
 <!--推荐-->
 <view wx:if="{{TabCur == 0}}" class="recommendDiv">
-  <block wx:for="{{recommendList}}" wx:key="index">
-  <view class="recommendItem">
+  <block wx:for="{{pushList}}" wx:key="index">
+  <view class="recommendItem" bindtap="toDetail" data-url="{{item.sourceUrl}}" data-id="{{item.id}}">
     <!--推荐的头部-->
     <view class="recommendHead">
       <view class="recommendType">
@@ -36,8 +36,7 @@
 
 <!--订阅-->
 <view wx:if="{{TabCur == 1}}" class="contact">
-  <text>--本功能下期开放--\n
-  本产品内容均来自互联网，若无意侵权请联系：\n
-  weifengyoulei@foxmail.com
+  <text>面向武汉大学所有学生或组织开放 \n 如果您有推广个人平台、团队、活动等需求等请联系: \n
+  limingfu@whu.edu.cn
   </text>
 </view>
