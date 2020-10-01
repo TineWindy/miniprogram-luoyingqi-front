@@ -25,7 +25,7 @@ Page({
 
     this.setData({
       userInfo: app.globalData.userInfo,
-      date: formatTime.formatTime(new Date()),
+      birthday: formatTime.formatTime(new Date()),
       isUpdating: false
     })
 
@@ -56,8 +56,9 @@ Page({
   },
   //改变生日
   DateChange(e) {
+    console.log(e);
     this.setData({
-      date: e.detail.value
+      birthday: e.detail.value
     })
   },
   //提交表单
@@ -81,6 +82,12 @@ Page({
   updateInfo:function(e){
     this.setData({
       isUpdating:true
+    })
+
+    wx.showToast({
+      title: '现在可以修改啦~',
+      icon:'none',
+      duration:2000
     })
   }
 })

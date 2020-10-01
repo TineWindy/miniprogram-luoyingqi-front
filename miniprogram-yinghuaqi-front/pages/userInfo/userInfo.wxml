@@ -75,10 +75,10 @@
     <!--提交-->
     <view >
       <view class="listCSubmitDiv" wx:if="{{isUpdating}}">
-      <button formType="submit" class="cu-btn bg-pink shadow listCSubmit"><text>提交</text></button>
+      <button formType="submit" class="cu-btn bg-olive shadow light listCSubmit"><text>提交</text></button>
       </view>
-      <view class="listCSubmitDiv" wx:if="{{!isUpdating}}">
-            <button bindtap="updateInfo" class="cu-btn bg-pink shadow listCSubmit"><text>修改</text></button>
+      <view class="listCSubmitDiv shadow-blur" wx:if="{{!isUpdating}}">
+            <button bindtap="updateInfo" class="cu-btn bg-pink shadow listCSubmit"><text>编辑</text></button>
       </view>
     </view>
   </form>
