@@ -16,8 +16,15 @@ Page({
   },
   //登陆接口
   signOn:function(e){
-    app.globalData.userInfo = e.detail.userInfo
-    this.onLoad()
+    if(e.detail.errMsg == "getUserInfo:ok"){
+      app.globalData.userInfo = e.detail.userInfo
+      this.onLoad()
+    } else {
+      wx.showToast({
+        title:"登陆失败",
+        icon:"none"
+      })
+    }
   },
   //修改个人信息
   changeUserInfo:function(e){
