@@ -18,6 +18,20 @@ Page({
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {
+    // 清0再重新获取
+    if (this.data.currentType == 'push') {
+      this.setData({
+        pushCurPage: 0,
+        pushList:[]
+      })
+
+    } else if (this.data.currentType == 'promotion') {
+      this.setData({
+        promotionCurPage: 0,
+        promotionList:[]
+      })
+    }
+
     getArticleByType(this);
   },
   //切换头部TAB
@@ -33,12 +47,14 @@ Page({
     // 清0再重新获取
     if (this.data.currentType == 'push') {
       this.setData({
-        pushCurPage: 0
+        pushCurPage: 0,
+        pushList:[]
       })
 
     } else if (this.data.currentType == 'promotion') {
       this.setData({
-        promotionCurPage: 0
+        promotionCurPage: 0,
+        promotionList:[]
       })
     }
 
@@ -100,6 +116,12 @@ function getArticleByType(body) {
             promotionList: typeList
           })
         }
+      }else{
+        wx.showToast({
+          title: '我也是有底线的~',
+          icon:'none',
+          duration:2000
+        })
       }
     },
     'GET'

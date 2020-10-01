@@ -62,34 +62,20 @@ Page({
   },
   //提交表单
   submitInfo: function (e) {
-    console.log(e);
-    var form_data=e.detail.value;
+    var body = this;
 
-    HttpUtils.yhjRequest(
-      '/user/updateUsrInfo',
-      {
-        name: form_data.name,
-        gender: this.data.genderList[form_data.gender],
-        birthday: form_data.birthday,
-        qq:form_data.qq,
-        phone:form_data.phone,
-        school:this.data.school[form_data.school],
-        college:this.data.college[form_data.college],
-        schoolNumber:form_data.schoolNumber
-      },
-      function(res){
-        wx.showToast({
-          title: '修改成功',
-          icon:'success',
-          duration:3000
-        })
-      },
-      'post'
-    )
-
-    this.setData({
-      isUpdating:false
+    wx.showModal({
+      title: '提示',
+      content: '请您确保个人信息的真实性和有效性 \n 否则您可能将无法参加契约活动!',
+      success (res) {
+        if (res.confirm) {
+          postUserBasicInfo(e,body);
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
+
   },
 
   updateInfo:function(e){
@@ -98,6 +84,39 @@ Page({
     })
   }
 })
+
+function postUserBasicInfo(e,body){
+  var form_data=e.detail.value;
+
+  console.log(e);
+  console.log(form_data);
+
+  HttpUtils.yhjRequest(
+    '/user/updateUsrInfo',
+    {
+      name: form_data.name,
+      gender: body.data.genderList[form_data.gender],
+      birthday: form_data.birthday,
+      qq:form_data.qq,
+      phone:form_data.phone,
+      school:body.data.school[form_data.school],
+      college:body.data.college[form_data.college],
+      schoolNumber:form_data.schoolNumber
+    },
+    function(res){
+      wx.showToast({
+        title: '修改成功',
+        icon:'success',
+        duration:3000
+      })
+    },
+    'post'
+  )
+
+  body.setData({
+    isUpdating:false
+  })
+}
 
 function getUserBasicInfo(body) {
   HttpUtils.yhjRequest(
