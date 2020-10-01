@@ -18,7 +18,8 @@ Page({
     name: '',
     qq: '',
     phone: '',
-    schoolNumber: ''
+    schoolNumber: '',
+    birthday:''
   },
 
   onLoad: function (options) {

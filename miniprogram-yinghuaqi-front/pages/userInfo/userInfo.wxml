@@ -28,9 +28,9 @@
     <!--生日-->
     <view class="cu-form-group">
       <view class="title">生日</view>
-      <picker name="birthday" mode="date" value="{{date}}" bindchange="DateChange" disabled="{{!isUpdating}}">
+      <picker name="birthday" mode="date" value="{{birthday}}" bindchange="DateChange" disabled="{{!isUpdating}}">
         <view class="picker">
-          {{date}}
+          {{birthday}}
         </view>
       </picker>
 	  </view>
