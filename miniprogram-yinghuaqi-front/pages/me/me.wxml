@@ -6,7 +6,9 @@
 <view class="UCenter">
 		<image src="/images/meTopBox.jpeg" id="UCenter-bg"></image>
 		<image src="{{userInfo.avatarUrl}}" wx:if="{{hasUser}}" id="home-icon" mode="scaleToFill"></image>
-    <button size="mini" open-type="getUserInfo" wx:if="{{!hasUser}}" bindgetuserinfo="signOn">点击登陆</button>
+    <button size="mini" class="button" open-type="getUserInfo" wx:if="{{!hasUser}}" bindgetuserinfo="signOn">
+      <image src="../../images/iconForSignOn.png" bindtap=""></image>
+    </button>
 		<image src="https://s1.ax1x.com/2020/05/02/JxAJIK.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
 <!--底部二级页面入口-->
