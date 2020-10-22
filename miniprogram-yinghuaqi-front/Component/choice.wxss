@@ -1,0 +1,107 @@
+.div{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rpx;
+  margin-bottom: 12rpx;
+}
+.choiceDiv{
+  width: 94%;
+  background-color: white;
+  border-radius: 14rpx;
+  box-shadow: 0 0 10px rgb(235, 235, 235);
+}
+.redBorder{
+  border:1px solid red;
+}
+/*题目*/
+.choiceDivHead{
+  width: 100%;
+  padding: 30rpx 15rpx 10rpx 15rpx;
+}
+.choiceDivHeadOne{
+  margin-right: 10rpx;
+  font-size: 21px;
+  font-weight: 600;
+}
+.choiceDivHeadTwo{
+  font-size: 16.5px;
+  margin-right: 14rpx;
+  font-weight: 600;
+}
+.choiceDivHeadThree{
+  color: red;
+  font-size: 18px;
+}
+.redText{
+  color: red;
+}
+/*附加备注*/
+.chiceRemarks{
+  width: 100%;
+  padding: 10rpx 10rpx 15rpx 40rpx;
+  color: rgb(138, 133, 133);
+  font-size: 14.5px;
+}
+/*题目选项*/
+.choiceDivBody{
+  padding: 14rpx 15rpx 20rpx 15rpx;
+}
+.choiceDivBodyItem{
+  padding:20rpx 5rpx 20rpx 5rpx;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgb(219, 219, 219);
+}
+.choiceDivBodyItemImg{
+  width: 8%;
+  margin-right: 10rpx;
+  margin-left:10rpx;
+}
+.choiceDivBodyItemText{
+  width: 92%;
+}
+/*填空*/
+.inputDiv{
+  width: 94%;
+  background-color: white;
+  border-radius: 14rpx;
+  box-shadow: 0 0 10px rgb(235, 235, 235);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+}
+.inputDivLeft{
+  width: 22%;
+}
+.inputDivRight{
+  width: 78%;
+  text-align: left;
+}
+.inputTextBig{
+  font-size: 16px;
+}
+/*列表选择*/
+.pickerDiv{
+  width: 94%;
+  background-color: white;
+  border-radius: 14rpx;
+  box-shadow: 0 0 10px rgb(235, 235, 235);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx 20rpx 20rpx;
+}
+.picker{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.pickerTextBig{
+  padding-left: 30rpx;
+  font-size: 20px;
+}

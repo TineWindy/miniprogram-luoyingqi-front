@@ -4,7 +4,9 @@
     "pages/timeline/timeline",
     "pages/detail/detail",
     "pages/me/me",
-    "pages/userInfo/userInfo"
+    "pages/userInfo/userInfo",
+    "pages/applyinfo/applyinfo",
+    "pages/baoming/baoming"
   ],
   "window": {
     "backgroundTextStyle": "light",

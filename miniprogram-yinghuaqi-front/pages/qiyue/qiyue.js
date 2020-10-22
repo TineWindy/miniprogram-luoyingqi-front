@@ -47,12 +47,12 @@ Page({
 
   // 查看我的报名
   myApplyInfoTap: function(e) {
-    //getMyApplyInfo(this, e); 不跳转
-    wx.showToast({
+    getMyApplyInfo(this, e);
+    /*wx.showToast({
       title: '不在活动时间范围内~',
       icon:'none',
       duration:1500
-    })
+    })*/
   },
 
   // 查看我的契约
