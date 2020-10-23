@@ -1,0 +1,9 @@
+/* pages/baoming/baoming.wxss */
+.titleToast{
+  width: 100%;
+  margin:26rpx 0 26rpx 0;
+  background-color: white;
+  box-shadow: 0 0 7px rgb(235, 235, 235);
+  padding: 22rpx;
+  text-align: center;
+}

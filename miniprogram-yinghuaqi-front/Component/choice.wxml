@@ -1,0 +1,61 @@
+<view class="div" wx:if="{{content.type == 'select'}}">
+  <view class="choiceDiv {{content.fit?'':'redBorder'}}">
+    <!--题干-->
+    <view class="choiceDivHead">
+      <text class="choiceDivHeadOne {{content.fit?'':'redText'}}">{{content.id}}.</text>
+      <text class="choiceDivHeadTwo {{content.fit?'':'redText'}}">{{content.stem}}</text>
+      <text class="choiceDivHeadThree" wx:if="{{content.mandatory}}">*</text>
+    </view>
+    <!--附加备注-->
+    <view wx:if="{{content.remarks}}" class="chiceRemarks">
+      {{content.remarks}}
+    </view>
+    <!--题目选项-->
+    <view class="choiceDivBody">
+      <block wx:for="{{content.options}}" wx:key="index">
+      <view class="choiceDivBodyItem" bindtap="tapOption" data-index="{{index}}">
+        <image class="choiceDivBodyItemImg" src="{{item.res?'totalSelected.png':'notSelected.png'}}" mode="widthFix"></image>
+        <view class="choiceDivBodyItemText">{{item.text}}</view>
+      </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<view class="div" wx:if="{{content.type == 'input'}}">
+  <view class="inputDiv">
+    <view class="inputDivLeft">
+      <text class="choiceDivHeadOne">{{content.id}}.</text>
+      <text class="inputTextBig">{{content.stem}}</text>
+      <text class="choiceDivHeadThree" wx:if="{{content.mandatory}}">*</text>
+    </view>
+    <input class="inputDivRight" bindinput="inputResult" placeholder="请输入姓名"></input>
+  </view>
+</view>
+
+<view class="div" wx:if="{{content.type == 'picker'}}">
+  <view class="pickerDiv"> 
+    <view class="pickerDivLeft">
+      <text class="choiceDivHeadOne">{{content.id}}.</text>
+      <text class="inputTextBig">{{content.stem}}</text>
+      <text class="choiceDivHeadThree" wx:if="{{content.mandatory}}">*</text>
+    </view>
+    <view class="pickerDivRight">
+      <picker name="college" bindchange="PickerChange" value="{{content.value}}" range="{{content.options}}">
+        <view class="picker">
+          {{content.value}}
+          <text class="pickerTextBig">></text>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <!--
+  <view class="cu-form-group listCView borderTop">
+      <view class="title">学院</view>
+      <picker name="college" bindchange="PickerChangeCollege" value="{{collegeIndex}}" range="{{college}}" disabled="{{!isUpdating}}">
+        <view class="picker">
+          {{college[collegeIndex]}}
+        </view>
+      </picker>
+	</view>-->
+</view>

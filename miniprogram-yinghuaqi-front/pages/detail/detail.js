@@ -37,6 +37,11 @@ Page({
       },
       'get'
     )
-  }
+  },
+
+  onShareAppMessage: function(options){
+  },
+
+  
 
 })

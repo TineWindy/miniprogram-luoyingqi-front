@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "choice":"../../Component/choice"
+  }
+}

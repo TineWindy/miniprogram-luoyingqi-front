@@ -19,21 +19,9 @@ Page({
 
   onLoad: function() {
     login();
-    // getWxUserInfo(this);
-    // getActivityInfo(this);
-    //获取用户授权信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']){
-    //       wx.getUserInfo({
-    //         success: res2 => {
-    //           app.globalData.userInfo = res2.userInfo
-    //           console.log(app.globalData)
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+  },
+
+  onShareAppMessage: function(options){
   },
 
   getUserInfo: function(e) {
@@ -47,12 +35,12 @@ Page({
 
   // 查看我的报名
   myApplyInfoTap: function(e) {
-    //getMyApplyInfo(this, e); 不跳转
-    wx.showToast({
+    getMyApplyInfo(this, e);
+    /*wx.showToast({
       title: '不在活动时间范围内~',
       icon:'none',
       duration:1500
-    })
+    })*/
   },
 
   // 查看我的契约

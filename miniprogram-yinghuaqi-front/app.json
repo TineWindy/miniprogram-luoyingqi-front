@@ -5,7 +5,9 @@
     "pages/detail/detail",
     "pages/me/me",
     "pages/userInfo/userInfo",
-    "pages/privatePage/privatePage"
+    "pages/privatePage/privatePage",
+    "pages/applyinfo/applyinfo",
+    "pages/baoming/baoming"
   ],
   "window": {
     "backgroundTextStyle": "light",
