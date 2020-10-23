@@ -22,17 +22,17 @@ Page({
     if (this.data.currentType == 'push') {
       this.setData({
         pushCurPage: 0,
-        pushList:[]
+        pushList: []
       })
 
     } else if (this.data.currentType == 'promotion') {
       this.setData({
         promotionCurPage: 0,
-        promotionList:[]
+        promotionList: []
       })
     }
 
-    getArticleByType(this);
+    getArticleByType(this,false);
   },
   //切换头部TAB
   tabSelect(e) {
@@ -48,17 +48,21 @@ Page({
     if (this.data.currentType == 'push') {
       this.setData({
         pushCurPage: 0,
-        pushList:[]
+        pushList: []
       })
 
     } else if (this.data.currentType == 'promotion') {
       this.setData({
         promotionCurPage: 0,
-        promotionList:[]
+        promotionList: []
       })
     }
 
-    getArticleByType(this);
+    // 加载动画
+    wx.showNavigationBarLoading();
+
+    // 获取文章
+    getArticleByType(this,true);
   },
 
   //触底加载
@@ -73,7 +77,7 @@ Page({
 })
 
 //获取数据列表
-function getArticleByType(body) {
+function getArticleByType(body,isRefresh) {
   let curPage, typeList;
 
   if (body.data.currentType == 'push') {
@@ -97,7 +101,7 @@ function getArticleByType(body) {
     '/article/gerArticlesByType', {
     type: body.data.currentType,
     start: curPage * 10,
-    end: (curPage + 1) * 10 -1
+    end: (curPage + 1) * 10 - 1
   },
     function (res) {
       if (res.resultObj != null && res.resultObj.length != 0) {
@@ -116,13 +120,24 @@ function getArticleByType(body) {
             promotionList: typeList
           })
         }
-      }else{
+      } else {
         wx.showToast({
           title: '我也是有底线的~',
-          icon:'none',
-          duration:2000
+          icon: 'none',
+          duration: 2000
         })
       }
+
+      if (isRefresh){
+        wx.showToast({
+          title: '刷新成功！',
+          duration:2000
+        });
+
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+      }
+
     },
     'GET'
   );
@@ -163,28 +178,32 @@ function timeProcess(time) {
   let nowDate = new Date();
   let _time = "";
 
-  // 特殊处理昨天和今天的时间
-  if (date.getFullYear() == nowDate.getFullYear() && date.getMonth() == nowDate.getMonth()) {
-    if (date.getDay() == nowDate.getDay()) {
-      _time = '今天  ';
+  // 年
+  if (date.getFullYear() === nowDate.getFullYear()) {
+    // 月
+    if (date.getMonth() === nowDate.getMonth()) {
+      // 只处理今天的状况
+      if (date.getDate() === nowDate.getDate()) {
+        console.log(date.getMonth())
+        console.log(nowDate.getMonth())
+        _time = '今天  ';
+      } else {
+        // 否则只显示 月份和日
+        _time = (date.getMonth() + 1) + "/" + date.getDate() + " "
+      }
 
-    } else if (date.getDay() == nowDate.getDay() - 1) {
-      _time = '昨天  ';
-    } else {
-      return time;
+      _time += date.getHours() + ":";
+
+      if (date.getMinutes() < 10) {
+        // 对不足个位数的分钟进行填充
+        _time += "0";
+      }
+
+      _time += date.getMinutes();
+
+      return _time
     }
-    _time += date.getHours() + ":";
 
-    if (date.getMinutes() < 10) {
-      // 对不足个位数的分钟进行填充
-      _time += "0";
-    }
-
-    _time += date.getMinutes();
-
-    return _time;
+    return time;
   }
-
-  return time;
-
 }

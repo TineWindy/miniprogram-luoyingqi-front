@@ -1,0 +1,6 @@
+<!--pages/privatePage/privatePage.wxml-->
+<view class='form-list'>
+  <text>伴侣编号</text>
+  <input type='text' value='{{coupleNumber}}'></input>
+  <image class='scan' bindtap='scanCode' src='/images/scan.png' mode='widthFix'></image>
+</view>

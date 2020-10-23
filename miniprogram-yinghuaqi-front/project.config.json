@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -93,6 +93,13 @@
           "id": 3,
           "name": "个人信息修改页面",
           "pathName": "pages/changeUserInfo/changeUserInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "内部页面",
+          "pathName": "pages/privatePage/privatePage",
           "query": "",
           "scene": null
         }

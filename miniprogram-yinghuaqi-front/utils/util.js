@@ -22,7 +22,17 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function assertNotNull(value){
+  // String    
+  if (value === null || value === undefined || value == "" || String(value).trim().length==0){
+    return false;
+  }
+
+  return true;
+}
+
 module.exports = {
   formatDetailTime: formatDetailTime,
-  formatTime:formatTime
+  formatTime:formatTime,
+  assertNotNull:assertNotNull
 }
