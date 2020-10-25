@@ -1,32 +1,32 @@
+<!--未找到报名信息-->
 <view wx:if="{{!isApplied}}">
-
   <view class="wenan_apply">
     <text>
-    抱歉，我们未找到您的报名信息！ \n 若您之前在其它平台如“问卷星”处报过名了，\n 请点击“快速验证”进行简单快速的验证。
+    抱歉，我们未找到您的报名信息！ \n 还请点击下方个人报名填写报名表 \n 若想和自己的另一半一起参加，还请点击组队报名~ 
     </text>
   </view>
   <!--验证-->
-  <button class="verify" bindtap="verifyTap">
+  <button class="verify" bindtap="groupTap">
     <span class='wenzi'>
-      快速验证
+      组队报名
     </span>
     <image src='../../images/button2.png' mode='widthFix'></image>
   </button>
   <!--报名-->
-  <button class="baoming" bindtap="applyTap">
+  <button class="baoming" bindtap="singleTap">
     <span class='wenzi'>
-      立即报名
+      个人报名
     </span>
     <image src='../../images/button1.png' mode='widthFix'></image>
   </button>
 </view>
-
+<!--找到报名信息之后-->
 <view wx:else>
   <view>
     <text>\n\n\n\n</text>
   </view>
 
-  <view class="weui-cells weui-cells_after-title weui-shadow ">
+  <view class="weui-cells weui-cells_after-title weui-shadow">
     <view class="weui-panel__hd">您的基本信息</view>
 
     <view class="cu-form-group">

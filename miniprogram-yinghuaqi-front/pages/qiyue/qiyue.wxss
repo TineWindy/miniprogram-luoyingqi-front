@@ -109,15 +109,15 @@ background-size:100% ;
 .total{
   background-color: #929f98;
 }
-/*按钮*/
-.qiyue{
+/*按钮,跳转到相应专场的导航页面*/
+.navigation{
   position: absolute;
   top:1180rpx ; 
   left:50rpx;
   right: 50rpx;
   background-color: #FDF8F6
 }
-.qiyue::after {
+.navigation::after {
   border: none;
 }
 .wenzi{
@@ -127,14 +127,4 @@ background-size:100% ;
   z-index:100;
   color:white;
   font-size: 0.9em;
-}
-.baoming{
-  position: absolute;
-  top:1350rpx ; 
-  left:50rpx;
-  right:50rpx;
-  background-color: #FDF8F6
-}
-.baoming::after {
-  border: none;
 }

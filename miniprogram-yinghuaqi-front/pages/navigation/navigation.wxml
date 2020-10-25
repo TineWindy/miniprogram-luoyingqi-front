@@ -1,0 +1,32 @@
+<!--按钮-->
+<button class="marginTopAndSomeCommon" bindtap="myApplyInfoTap">
+  <span class='wenzi'>
+    查看我的报名
+  </span>
+  <image src='../../images/button1.png' mode='widthFix'>
+  </image>
+</button>
+
+<button class="marginTopAndSomeCommon" bindtap="myMatchInfoTap">
+  <span class='wenzi'>
+    查看我的契约
+  </span>
+  <image src='../../images/button2.png' mode='widthFix'>
+  </image>
+</button>
+
+<button class="marginTopAndSomeCommon" bindtap="myIceBreakPartyTap">
+  <span class='wenzi'>
+    破冰晚会
+  </span>
+  <image src='../../images/button2.png' mode='widthFix'>
+  </image>
+</button>
+
+<button class="marginTopAndSomeCommon" bindtap="no">
+  <span class='wenzi'>
+    契约任务
+  </span>
+  <image src='../../images/button2.png' mode='widthFix'>
+  </image>
+</button>

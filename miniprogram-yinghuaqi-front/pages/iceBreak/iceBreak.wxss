@@ -1,0 +1,52 @@
+/* pages/iceBreak/iceBreak.wxss */
+.titleToast{
+  width: 100%;
+  margin:26rpx 0 26rpx 0;
+  background-color: white;
+  box-shadow: 0 0 7px rgb(235, 235, 235);
+  padding: 22rpx;
+  text-align: center;
+}
+/*报名编号的显示*/
+.idDiv{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 170rpx;
+}
+.idDivCenter{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: #efcbcb;
+  text-align: center;
+  line-height: 200rpx;
+  font-size: 27px;
+  font-weight: 600;
+  box-shadow: 0 0 10 rgb(173, 173, 173);
+}
+/*未报名*/
+.iceBreakText{
+  position: absolute;
+  top:300rpx;
+  width: 100%;
+  text-align: center;
+}
+/*报名提交按钮*/
+.submit{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 550rpx;
+  border-radius: 50%;
+  background-color: #efcbcb;
+  text-align: center;
+  line-height: 200rpx;
+  font-size: 27px;
+  font-weight: 600;
+  box-shadow: 0 0 10 rgb(173, 173, 173);
+}
+.submit::after{
+  border:none;
+}

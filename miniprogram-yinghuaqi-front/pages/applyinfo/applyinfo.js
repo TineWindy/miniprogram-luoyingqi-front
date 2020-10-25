@@ -31,19 +31,15 @@ Page({
   onLoad: function (options) {
     getApplyInfo(this);
   },
-
-  // 立即报名
-  applyTap: function(e) {
-    apply(this, e);
+  
+  // 个人报名
+  singleTap: function(e) {
+    single(this, e);
   },
 
-  // 快速验证
-  verifyTap: function(e) {
-    //verify(this, e);
-    wx.showToast({
-      title: '暂未开启验证通道~',
-      icon:"none"
-    })
+  // 组队报名
+  groupTap: function(e) {
+    group(this, e);
   },
 
   //取消报名
@@ -223,17 +219,19 @@ function getChineseWord(key) {
 }
 
 // 跳转快速验证界面
-function verify(body, e) {
+function group(body, e) {
   wx.navigateTo({
-    url: '../verify/verify',
+    url: '../baoming/baoming?type='+'group',
   })
 }
+
 // 跳转报名界面
-function apply(body, e) {
+function single(body, e) {
   wx.navigateTo({
-    url: '../baoming/baoming',
+    url: '../baoming/baoming?type='+'single',
   })
 }
+
 // 取消报名
 function cancelApply() {
   wx.showModal({

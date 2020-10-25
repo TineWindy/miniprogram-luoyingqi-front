@@ -19,6 +19,7 @@ Page({
 
   onLoad: function() {
     login();
+    console.log(app.globalData)
   },
 
   onShareAppMessage: function(options){
@@ -33,23 +34,10 @@ Page({
     })
   },
 
-  // 查看我的报名
-  myApplyInfoTap: function(e) {
-    getMyApplyInfo(this, e);
-    /*wx.showToast({
-      title: '不在活动时间范围内~',
-      icon:'none',
-      duration:1500
-    })*/
-  },
-
-  // 查看我的契约
-  myMatchInfoTap: function(e) {
-    //getMyMatchInfo(this, e); 不跳转
-    wx.showToast({
-      title: '不在活动时间范围内~',
-      icon:'none',
-      duration:1500
+  //跳转到相应专场的导航页面
+  toNavigationPage:function(e){
+    wx.navigateTo({
+      url:'../navigation/navigation'
     })
   }
 })
@@ -96,20 +84,6 @@ function getWxUserInfo(body) {
       }
     })
   }
-}
-
-// 获取报名信息
-function getMyApplyInfo(body, e) {
-  wx.navigateTo({
-    url: '../applyinfo/applyinfo',
-  })
-}
-
-// 获取契约信息
-function getMyMatchInfo(body, e) {
-  wx.navigateTo({
-    url: '../matchinfo/matchinfo',
-  })
 }
 
 function login(){

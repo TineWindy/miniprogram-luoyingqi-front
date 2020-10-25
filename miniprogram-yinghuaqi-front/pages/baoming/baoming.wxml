@@ -1,39 +1,55 @@
-
-<!--第一部分 个人信息部分 不可编辑-->
+<!--第一部分 个人信息部分 不可编辑  basicPersonalInfo-->
 <view class="titleToast">
   第一部分 个人信息部分
 </view>
 
-<block wx:for="{{questionListOne}}" wx:key="index">
-  <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="questionListOne" data-index="{{index}}"></choice>
+<choice basicPersonalInfo="{{basicPersonalInfo}}" basic="true"></choice>
+
+<!--个人报名-->
+<block wx:if="{{type == 'single'}}">
+  
+  <!--第二部分 个人基本描述 可编辑  basicDescriptionList-->
+  <view class="titleToast">
+    第二部分 个人基本描述
+  </view>
+
+  <block wx:for="{{basicDescriptionList}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="basicDescriptionList" data-index="{{index}}"></choice>
+  </block>
+
+  <!--第三部分 个人硬性要求 可编辑   hardRequirementsList-->
+  <view class="titleToast">
+    第三部分 个人硬性要求
+  </view>
+
+  <block wx:for="{{hardRequirementsList}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="hardRequirementsList" data-index="{{index}}"></choice>
+  </block>
+
+  <!--第四部分 个人加分要求 可编辑 extraRequirementsList-->
+  <view class="titleToast">
+    第四部分 个人加分要求
+  </view>
+
+  <block wx:for="{{extraRequirementsList}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="extraRequirementsList" data-index="{{index}}"></choice>
+  </block>
+
+
+  <button bindtap="submit">提交</button>
+
 </block>
 
-<!--第二部分 个人基本描述 可编辑-->
-<view class="titleToast">
-  第二部分 个人基本描述
-</view>
+<!--组队报名-->
+<block wx:if="{{type == 'group'}}">
+  <!--第二部分 对方信息填写 可编辑  theOtherInfo-->
+  <view class="titleToast">
+    第二部分 对方信息填写
+  </view>
 
-<block wx:for="{{questionListTwo}}" wx:key="index">
-  <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="questionListTwo" data-index="{{index}}"></choice>
+  <block wx:for="{{theOtherInfo}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="theOtherInfo" data-index="{{index}}"></choice>
+  </block>
+
+  <button bindtap="submit">提交</button>
 </block>
-
-<!--第三部分 个人硬性要求 可编辑-->
-<view class="titleToast">
-  第三部分 个人硬性要求
-</view>
-
-<block wx:for="{{questionListThree}}" wx:key="index">
-  <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="questionListThree" data-index="{{index}}"></choice>
-</block>
-
-<!--第四部分 个人加分要求 可编辑-->
-<view class="titleToast">
-  第四部分 个人加分要求
-</view>
-
-<block wx:for="{{questionListFour}}" wx:key="index">
-  <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="questionListFour" data-index="{{index}}"></choice>
-</block>
-
-
-<button bindtap="submit">提交</button>

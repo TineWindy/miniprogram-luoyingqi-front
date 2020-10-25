@@ -7,7 +7,10 @@
     "pages/userInfo/userInfo",
     "pages/privatePage/privatePage",
     "pages/applyinfo/applyinfo",
-    "pages/baoming/baoming"
+    "pages/matchinfo/matchinfo",
+    "pages/baoming/baoming",
+    "pages/navigation/navigation",
+    "pages/iceBreak/iceBreak"
   ],
   "window": {
     "backgroundTextStyle": "light",

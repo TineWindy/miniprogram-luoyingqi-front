@@ -1,0 +1,82 @@
+
+<!--未找到报名信息-->
+<view wx:if="{{status=='MATCH_NOT_VERIFY'}}" class="toast_text">
+  <text>
+    抱歉，我们未能找到您的报名信息；\n 请返回首页，进入“查看我的报名”，确认报名信息是否无误.
+  </text>
+</view>
+<!--匹配失败-->
+<view wx:elif="{{status=='MATCH_NOT_SUCCESS'}}" class="toast_text">
+  <text>
+    抱歉，本次活动中暂无与您的个人描述和要求非常匹配的对象；\n 欢迎您持续关注并参与后续线下活动。\n {{message}}
+  </text>
+</view>
+<!--匹配结果取消-->
+<view wx:elif="{{status=='MATCH_CANCELED'}}" class="toast_text">
+  <text>
+    抱歉，本次匹配已被您或对方因事取消；\n 欢迎您持续关注并参与后续线下活动。\n {{message}}
+  </text>
+</view>
+<!--匹配结果的展示-->
+<view wx:else>
+
+  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> 
+
+  <view class="info" style="margin-top:-100rpx">
+    <text>契约编号</text>
+  </view>
+  <view class="info_item" style="margin-top:-100rpx;margin-left:30rpx;">
+    <text>{{coupleNumber}}</text>
+  </view>
+
+  <view class="info">
+    <text>契约匹配度</text>
+  </view>
+  <view class="info_item" style="margin-left:70rpx;">
+    <text>{{score}}</text>
+  </view>
+
+  <view class="info" style="margin-top:100rpx">
+    <text>姓 名</text>
+  </view>
+  <view class="info_item" style="margin-top:100rpx">
+    <text>{{name}}</text>
+  </view>
+
+  <view class="info" style="margin-top:200rpx">
+    <text>年 级</text>
+  </view>
+  <view class="info_item" style="margin-top:200rpx">
+    <text>{{grade}}</text>
+  </view>
+
+  <view class="info" style="margin-top:300rpx">
+    <text>联 络</text>
+  </view>
+  <view class="info_item" style="margin-top:300rpx">
+    <text>{{contact}}</text>
+  </view>
+
+  <view class="info" style="margin-top:400rpx">
+    <text>个 人 描 述</text>
+  </view>
+  <view class="info" style="margin-top:450rpx;color:#e55c4d">
+    <text>{{description}}</text>
+  </view>
+
+  <view wx:if="{{status=='MATCH_SUCCESS_NOT_RECEIVED'}}">
+
+    <view class="accept">
+      <image src="../../images/accept.png" mode='widthFix' bindtap="acceptTap" />
+    </view>
+
+    <view class="reject">
+      <image src="../../images/reject.png" mode='widthFix' bindtap="rejectTap" />
+    </view>
+
+  </view>
+  <view wx:else class="receive_text">
+    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n {{message}}</text>
+  </view>
+
+</view>

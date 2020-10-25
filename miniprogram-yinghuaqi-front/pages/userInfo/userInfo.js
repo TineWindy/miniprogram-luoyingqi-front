@@ -175,6 +175,7 @@ function getUserBasicInfo(body, isRefresh) {
     '/user/showUsrInfo',
     '',
     function (res) {
+      console.log(res.resultObj)
       body.setData({
         name: res.resultObj.name,
         genderIndex: findIdx(body.data.genderList, res.resultObj.gender),

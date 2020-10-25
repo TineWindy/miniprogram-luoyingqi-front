@@ -1,0 +1,31 @@
+<block wx:if="{{isApplied}}">
+  <view class="titleToast">
+    第一部分 个人信息部分
+  </view>
+
+  <choice basicPersonalInfo="{{basicPersonalInfo}}" basic="true"></choice>
+
+
+  <view class="titleToast">
+    第二部分 报名编号
+  </view>
+
+  <!--破冰晚会报名的编号-->
+  <view class="idDiv">
+    <view class="idDivCenter">
+      {{99}}
+    </view>
+  </view>
+</block>
+
+<block wx:else>
+
+
+  <view class="iceBreakText">
+    <text>
+    抱歉，我们未找到您的报名编号！\n 还请点击下方获取报名编号
+    </text>
+  </view>
+
+  <button class="submit" bindtap="iceBreakApply">报名</button>
+</block>

@@ -1,3 +1,4 @@
+<!--不定项选择题-->
 <view class="div" wx:if="{{content.type == 'select'}}">
   <view class="choiceDiv {{content.fit?'':'redBorder'}}">
     <!--题干-->
@@ -21,7 +22,7 @@
     </view>
   </view>
 </view>
-
+<!--输入填空题-->
 <view class="div" wx:if="{{content.type == 'input'}}">
   <view class="inputDiv">
     <view class="inputDivLeft">
@@ -32,7 +33,7 @@
     <input class="inputDivRight" bindinput="inputResult" placeholder="请输入姓名"></input>
   </view>
 </view>
-
+<!--列表选择题-->
 <view class="div" wx:if="{{content.type == 'picker'}}">
   <view class="pickerDiv"> 
     <view class="pickerDivLeft">
@@ -49,13 +50,117 @@
       </picker>
     </view>
   </view>
-  <!--
-  <view class="cu-form-group listCView borderTop">
-      <view class="title">学院</view>
-      <picker name="college" bindchange="PickerChangeCollege" value="{{collegeIndex}}" range="{{college}}" disabled="{{!isUpdating}}">
-        <view class="picker">
-          {{college[collegeIndex]}}
-        </view>
-      </picker>
-	</view>-->
 </view>
+
+
+<!--个人基础信息展示-->
+<block wx:if="{{basic}}">
+  <!--姓名-->
+  <view class="div" wx:if="{{basic}}">
+    <view class="inputDiv">
+      <view class="inputDivLeft">
+        <text class="choiceDivHeadOne">1.</text>
+        <text class="inputTextBig">姓名</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.name}}"></input>
+    </view>
+  </view>
+  <!--性别-->
+  <view class="div">
+  <view class="pickerDiv"> 
+    <view class="pickerDivLeft">
+      <text class="choiceDivHeadOne">2.</text>
+      <text class="inputTextBig">性别</text>
+      <text class="choiceDivHeadThree">*</text>
+    </view>
+    <view class="pickerDivRight">
+      <view class="picker textGrey">
+        {{basicPersonalInfo.gender}}
+        <text class="pickerTextBig textGrey">></text>
+      </view>
+    </view>
+  </view>
+  </view>
+  <!--生日-->
+  <view class="div">
+    <view class="pickerDiv"> 
+      <view class="pickerDivLeft">
+        <text class="choiceDivHeadOne">3.</text>
+        <text class="inputTextBig">生日</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <view class="pickerDivRight">
+        <view class="picker textGrey">
+          {{basicPersonalInfo.birthday}}
+          <text class="pickerTextBig textGrey">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--QQ号-->
+  <view class="div">
+    <view class="inputDiv">
+      <view class="inputDivLeft">
+        <text class="choiceDivHeadOne">4.</text>
+        <text class="inputTextBig">QQ号</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.qq}}"></input>
+    </view>
+  </view>
+  <!--手机号-->
+  <view class="div">
+    <view class="inputDiv">
+      <view class="inputDivLeft">
+        <text class="choiceDivHeadOne">5.</text>
+        <text class="inputTextBig">手机号</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.phone}}"></input>
+    </view>
+  </view>
+  <!--学校-->
+  <view class="div">
+    <view class="pickerDiv"> 
+      <view class="pickerDivLeft">
+        <text class="choiceDivHeadOne">6.</text>
+        <text class="inputTextBig">学校</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <view class="pickerDivRight">
+        <view class="picker textGrey">
+          {{basicPersonalInfo.school}}
+          <text class="pickerTextBig textGrey">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--学院-->
+  <view class="div">
+    <view class="pickerDiv"> 
+      <view class="pickerDivLeft">
+        <text class="choiceDivHeadOne">7.</text>
+        <text class="inputTextBig">学院</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <view class="pickerDivRight">
+          <view class="picker textGrey">
+            {{basicPersonalInfo.college}}
+            <text class="pickerTextBig textGrey">></text>
+          </view>
+      </view>
+    </view>
+  </view>
+  <!--学号-->
+  <view class="div">
+    <view class="inputDiv">
+      <view class="inputDivLeft">
+        <text class="choiceDivHeadOne">8.</text>
+        <text class="inputTextBig">学号</text>
+        <text class="choiceDivHeadThree">*</text>
+      </view>
+      <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.schoolNumber}}"></input>
+    </view>
+  </view>
+</block>

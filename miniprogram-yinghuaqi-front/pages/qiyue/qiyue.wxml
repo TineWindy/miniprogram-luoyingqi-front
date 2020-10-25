@@ -39,20 +39,13 @@
   </view>
 </view>
 
+<!--跳转到相应专场的二级导航页面-->
 <!--按钮-->
-<button class="qiyue" bindtap="myApplyInfoTap">
+<button class="navigation" bindtap="toNavigationPage">
   <span class='wenzi'>
-    查看我的报名
+    武汉大学专场
   </span>
   <image src='../../images/button1.png' mode='widthFix'>
-  </image>
-</button>
-
-<button class="baoming" bindtap="myMatchInfoTap">
-  <span class='wenzi'>
-    查看我的契约
-  </span>
-  <image src='../../images/button2.png' mode='widthFix'>
   </image>
 </button>
 

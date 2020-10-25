@@ -75,14 +75,14 @@
   padding: 20rpx 20rpx 20rpx 20rpx;
 }
 .inputDivLeft{
-  width: 22%;
+  width: 28.8%;
 }
 .inputDivRight{
-  width: 78%;
+  width: 71.2%;
   text-align: left;
 }
 .inputTextBig{
-  font-size: 16px;
+  font-size: 15px;
 }
 /*列表选择*/
 .pickerDiv{
@@ -104,4 +104,12 @@
 .pickerTextBig{
   padding-left: 30rpx;
   font-size: 20px;
+}
+/*个人基本信息*/
+.textRight{
+  text-align: right;
+  margin-right: 12rpx;
+}
+.textGrey{
+  color: rgb(114, 114, 114);
 }
