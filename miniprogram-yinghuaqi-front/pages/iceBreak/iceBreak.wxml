@@ -3,8 +3,7 @@
     第一部分 个人信息部分
   </view>
 
-  <choice basicPersonalInfo="{{basicPersonalInfo}}" basic="true"></choice>
-
+  <userInfo basicPersonalInfo="{{basicPersonalInfo}}"></userInfo>
 
   <view class="titleToast">
     第二部分 报名编号

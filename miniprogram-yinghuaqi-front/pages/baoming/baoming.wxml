@@ -3,7 +3,7 @@
   第一部分 个人信息部分
 </view>
 
-<choice basicPersonalInfo="{{basicPersonalInfo}}" basic="true"></choice>
+<userInfo basicPersonalInfo="{{basicPersonalInfo}}"></userInfo>
 
 <!--个人报名-->
 <block wx:if="{{type == 'single'}}">
@@ -35,9 +35,9 @@
     <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="extraRequirementsList" data-index="{{index}}"></choice>
   </block>
 
-
-  <button bindtap="submit">提交</button>
-
+  <view class="butCenter">
+    <button class="butSubmit" bindtap="submit">提交</button>
+  </view>
 </block>
 
 <!--组队报名-->
@@ -51,5 +51,7 @@
     <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="theOtherInfo" data-index="{{index}}"></choice>
   </block>
 
-  <button bindtap="submit">提交</button>
+  <view class="butCenter">
+    <button class="butSubmit" bindtap="submit">提交</button>
+  </view>
 </block>

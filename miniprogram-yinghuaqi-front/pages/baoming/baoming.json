@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "choice":"../../Component/choice"
+    "choice":"../../Component/choice/choice",
+    "userInfo":"../../Component/userInfo/userInfo"
   }
 }

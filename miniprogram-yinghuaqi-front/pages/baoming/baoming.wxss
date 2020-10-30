@@ -7,3 +7,20 @@
   padding: 22rpx;
   text-align: center;
 }
+.butCenter{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.butSubmit{
+  width: 40%;
+  border-radius: 10px;
+  line-height: 80rpx;
+  height: 80rpx;
+  margin:20rpx 0;
+  box-shadow: 0 0 10px rgb(179, 178, 178);
+  background-color:#efcbcb;
+}
+.butSubmit::after{
+  border: none;
+}

@@ -1,115 +1,111 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"compileHotReLoad": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
-		"useIsolateContext": true,
-		"packNpmManually": false,
-		"packNpmRelationList": []
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.8.3",
-	"appid": "wx3ea08542e77319c9",
-	"projectname": "miniprogram-yinghuaqi-front",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "契约展示",
-					"pathName": "pages/matchinfo/matchinfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "文章详细页面",
-					"pathName": "pages/detail/detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "信息详情",
-					"pathName": "pages/detail/detail",
-					"query": "id=1",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "个人信息修改页面",
-					"pathName": "pages/changeUserInfo/changeUserInfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "报名页面",
-					"pathName": "pages/baoming/baoming",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "导航页面",
-					"pathName": "pages/navigation/navigation",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.8.3",
+  "appid": "wx3ea08542e77319c9",
+  "projectname": "miniprogram-yinghuaqi-front",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "契约展示",
+          "pathName": "pages/matchinfo/matchinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "文章详细页面",
+          "pathName": "pages/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "信息详情",
+          "pathName": "pages/detail/detail",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "个人信息修改页面",
+          "pathName": "pages/changeUserInfo/changeUserInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "报名页面",
+          "pathName": "pages/baoming/baoming",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "导航页面",
+          "pathName": "pages/navigation/navigation",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

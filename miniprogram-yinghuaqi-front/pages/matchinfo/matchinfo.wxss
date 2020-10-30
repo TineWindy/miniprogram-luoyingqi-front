@@ -65,7 +65,17 @@ background-size:100% ;
 .toast_text{
   position: absolute;
   text-align: center;
+  left: 75rpx;
+  right: 75rpx;
+  line-height: 60rpx;
+  top: 700rpx;
+}
+.bottom{
+  position: absolute;
+  text-align: center;
+  width: 5rpx;
+  height: 50rpx;
   left: 135rpx;
   right: 135rpx;
-  top: 700rpx;
+  top: 150rpx;
 }

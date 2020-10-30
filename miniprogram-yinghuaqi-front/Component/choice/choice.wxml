@@ -1,0 +1,55 @@
+<!--不定项选择题-->
+<view class="div" wx:if="{{content.questionStyle == 'select'}}">
+  <view class="choiceDiv {{content.questionFit?'':'redBorder'}}">
+    <!--题干-->
+    <view class="choiceDivHead">
+      <text class="choiceDivHeadOne {{content.questionFit?'':'redText'}}">{{content.id}}.</text>
+      <text class="choiceDivHeadTwo {{content.questionFit?'':'redText'}}">{{content.questionName}}</text>
+      <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit != 0}}">*</text>
+    </view>
+    <!--附加备注-->
+    <view wx:if="{{content.remark}}" class="chiceRemarks">
+      {{content.remark}}
+    </view>
+    <!--题目选项-->
+    <view class="choiceDivBody">
+      <block wx:for="{{content.questionOptions}}" wx:key="index">
+      <view class="choiceDivBodyItem" bindtap="tapOption" data-index="{{index}}">
+        <image class="choiceDivBodyItemImg" src="{{item.res?'../../images/totalSelected.png':'../../images/notSelected.png'}}" mode="widthFix"></image>
+        <view class="choiceDivBodyItemText">{{item.text}}</view>
+      </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!--输入填空题-->
+<view class="div" wx:if="{{content.questionStyle == 'input'}}">
+  <view class="inputDiv {{content.questionFit?'':'redBorder'}}">
+    <view class="inputDivLeft">
+      <text class="choiceDivHeadOne">{{content.id}}.</text>
+      <text class="inputTextBig">{{content.questionName}}</text>
+      <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text>
+    </view>
+    <input class="inputDivRight" bindinput="inputResult" placeholder="{{content.remark}}"></input>
+  </view>
+</view>
+
+<!--列表选择题-->
+<view class="div" wx:if="{{content.questionStyle == 'picker'}}">
+  <view class="pickerDiv {{content.questionFit?'':'redBorder'}}"> 
+    <view class="pickerDivLeft">
+      <text class="choiceDivHeadOne">{{content.id}}.</text>
+      <text class="inputTextBig">{{content.questionName}}</text>
+      <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text>
+    </view>
+    <view class="pickerDivRight">
+      <picker name="college" bindchange="PickerChange" value="{{content.questionValue}}" range="{{content.questionOptions}}">
+        <view class="picker">
+          {{content.questionValue}}
+          <text class="pickerTextBig">></text>
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>
