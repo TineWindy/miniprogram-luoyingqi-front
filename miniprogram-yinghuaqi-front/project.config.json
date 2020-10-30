@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -93,16 +93,24 @@
           "scene": null
         },
         {
-          "id": -1,
-          "name": "报名页面",
+          "id": 4,
+          "name": "组队报名",
           "pathName": "pages/baoming/baoming",
-          "query": "",
+          "query": "source=TEAM",
           "scene": null
         },
         {
           "id": -1,
           "name": "导航页面",
           "pathName": "pages/navigation/navigation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "个人报名",
+          "pathName": "pages/baoming/baoming",
+          "query": "source=PERSONAL",
           "scene": null
         }
       ]

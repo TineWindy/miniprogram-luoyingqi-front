@@ -49,12 +49,14 @@ function yhjRequest(url, params, success, method) {
   // 从存储中取出openId和session
   let openId = wx.getStorageSync("yhj_openId");
   let session = wx.getStorageSync("yhj_session");
+  let version = wx.getStorageSync("yhj_version");
 
   // 定义header
   var header = {
     'content-type': 'application/json',
     'session': session,
     'userId': openId,
+    'version':version
   }
 
 

@@ -1,9 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp();
-const ApiHost = app.globalData.ApiHost;
 const HttpUtils = require("../../utils/HttpUtils.js");
-
 
 Page({
   data: {
@@ -19,7 +17,6 @@ Page({
 
   onLoad: function() {
     login();
-    console.log(app.globalData)
   },
 
   onShareAppMessage: function(options){

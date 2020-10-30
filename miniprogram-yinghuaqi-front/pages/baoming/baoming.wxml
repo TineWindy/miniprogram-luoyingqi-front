@@ -6,15 +6,15 @@
 <userInfo basicPersonalInfo="{{basicPersonalInfo}}"></userInfo>
 
 <!--个人报名-->
-<block wx:if="{{type == 'single'}}">
+<block wx:if="{{source == 'PERSONAL'}}">
   
   <!--第二部分 个人基本描述 可编辑  basicDescriptionList-->
   <view class="titleToast">
     第二部分 个人基本描述
   </view>
 
-  <block wx:for="{{basicDescriptionList}}" wx:key="index">
-    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="basicDescriptionList" data-index="{{index}}"></choice>
+  <block wx:for="{{personalDescrption}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="personalDescrption" data-index="{{index}}"></choice>
   </block>
 
   <!--第三部分 个人硬性要求 可编辑   hardRequirementsList-->
@@ -22,8 +22,8 @@
     第三部分 个人硬性要求
   </view>
 
-  <block wx:for="{{hardRequirementsList}}" wx:key="index">
-    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="hardRequirementsList" data-index="{{index}}"></choice>
+  <block wx:for="{{hardDemand}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="hardDemand" data-index="{{index}}"></choice>
   </block>
 
   <!--第四部分 个人加分要求 可编辑 extraRequirementsList-->
@@ -31,8 +31,8 @@
     第四部分 个人加分要求
   </view>
 
-  <block wx:for="{{extraRequirementsList}}" wx:key="index">
-    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="extraRequirementsList" data-index="{{index}}"></choice>
+  <block wx:for="{{bonusDemand}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="bonusDemand" data-index="{{index}}"></choice>
   </block>
 
   <view class="butCenter">
@@ -41,7 +41,7 @@
 </block>
 
 <!--组队报名-->
-<block wx:if="{{type == 'group'}}">
+<block wx:if="{{source == 'TEAM'}}">
   <!--第二部分 对方信息填写 可编辑  theOtherInfo-->
   <view class="titleToast">
     第二部分 对方信息填写
