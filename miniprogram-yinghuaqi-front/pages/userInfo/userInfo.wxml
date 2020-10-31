@@ -72,6 +72,13 @@
       <view class="title">学号</view>
       <input class="inputStyle" name="schoolNumber" placeholder="请输入您的学号~" type="number" value="{{schoolNumber}}" disabled="{{!isUpdating}}"></input>
     </view>
+
+    <view class="cu-form-group margin-top listCView">
+      <view class="title">个人标签</view>
+      <text class="redPoint">*</text>
+      <input class="inputStyle" name="identifyCode" placeholder="" type="number" value="{{identifyCode}}" disabled='true'></input>
+    </view>
+
     <!--提交-->
     <view >
       <view class="listCSubmitDiv" wx:if="{{isUpdating}}">
@@ -84,3 +91,6 @@
   </form>
   </view>
 </view>
+
+<view>请您如实填写个人信息,我们保证您的个人信息仅在本活动内使用</view>
+<text class="redPoint">*</text><text>我们将自动为您生成个人标签，您无需修改</text>

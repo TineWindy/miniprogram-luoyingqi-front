@@ -19,7 +19,8 @@ Page({
     qq: '',
     phone: '',
     schoolNumber: '',
-    birthday: ''
+    birthday: '',
+    identifyCode:''
   },
 
   onLoad: function (options) {
@@ -153,7 +154,7 @@ function postUserBasicInfo(e, body) {
       phone: form_data.phone,
       school: body.data.school[form_data.school],
       college: body.data.college[form_data.college],
-      schoolNumber: form_data.schoolNumber
+      schoolNumber: form_data.schoolNumber,
     },
     function (res) {
       wx.showModal({
@@ -184,7 +185,8 @@ function getUserBasicInfo(body, isRefresh) {
         phone: res.resultObj.phone,
         schoolIndex: findIdx(body.data.school, res.resultObj.school),
         collegeIndex: findIdx(body.data.college, res.resultObj.college),
-        schoolNumber: res.resultObj.schoolNumber
+        schoolNumber: res.resultObj.schoolNumber,
+        identifyCode: res.resultObj.identifyCode
       })
 
       if (isRefresh){

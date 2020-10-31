@@ -5,7 +5,7 @@
     <view class="inputDivLeft">
       <text class="choiceDivHeadOne">1.</text>
       <text class="inputTextBig">姓名</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.name}}"></input>
   </view>
@@ -16,7 +16,7 @@
   <view class="pickerDivLeft">
     <text class="choiceDivHeadOne">2.</text>
     <text class="inputTextBig">性别</text>
-    <text class="choiceDivHeadThree">*</text>
+    <!-- <text class="choiceDivHeadThree">*</text> -->
   </view>
   <view class="pickerDivRight">
     <view class="picker textGrey">
@@ -32,7 +32,7 @@
     <view class="pickerDivLeft">
       <text class="choiceDivHeadOne">3.</text>
       <text class="inputTextBig">生日</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <view class="pickerDivRight">
       <view class="picker textGrey">
@@ -48,7 +48,7 @@
     <view class="inputDivLeft">
       <text class="choiceDivHeadOne">4.</text>
       <text class="inputTextBig">QQ号</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.qq}}"></input>
   </view>
@@ -59,7 +59,7 @@
     <view class="inputDivLeft">
       <text class="choiceDivHeadOne">5.</text>
       <text class="inputTextBig">手机号</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.phone}}"></input>
   </view>
@@ -70,7 +70,7 @@
     <view class="pickerDivLeft">
       <text class="choiceDivHeadOne">6.</text>
       <text class="inputTextBig">学校</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <view class="pickerDivRight">
       <view class="picker textGrey">
@@ -86,7 +86,7 @@
     <view class="pickerDivLeft">
       <text class="choiceDivHeadOne">7.</text>
       <text class="inputTextBig">学院</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <view class="pickerDivRight">
         <view class="picker textGrey">
@@ -102,7 +102,7 @@
     <view class="inputDivLeft">
       <text class="choiceDivHeadOne">8.</text>
       <text class="inputTextBig">学号</text>
-      <text class="choiceDivHeadThree">*</text>
+      <!-- <text class="choiceDivHeadThree">*</text> -->
     </view>
     <input class="inputDivRight textRight textGrey" disabled="true" value="{{basicPersonalInfo.schoolNumber}}"></input>
   </view>

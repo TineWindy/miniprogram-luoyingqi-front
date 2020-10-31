@@ -61,3 +61,8 @@ Page{
 .inputStyle{
   text-align:right;
 }
+
+.redPoint{
+  color: red;
+  font-size: 18px;
+}
