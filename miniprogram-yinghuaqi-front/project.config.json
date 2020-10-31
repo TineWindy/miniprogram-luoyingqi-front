@@ -36,7 +36,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.8.3",
+  "libVersion": "2.13.2",
   "appid": "wx3ea08542e77319c9",
   "projectname": "miniprogram-yinghuaqi-front",
   "debugOptions": {

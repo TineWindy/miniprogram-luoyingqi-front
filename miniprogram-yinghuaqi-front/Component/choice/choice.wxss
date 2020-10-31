@@ -38,6 +38,9 @@
 .redText{
   color: red;
 }
+.margin_left{
+  margin-left:20rpx;
+}
 /*附加备注*/
 .chiceRemarks{
   width: 100%;

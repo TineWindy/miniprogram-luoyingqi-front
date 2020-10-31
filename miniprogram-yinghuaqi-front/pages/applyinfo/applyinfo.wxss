@@ -1381,10 +1381,47 @@ icon {
 }
 
 .title {
-  width: 250rpx;
+  width: 100%;
+  margin-left:0;
+}
+
+.margin-left{
+  margin-bottom: 16rpx;
 }
 
 .starView {
   margin-left: 1000rpx;
 }
 
+.questionValue{
+  font-size: 16px;
+  color:rgb(90, 90, 90);
+}
+
+.showRow{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border-bottom: 1px solid rgb(194, 193, 193);
+  padding-bottom: 12rpx;
+  padding-top: 12rpx;
+  padding:12rpx 0 12rpx 34rpx;
+}
+/*取消报名按钮*/
+.butCenter{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.butSubmit{
+  width: 40%;
+  border-radius: 10px;
+  line-height: 80rpx;
+  height: 80rpx;
+  margin:20rpx 0;
+  box-shadow: 0 0 10px rgb(179, 178, 178);
+  background-color:#efcbcb;
+}
+.butSubmit::after{
+  border: none;
+}
