@@ -13,8 +13,8 @@
     第二部分 个人基本描述
   </view>
 
-  <block wx:for="{{personalDescrption}}" wx:key="index">
-    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="personalDescrption" data-index="{{index}}"></choice>
+  <block wx:for="{{personalDescription}}" wx:key="index">
+    <choice content="{{item}}" bindComponentTap="onComponentTap" data-name="personalDescription" data-index="{{index}}"></choice>
   </block>
 
   <!--第三部分 个人硬性要求 可编辑   hardRequirementsList-->

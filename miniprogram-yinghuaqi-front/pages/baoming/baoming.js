@@ -22,7 +22,7 @@ Page({
   data: {
     source: '',                              //判断报名的类型
     basicPersonalInfo: {},                 //个人基本信息
-    personalDescrption: [],
+    personalDescription: [],
     hardDemand: [],
     bonusDemand: [],
     theOtherInfo: [{                   //组队报名另一半的信息填写
@@ -72,16 +72,23 @@ Page({
   submit: function (e) {
     //前端数据整理 如果填写完整则返回数据结果，否则返回false
     var resultData = dataResult(this);
-    console.log(resultData)
+
     if (resultData != false) {
-      //发送post请求
+      // 判断来源
       var src = this.data.source;
 
-      if (src == 'PERSONAL'){
-        postPersonalApplyInfo(resultData);
-      }else if (src == 'TEAM'){
+      if (src == 'PERSONAL') {
+        // 将数据str化
+        var dataMap = {};
+        dataMap.personalDescription = JSON.stringify(resultData.personalDescription);
+        dataMap.personalHardDemand = JSON.stringify(resultData.personalHardDemand);
+        dataMap.personalBonusDemand = JSON.stringify(resultData.personalBonusDemand);
+
+        console.log(resultData);
+        postPersonalApplyInfo(dataMap);
+      } else if (src == 'TEAM') {
         postTeamApplyInfo(resultData);
-      }else{
+      } else {
         wx.showModal({
           title: '提示',
           content: '报名失败!',
@@ -150,7 +157,7 @@ function getQustionsLists(body) {
 
       // 渲染数据
       body.setData({
-        personalDescrption: data.DESCRIPTION,
+        personalDescription: data.DESCRIPTION,
         hardDemand: data.HARD_DEMAND,
         bonusDemand: data.BONUS_DEMAND
       })
@@ -161,13 +168,13 @@ function getQustionsLists(body) {
 
 //前端数据整理
 function dataResult(body) {
-  if(body.data.source == 'PERSONAL'){
+  if (body.data.source == 'PERSONAL') {
     var resultData = {
-      DESCRIPTION: [],
-      HARD_DEMAND: [],
-      BONUS_DEMAND: []
+      personalDescription: [],
+      personalHardDemand: [],
+      personalBonusDemand: []
     }
-  
+
     if (judgeFitPersonal(body)) {
       resultData = bodyData2resultData(body, resultData)
       return resultData;
@@ -178,10 +185,10 @@ function dataResult(body) {
       })
       return false
     }
-  } else if(body.data.source == 'TEAM'){
+  } else if (body.data.source == 'TEAM') {
     var resultData = {
-      otherName:"",
-      otherIdentifyCode:""
+      otherName: "",
+      otherIdentifyCode: ""
     }
     if (judgeFitTeam(body)) {
       resultData = bodyData2resultData(body, resultData)
@@ -198,22 +205,22 @@ function dataResult(body) {
 
 //个人报名转换函数
 function bodyData2resultData(body, resultData) {
-  if(body.data.source == 'PERSONAL'){
-    var personalDescrption_ = body.data.personalDescrption;
+  if (body.data.source == 'PERSONAL') {
+    var personalDescription_ = body.data.personalDescription;
     var hardDemand_ = body.data.hardDemand;
     var bonusDemand_ = body.data.bonusDemand;
-  
-    for (var i = 0; i < personalDescrption_.length; i++) {
-      resultData.DESCRIPTION.push({ [personalDescrption_[i].questionKey]: personalDescrption_[i].questionValue })
+
+    for (var i = 0; i < personalDescription_.length; i++) {
+      resultData.personalDescription.push({ [personalDescription_[i].questionKey]: personalDescription_[i].questionValue })
     }
     for (var i = 0; i < hardDemand_.length; i++) {
-      resultData.HARD_DEMAND.push({ [hardDemand_[i].questionKey]: hardDemand_[i].questionValue })
+      resultData.personalHardDemand.push({ [hardDemand_[i].questionKey]: hardDemand_[i].questionValue })
     }
     for (var i = 0; i < bonusDemand_.length; i++) {
-      resultData.BONUS_DEMAND.push({ [bonusDemand_[i].questionKey]: bonusDemand_[i].questionValue })
+      resultData.personalBonusDemand.push({ [bonusDemand_[i].questionKey]: bonusDemand_[i].questionValue })
     }
     return resultData
-  } else if(body.data.source == 'TEAM'){
+  } else if (body.data.source == 'TEAM') {
     resultData.otherName = body.data.theOtherInfo[0].questionValue
     resultData.otherIdentifyCode = body.data.theOtherInfo[1].questionValue
     return resultData
@@ -221,10 +228,10 @@ function bodyData2resultData(body, resultData) {
 }
 
 //组队报名检查函数
-function judgeFitTeam(body){
-  var resultBoolen =true
+function judgeFitTeam(body) {
+  var resultBoolen = true
   var other_ = body.data.theOtherInfo
-  for(var i=0;i<other_.length;i++){
+  for (var i = 0; i < other_.length; i++) {
     if (JSON.stringify(other_[i].questionValue) == 'null') {
       body.setData({
         [`theOtherInfo[${i}].questionFit`]: false
@@ -232,7 +239,7 @@ function judgeFitTeam(body){
       resultBoolen = false
     } else {
       body.setData({
-        [`personalDescrption[${i}].questionFit`]: true
+        [`personalDescription[${i}].questionFit`]: true
       })
     }
   }
@@ -243,31 +250,31 @@ function judgeFitTeam(body){
 function judgeFitPersonal(body) {
   var resultBoolen = true;
 
-  var personalDescrption_ = body.data.personalDescrption;
+  var personalDescription_ = body.data.personalDescription;
   var hardDemand_ = body.data.hardDemand;
   var bonusDemand_ = body.data.bonusDemand;
 
-  for (var i = 0; i < personalDescrption_.length; i++) {
-    if (personalDescrption_[i].questionStyle == 'select') {
-      if (personalDescrption_[i].questionTotal < personalDescrption_[i].questionOptionsMinLimit || personalDescrption_[i].questionTotal > personalDescrption_[i].questionOptionsMaxLimit) {
+  for (var i = 0; i < personalDescription_.length; i++) {
+    if (personalDescription_[i].questionStyle == 'select') {
+      if (personalDescription_[i].questionTotal < personalDescription_[i].questionOptionsMinLimit || personalDescription_[i].questionTotal > personalDescription_[i].questionOptionsMaxLimit) {
         body.setData({
-          [`personalDescrption[${i}].questionFit`]: false
+          [`personalDescription[${i}].questionFit`]: false
         })
         resultBoolen = false
       } else {
         body.setData({
-          [`personalDescrption[${i}].questionFit`]: true
+          [`personalDescription[${i}].questionFit`]: true
         })
       }
     } else {
-      if (JSON.stringify(personalDescrption_[i].questionValue) == 'null' || JSON.stringify(personalDescrption_[i].questionValue).length == 2) {
+      if (JSON.stringify(personalDescription_[i].questionValue) == 'null' || JSON.stringify(personalDescription_[i].questionValue).length == 2) {
         body.setData({
-          [`personalDescrption[${i}].questionFit`]: false
+          [`personalDescription[${i}].questionFit`]: false
         })
         resultBoolen = false
       } else {
         body.setData({
-          [`personalDescrption[${i}].questionFit`]: true
+          [`personalDescription[${i}].questionFit`]: true
         })
       }
     }

@@ -1,3 +1,5 @@
+const HttpUtils = require("../../utils/HttpUtils");
+
 // pages/navigation/navigation.js
 Page({
 
@@ -8,8 +10,9 @@ Page({
 
   },
   onLoad: function (options) {
-
+    wx.setStorageSync('yhj_version', 'WHU-LOVER');
   },
+
   // 查看我的报名
   myApplyInfoTap: function(e) {
     getMyApplyInfo(this, e);
@@ -53,4 +56,8 @@ function getMyIceBreakPartyInfo(body, e){
   wx.navigateTo({
     url: '../iceBreak/iceBreak',
   })
+}
+
+function getVersionInfo(){
+
 }
