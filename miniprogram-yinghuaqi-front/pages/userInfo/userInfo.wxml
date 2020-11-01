@@ -92,5 +92,7 @@
   </view>
 </view>
 
-<view>请您如实填写个人信息,我们保证您的个人信息仅在本活动内使用</view>
-<text class="redPoint">*</text><text>我们将自动为您生成个人标签，您无需修改</text>
+<view class="text-center">
+  <text>请您如实填写个人信息~ \n 我们保证您的个人信息仅在本活动内使用 \n <text class="redPoint">*</text>我们将自动为您生成个人标签 \n 您无需修改!</text>
+</view>
+ 

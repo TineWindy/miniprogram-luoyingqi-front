@@ -1,0 +1,12 @@
+<view class="total">
+  <view class="totalDiv">
+
+    <view class="text">
+      手机号:
+    </view>
+
+    <input class="inputPhone" placeholder="请输入您的电话号码~" bindinput="getInputPhone"> </input>
+   
+    <button class="submitVerify" bindtap="submitVerify">{{state}}</button>
+  </view>
+</view>

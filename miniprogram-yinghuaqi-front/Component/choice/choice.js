@@ -24,16 +24,6 @@ Component({
           [`content.questionTotal`]:newTotal
         })
       }
-      //判断是否满足要求
-      /*if(this.data.content.questionTotal >= this.data.content.questionOptionsMinLimit && this.data.content.questionTotal <= this.data.content.questionOptionsMaxLimit){
-        this.setData({
-          [`content.questionFit`]:true
-        })
-      } else{
-        this.setData({
-          [`content.questionFit`]:false
-        })
-      }*/
       var valueTemp =[]    //输出value结果
       for(var i=0; i<this.data.content.questionOptions.length;i++){
         if(this.data.content.questionOptions[i].res){

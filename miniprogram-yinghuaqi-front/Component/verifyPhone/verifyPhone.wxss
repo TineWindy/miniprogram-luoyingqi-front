@@ -1,0 +1,36 @@
+/* Component/verifyPhone/verifyPhone.wxss */
+.total{
+  width: 100%;
+  height: 126rpx;
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.totalDiv{
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(196, 196, 196);
+  display: flex;
+  align-items: center;
+}
+.text{
+  width: 24%;
+  font-size: 17px;
+  padding-left: 20rpx;
+}
+.inputPhone{
+  width: 50%;
+}
+.submitVerify{
+  width: 22%;
+  height: 80%;
+  font-size: 13px;
+  background-color: #efcbcb;
+  padding: 0px;
+}
+.submitVerify::after{
+  border: none;
+}

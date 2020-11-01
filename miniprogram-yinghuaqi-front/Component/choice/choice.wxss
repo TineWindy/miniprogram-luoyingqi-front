@@ -11,7 +11,7 @@
   width: 94%;
   background-color: white;
   border-radius: 14rpx;
-  box-shadow: 0 0 10px rgb(235, 235, 235);
+  box-shadow: 0 0 10px rgb(192, 192, 192);
 }
 .redBorder{
   border:1px solid red;
@@ -71,7 +71,7 @@
   width: 94%;
   background-color: white;
   border-radius: 14rpx;
-  box-shadow: 0 0 10px rgb(235, 235, 235);
+  box-shadow: 0 0 10px rgb(192, 192, 192);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -92,7 +92,7 @@
   width: 94%;
   background-color: white;
   border-radius: 14rpx;
-  box-shadow: 0 0 10px rgb(235, 235, 235);
+  box-shadow: 0 0 10px rgb(192, 192, 192);
   display: flex;
   flex-direction: row;
   justify-content: space-between;

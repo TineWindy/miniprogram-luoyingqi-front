@@ -7,7 +7,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    timeList:[{
+      name:"报名截至时间",
+      time:"2020/11/11"
+    },{
+      name:"结果展示时间",
+      time:"2020/11/13"
+    },{
+      name:"报名截至时间",
+      time:"2020/11/11"
+    },{
+      name:"结果展示时间",
+      time:"2020/11/13"
+    },{
+      name:"报名截至时间",
+      time:"2020/11/11"
+    },{
+      name:"结果展示时间",
+      time:"2020/11/13"
+    }]
   },
   onLoad: function (options) {
     wx.setStorageSync('yhj_version', 'WHU-LOVER');

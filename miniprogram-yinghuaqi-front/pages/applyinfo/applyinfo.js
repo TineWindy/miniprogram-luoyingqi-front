@@ -3,26 +3,8 @@ var httpFuncs = require("../../utils/HttpUtils.js");
 Page({
   data: {
     isApplied: false,
-    hardDemandArray: [{
-      questionKey:"爱好",
-      questionValue:["打篮球","跑步"]
-    },{
-      questionKey:"你的目标对象的体重比是多少",
-      questionValue:"非常苗条"
-    },{
-      questionKey:"你的目标对象的家庭居住地的气候，天气，空气湿度，温度，空气粒子的要求？",
-      questionValue:"要有火星的温度"
-    }],
-    bonusDemandArray: [{
-      questionKey:"爱好",
-      questionValue:["打篮球","跑步"]
-    },{
-      questionKey:"你的目标对象的体重比是多少",
-      questionValue:"非常苗条"
-    },{
-      questionKey:"你的目标对象的家庭居住地的气候，天气，空气湿度，温度，空气粒子的要求？",
-      questionValue:"要有火星的温度"
-    }],
+    hardDemandArray: [],
+    bonusDemandArray: [],
     name: '',
     schoolNumber: '',
     college: '',
