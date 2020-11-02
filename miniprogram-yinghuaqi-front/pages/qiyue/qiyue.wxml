@@ -33,7 +33,7 @@
     <!--活动时间的尾部部分 日期-->
     <view class="activityTimeTail">
       <block wx:for="{{day}}" wx:key="index">
-        <view class="activityTimeItem activityTimeDay {{index==3?'left':''}} {{index>3&&index<6?'total':''}} {{index==6?'right':''}} {{index==7?'left':''}} {{index>7&&index<9?'total':''}} {{index==9?'right':''}}">{{item}}</view>
+        <view class="activityTimeItem activityTimeDay {{index==10?'left':''}} {{index>10&&index<13?'total':''}} {{index==13?'right':''}} {{index==14?'left':''}} {{index>14&&index<16?'total':''}} {{index==16?'right':''}}">{{item}}</view>
       </block>
     </view>
   </view>
@@ -43,7 +43,7 @@
 <!--按钮-->
 <button class="navigation" bindtap="toNavigationPage">
   <span class='wenzi'>
-    武汉大学专场
+    武汉大学 五天·启源
   </span>
   <image src='../../images/button1.png' mode='widthFix'>
   </image>

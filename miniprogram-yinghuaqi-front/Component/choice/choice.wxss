@@ -116,3 +116,6 @@
 .textGrey{
   color: rgb(114, 114, 114);
 }
+.fontSize{
+  font-size: 14px;
+}

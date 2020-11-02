@@ -8,7 +8,7 @@
 <!--匹配结果的展示-->
 <view wx:elif="{{status=='NORMAL' || status=='BOTH_AGREED'}}">
 
-  <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> 
+  <!--<image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> -->
 
   <view class="info" style="margin-top: -100rpx">
     <text>姓 名</text>

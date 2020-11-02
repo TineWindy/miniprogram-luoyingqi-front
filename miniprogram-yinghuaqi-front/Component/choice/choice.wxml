@@ -16,7 +16,7 @@
     <view class="choiceDivBody">
       <block wx:for="{{content.questionOptions}}" wx:key="index">
       <view class="choiceDivBodyItem" bindtap="tapOption" data-index="{{index}}">
-        <image class="choiceDivBodyItemImg" src="{{item.res?'../../images/totalSelected.png':'../../images/notSelected.png'}}" mode="widthFix"></image>
+        <image class="choiceDivBodyItemImg" src="{{item.res?'../../images/newSelected.png':'../../images/notSelected.png'}}" mode="widthFix"></image>
         <view class="choiceDivBodyItemText">{{item.text}}</view>
       </view>
       </block>
@@ -48,7 +48,7 @@
       <picker name="college" bindchange="PickerChange" value="{{content.questionValue}}" range="{{content.questionOptions}}">
         <view class="picker">
           {{content.questionValue}}
-          <text class="pickerTextBig">></text>
+          <text class="pickerTextBig"><text class="fontSize">{{content.questionValue == ''?'点我选择':' '}}</text> ></text>
         </view>
       </picker>
     </view>

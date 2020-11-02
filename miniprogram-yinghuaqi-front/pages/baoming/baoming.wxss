@@ -28,3 +28,8 @@
 .text_red{
   color: red;
 }
+/*上传照片*/
+.uploadImg{
+  width: 100%;
+  
+}

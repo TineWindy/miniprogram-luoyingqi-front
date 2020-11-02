@@ -41,7 +41,6 @@ Component({
     timeDown:function(body){
       var a = setTimeout(res=>{
           var newTimeDown = body.data.timeDown - 1
-          console.log(newTimeDown)
           if(newTimeDown == 0){
             clearTimeout(a)
           } else{

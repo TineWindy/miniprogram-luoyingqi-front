@@ -10,7 +10,7 @@ page{
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-top:360rpx;
+  margin-top:420rpx;
   margin-bottom: 40rpx;
 }
 .timeShowDIv{
@@ -50,8 +50,8 @@ page{
 }
 .wenzi{
   position:absolute;
-  left:50rpx;
-  top: 70rpx;
+  left:6.5%;
+  top: 40%;
   z-index:100;
   color:white;
   font-size: 0.9em;
