@@ -10,7 +10,6 @@ Page({
     image: '../../images/baoming_sel_back.png',
     name: '珞樱契',
     gender: 'MALE',
-    grade: '大一',
     contact: 'email:weifengyoulei@foxmail.com',
     description: '欢迎加入珞樱契团队',
     status: '',
@@ -40,30 +39,22 @@ Page({
 //获取匹配结果
 function getMatchInfo(body) {
   httpFuncs.yhjRequest(
-    '/user/getMatchInfo',
+    '/match/getMatchResult',
     '',
     function(res) {
-      dataInit(res.resultObj, body);
+      body.setData({
+        status : res.resultObj.matchStatus,
+        name : res.resultObj.coupleName,
+        contact : res.resultObj.coupleContact,
+        description : res.resultObj.coupleDescription,
+        score: res.resultObj.matchScore,
+        coupleNumber: res.resultObj.coupleNumber
+      })
     },
     'GET'
   );
 }
 
-// 渲染
-function dataInit(data, body) {
-  body.setData({
-    status: data.status,
-    messsage: data.messsage,
-    name: data.loverName,
-    gender: data.loverGender,
-    grade: data.loverGrade,
-    contact: data.loverContact,
-    description: data.loverPersonalDesc,
-    image: data.loverPhoto,
-    coupleNumber: data.coupleNumber,
-    score: data.score,
-  })
-}
 
 
 // 取消匹配

@@ -82,7 +82,7 @@
 }
 .inputDivRight{
   width: 71.2%;
-  text-align: left;
+  text-align: right;
 }
 .inputTextBig{
   font-size: 15px;

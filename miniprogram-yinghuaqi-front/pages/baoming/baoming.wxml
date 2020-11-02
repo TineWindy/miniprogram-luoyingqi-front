@@ -20,6 +20,7 @@
   <!--第三部分 个人硬性要求 可编辑   hardRequirementsList-->
   <view class="titleToast">
     第三部分 个人硬性要求
+    <view> 我们会在匹配过程中会<text class="text_red">完全</text>满足您的硬性要求</view>
   </view>
 
   <block wx:for="{{hardDemand}}" wx:key="index">
@@ -29,6 +30,7 @@
   <!--第四部分 个人加分要求 可编辑 extraRequirementsList-->
   <view class="titleToast">
     第四部分 个人加分要求
+    <view> 我们会在匹配过程中会<text class="text_red">尽量</text>满足您的加分要求</view>
   </view>
 
   <block wx:for="{{bonusDemand}}" wx:key="index">
@@ -45,6 +47,8 @@
   <!--第二部分 对方信息填写 可编辑  theOtherInfo-->
   <view class="titleToast">
     第二部分 对方信息填写
+    <view> 注意：本报名仅适用于双方都为武汉大学学生的情况。其他情况请联系工作人员！ </view>
+    
   </view>
 
   <block wx:for="{{theOtherInfo}}" wx:key="index">

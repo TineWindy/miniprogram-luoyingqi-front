@@ -31,10 +31,18 @@ background-size:100% ;
   font-size: 30rpx;
 }
 
-.info_item{
+.info_item_bottom{
   position: absolute;
   top: 650rpx;
-  left: 170rpx;
+  left: 70rpx;
+  color:#e55c4d;
+  font-size: 30rpx;
+}
+
+.info_item_left{
+  position: absolute;
+  top: 650rpx;
+  left: 220rpx;
   color:#e55c4d;
   font-size: 30rpx;
 }

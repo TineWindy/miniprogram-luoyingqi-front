@@ -1332,6 +1332,10 @@ icon {
   text-align: left;
 }
 
+.align_center{
+  text-align: center;
+}
+
 .btn_choose {
   color: #333;
   background-color: #000;

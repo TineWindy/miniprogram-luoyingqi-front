@@ -93,6 +93,6 @@
 </view>
 
 <view class="text-center">
-  <text>请您如实填写个人信息~ \n 我们保证您的个人信息仅在本活动内使用 \n <text class="redPoint">*</text>我们将自动为您生成个人标签 \n 您无需修改!</text>
+  <text>请您如实填写个人信息~ \n 我们保证您的个人信息仅在本小程序内使用 \n <text class="redPoint">*</text>我们将为您自动生成个人标签， 您无需修改 \n 请您妥善保管好该项信息 !</text>
 </view>
  

@@ -5,8 +5,8 @@
     <view class="choiceDivHead">
       <text class="choiceDivHeadOne {{content.questionFit?'':'redText'}}">{{content.id}}.</text>
       <text class="choiceDivHeadTwo {{content.questionFit?'':'redText'}}">{{content.questionName}}</text>
-      <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit != 0}}">*</text>
-      <text class="margin_left" wx:if="{{content.questionOptionsMaxLimit !=1 }}">(最小{{content.questionOptionsMinLimit}}项，最大{{content.questionOptionsMaxLimit}}项)</text>
+      <!-- <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit != 0}}">*</text>
+      <text class="margin_left" wx:if="{{content.questionOptionsMaxLimit !=1 }}">(最小{{content.questionOptionsMinLimit}}项，最大{{content.questionOptionsMaxLimit}}项)</text> -->
     </view>
     <!--附加备注-->
     <view wx:if="{{content.remark}}" class="chiceRemarks">
@@ -30,9 +30,9 @@
     <view class="inputDivLeft">
       <text class="choiceDivHeadOne">{{content.id}}.</text>
       <text class="inputTextBig">{{content.questionName}}</text>
-      <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text>
+      <!-- <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text> -->
     </view>
-    <input class="inputDivRight" bindinput="inputResult" placeholder="{{content.remark}}"></input>
+    <input class="inputDivRight" bindinput="inputResult" placeholder="{{content.remark}} "></input>
   </view>
 </view>
 
@@ -42,7 +42,7 @@
     <view class="pickerDivLeft">
       <text class="choiceDivHeadOne">{{content.id}}.</text>
       <text class="inputTextBig">{{content.questionName}}</text>
-      <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text>
+      <!-- <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text> -->
     </view>
     <view class="pickerDivRight">
       <picker name="college" bindchange="PickerChange" value="{{content.questionValue}}" range="{{content.questionOptions}}">

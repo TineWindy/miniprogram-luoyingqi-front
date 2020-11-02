@@ -20,12 +20,12 @@ const HttpUtils = require('../../utils/HttpUtils')
 */
 Page({
   data: {
-    source: '',                              //判断报名的类型
-    basicPersonalInfo: {},                 //个人基本信息
+    source: '', //判断报名的类型
+    basicPersonalInfo: {}, //个人基本信息
     personalDescription: [],
     hardDemand: [],
     bonusDemand: [],
-    theOtherInfo: [{                   //组队报名另一半的信息填写
+    theOtherInfo: [{ //组队报名另一半的信息填写
       id: '1',
       questionStyle: 'input',
       questionName: "Ta的姓名",
@@ -37,10 +37,10 @@ Page({
       questionFit: true,
       questionValue: null,
       questionTotal: 0
-    }, {                   //组队报名另一半的信息填写
+    }, { //组队报名另一半的信息填写
       id: '2',
       questionStyle: 'input',
-      questionName: "Ta的契约码",
+      questionName: "Ta的个人标签",
       remark: "",
       questionOptions: [],
       questionKey: "",
@@ -80,14 +80,22 @@ Page({
       if (src == 'PERSONAL') {
         // 将数据str化
         var dataMap = {};
-        dataMap.personalDescription = JSON.stringify(resultData.personalDescription);
-        dataMap.personalHardDemand = JSON.stringify(resultData.personalHardDemand);
-        dataMap.personalBonusDemand = JSON.stringify(resultData.personalBonusDemand);
+        dataMap.personalDescription = resultData.personalDescription;
+        dataMap.personalHardDemand = resultData.personalHardDemand;
+        dataMap.personalBonusDemand = resultData.personalBonusDemand;
 
-        console.log(resultData);
         postPersonalApplyInfo(dataMap);
       } else if (src == 'TEAM') {
-        postTeamApplyInfo(resultData);
+        wx.showModal({
+          title: '提示',
+          content: '组队报名无法取消，请您谨慎操作！',
+          success(res) {
+            if (res.confirm) {
+              postTeamApplyInfo(resultData);
+            }
+          }
+        })
+
       } else {
         wx.showModal({
           title: '提示',
@@ -123,7 +131,15 @@ function postPersonalApplyInfo(data) {
       wx.showModal({
         title: '提示',
         content: '报名成功, 请您留意后续的匹配结果!',
-        showCancel: false
+        showCancel: false,
+        success(res) {
+          if (res.confirm) {
+            //返回首页
+            wx.reLaunch({
+              url: '../qiyue/qiyue',
+            })
+          }
+        }
       })
     },
     'post'
@@ -140,18 +156,27 @@ function postTeamApplyInfo(data) {
       wx.showModal({
         title: '提示',
         content: '组队报名成功, 请您留意后续的活动!',
-        showCancel: false
+        showCancel: false,
+        success(res) {
+          if (res.confirm) {
+            //返回首页
+            wx.reLaunch({
+              url: '../qiyue/qiyue',
+            })
+          }
+        }
       })
     },
-    'post'
+    'get'
   )
 }
 
 // 请求问题列表
 function getQustionsLists(body) {
   HttpUtils.yhjRequest(
-    '/question/getQuestions',
-    { version: 'WHU-LOVER' },
+    '/question/getQuestions', {
+      version: 'WHU-LOVER'
+    },
     function (res) {
       var data = res.resultObj;
 
@@ -170,9 +195,9 @@ function getQustionsLists(body) {
 function dataResult(body) {
   if (body.data.source == 'PERSONAL') {
     var resultData = {
-      personalDescription: [],
-      personalHardDemand: [],
-      personalBonusDemand: []
+      personalDescription: {},
+      personalHardDemand: {},
+      personalBonusDemand: {}
     }
 
     if (judgeFitPersonal(body)) {
@@ -187,8 +212,8 @@ function dataResult(body) {
     }
   } else if (body.data.source == 'TEAM') {
     var resultData = {
-      otherName: "",
-      otherIdentifyCode: ""
+      coupleName: "",
+      coupleIdentifyCode: ""
     }
     if (judgeFitTeam(body)) {
       resultData = bodyData2resultData(body, resultData)
@@ -211,20 +236,45 @@ function bodyData2resultData(body, resultData) {
     var bonusDemand_ = body.data.bonusDemand;
 
     for (var i = 0; i < personalDescription_.length; i++) {
-      resultData.personalDescription.push({ [personalDescription_[i].questionKey]: personalDescription_[i].questionValue })
+      var key = personalDescription_[i].questionKey;
+      var v = personalDescription_[i].questionValue;
+
+      if (assertStrNotEmpty(v)) {
+        resultData.personalDescription[key] = v;
+      }
+
     }
+
     for (var i = 0; i < hardDemand_.length; i++) {
-      resultData.personalHardDemand.push({ [hardDemand_[i].questionKey]: hardDemand_[i].questionValue })
+      var key = hardDemand_[i].questionKey;
+      var v = hardDemand_[i].questionValue;
+
+      if (assertStrNotEmpty(v)) {
+        resultData.personalHardDemand[key] = v;
+      }
     }
     for (var i = 0; i < bonusDemand_.length; i++) {
-      resultData.personalBonusDemand.push({ [bonusDemand_[i].questionKey]: bonusDemand_[i].questionValue })
+      var key = bonusDemand_[i].questionKey;
+      var v = bonusDemand_[i].questionValue;
+
+      if (assertStrNotEmpty(v)) {
+        resultData.personalBonusDemand[key] = v;
+      }
     }
+
     return resultData
   } else if (body.data.source == 'TEAM') {
-    resultData.otherName = body.data.theOtherInfo[0].questionValue
-    resultData.otherIdentifyCode = body.data.theOtherInfo[1].questionValue
+    resultData.coupleName = body.data.theOtherInfo[0].questionValue
+    resultData.coupleIdentifyCode = body.data.theOtherInfo[1].questionValue
     return resultData
   }
+}
+
+function assertStrNotEmpty(str) {
+  if (typeof (str) == undefined || str == null || str === "") {
+    return false;
+  }
+  return true;
 }
 
 //组队报名检查函数

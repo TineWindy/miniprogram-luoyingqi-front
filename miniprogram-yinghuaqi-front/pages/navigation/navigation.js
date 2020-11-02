@@ -8,22 +8,19 @@ Page({
    */
   data: {
     timeList:[{
-      name:"报名截至时间",
-      time:"2020/11/11"
+      name:"报名开始时间",
+      time:"2020/11/05"
     },{
-      name:"结果展示时间",
+      name:"匹配公布时间",
       time:"2020/11/13"
     },{
-      name:"报名截至时间",
-      time:"2020/11/11"
-    },{
-      name:"结果展示时间",
+      name:"破冰晚会时间",
       time:"2020/11/13"
     },{
-      name:"报名截至时间",
+      name:"任务开始时间",
       time:"2020/11/11"
     },{
-      name:"结果展示时间",
+      name:"活动结束时间",
       time:"2020/11/13"
     }]
   },
@@ -43,7 +40,12 @@ Page({
 
   //查看破冰晚会报名
   myIceBreakPartyTap:function(e){
-    getMyIceBreakPartyInfo(this, e);
+        wx.showToast({
+      title: '不在活动时间范围内~',
+      icon:'none',
+      duration:1500
+    })
+    //getMyIceBreakPartyInfo(this, e);
   },
   //暂无
   no:function(e){

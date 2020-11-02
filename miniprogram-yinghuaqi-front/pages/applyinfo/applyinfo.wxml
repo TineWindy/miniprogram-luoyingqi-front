@@ -2,7 +2,7 @@
 <view wx:if="{{!isApplied}}">
   <view class="wenan_apply">
     <text>
-    抱歉，我们未找到您的报名信息！ \n 还请点击下方个人报名填写报名表 \n 若想和自己的另一半一起参加，还请点击组队报名~ 
+      抱歉，我们未找到您的报名信息！ \n 还请点击下方个人报名填写报名表 \n 若想和自己的另一半一起参加，还请点击组队报名~
     </text>
   </view>
   <!--验证-->
@@ -26,37 +26,51 @@
     <text>\n\n\n\n</text>
   </view>
 
-  <view class="weui-cells weui-cells_after-title weui-shadow">
-    <view class="weui-panel__hd">您的基本信息</view>
-    <block wx:for="{{bonusDemandArray}}" wx:key="index">
-      <view class="showRow">
-        <view class="title margin-left">{{item.questionKey}}</view>
-        <text class="questionValue">{{item.questionValue}}</text>
-      </view>
-    </block>
-  </view>
-  <!--你的个人硬性要求-->
-  <view class="weui-cells weui-cells_after-title weui-shadow ">
-    <view class="weui-panel__hd">您的个人硬性要求</view>
-    <block wx:for="{{hardDemandArray}}" wx:key="index">
-      <view class="showRow">
-        <view class="title margin-left">{{item.questionKey}}</view>
-        <text class="questionValue">{{item.questionValue}}</text>
-      </view>
-    </block>
-  </view>
-   <!--你的个人加分要求-->
-   <view class="weui-cells weui-cells_after-title weui-shadow ">
-    <view class="weui-panel__hd">您的个人加分要求</view>
-    <block wx:for="{{bonusDemandArray}}" wx:key="index">
-      <view class="showRow">
-        <view class="title margin-left">{{item.questionKey}}</view>
-        <text class="questionValue">{{item.questionValue}}</text>
-      </view>
-    </block>
+  <view wx:if="{{applySource=='PERSONAL'}}">
+    <view class="weui-cells weui-cells_after-title weui-shadow">
+      <view class="weui-panel__hd">您的基本信息</view>
+      <block wx:for="{{personalDescriptionArray}}" wx:key="index">
+        <view class="showRow">
+          <view class="title margin-left">{{item.questionKey}}</view>
+          <text class="questionValue">{{item.questionValue}}</text>
+        </view>
+      </block>
+    </view>
+    <!--你的个人硬性要求-->
+    <view class="weui-cells weui-cells_after-title weui-shadow ">
+      <view class="weui-panel__hd">您的个人硬性要求</view>
+      <block wx:for="{{hardDemandArray}}" wx:key="index">
+        <view class="showRow">
+          <view class="title margin-left">{{item.questionKey}}</view>
+          <text class="questionValue">{{item.questionValue}}</text>
+        </view>
+      </block>
+    </view>
+    <!--你的个人加分要求-->
+    <view class="weui-cells weui-cells_after-title weui-shadow ">
+      <view class="weui-panel__hd">您的个人加分要求</view>
+      <block wx:for="{{bonusDemandArray}}" wx:key="index">
+        <view class="showRow">
+          <view class="title margin-left">{{item.questionKey}}</view>
+          <text class="questionValue">{{item.questionValue}}</text>
+        </view>
+      </block>
+    </view>
+
+    <view class="butCenter">
+      <button class="butSubmit" bindtap="bindCancel">取消报名</button>
+    </view>
   </view>
 
-  <view class="butCenter">
-    <button class="butSubmit" bindtap="bindCancel">取消报名</button>
+  <view wx:else>
+    <view>
+    <text>\n\n\n\n\n\n\n\n</text>
+    </view>
+    <view class="align_center">
+     您已通过组队报名的方式参与本次活动
+    </view>
+    <view class="align_center">
+      请您在“查看我的契约”页面查看您的同伴信息！
+    </view>
   </view>
 </view>

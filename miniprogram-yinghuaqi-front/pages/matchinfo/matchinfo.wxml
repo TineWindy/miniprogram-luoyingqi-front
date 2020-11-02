@@ -10,46 +10,39 @@
 
   <image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> 
 
-  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:-100rpx">
-    <text>契约编号</text>
-  </view>
-  <view class="info_item" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:-100rpx;margin-left:30rpx;">
-    <text>{{coupleNumber}}</text>
-  </view>
-
-  <view class="info">
-    <text>契约匹配度</text>
-  </view>
-  <view class="info_item" style="margin-left:70rpx;">
-    <text>{{score}}</text>
-  </view>
-
-  <view class="info" style="margin-top:100rpx">
+  <view class="info" style="margin-top: -100rpx">
     <text>姓 名</text>
   </view>
-  <view class="info_item" style="margin-top:100rpx">
+  <view class="info_item_left" style="margin-top: -100rpx">
     <text>{{name}}</text>
   </view>
 
-  <view class="info" style="margin-top:200rpx">
-    <text>年 级</text>
-  </view>
-  <view class="info_item" style="margin-top:200rpx">
-    <text>{{grade}}</text>
-  </view>
-
-  <view class="info" style="margin-top:300rpx">
+  <view class="info" style="margin-top:-20rpx">
     <text>联 络</text>
   </view>
-  <view class="info_item" style="margin-top:300rpx">
+  <view class="info_item_bottom" style="margin-top:30rpx">
     <text>{{contact}}</text>
   </view>
 
-  <view class="info" style="margin-top:400rpx">
+  <view class="info" style="margin-top:120rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info" style="margin-top:450rpx;color:#e55c4d">
+  <view class="info_item_bottom" style="margin-top:150rpx;color:#e55c4d">
     <text>{{description}}</text>
+  </view>
+
+  <view class="info" style="margin-top:220rpx">
+    <text>匹配分数</text>
+  </view>
+  <view class="info_item_left" style="margin-top:220rpx">
+    <text>{{score}}</text>
+  </view>
+
+  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:290rpx" >
+  <text>契约编号</text>
+  </view>
+  <view class="info_item_left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:290rpx">
+    <text>{{coupleNumber}}</text>
   </view>
 
   <view wx:if="{{status=='NORMAL'}}">
