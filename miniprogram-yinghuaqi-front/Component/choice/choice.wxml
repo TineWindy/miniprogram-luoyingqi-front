@@ -26,13 +26,13 @@
 
 <!--输入填空题-->
 <view class="div" wx:if="{{content.questionStyle == 'input'}}">
-  <view class="inputDiv {{content.questionFit?'':'redBorder'}}">
-    <view class="inputDivLeft">
+  <view class="inputDiv {{content.questionName=='Ta的个人标签'? 'flexDirection':' '}} {{content.questionFit?'':'redBorder'}}">
+    <view class="inputDivLeft {{content.questionName=='Ta的个人标签'? 'flexDirectionTitle':' '}}">
       <text class="choiceDivHeadOne">{{content.id}}.</text>
       <text class="inputTextBig">{{content.questionName}}</text>
       <!-- <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text> -->
     </view>
-    <input class="inputDivRight" bindinput="inputResult" placeholder="{{content.remark}} "></input>
+    <input class="inputDivRight border_bottom {{content.questionName=='Ta的个人标签'? 'flexDirectionInput':' '}}" bindinput="inputResult" placeholder="{{content.remark}} "></input>
   </view>
 </view>
 

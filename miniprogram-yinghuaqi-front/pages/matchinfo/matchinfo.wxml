@@ -8,7 +8,7 @@
 <!--匹配结果的展示-->
 <view wx:elif="{{status=='NORMAL' || status=='BOTH_AGREED'}}">
 
-  <!--<image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' /> -->
+  <!--<image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' />-->
 
   <view class="info" style="margin-top: -100rpx">
     <text>姓 名</text>
@@ -24,24 +24,24 @@
     <text>{{contact}}</text>
   </view>
 
-  <view class="info" style="margin-top:120rpx">
+  <view class="info" style="margin-top:140rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:150rpx;color:#e55c4d">
+  <view class="info_item_bottom" style="margin-top:180rpx;color:#e55c4d">
     <text>{{description}}</text>
   </view>
 
-  <view class="info" style="margin-top:220rpx">
+  <view class="info" style="margin-top:260rpx">
     <text>匹配分数</text>
   </view>
-  <view class="info_item_left" style="margin-top:220rpx">
+  <view class="info_item_left margin-left" style="margin-top:260rpx">
     <text>{{score}}</text>
   </view>
 
-  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:290rpx" >
+  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:360rpx" >
   <text>契约编号</text>
   </view>
-  <view class="info_item_left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:290rpx">
+  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:360rpx">
     <text>{{coupleNumber}}</text>
   </view>
 

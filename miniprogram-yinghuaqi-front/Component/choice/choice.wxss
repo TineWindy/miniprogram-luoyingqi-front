@@ -75,17 +75,31 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 20rpx 20rpx 20rpx 20rpx;
+}
+.flexDirection{
+  flex-direction:column;
+  align-items: flex-start;
 }
 .inputDivLeft{
   width: 28.8%;
 }
 .inputDivRight{
-  width: 71.2%;
+  width: 51.2%;
   text-align: right;
 }
 .inputTextBig{
   font-size: 15px;
+}
+.flexDirectionTitle{
+  width: 100%;
+}
+.flexDirectionInput{
+  width: 100%;
+}
+.border_bottom{
+  border-bottom:1px solid rgb(88, 88, 88);
 }
 /*列表选择*/
 .pickerDiv{

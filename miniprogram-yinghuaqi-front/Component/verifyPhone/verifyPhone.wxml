@@ -5,7 +5,7 @@
       验证码:
     </view>
 
-    <input class="inputPhone" placeholder="请输入验证码" bindinput="getInputPhone"> </input>
+    <input class="inputPhone" placeholder="请输入验证码" bindinput="getInputVerifyCode"> </input>
 
     <button class="submitVerify" bindtap="submitVerify">{{state}}</button>
   </view>

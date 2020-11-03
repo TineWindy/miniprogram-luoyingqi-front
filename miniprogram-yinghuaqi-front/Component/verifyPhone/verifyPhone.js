@@ -15,17 +15,18 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    //输入框获取电话号码
-    getInputPhone: function (e) {
+    //输入框获取验证码
+    getInputVerifyCode: function (e) {
       this.setData({
         verifyCode: e.detail.value
       })
+      //模板数据与前端的互通
+      this.triggerEvent('ComponentTap', this.data.verifyCode)
     },
 
     //点击验证
     submitVerify: function (e) {
       if (this.data.state === "获取验证码") {
-        console.log('aaaaa');
         //将验证码传给后端进行验证（request请求）
         HttpUtils.yhjRequest(
           'apply/getVerifyCode', {
@@ -43,9 +44,6 @@ Component({
               timeDown: 30
             })
             this.timeDown(this);
-    
-            //模板数据与前端的互通
-            this.triggerEvent('ComponentTap', this.data)
 
           },
           'get'

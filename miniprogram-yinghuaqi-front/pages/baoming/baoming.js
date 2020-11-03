@@ -23,14 +23,14 @@ Page({
   data: {
     source: '', //判断报名的类型
     upLoadCfg: '',
-    selfPhotoUrl: '',
-    couplePhotoUrl: '',
+    selfPhotoUrl: '/images/scan.png',
+    couplePhotoUrl: '/images/scan.png',
     verifyCode: '',
-    basicPersonalInfo: {}, //个人基本信息
+    basicPersonalInfo: {}, 
     personalDescription: [],
     hardDemand: [],
     bonusDemand: [],
-    theOtherInfo: [{ //组队报名另一半的信息填写
+    theOtherInfo: [{ 
       id: '1',
       questionStyle: 'input',
       questionName: "Ta的姓名",
@@ -72,6 +72,16 @@ Page({
     this.setData({
       [`${nameTemp}[${indexTemp}]`]: e.detail
     })
+  },
+  //从模板获取验证码
+  onGetVerifyCode: function(e) {
+    this.setData({
+      verifyCode:e.detail
+    })
+  },
+  //选择图片
+  selectImg:function(e){
+
   },
   //提交按钮
   submit: function (e) {

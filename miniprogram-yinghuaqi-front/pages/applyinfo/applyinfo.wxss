@@ -20,8 +20,8 @@ page{
 
 .wenzi {
   position: absolute;
-  left: 50rpx;
-  top: 80rpx;
+  left: 8%;
+  top: 32%;
   z-index: 100;
   color: white;
   font-size: 0.9em;
