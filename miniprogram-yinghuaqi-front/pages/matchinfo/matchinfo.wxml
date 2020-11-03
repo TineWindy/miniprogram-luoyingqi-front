@@ -10,17 +10,24 @@
 
   <!--<image class="touxiang_border" src="../../images/touxiang.png" mode='widthFix' />-->
 
-  <view class="info" style="margin-top: -100rpx">
+  <view class="info" style="margin-top: -80rpx">
     <text>姓 名</text>
   </view>
-  <view class="info_item_left" style="margin-top: -100rpx">
+  <view class="info_item_left" style="margin-top: -80rpx">
     <text>{{name}}</text>
   </view>
 
-  <view class="info" style="margin-top:-20rpx">
+  <view class="info" style="margin-top: 0rpx">
+    <text>性 别</text>
+  </view>
+  <view class="info_item_left" style="margin-top: 0rpx">
+    <text>{{gender}}</text>
+  </view>
+
+  <view class="info" style="margin-top:20rpx">
     <text>联 络</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:30rpx">
+  <view class="info_item_bottom" style="margin-top:40rpx">
     <text>{{contact}}</text>
   </view>
 

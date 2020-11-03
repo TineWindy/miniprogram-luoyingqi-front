@@ -64,6 +64,8 @@
 
 .text_red{
   color: red;
+  font-size: larger;
+
 }
 /*上传照片*/
 .uploadImg{

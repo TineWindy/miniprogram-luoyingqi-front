@@ -3,24 +3,25 @@ var httpFuncs = require("../../utils/HttpUtils.js");
 Page({
   data: {
     isApplied: false,
-    applySource:'',
-    personalDescriptionArray:[],
+    applySource: '',
+    personalDescriptionArray: [],
     hardDemandArray: [],
-    bonusDemandArray: [],    
+    bonusDemandArray: [],
+    bonusDemandWeightArray: []
   },
 
   //初始加载用户报名信息
   onLoad: function (options) {
     getApplyInfo(this);
   },
-  
+
   // 个人报名
-  singleTap: function(e) {
+  singleTap: function (e) {
     single(this, e);
   },
 
   // 组队报名
-  groupTap: function(e) {
+  groupTap: function (e) {
     group(this, e);
   },
 
@@ -35,15 +36,16 @@ function getApplyInfo(body) {
   httpFuncs.yhjRequest(
     '/apply/getApplyInfo',
     '',
-    function(res) {
-      if (assertNotNull(res.resultObj)){
+    function (res) {
+      if (assertNotNull(res.resultObj)) {
         console.log(res.resultObj);
         body.setData({
-          isApplied:true,
+          isApplied: true,
           applySource: res.resultObj.source,
           personalDescriptionArray: JSONObject2JSONArray(res.resultObj.personalDescription),
           hardDemandArray: JSONObject2JSONArray(res.resultObj.personalHardDemand),
-          bonusDemandArray: JSONObject2JSONArray(res.resultObj.personalBonusDemand)
+          bonusDemandArray: JSONObject2JSONArray(res.resultObj.personalBonusDemand),
+          bonusDemandWeightArray: JSONObject2JSONArray(res.resultObj.bonusDemandWeight)
         })
 
       }
@@ -53,9 +55,9 @@ function getApplyInfo(body) {
   );
 }
 
-function JSONObject2JSONArray(json){
-  var array= new Array();
-  for(var key in json){
+function JSONObject2JSONArray(json) {
+  var array = new Array();
+  for (var key in json) {
     var data = {};
     data.questionValue = json[key];
     data.questionKey = key;
@@ -68,7 +70,7 @@ function JSONObject2JSONArray(json){
 
 //判空
 function assertNotNull(data) {
-  if (typeof(data) == "undefined" || data == null || data === '') {
+  if (typeof (data) == "undefined" || data == null || data === '') {
     return false;
   }
 
@@ -82,14 +84,14 @@ function assertNotNull(data) {
 // 跳转组队界面
 function group(body, e) {
   wx.navigateTo({
-    url: '../baoming/baoming?source='+'TEAM',
+    url: '../baoming/baoming?source=' + 'TEAM',
   })
 }
 
 // 跳转个人报名界面
 function single(body, e) {
   wx.navigateTo({
-    url: '../baoming/baoming?source='+'PERSONAL',
+    url: '../baoming/baoming?source=' + 'PERSONAL',
   })
 }
 
@@ -103,7 +105,7 @@ function cancelApply() {
         httpFuncs.yhjRequest(
           '/apply/cancel',
           '',
-          function(res) {
+          function (res) {
             wx.showModal({
               title: '取消成功',
               content: '您已取消此次报名',

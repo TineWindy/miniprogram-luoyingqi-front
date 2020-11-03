@@ -83,7 +83,7 @@ function login(){
           success (res){
             if (res.confirm){
               wx.navigateTo({
-                url: '../userInfo/userInfo',
+                url: '../me/me',
               })
             }
           }

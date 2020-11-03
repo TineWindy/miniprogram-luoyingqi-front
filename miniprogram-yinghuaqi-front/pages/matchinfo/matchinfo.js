@@ -10,29 +10,29 @@ Page({
     image: '../../images/baoming_sel_back.png',
     name: '珞樱契',
     gender: 'MALE',
-    contact: 'email:weifengyoulei@foxmail.com',
+    contact: 'email:limingfu@whu.edu.cn.com',
     description: '欢迎加入珞樱契团队',
     status: '',
-    selfApplyStatus:'',
+    selfApplyStatus: '',
     messsage: '',
     coupleNumber: '001',
     score: '99',
   },
 
   /** 接受按钮  */
-  acceptTap: function(e) {
+  acceptTap: function (e) {
     agreeMatchInfo(this);
   },
 
   /** 拒绝按钮 */
-  rejectTap: function(e) {
+  rejectTap: function (e) {
     cancelMatchInfo();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     getMatchInfo(this);
   },
 })
@@ -42,15 +42,16 @@ function getMatchInfo(body) {
   httpFuncs.yhjRequest(
     '/match/getMatchResult',
     '',
-    function(res) {
+    function (res) {
       body.setData({
-        status : res.resultObj.matchStatus,
-        name : res.resultObj.coupleName,
-        contact : res.resultObj.coupleContact,
-        description : res.resultObj.coupleDescription,
+        status: res.resultObj.matchStatus,
+        name: res.resultObj.coupleName,
+        contact: res.resultObj.coupleContact,
+        description: res.resultObj.coupleDescription,
         score: res.resultObj.matchScore,
         coupleNumber: res.resultObj.coupleNumber,
-        selfApplyStatus: res.resultObj.selfApplyInfoStatus
+        selfApplyStatus: res.resultObj.selfApplyInfoStatus,
+        gender: res.resultObj.coupleGender
       })
     },
     'GET'
@@ -69,7 +70,7 @@ function cancelMatchInfo() {
         httpFuncs.yhjRequest(
           '/match/cancelMatch',
           '',
-          function(res) {
+          function (res) {
             wx.showModal({
               title: '取消成功',
               content: '您已取消此次匹配',
@@ -96,15 +97,14 @@ function agreeMatchInfo(body) {
   httpFuncs.yhjRequest(
     '/match/agreeMatch',
     '',
-    function(res) {
+    function (res) {
       wx.showModal({
         title: '操作成功',
         content: '您已同意此次匹配',
         showCancel: false,
       });
-      body.setData({
-        selfApplyInfoStatus: 'MATCHED_ACCEPT',
-      });
+      
+      getMatchInfo(body);
     },
     'GET'
   );

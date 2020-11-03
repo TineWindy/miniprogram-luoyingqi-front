@@ -127,19 +127,17 @@
                     var fileUrl = config.qiniuImageURLPrefix + '/' + dataObject.key;
                     dataObject.fileUrl = fileUrl
                     dataObject.imageURL = fileUrl;
-                    console.log(dataObject);
+             
                     if (success) {
                         success(dataObject);
                     }
                 } catch (e) {
-                    console.log('parse JSON failed, origin String is: ' + dataString)
                     if (fail) {
                         fail(e);
                     }
                 }
             },
             fail: function (error) {
-                console.error(error);
                 if (fail) {
                     fail(error);
                 }

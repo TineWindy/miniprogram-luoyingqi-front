@@ -57,6 +57,16 @@
       </block>
     </view>
 
+    <view class="weui-cells weui-cells_after-title weui-shadow ">
+      <view class="weui-panel__hd">您的个人加分要求权重</view>
+      <block wx:for="{{bonusDemandWeightArray}}" wx:key="index">
+        <view class="showRow">
+          <view class="title margin-left">{{item.questionKey}}</view>
+          <text class="questionValue">{{item.questionValue}}</text>
+        </view>
+      </block>
+    </view>
+
     <view class="butCenter">
       <button class="butSubmit" bindtap="bindCancel">取消报名</button>
     </view>
@@ -64,7 +74,7 @@
 
   <view wx:else>
     <view>
-    <text>\n\n\n\n\n\n\n\n</text>
+    <text>\n\n\n\n\n\n\n\n\n\n\n\n\n</text>
     </view>
     <view class="align_center">
      您已通过组队报名的方式参与本次活动

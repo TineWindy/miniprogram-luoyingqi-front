@@ -7,44 +7,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    timeList:[{
-      name:"报名开始时间",
-      time:"2020/11/05"
-    },{
-      name:"匹配公布时间",
-      time:"2020/11/13"
-    },{
-      name:"破冰晚会时间",
-      time:"2020/11/13"
-    },{
-      name:"任务开始时间",
-      time:"2020/11/11"
-    },{
-      name:"活动结束时间",
-      time:"2020/11/13"
-    }]
+    timeList: []
   },
   onLoad: function (options) {
-    wx.setStorageSync('yhj_version', 'WHU-LOVER');
+    getVersionInfo(this);
   },
 
   // 查看我的报名
-  myApplyInfoTap: function(e) {
+  myApplyInfoTap: function (e) {
     getMyApplyInfo(this, e);
   },
 
   // 查看我的契约
-  myMatchInfoTap: function(e) {
+  myMatchInfoTap: function (e) {
     getMyMatchInfo(this, e);
   },
 
-  
+
   //暂无
-  no:function(e){
+  no: function (e) {
     wx.showToast({
       title: '不在活动时间范围内~',
-      icon:'none',
-      duration:1500
+      icon: 'none',
+      duration: 1500
     })
   }
 })
@@ -63,6 +48,31 @@ function getMyMatchInfo(body, e) {
   })
 }
 
-function getVersionInfo(){
+function getVersionInfo(body) {
+  HttpUtils.yhjRequest(
+    '/version/getActivityInfo',
+    {'version':'WHU-LOVER'},
+    function (res) {
+      var version = res.resultObj.version;
+      wx.setStorageSync('yhj_version', version);
 
+      body.setData({
+        timeList : JSONObject2JSONArray(res.resultObj.time)
+      })
+    }
+  )
+}
+
+function JSONObject2JSONArray(json){
+  var array= new Array();
+
+  for(var key in json){
+    var data = {};
+    data.name = key;
+    data.time = json[key];
+
+    array.push(data);
+  }
+
+  return array;
 }

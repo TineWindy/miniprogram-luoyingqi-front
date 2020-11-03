@@ -23,14 +23,14 @@ Page({
   data: {
     source: '', //判断报名的类型
     upLoadCfg: '',
-    selfPhotoUrl: '/images/scan.png',
-    couplePhotoUrl: '/images/scan.png',
+    selfPhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
+    couplePhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
     verifyCode: '',
-    basicPersonalInfo: {}, 
+    basicPersonalInfo: {},
     personalDescription: [],
     hardDemand: [],
     bonusDemand: [],
-    theOtherInfo: [{ 
+    theOtherInfo: [{
       id: '1',
       questionStyle: 'input',
       questionName: "Ta的姓名",
@@ -63,6 +63,7 @@ Page({
       source: options.source
     });
     getQustionsLists(this);
+    getToken(this);
   },
 
   //用来实现模板事件发生时，页面data数据与模板data数据的同步更新，需要设置name和index内部标签数据，用来定位是哪个数据发生更新
@@ -74,15 +75,21 @@ Page({
     })
   },
   //从模板获取验证码
-  onGetVerifyCode: function(e) {
+  onGetVerifyCode: function (e) {
     this.setData({
-      verifyCode:e.detail
+      verifyCode: e.detail
     })
   },
-  //选择图片
-  selectImg:function(e){
-
+  //上传自己的图片
+  upLoadSelfImg: function (e) {
+    upLoadImages(this, this.data.upLoadCfg, 'self');
   },
+
+  //上传同伴的图片
+  upLoadCoupleImg: function (e) {
+    upLoadImages(this, this.data.upLoadCfg, 'couple');
+  },
+
   //提交按钮
   submit: function (e) {
     //前端数据整理 如果填写完整则返回数据结果，否则返回false
@@ -92,32 +99,33 @@ Page({
       // 判断来源
       var src = this.data.source;
 
+      if (!checkNeccssaryInfo(this)) {
+        return;
+      }
+
       if (src == 'PERSONAL') {
         // 将数据str化
         var dataMap = {};
         dataMap.personalDescription = resultData.personalDescription;
         dataMap.personalHardDemand = resultData.personalHardDemand;
         dataMap.personalBonusDemand = resultData.personalBonusDemand;
-        dataMap.photo = this.data.selfPhotoUrl;
-        dataMap.verifyCode = this.data.verifyCode;
+        dataMap.otherInfo = {
+          'verifyCode': this.data.verifyCode,
+          'photo': this.data.selfPhotoUrl
+        };
 
         postPersonalApplyInfo(dataMap);
       } else if (src == 'TEAM') {
+        var dataMap = {};
 
         // 补充验证信息
         resultData.selfPhoto = this.data.selfPhotoUrl;
         resultData.couplePhoto = this.data.couplePhotoUrl;
         resultData.verifyCode = this.data.verifyCode;
 
-        wx.showModal({
-          title: '提示',
-          content: '组队报名无法取消，请您谨慎操作！',
-          success(res) {
-            if (res.confirm) {
-              postTeamApplyInfo(resultData);
-            }
-          }
-        })
+        dataMap.otherInfo = resultData;
+
+        postTeamApplyInfo(dataMap);
 
       } else {
         wx.showModal({
@@ -190,16 +198,42 @@ function postTeamApplyInfo(data) {
         }
       })
     },
-    'get'
+    'post'
   )
+}
+
+function checkNeccssaryInfo(body) {
+  var flag = true;
+
+  if (!assertStrNotEmpty(body.data.verifyCode)) {
+    flag = false;
+  }
+
+  if (assertStrNotEmpty(body.data.selfPhotoUrl) && body.data.selfPhotoUrl === "i.loli.net/2020/11/03/bpWihgDE3zw96GN.png") {
+    flag = false;
+  }
+
+  if (body.data.source === "TEAM" && assertStrNotEmpty(body.data.couplePhotoUrl) && body.data.couplePhotoUrl === "i.loli.net/2020/11/03/bpWihgDE3zw96GN.png") {
+    flag = false;
+  }
+
+  if (!flag) {
+    wx.showToast({
+      title: '您的信息验证部分还没有填写哦~',
+      icon: 'none',
+      duration: 2000
+    })
+  }
+
+  return flag;
 }
 
 // 请求问题列表
 function getQustionsLists(body) {
   HttpUtils.yhjRequest(
     '/question/getQuestions', {
-      version: 'WHU-LOVER'
-    },
+    version: 'WHU-LOVER'
+  },
     function (res) {
       var data = res.resultObj;
 
@@ -227,7 +261,7 @@ function getToken(body) {
 }
 
 // 上传图片
-function upLoadImages(upLoadCfg, user) {
+function upLoadImages(body, upLoadCfg, user) {
   // 选择图片
   wx.chooseImage({
     count: 1,
@@ -235,10 +269,10 @@ function upLoadImages(upLoadCfg, user) {
     success: function (res) {
       var tempFilesSize = res.tempFiles[0].size; //获取图片的大小，单位B                    
       //图片小于或者等于4M时 可以执行获取图片
-      if (tempFilesSize > 1024 * 1024 * 4) {
+      if (tempFilesSize > 1024 * 1024 * 2) {
         wx.showModal({
           title: '提示',
-          type: '当前图片过大，请选择4M以下的图片',
+          type: '当前图片过大，请选择2M以下的图片',
           showCancel: false
         })
         return;
@@ -252,6 +286,7 @@ function upLoadImages(upLoadCfg, user) {
         upLoadCfg.domain,
         filePath,
         function (res) {
+          console.log('success');
           wx.showToast({
             title: '图片上传成功',
             icon: 'success'
@@ -266,8 +301,11 @@ function upLoadImages(upLoadCfg, user) {
               couplePhotoUrl: res.imageURL
             })
           }
+
+          console.log(res);
+          console.log(body.data);
         },
-        function () {
+        function (error) {
           // 上传失败
           wx.showModal({
             title: '提示',
