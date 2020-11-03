@@ -1,4 +1,5 @@
-const HttpUtils = require('../../utils/HttpUtils')
+const HttpUtils = require('../../utils/HttpUtils');
+const qiniuUploader = require('../../utils/qiniuUploader');
 /*
   1.choice 组件模块的参数说明
     需要设置data-name和data-index和bindComponentTap来实现模板与页面data数据的同步更新
@@ -21,6 +22,10 @@ const HttpUtils = require('../../utils/HttpUtils')
 Page({
   data: {
     source: '', //判断报名的类型
+    upLoadCfg: '',
+    selfPhotoUrl: '',
+    couplePhotoUrl: '',
+    verifyCode: '',
     basicPersonalInfo: {}, //个人基本信息
     personalDescription: [],
     hardDemand: [],
@@ -83,9 +88,17 @@ Page({
         dataMap.personalDescription = resultData.personalDescription;
         dataMap.personalHardDemand = resultData.personalHardDemand;
         dataMap.personalBonusDemand = resultData.personalBonusDemand;
+        dataMap.photo = this.data.selfPhotoUrl;
+        dataMap.verifyCode = this.data.verifyCode;
 
         postPersonalApplyInfo(dataMap);
       } else if (src == 'TEAM') {
+
+        // 补充验证信息
+        resultData.selfPhoto = this.data.selfPhotoUrl;
+        resultData.couplePhoto = this.data.couplePhotoUrl;
+        resultData.verifyCode = this.data.verifyCode;
+
         wx.showModal({
           title: '提示',
           content: '组队报名无法取消，请您谨慎操作！',
@@ -188,6 +201,74 @@ function getQustionsLists(body) {
       })
     }
   )
+}
+
+function getToken(body) {
+  HttpUtils.yhjRequest(
+    '/apply/getCfg',
+    '',
+    function (res) {
+      body.setData({
+        upLoadCfg: res.resultObj
+      })
+    },
+    'get'
+  )
+}
+
+// 上传图片
+function upLoadImages(upLoadCfg, user) {
+  // 选择图片
+  wx.chooseImage({
+    count: 1,
+    sourceType: ['album', 'camera'],
+    success: function (res) {
+      var tempFilesSize = res.tempFiles[0].size; //获取图片的大小，单位B                    
+      //图片小于或者等于4M时 可以执行获取图片
+      if (tempFilesSize > 1024 * 1024 * 4) {
+        wx.showModal({
+          title: '提示',
+          type: '当前图片过大，请选择4M以下的图片',
+          showCancel: false
+        })
+        return;
+      }
+      var filePath = res.tempFilePaths[0];
+
+      // 上传图片
+      qiniuUploader.uploadImage(
+        upLoadCfg.region,
+        upLoadCfg.token,
+        upLoadCfg.domain,
+        filePath,
+        function (res) {
+          wx.showToast({
+            title: '图片上传成功',
+            icon: 'success'
+          })
+
+          if (user === 'self') {
+            body.setData({
+              selfPhotoUrl: res.imageURL
+            })
+          } else {
+            body.setData({
+              couplePhotoUrl: res.imageURL
+            })
+          }
+        },
+        function () {
+          // 上传失败
+          wx.showModal({
+            title: '提示',
+            content: '上传图片失败，请重试!',
+            showCancel: false
+          })
+        }
+      )
+
+    }
+  })
 }
 
 

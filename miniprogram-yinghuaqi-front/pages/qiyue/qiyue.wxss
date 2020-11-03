@@ -18,7 +18,7 @@
 .wen_an{
   position: absolute;
   top:390rpx;
-  left:375rpx;
+  left:450rpx;
   right:15rpx;
   font-size: 0.9em;
   display: flex;
@@ -28,7 +28,7 @@
 .des_image{
   position: absolute;
   left:30rpx;
-  top:585rpx;
+  top:620rpx;
   width:60%;
   height:60%
 /*unfinished*/

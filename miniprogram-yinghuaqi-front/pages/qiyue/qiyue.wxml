@@ -5,7 +5,13 @@
   </view>
 
   <view class="wen_an">
-    两人记忆的烛光委实过于微弱,两人的话语也不似十四年前那般清晰。结果连句话也没说便擦身而过，径直消失在人群中，永远永远。
+    <text>
+      这将成为你的故事的开端 \n
+      封闭了许久的孤独的心 \n
+      终于可以穿越人海 \n
+      拥抱这个世界 \n
+      拥抱属于你的遇见
+    </text>
   </view> 
 
   <!-- 不滚动版本图片暂时隐藏 -->
@@ -43,7 +49,7 @@
 <!--按钮-->
 <button class="navigation" bindtap="toNavigationPage">
   <span class='wenzi'>
-    武汉大学 五天·启源
+    武汉大学 五天·启缘
   </span>
   <image src='../../images/button1.png' mode='widthFix'>
   </image>

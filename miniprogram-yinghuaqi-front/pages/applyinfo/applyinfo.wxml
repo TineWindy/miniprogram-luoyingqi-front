@@ -2,7 +2,7 @@
 <view wx:if="{{!isApplied}}">
   <view class="wenan_apply">
     <text>
-      抱歉，我们未找到您的报名信息！ \n 还请点击下方个人报名填写报名表 \n 若想和自己的同伴一起参加，还请点击组队报名~
+      抱歉，我们未找到您的报名信息！ \n 还请点击下方<text class="text_red">缘分通道</text>填写报名表 \n 若想和自己的同伴一起参加，还请点击<text class="text_red">组队报名</text>~
     </text>
   </view>
   <!--验证-->

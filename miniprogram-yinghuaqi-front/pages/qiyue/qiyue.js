@@ -75,10 +75,11 @@ function login(){
     '',
     function(res){
       console.log('登录成功');
+      // 对个人信息不完整的用户进行提示
       if (res.resultObj ==="INVALID"){
         wx.showModal({
           title: '提示',
-          content: '您尚未完善您的个人信息,这可能会影响到您的个人使用，是否前往补充？',
+          content: '您尚未完善您的个人信息,这可能会影响到您的后续使用，是否前往补充？',
           success (res){
             if (res.confirm){
               wx.navigateTo({

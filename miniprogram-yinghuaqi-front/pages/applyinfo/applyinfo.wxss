@@ -1427,3 +1427,8 @@ icon {
 .butSubmit::after{
   border: none;
 }
+
+.text_red{
+  color: red;
+  font-size: larger;
+}
