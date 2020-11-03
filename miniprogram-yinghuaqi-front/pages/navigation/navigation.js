@@ -38,15 +38,7 @@ Page({
     getMyMatchInfo(this, e);
   },
 
-  //查看破冰晚会报名
-  myIceBreakPartyTap:function(e){
-        wx.showToast({
-      title: '不在活动时间范围内~',
-      icon:'none',
-      duration:1500
-    })
-    //getMyIceBreakPartyInfo(this, e);
-  },
+  
   //暂无
   no:function(e){
     wx.showToast({
@@ -68,13 +60,6 @@ function getMyApplyInfo(body, e) {
 function getMyMatchInfo(body, e) {
   wx.navigateTo({
     url: '../matchinfo/matchinfo',
-  })
-}
-
-//获取破冰晚会信息
-function getMyIceBreakPartyInfo(body, e){
-  wx.navigateTo({
-    url: '../iceBreak/iceBreak',
   })
 }
 

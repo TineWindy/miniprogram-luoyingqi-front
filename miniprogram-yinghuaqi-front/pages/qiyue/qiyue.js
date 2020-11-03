@@ -39,20 +39,6 @@ Page({
   }
 })
 
-// 获取活动信息
-function getActivityInfo(body) {
-  httpFuncs.yhjRequest(
-    "/version/getActivityInfo", {},
-    function(res) {
-      body.setData({
-        apply_end_time: res.resultObj.time.APPLY_END_TIME,
-        result_publish_time: res.resultObj.time.RESULT_PUBLISH_TIME,
-      });
-    },
-    "get"
-  );
-}
-
 // 获取用户微信信息
 function getWxUserInfo(body) {
   if (app.globalData.userInfo) {
@@ -89,6 +75,19 @@ function login(){
     '',
     function(res){
       console.log('登录成功');
+      if (res.resultObj ==="INVALID"){
+        wx.showModal({
+          title: '提示',
+          content: '您尚未完善您的个人信息,这可能会影响到您的个人使用，是否前往补充？',
+          success (res){
+            if (res.confirm){
+              wx.navigateTo({
+                url: '../userInfo/userInfo',
+              })
+            }
+          }
+        });
+      }
     },
     'get'
   );

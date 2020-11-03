@@ -45,7 +45,7 @@
     <text>{{coupleNumber}}</text>
   </view>
 
-  <view wx:if="{{status=='NORMAL'}}">
+  <view wx:if="{{status=='NORMAL' && selfApplyStatus == 'MATCHED_NOT_FEEDBACK'}}">
 
     <view class="accept">
       <image src="../../images/accept.png" mode='widthFix' bindtap="acceptTap" />

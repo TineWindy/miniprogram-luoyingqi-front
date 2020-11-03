@@ -1,6 +1,7 @@
 <!--第一部分 个人信息部分 不可编辑  basicPersonalInfo-->
 <view class="titleToast">
   第一部分 个人信息部分
+  <view>注意：报名时需要您已完善个人信息，否则报名将<text class="text_red">失败</text></view>
 </view>
 
 <userInfo basicPersonalInfo="{{basicPersonalInfo}}"></userInfo>
@@ -66,8 +67,7 @@
   <!--第三部分 对方信息填写 可编辑  theOtherInfo-->
   <view class="titleToast">
     第三部分 对方信息填写
-    <view> 注意：本报名仅适用于双方都为武汉大学学生的情况。其他情况请联系工作人员！ </view>
-    
+    <view> 注意：报名时需要双方均已完善个人信息，同时<text class="text_red">TA的个人标签</text>需要您的同伴提供，具体可在个人信息页面查看</view>
   </view>
 
   <block wx:for="{{theOtherInfo}}" wx:key="index">

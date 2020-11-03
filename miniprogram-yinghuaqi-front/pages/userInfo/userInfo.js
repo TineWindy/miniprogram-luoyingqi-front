@@ -72,7 +72,7 @@ Page({
 
     wx.showModal({
       title: '提示',
-      content: '请您确保信息的真实性和有效性 \n 否则您可能将无法参加契约活动!',
+      content: '请您确保信息的真实性和有效性 \n 否则您可能将无法使用后续的功能!',
       success(res) {
         if (res.confirm) {
           postUserBasicInfo(e, body);
@@ -162,6 +162,8 @@ function postUserBasicInfo(e, body) {
         content: '修改成功!',
         showCancel: false
       })
+
+      getUserBasicInfo(body,false);
     },
     'post'
   )

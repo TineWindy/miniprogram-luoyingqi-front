@@ -13,6 +13,7 @@ Page({
     contact: 'email:weifengyoulei@foxmail.com',
     description: '欢迎加入珞樱契团队',
     status: '',
+    selfApplyStatus:'',
     messsage: '',
     coupleNumber: '001',
     score: '99',
@@ -48,7 +49,8 @@ function getMatchInfo(body) {
         contact : res.resultObj.coupleContact,
         description : res.resultObj.coupleDescription,
         score: res.resultObj.matchScore,
-        coupleNumber: res.resultObj.coupleNumber
+        coupleNumber: res.resultObj.coupleNumber,
+        selfApplyStatus: res.resultObj.selfApplyInfoStatus
       })
     },
     'GET'
@@ -65,7 +67,7 @@ function cancelMatchInfo() {
     success(res) {
       if (res.confirm) {
         httpFuncs.yhjRequest(
-          '/user/cancelMatch',
+          '/match/cancelMatch',
           '',
           function(res) {
             wx.showModal({
@@ -92,7 +94,7 @@ function cancelMatchInfo() {
 // 同意匹配
 function agreeMatchInfo(body) {
   httpFuncs.yhjRequest(
-    '/user/agreeMatch',
+    '/match/agreeMatch',
     '',
     function(res) {
       wx.showModal({
@@ -101,7 +103,7 @@ function agreeMatchInfo(body) {
         showCancel: false,
       });
       body.setData({
-        status: 'BOTH_AGREED',
+        selfApplyInfoStatus: 'MATCHED_ACCEPT',
       });
     },
     'GET'
