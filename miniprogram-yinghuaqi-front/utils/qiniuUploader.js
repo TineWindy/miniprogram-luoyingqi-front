@@ -27,8 +27,12 @@
         }, (res) => {}, () => {
             // 取消上传
         }, () => {
+            wx.showLoading({
+              title: '正在上传图片',
+            })
             // `before` 上传前执行的操作
         }, (err) => {
+            wx.hideLoading()
             // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
         });
     }

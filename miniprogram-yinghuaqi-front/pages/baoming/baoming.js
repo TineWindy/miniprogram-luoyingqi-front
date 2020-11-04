@@ -272,13 +272,13 @@ function upLoadImages(body, upLoadCfg, user) {
       if (tempFilesSize > 1024 * 1024 * 2) {
         wx.showModal({
           title: '提示',
-          type: '当前图片过大，请选择2M以下的图片',
+          content: '当前图片过大，请选择2M以下的图片',
           showCancel: false
         })
         return;
       }
       var filePath = res.tempFilePaths[0];
-
+      
       // 上传图片
       qiniuUploader.uploadImage(
         upLoadCfg.region,

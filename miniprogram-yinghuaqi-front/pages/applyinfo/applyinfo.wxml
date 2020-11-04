@@ -2,20 +2,20 @@
 <view wx:if="{{!isApplied}}">
   <view class="wenan_apply">
     <text>
-      抱歉，我们未找到您的报名信息！ \n 还请点击下方<text class="text_red">缘分通道</text>填写报名表 \n 若想和自己的同伴一起参加，还请点击<text class="text_red">组队报名</text>~
+      抱歉，我们未找到您的报名信息！ \n 还请点击下方<text class="text_red">个人报名</text>填写报名表 \n 若想和自己的同伴一起参加，还请点击<text class="text_red">缘分通道</text>~
     </text>
   </view>
   <!--验证-->
   <button class="verify" bindtap="groupTap">
     <span class='wenzi'>
-      组队报名
+      缘分通道
     </span>
     <image src='../../images/button2.png' mode='widthFix'></image>
   </button>
   <!--报名-->
   <button class="baoming" bindtap="singleTap">
     <span class='wenzi'>
-      缘分通道
+      个人报名
     </span>
     <image src='../../images/button1.png' mode='widthFix'></image>
   </button>

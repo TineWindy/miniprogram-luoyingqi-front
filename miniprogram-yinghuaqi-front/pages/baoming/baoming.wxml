@@ -41,7 +41,7 @@
   <!--第五部分 信息验证部分 可编辑  basicDescriptionList-->
   <view class="titleToast">
     <view class="titleToastMain">第五部分 信息验证部分</view>
-    <view class="titleToastRemark">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n 此外请您上传校园卡<text class="text_red">正面</text>有效清晰的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格 </view>
+    <view class="titleToastRemark">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n 此外请您上传校园卡<text class="text_red">正面且包含个人信息</text>的清晰有效的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格 </view>
   </view>
 
   <verifyPhone phone="{{basicPersonalInfo.phone}}" bindComponentTap="onGetVerifyCode"></verifyPhone>
@@ -81,7 +81,7 @@
     <!--第三部分 信息验证部分 可编辑  basicDescriptionList-->
     <view class="titleToast">
       <view class="titleToastMain">第三部分 双方信息验证部分</view>
-      <view class="titleToastRemark">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n 此外请您上传您和您同伴校园卡<text class="text_red">正面</text>有效清晰的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格 </view>
+      <view class="titleToastRemark">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n 此外请您上传您和您同伴校园卡<text class="text_red">正面且包含个人信息</text>的清晰有效的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格 </view>
     </view>
 
   <verifyPhone phone="{{basicPersonalInfo.phone}}" bindComponentTap="onGetVerifyCode"></verifyPhone>
