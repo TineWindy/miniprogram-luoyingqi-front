@@ -3,7 +3,8 @@ const HttpUtils = require("../../utils/HttpUtils")
 // Component/verifyPhone/verifyPhone.js
 Component({
   properties: {
-    phone: String
+    phone: String,
+    verifyCodeState:Boolean
   },
   data: {
     verifyCode: "",

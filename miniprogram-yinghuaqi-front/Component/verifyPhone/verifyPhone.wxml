@@ -1,5 +1,5 @@
 <view class="total">
-  <view class="totalDiv">
+  <view class="totalDiv {{verifyCodeState?'':'border-red'}}">
 
     <view class="text">
       验证码:

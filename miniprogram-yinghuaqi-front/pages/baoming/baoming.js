@@ -24,8 +24,11 @@ Page({
     source: '', //判断报名的类型
     upLoadCfg: '',
     selfPhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
+    selfPhotoState:true,
     couplePhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
+    couplePhotoState:true,
     verifyCode: '',
+    verifyCodeState:true,
     basicPersonalInfo: {},
     personalDescription: [],
     hardDemand: [],
@@ -272,7 +275,7 @@ function upLoadImages(body, upLoadCfg, user) {
       if (tempFilesSize > 1024 * 1024 * 2) {
         wx.showModal({
           title: '提示',
-          type: '当前图片过大，请选择2M以下的图片',
+          content: '当前图片过大，请选择2M以下的图片',
           showCancel: false
         })
         return;
@@ -411,6 +414,7 @@ function judgeFitTeam(body) {
   var resultBoolen = true
   var other_ = body.data.theOtherInfo
   for (var i = 0; i < other_.length; i++) {
+    console.log(JSON.stringify(other_[i].questionValue))
     if (JSON.stringify(other_[i].questionValue) == 'null') {
       body.setData({
         [`theOtherInfo[${i}].questionFit`]: false
@@ -418,10 +422,51 @@ function judgeFitTeam(body) {
       resultBoolen = false
     } else {
       body.setData({
-        [`personalDescription[${i}].questionFit`]: true
+        [`theOtherInfo[${i}].questionFit`]: true
       })
     }
   }
+
+  if(body.data.verifyCode.length == 0){
+    body.setData({
+      verifyCodeState:false
+    })
+    resultBoolen = false
+  }else{
+    body.setData({
+      verifyCodeState:true
+    })
+  }
+
+  if(body.data.selfPhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+    if(body.data.couplePhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+      body.setData({
+        selfPhotoState:false,
+        couplePhotoState:false
+      })
+      resultBoolen = false
+    }else{
+      body.setData({
+        selfPhotoState:false,
+        couplePhotoState:true
+      })
+      resultBoolen = false
+    }
+  }else{
+    if(body.data.couplePhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+      body.setData({
+        selfPhotoState:true,
+        couplePhotoState:false
+      })
+      resultBoolen = false
+    }else{
+      body.setData({
+        selfPhotoState:true,
+        couplePhotoState:true
+      })
+    }
+  }
+
   return resultBoolen
 }
 
@@ -510,5 +555,28 @@ function judgeFitPersonal(body) {
       }
     }
   }
+  if(body.data.verifyCode.length == 0){
+    body.setData({
+      verifyCodeState:false
+    })
+    resultBoolen = false
+  }else{
+    body.setData({
+      verifyCodeState:true
+    })
+  }
+
+  if(body.data.selfPhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+    body.setData({
+      selfPhotoState:false
+    })
+    resultBoolen = false
+  }else{
+    body.setData({
+      selfPhotoState:true
+    })
+  }
+  
+  
   return resultBoolen
 }

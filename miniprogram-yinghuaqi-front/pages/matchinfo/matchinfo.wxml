@@ -20,35 +20,35 @@
   <view class="info" style="margin-top: 0rpx">
     <text>性 别</text>
   </view>
-  <view class="info_item_left" style="margin-top: 0rpx">
+  <view class="info_item_left" style="margin-top: 6rpx">
     <text>{{gender}}</text>
   </view>
 
-  <view class="info" style="margin-top:20rpx">
+  <view class="info" style="margin-top:80rpx">
     <text>联 络</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:40rpx">
+  <view class="info_item_bottom" style="margin-top:125rpx">
     <text>{{contact}}</text>
   </view>
 
-  <view class="info" style="margin-top:140rpx">
+  <view class="info" style="margin-top:180rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:180rpx;color:#e55c4d">
+  <view class="info_item_bottom" style="margin-top:225rpx;color:#e55c4d">
     <text>{{description}}</text>
   </view>
 
-  <view class="info" style="margin-top:260rpx">
+  <view class="info" style="margin-top:320rpx">
     <text>匹配分数</text>
   </view>
-  <view class="info_item_left margin-left" style="margin-top:260rpx">
+  <view class="info_item_left margin-left" style="margin-top:320rpx">
     <text>{{score}}</text>
   </view>
 
-  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:360rpx" >
+  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:390rpx" >
   <text>契约编号</text>
   </view>
-  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:360rpx">
+  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:390rpx">
     <text>{{coupleNumber}}</text>
   </view>
 
