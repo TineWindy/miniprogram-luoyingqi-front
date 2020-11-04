@@ -70,5 +70,9 @@
 /*上传照片*/
 .uploadImg{
   width: 100%;
-  
+}
+/*红色边框*/
+.border-red{
+  border: 1px solid red;
+  border-radius: 10px;
 }
