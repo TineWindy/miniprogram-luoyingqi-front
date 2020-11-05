@@ -20,7 +20,7 @@
   <view class="info" style="margin-top: 0rpx">
     <text>性 别</text>
   </view>
-  <view class="info_item_left" style="margin-top: 6rpx">
+  <view class="info_item_left" style="margin-top: 0rpx">
     <text>{{gender}}</text>
   </view>
 
@@ -31,10 +31,10 @@
     <text>{{contact}}</text>
   </view>
 
-  <view class="info" style="margin-top:180rpx">
+  <view class="info" style="margin-top:205rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:225rpx;color:#e55c4d">
+  <view class="info_item_bottom" style="margin-top:240rpx;color:#e55c4d">
     <text>{{description}}</text>
   </view>
 

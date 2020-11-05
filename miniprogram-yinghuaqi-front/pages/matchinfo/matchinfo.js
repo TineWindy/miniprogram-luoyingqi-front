@@ -33,7 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //getMatchInfo(this);
+    getMatchInfo(this);
   },
 })
 
@@ -103,7 +103,7 @@ function agreeMatchInfo(body) {
         content: '您已同意此次匹配',
         showCancel: false,
       });
-      
+
       getMatchInfo(body);
     },
     'GET'

@@ -28,23 +28,24 @@ Component({
     //点击验证
     submitVerify: function (e) {
       if (this.data.state === "获取验证码") {
+        var body = this;
         //将验证码传给后端进行验证（request请求）
         HttpUtils.yhjRequest(
-          'apply/getVerifyCode', {
+          '/apply/getVerifyCode', {
             'phone': this.data.phone
           },
           function (res) {
             wx.showToast({
-              title: '已请求验证码，请注意在短信中查收!',
+              title: '已请求验证码',
               icon: 'loading',
               duration: 2000
             })
 
-            this.setData({
-              state: this.data.timeDown + "s后重试",
+            body.setData({
+              state: body.data.timeDown + "s后重试",
               timeDown: 30
             })
-            this.timeDown(this);
+            body.timeDown(body);
 
           },
           'get'
@@ -62,7 +63,7 @@ Component({
         }
         if (newTimeDown == 0) {
           body.setData({
-            state: "重试",
+            state: "获取验证码",
             timeDown: 30
           })
         } else {

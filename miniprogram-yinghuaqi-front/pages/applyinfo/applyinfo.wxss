@@ -7,6 +7,7 @@ page{
 .wenan_apply {
   position: absolute;
   left: 80rpx;
+  right: 50rpx;
   top: 550rpx;
   color: gray;
 }
@@ -29,7 +30,7 @@ page{
 
 .baoming {
   position: absolute;
-  top: 750rpx;
+  top: 950rpx;
   left: 50rpx;
   right: 50rpx;
   background-color: #fdf8f6;
@@ -41,7 +42,7 @@ page{
 
 .verify {
   position: absolute;
-  top: 950rpx;
+  top:1150rpx;
   left: 50rpx;
   right: 50rpx;
   background-color: #fdf8f6;
