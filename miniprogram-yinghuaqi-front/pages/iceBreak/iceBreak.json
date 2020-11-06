@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "userInfo":"../../Component/userInfo/userInfo",
+    "verifyPhone":"../../Component/verifyPhone/verifyPhone"
+  }
+} 

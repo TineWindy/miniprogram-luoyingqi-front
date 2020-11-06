@@ -14,7 +14,7 @@
     <!--姓名-->
     <view class="cu-form-group margin-top listCView radius">
       <view class="title">姓名</view>
-      <input class="inputStyle" name="name" placeholder="{{userInfo.nickName}}" value="{{name}}" disabled="{{!isUpdating}}"></input>
+      <input class="inputStyle" name="name" placeholder="请输入您的姓名~" value="{{name}}" disabled="{{!isUpdating}}"></input>
     </view>
     <!--性别-->
     <view class="cu-form-group margin-top listCView">
@@ -38,13 +38,13 @@
     <!--QQ号-->
     <view class="cu-form-group margin-top listCView">
       <view class="title">QQ号</view>
-      <input class="inputStyle" name="qq" placeholder="请输入您的QQ号" type="number" value="{{qq}}" disabled="{{!isUpdating}}"></input>
+      <input class="inputStyle" name="qq" placeholder="请输入您的QQ号~" type="number" value="{{qq}}" disabled="{{!isUpdating}}"></input>
     </view>
 
     <!--手机号-->
     <view class="cu-form-group listCView borderTop">
       <view class="title">手机号</view>
-      <input class="inputStyle" name="phone" placeholder="请输入您的手机号" type="number" value="{{phone}}" disabled="{{!isUpdating}}"></input>
+      <input class="inputStyle" name="phone" placeholder="请输入您的手机号~" type="number" value="{{phone}}" disabled="{{!isUpdating}}"></input>
       <!-- <button class="cu-btn bg-pink shadow" bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" size="mini"><text>一键获取</text></button> -->
 	  </view>
     <!--学校-->

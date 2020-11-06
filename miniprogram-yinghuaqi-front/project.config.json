@@ -112,6 +112,13 @@
           "pathName": "pages/baoming/baoming",
           "query": "source=PERSONAL",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "破冰晚会",
+          "pathName": "pages/iceBreak/iceBreak",
+          "query": "",
+          "scene": null
         }
       ]
     }

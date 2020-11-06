@@ -9,7 +9,8 @@
     "pages/applyinfo/applyinfo",
     "pages/matchinfo/matchinfo",
     "pages/baoming/baoming",
-    "pages/navigation/navigation"
+    "pages/navigation/navigation",
+    "pages/iceBreak/iceBreak"
   ],
   "window": {
     "backgroundTextStyle": "light",

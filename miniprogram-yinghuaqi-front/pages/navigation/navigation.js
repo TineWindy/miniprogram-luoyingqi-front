@@ -23,6 +23,12 @@ Page({
     getMyMatchInfo(this, e);
   },
 
+  toIceBreak: function(e){
+    wx.navigateTo({
+      url: '../iceBreak/iceBreak',
+    })
+  },
+
 
   //暂无
   no: function (e) {

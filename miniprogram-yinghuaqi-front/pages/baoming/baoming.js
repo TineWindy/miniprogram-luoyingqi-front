@@ -83,6 +83,7 @@ Page({
       verifyCode: e.detail
     })
   },
+
   //上传自己的图片
   upLoadSelfImg: function (e) {
     upLoadImages(this, this.data.upLoadCfg, 'self');
@@ -304,9 +305,6 @@ function upLoadImages(body, upLoadCfg, user) {
               couplePhotoUrl: res.imageURL
             })
           }
-
-          console.log(res);
-          console.log(body.data);
         },
         function (error) {
           // 上传失败
