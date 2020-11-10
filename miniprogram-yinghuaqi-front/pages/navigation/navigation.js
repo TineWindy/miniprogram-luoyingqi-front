@@ -23,6 +23,7 @@ Page({
     getMyMatchInfo(this, e);
   },
 
+  //跳转到破冰活动
   toIceBreak: function(e){
     wx.navigateTo({
       url: '../iceBreak/iceBreak',
@@ -30,12 +31,10 @@ Page({
   },
 
 
-  //暂无
-  no: function (e) {
-    wx.showToast({
-      title: '不在活动时间范围内~',
-      icon: 'none',
-      duration: 1500
+  //跳转到定向越野活动
+  toOrienteering: function (e) {
+    wx.navigateTo({
+      url: '../task/orienteering/orienteering',
     })
   }
 })

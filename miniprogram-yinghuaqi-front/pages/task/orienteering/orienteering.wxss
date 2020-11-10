@@ -1,0 +1,123 @@
+@import '../../../style//pageBg.wxss';
+page{
+  background-repeat: no-repeat;
+}
+.head{
+  margin-top: 580rpx;
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headDiv{
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #fabbbb, #f58286); 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(199, 199, 199);
+}
+.headDivFirst{
+  width: 80%;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.headDivTwo{
+  font-size: 22px;
+  font-weight: 600;
+}
+.headDivThree{
+  padding: 20rpx;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+/*任务*/
+.taskFlex{
+  width: 100%;
+  height: 1000rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.taskCommon{
+  width: 90%;
+  background: linear-gradient(to bottom right, #fabbbb, #f58286);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(199, 199, 199);
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  margin: 20rpx 0;
+}
+.taskCommonOne{
+  width: 24%;
+}
+.taskCommonTwo{
+  width: 67%;
+  display: flex;
+  align-items: center;
+}
+.taskStatusImg{
+  width: 50rpx;
+  margin-right: 20rpx;
+}
+.taskCommonThree{
+  width: 9%;
+}
+.tabBarImg{
+  width: 100%;
+}
+/*任务详细*/
+.taskInfo{
+  width: 80%;
+  background-color:#efcbcb;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(199, 199, 199);
+  padding: 20rpx;
+}
+.timeInfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 10rpx;
+}
+.scoreAndReward{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 10rpx;
+}
+/*二维码图片*/
+.erweima{
+  width: 400rpx;
+}
+/*标题*/
+.titleText{
+  font-size: 17px;
+  margin-bottom: 30rpx;
+}
+.titleToast{
+  width: 100%;
+  margin:26rpx 0 26rpx 0;
+  background-color: white;
+  box-shadow: 0 0 7px rgb(235, 235, 235);
+  padding: 22rpx;
+  text-align: center;
+}
+.titleToastMain{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+/*粉红色渐变背景*/
+.gradientPinkBg{
+  background: linear-gradient(to bottom right, #fabbbb, #f58286);
+}

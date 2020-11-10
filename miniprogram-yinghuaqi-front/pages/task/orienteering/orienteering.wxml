@@ -1,0 +1,117 @@
+<!--头部-->
+<view class="head">
+  <view class="headDiv">
+    <view class="headDivFirst">
+      <text>开始时间：8：14</text>
+      <text>积分：24</text>
+    </view>
+    <view class="headDivTwo">
+      未开始
+    </view>
+    <view class="headDivThree">
+      <view bindtap="showModal">契约二维码</view>
+      <view bindtap="taskBegin">开始越野</view>
+    </view>
+  </view>
+</view>
+
+<view class="taskFlex">
+  <!--单人任务-->
+  <view class="titleText">
+    1.单人任务
+  </view>
+
+  <block wx:for="{{personalTask}}" wx:key="index">
+  <!--外部展示-->
+  <view class="personalTask taskCommon" bindtap="changeTabCur" data-index="{{index}}">
+    <view class="taskCommonOne">
+      单人任务
+    </view>
+    <view class="taskCommonTwo">
+      <image class="taskStatusImg" src="{{item.taskStatus == 'done'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
+      <text>{{item.taskStatus == 'done'?'已完成':'未完成'}}</text>
+    </view>
+    <view class="taskCommonThree">
+      <image class="tabBarImg" src="{{tabBarIndex == index+1?'../../../images/up.png':'../../../images/down.png'}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <!--详细信息展示-->
+  <view wx:if="{{tabBarIndex == index+1}}" class="taskInfo">
+    <!--时间展示-->
+    <view class="timeInfo">
+      <view>
+        完成人：{{item.taskPeople}}
+      </view>
+      <view>
+        完成时间：{{item.taskTime}}
+      </view>
+    </view>
+    <!--分数和获得奖励展示-->
+    <view class="scoreAndReward">
+      <view>
+        获得分数：{{item.taskScore}}
+      </view>
+      <view>
+        获得奖励：{{item.taskReward}}
+      </view>
+    </view>
+  </view>
+  </block>
+  <!--双人任务-->
+  <view class="titleText" style="margin-top:30rpx;">
+    2.双人任务
+  </view>
+
+  <block wx:for="{{teamTask}}" wx:key="index">
+  <!--外部展示-->
+  <view class="teamTask taskCommon" bindtap="changeTabCur" data-index="{{index+2}}">
+    <view class="taskCommonOne">
+      双人任务
+    </view>
+    <view class="taskCommonTwo">
+      <image class="taskStatusImg" src="{{item.taskStatus == 'done'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
+      <text>{{item.taskStatus == 'done'?'已完成':'未完成'}}</text>
+    </view>
+    <view class="taskCommonThree">
+      <image class="tabBarImg" src="{{tabBarIndex == index+3?'../../../images/up.png':'../../../images/down.png'}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <!--详细信息展示-->
+  <view wx:if="{{tabBarIndex == index+3}}" class="taskInfo">
+    <!--时间展示-->
+    <view class="timeInfo">
+      <view>
+        完成人：{{item.taskPeople}}
+      </view>
+      <view>
+        完成时间：{{item.taskTime}}
+      </view>
+    </view>
+    <!--分数和获得奖励展示-->
+    <view class="scoreAndReward">
+      <view>
+        获得分数：{{item.taskScore}}
+      </view>
+      <view>
+        获得奖励：{{item.taskReward}}
+      </view>
+    </view>
+  </view>
+  </block>
+</view>
+
+
+<!--模态框-->
+<view class="cu-modal {{modalShow?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">契约二维码</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <image class="erweima" src="{{'http://qipo8d5t0.hn-bkt.clouddn.com/QR_CODE_IMG_'+'LyCP0003'}}" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

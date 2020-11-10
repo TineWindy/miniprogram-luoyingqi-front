@@ -10,7 +10,8 @@
     "pages/matchinfo/matchinfo",
     "pages/baoming/baoming",
     "pages/navigation/navigation",
-    "pages/iceBreak/iceBreak"
+    "pages/iceBreak/iceBreak",
+    "pages/task/orienteering/orienteering"
   ],
   "window": {
     "backgroundTextStyle": "light",

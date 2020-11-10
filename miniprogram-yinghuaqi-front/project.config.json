@@ -46,17 +46,10 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
       "list": []
     },
     "gamePlugin": {
@@ -118,6 +111,11 @@
           "name": "破冰晚会",
           "pathName": "pages/iceBreak/iceBreak",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "定向越野",
+          "pathName": "pages/task/orienteering/orienteering",
           "scene": null
         }
       ]

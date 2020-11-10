@@ -28,7 +28,7 @@
     </image>
   </button>
 
-  <button class="marginTopAndSomeCommon" bindtap="no">
+  <button class="marginTopAndSomeCommon" bindtap="toOrienteering">
     <span class='wenzi'>
       契约任务
     </span>
