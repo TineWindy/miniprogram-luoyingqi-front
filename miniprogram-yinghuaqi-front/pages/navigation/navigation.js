@@ -34,7 +34,7 @@ Page({
   //跳转到定向越野活动
   toOrienteering: function (e) {
     wx.navigateTo({
-      url: '../task/orienteering/orienteering',
+      url: '../task/taskNavigation/taskNavigation',
     })
   }
 })

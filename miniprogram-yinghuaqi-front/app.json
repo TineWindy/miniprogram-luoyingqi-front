@@ -11,7 +11,9 @@
     "pages/baoming/baoming",
     "pages/navigation/navigation",
     "pages/iceBreak/iceBreak",
-    "pages/task/orienteering/orienteering"
+    "pages/task/orienteering/orienteering",
+    "pages/task/taskNavigation/taskNavigation",
+    "pages/task/singleTask/singleTask"
   ],
   "window": {
     "backgroundTextStyle": "light",

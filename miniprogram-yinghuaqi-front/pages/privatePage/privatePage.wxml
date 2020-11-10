@@ -1,6 +1,27 @@
 <!--pages/privatePage/privatePage.wxml-->
 <view class='form-list'>
-  <text>伴侣编号</text>
-  <input type='text' value='{{coupleNumber}}'></input>
-  <image class='scan' bindtap='scanCode' src='/images/scan.png' mode='widthFix'></image>
+  <view class="inputId">
+    <view class="inputIdA">伴侣编号:</view>
+    <input type='text' placeholder="请扫描以获取伴侣编号" value='{{coupleNumber}}'></input>
+  </view>
+  <view class="centerImg">
+    <image class='scan' bindtap='scanCode' src='/images/scan.png' mode='widthFix'></image>
+  </view>
+
+  <view class="inputId">
+    <view class="inputIdA">地点</view>
+    <picker name="place" bindchange="PickerChangePlace" value="{{placeIndex}}" range="{{place}}">
+        <view class="picker">
+          {{placeIndex == -1?'请选择打卡地点':place[placeIndex]}}
+        </view>
+      </picker>
+  </view>
+
+  <view class="inputId">
+    <view class="inputIdA">分数</view>
+    <input type='text' placeholder="请输入分数" value='{{score}}'></input>
+  </view>
+
+  <button class="submit" bindtap="submit">提交</button>
+
 </view>

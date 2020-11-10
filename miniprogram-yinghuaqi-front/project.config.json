@@ -116,6 +116,19 @@
         {
           "name": "定向越野",
           "pathName": "pages/task/orienteering/orienteering",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "任务导航页面",
+          "pathName": "pages/task/taskNavigation/taskNavigation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "内部人员页面",
+          "pathName": "pages/privatePage/privatePage",
+          "query": "",
           "scene": null
         }
       ]

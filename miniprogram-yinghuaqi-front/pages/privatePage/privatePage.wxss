@@ -1,1 +1,22 @@
 /* pages/privatePage/privatePage.wxss */
+.inputId{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 40rpx 20rpx; 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(218, 218, 218);
+}
+.inputIdA{
+  width: 25%;
+}
+.submit{
+  margin-top: 30rpx;
+}
+.centerImg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
