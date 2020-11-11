@@ -15,21 +15,25 @@
   </view>
 </view>
 
-<view class="taskFlex">
+<view class="taskFlex" wx:if="{{status != 'NOT_RUNNING'}}">
   <!--单人任务-->
-  <view class="titleText">
-    1.单人任务
+  <view class="titleText noPaddingBottom">
+    <view>1.单人任务</view>
+    <view class="tab">
+      <view class="tabItem {{tabIndex == 0?'selected':''}}" bindtap="changeTab" data-index="0">我的任务</view>
+      <view class="tabItem {{tabIndex == 1?'selected':''}}" bindtap="changeTab" data-index="1">Ta的任务</view>
+    </view>
   </view>
 
-  <block wx:for="{{personalTask}}" wx:key="index">
-  <!--外部展示-->
+  <!--外部展示我的任务-->
+  <block wx:for="{{personalTask}}" wx:key="index" wx:if="{{tabIndex == 0}}">
   <view class="personalTask taskCommon" bindtap="changeTabCur" data-index="{{index}}">
     <view class="taskCommonOne">
       单人任务
     </view>
     <view class="taskCommonTwo">
-      <image class="taskStatusImg" src="{{item.taskStatus == 'done'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
-      <text>{{item.taskStatus == 'done'?'已完成':'未完成'}}</text>
+      <image class="taskStatusImg" src="{{item.taskStatus == 'FINISHED'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
+      <text>{{item.taskStatus == 'FINISHED'?'已完成':''}}{{item.taskStatus == 'CANCELED'?'未开始':''}}{{item.taskStatus == 'STARTED'?'正在进行中':''}}</text>
     </view>
     <view class="taskCommonThree">
       <image class="tabBarImg" src="{{tabBarIndex == index+1?'../../../images/up.png':'../../../images/down.png'}}" mode="widthFix"></image>
@@ -57,20 +61,68 @@
     </view>
   </view>
   </block>
+  
+  <!--外部展示Ta的任务-->
+  <block wx:for="{{otherTask}}" wx:key="index" wx:if="{{tabIndex == 1}}">
+  <view class="personalTask taskCommon" bindtap="changeTabCur" data-index="{{index}}">
+    <view class="taskCommonOne">
+      单人任务
+    </view>
+    <view class="taskCommonTwo">
+      <image class="taskStatusImg" src="{{item.taskStatus == 'FINISHED'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
+      <text>{{item.taskStatus == 'FINISHED'?'已完成':''}}{{item.taskStatus == 'CANCELED'?'未开始':''}}{{item.taskStatus == 'STARTED'?'正在进行中':''}}</text>
+    </view>
+    <view class="taskCommonThree">
+      <image class="tabBarImg" src="{{tabBarIndex == index+1?'../../../images/up.png':'../../../images/down.png'}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <!--详细信息展示-->
+  <view wx:if="{{tabBarIndex == index+1}}" class="taskInfo">
+    <!--时间展示-->
+    <view class="timeInfo">
+      <view>
+        完成人：{{item.taskPeople}}
+      </view>
+      <view>
+        完成时间：{{item.taskTime}}
+      </view>
+    </view>
+    <!--分数和获得奖励展示-->
+    <view class="scoreAndReward">
+      <view>
+        获得分数：{{item.taskScore}}
+      </view>
+      <view>
+        获得奖励：{{item.taskReward}}
+      </view>
+    </view>
+  </view>
+  </block>
+
+  <!--填写结果-->
+  <view class="resultDiv" wx:if="{{status == 'SINGLE_FINISHED'}}">
+    <view class="resultDivOne">
+      成语：
+    </view>
+    <input class="resultDivTwo" placeholder="请输入您的结果">
+    </input>
+    <button class="resultDivThree" style="width:160rpx;height:66rpx">提交</button>
+  </view>
+
   <!--双人任务-->
-  <view class="titleText" style="margin-top:30rpx;">
+  <view class="titleText" style="margin-top:30rpx;" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING'}}">
     2.双人任务
   </view>
 
-  <block wx:for="{{teamTask}}" wx:key="index">
-  <!--外部展示-->
+  <!--外部展示组队任务-->
+  <block wx:for="{{teamTask}}" wx:key="index" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING'}}">
   <view class="teamTask taskCommon" bindtap="changeTabCur" data-index="{{index+2}}">
     <view class="taskCommonOne">
       双人任务
     </view>
     <view class="taskCommonTwo">
-      <image class="taskStatusImg" src="{{item.taskStatus == 'done'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
-      <text>{{item.taskStatus == 'done'?'已完成':'未完成'}}</text>
+      <image class="taskStatusImg" src="{{item.taskStatus == 'FINISHED'?'../../../images/done.png':'../../../images/notDone.png'}}" mode="widthFix"></image>
+      <text>{{item.taskStatus == 'FINISHED'?'已完成':''}}{{item.taskStatus == 'CANCELED'?'未开始':''}}{{item.taskStatus == 'STARTED'?'正在进行中':''}}</text>
     </view>
     <view class="taskCommonThree">
       <image class="tabBarImg" src="{{tabBarIndex == index+3?'../../../images/up.png':'../../../images/down.png'}}" mode="widthFix"></image>
@@ -98,6 +150,7 @@
     </view>
   </view>
   </block>
+
 </view>
 
 

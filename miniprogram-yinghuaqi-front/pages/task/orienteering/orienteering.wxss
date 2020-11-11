@@ -37,6 +37,20 @@ page{
   display: flex;
   justify-content: space-around;
 }
+/*单人任务头部tab*/
+.tab{
+  margin-top: 10rpx;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.selected{
+  border-bottom:3px solid #fabbbb;
+  font-weight: 600;
+  color: #fabbbb;
+}
 /*任务*/
 .taskFlex{
   width: 100%;
@@ -103,21 +117,45 @@ page{
 .titleText{
   font-size: 17px;
   margin-bottom: 30rpx;
-}
-.titleToast{
   width: 100%;
-  margin:26rpx 0 26rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
   background-color: white;
-  box-shadow: 0 0 7px rgb(235, 235, 235);
-  padding: 22rpx;
-  text-align: center;
-}
-.titleToastMain{
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10rpx;
 }
 /*粉红色渐变背景*/
 .gradientPinkBg{
   background: linear-gradient(to bottom right, #fabbbb, #f58286);
+}
+
+/*成语输入框*/
+.resultDiv{
+  padding: 30rpx 20rpx;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(218, 218, 218);
+  display: flex;
+  align-items: center;
+}
+.resultDivOne{
+  width: 20%;
+}
+.resultDivTwo{
+  width:55%
+}
+.resultDivThree{
+  width: 25%;
+  text-align: center;
+  line-height:66rpx ;
+  background: linear-gradient(to bottom right, #fabbbb, #f58286);
+}
+.resultDivThree::after{
+  border: none;
+}
+/*取消第一个的底部padding*/
+.noPaddingBottom{
+  padding-bottom:0;
 }
