@@ -35,6 +35,6 @@
   border: none;
 }
 .border-red{
-  border: 1px solid red;
+  border: 3px solid red;
   border-radius: 10px;
 }

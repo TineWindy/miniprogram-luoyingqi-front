@@ -1,11 +1,23 @@
+<view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[0]}})" bindtap="toOri">
+  <view class="cardTitle">
+    定向越野
+  </view>
+</view>
 
-<scroll-view scroll-y class="scrollPage tasks">
+<view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[1]}})" bindtap="toPri">
+  <view class="cardTitle">
+    管理入口
+  </view>
+</view>
+
+<!-- <scroll-view scroll-y class="scrollPage tasks">
   <view class="cu-card">
-    <view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[index%3]}})" bindtap="toChild" data-taskId="{{item.id}}" wx:for="{{taskList}}" wx:key="index">
+    <view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[index%3]}})" bindtap="toChild"
+      data-taskId="{{item.id}}" wx:for="{{taskList}}" wx:key="index">
       <view class="cardTitle">
         {{item.taskName}}
       </view>
     </view>
   </view>
   <view class="cu-tabbar-height"></view>
-</scroll-view>
+</scroll-view> -->

@@ -23,8 +23,20 @@ Page({
   },
 
   onLoad: function(e) {
-    dataInit(this, e);
-  }
+    //dataInit(this, e);
+  },
+
+  toOri: function(e){
+    wx.navigateTo({
+      url: '../orienteering/orienteering'
+    })
+  },
+
+  toPri: function(e){
+    wx.navigateTo({
+      url: '../privatePage/privatePage'
+    })
+  },
 
 })
 function dataInit(body, e) {

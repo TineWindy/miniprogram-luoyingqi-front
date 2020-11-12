@@ -2,11 +2,11 @@
 <view class="head">
   <view class="headDiv">
     <view class="headDivFirst">
-      <text>开始时间：8：14</text>
-      <text>积分：24</text>
+      <text>开始时间：{{startTime}}</text>
+      <text>积分：{{totalScore}}</text>
     </view>
     <view class="headDivTwo">
-      未开始
+      {{textStatus}}
     </view>
     <view class="headDivThree">
       <view bindtap="showModal">契约二维码</view>
@@ -20,13 +20,13 @@
   <view class="titleText noPaddingBottom">
     <view>1.单人任务</view>
     <view class="tab">
-      <view class="tabItem {{tabIndex == 0?'selected':''}}" bindtap="changeTab" data-index="0">我的任务</view>
-      <view class="tabItem {{tabIndex == 1?'selected':''}}" bindtap="changeTab" data-index="1">Ta的任务</view>
+      <view class="tabItem {{tabIndex == 0?'selected':''}}" bindtap="changeTab" data-index="0">队员A的任务</view>
+      <view class="tabItem {{tabIndex == 1?'selected':''}}" bindtap="changeTab" data-index="1">队员B的任务</view>
     </view>
   </view>
 
   <!--外部展示我的任务-->
-  <block wx:for="{{personalTask}}" wx:key="index" wx:if="{{tabIndex == 0}}">
+  <block wx:for="{{A}}" wx:key="index" wx:if="{{tabIndex == 0}}">
   <view class="personalTask taskCommon" bindtap="changeTabCur" data-index="{{index}}">
     <view class="taskCommonOne">
       单人任务
@@ -44,7 +44,7 @@
     <!--时间展示-->
     <view class="timeInfo">
       <view>
-        完成人：{{item.taskPeople}}
+        任务地点：{{item.taskLocal}}
       </view>
       <view>
         完成时间：{{item.taskTime}}
@@ -52,9 +52,6 @@
     </view>
     <!--分数和获得奖励展示-->
     <view class="scoreAndReward">
-      <view>
-        获得分数：{{item.taskScore}}
-      </view>
       <view>
         获得奖励：{{item.taskReward}}
       </view>
@@ -63,7 +60,7 @@
   </block>
   
   <!--外部展示Ta的任务-->
-  <block wx:for="{{otherTask}}" wx:key="index" wx:if="{{tabIndex == 1}}">
+  <block wx:for="{{B}}" wx:key="index" wx:if="{{tabIndex == 1}}">
   <view class="personalTask taskCommon" bindtap="changeTabCur" data-index="{{index}}">
     <view class="taskCommonOne">
       单人任务
@@ -81,7 +78,7 @@
     <!--时间展示-->
     <view class="timeInfo">
       <view>
-        完成人：{{item.taskPeople}}
+        任务地点：{{item.taskLocal}}
       </view>
       <view>
         完成时间：{{item.taskTime}}
@@ -89,9 +86,6 @@
     </view>
     <!--分数和获得奖励展示-->
     <view class="scoreAndReward">
-      <view>
-        获得分数：{{item.taskScore}}
-      </view>
       <view>
         获得奖励：{{item.taskReward}}
       </view>
@@ -106,7 +100,7 @@
     </view>
     <input class="resultDivTwo" placeholder="请输入您的结果">
     </input>
-    <button class="resultDivThree" style="width:160rpx;height:66rpx">提交</button>
+    <button class="resultDivThree" style="width:160rpx;height:66rpx" bindtap="chengyuSubmit">提交</button>
   </view>
 
   <!--双人任务-->
@@ -133,7 +127,7 @@
     <!--时间展示-->
     <view class="timeInfo">
       <view>
-        完成人：{{item.taskPeople}}
+        任务地点：{{item.taskLocal}}
       </view>
       <view>
         完成时间：{{item.taskTime}}
@@ -141,9 +135,6 @@
     </view>
     <!--分数和获得奖励展示-->
     <view class="scoreAndReward">
-      <view>
-        获得分数：{{item.taskScore}}
-      </view>
       <view>
         获得奖励：{{item.taskReward}}
       </view>
@@ -164,7 +155,7 @@
       </view>
     </view>
     <view class="padding-xl">
-      <image class="erweima" src="{{'http://qipo8d5t0.hn-bkt.clouddn.com/QR_CODE_IMG_'+'LyCP0003'}}" mode="widthFix"></image>
+      <image class="erweima" src="http://qipo8d5t0.hn-bkt.clouddn.com/QR_CODE_IMG_{{coupleNumber}}" mode="widthFix"></image>
     </view>
   </view>
 </view>

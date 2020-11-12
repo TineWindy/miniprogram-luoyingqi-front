@@ -23,6 +23,7 @@ Page({
   data: {
     source: '', //判断报名的类型
     upLoadCfg: '',
+    defaultUrl:'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
     selfPhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
     selfPhotoState:true,
     couplePhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
@@ -213,11 +214,11 @@ function checkNeccssaryInfo(body) {
     flag = false;
   }
 
-  if (assertStrNotEmpty(body.data.selfPhotoUrl) && body.data.selfPhotoUrl === "i.loli.net/2020/11/03/bpWihgDE3zw96GN.png") {
+  if (assertStrNotEmpty(body.data.selfPhotoUrl) && body.data.selfPhotoUrl === body.data.defaultUrl) {
     flag = false;
   }
 
-  if (body.data.source === "TEAM" && assertStrNotEmpty(body.data.couplePhotoUrl) && body.data.couplePhotoUrl === "i.loli.net/2020/11/03/bpWihgDE3zw96GN.png") {
+  if (body.data.source === "TEAM" && assertStrNotEmpty(body.data.couplePhotoUrl) && body.data.couplePhotoUrl === body.data.defaultUrl) {
     flag = false;
   }
 
@@ -334,9 +335,10 @@ function dataResult(body) {
       resultData = bodyData2resultData(body, resultData)
       return resultData;
     } else {
-      wx.showToast({
-        title: '请先检查一下是否有未完成的问题哦~',
-        icon: 'none'
+      wx.showModal({
+        title:'提示',
+        content:'当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
+        showCancel:false
       })
       return false
     }
@@ -349,9 +351,10 @@ function dataResult(body) {
       resultData = bodyData2resultData(body, resultData)
       return resultData;
     } else {
-      wx.showToast({
-        title: '请先检查一下是否有未完成的问题哦~',
-        icon: 'none'
+      wx.showModal({
+        title:'提示',
+        content:'当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
+        showCancel:false
       })
       return false
     }
@@ -436,8 +439,8 @@ function judgeFitTeam(body) {
     })
   }
 
-  if(body.data.selfPhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
-    if(body.data.couplePhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+  if(body.data.selfPhotoUrl === body.data.defaultUrl){
+    if(body.data.couplePhotoUrl === body.data.defaultUrl){
       body.setData({
         selfPhotoState:false,
         couplePhotoState:false
@@ -451,7 +454,7 @@ function judgeFitTeam(body) {
       resultBoolen = false
     }
   }else{
-    if(body.data.couplePhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+    if(body.data.couplePhotoUrl == body.data.defaultUrl){
       body.setData({
         selfPhotoState:true,
         couplePhotoState:false
@@ -564,7 +567,7 @@ function judgeFitPersonal(body) {
     })
   }
 
-  if(body.data.selfPhotoUrl == 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png'){
+  if(body.data.selfPhotoUrl == body.data.defaultUrl){
     body.setData({
       selfPhotoState:false
     })

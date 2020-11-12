@@ -46,6 +46,14 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
     "plugin": {
       "list": []
     },
@@ -114,21 +122,23 @@
           "scene": null
         },
         {
+          "id": -1,
           "name": "定向越野",
           "pathName": "pages/task/orienteering/orienteering",
           "query": "",
           "scene": null
         },
         {
-          "name": "任务导航页面",
-          "pathName": "pages/task/taskNavigation/taskNavigation",
+          "id": -1,
+          "name": "内部页面",
+          "pathName": "pages/privatePage/privatePage",
           "query": "",
           "scene": null
         },
         {
-          "name": "内部人员页面",
-          "pathName": "pages/privatePage/privatePage",
-          "query": "",
+          "id": -1,
+          "name": "任务详情",
+          "pathName": "pages/task/singleTask/singleTask",
           "scene": null
         }
       ]
