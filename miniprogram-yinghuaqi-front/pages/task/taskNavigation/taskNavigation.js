@@ -6,45 +6,83 @@ Page({
       '../../../images/button2.png'
     ],
     backPic: '',
-    taskList: [{
-      taskName: '这是一个任务'
-    },{
-      taskName: '这是一个任务'
-    }],
-    timeList:[]
+    taskList: [],
+    timeList: []
   },
-  toChild: function(e) {
+  toChild: function (e) {
     wx.navigateTo({
       url: '../singleTask/singleTask?taskId=' + e.currentTarget.dataset.taskid
     })
   },
 
-  onLoad: function(e) {
-    dataInit(this, e);
+  onLoad: function (e) {
+    taskInit(this, e);
+    getTaskTimeList(this);
   },
 
-  toOri: function(e){
+  toOri: function (e) {
     wx.navigateTo({
       url: '../orienteering/orienteering'
     })
   },
 
-  toPri: function(e){
-    wx.navigateTo({
-      url: '../privatePage/privatePage'
-    })
+  toPri: function (e) {
+    httpFuncs.yhjRequest(
+      '',
+      '',
+      function(res){
+        if (res.resultObj ==="success"){
+          wx.navigateTo({
+            url: '../privatePage/privatePage'
+          })
+        }else{
+          wx.showToast({
+            title: '权限不足',
+            icon:'none',
+            duration:2000
+          })
+        }
+      }
+    )
   },
 
 })
-function dataInit(body, e) {
+
+function taskInit(body, e) {
   httpFuncs.yhjRequest(
     '/task/getAllTasks',
     '',
-    function(res) {
+    function (res) {
       body.setData({
         taskList: res.resultObj,
       });
     },
     'get'
   );
+}
+
+function getTaskTimeList(body) {
+  httpFuncs.yhjRequest(
+    '/task/getTaskTimeList',
+    '',
+    function (res) {
+      body.setData({
+        timeList: JSONObject2JSONArray(res.resultObj)
+      })
+    }
+  )
+}
+
+function JSONObject2JSONArray(json) {
+  var array = new Array();
+
+  for (var key in json) {
+    var data = {};
+    data.name = key;
+    data.time = json[key];
+
+    array.push(data);
+  }
+
+  return array;
 }

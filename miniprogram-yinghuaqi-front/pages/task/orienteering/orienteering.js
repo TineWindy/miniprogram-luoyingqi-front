@@ -5,14 +5,16 @@ Page({
     A: [],
     B: [],
     teamTask: [],
-    status: "NOT_RUNNING",
+    status: "TEAM_FINISHED",
     tabIndex: 0,
     tabBarIndex: 0,
     modalShow: false,
     coupleNumber: '',
     totalScore: '总成绩暂无',
     textStatus: '未开始',
-    startTime: '2020-11-12 02:12'
+    startTime: '暂无',
+    endTime:'暂无',
+    chengyu:''
   },
   onLoad: function (options) {
     getOrienteeringInfo(this,false);
@@ -62,6 +64,12 @@ Page({
   },
   chengyuSubmit(e) {
     submitCY(this);
+  },
+
+  getCY:function(e){
+    this.setData({
+      chengyu:e.detail.value
+    })
   }
 })
 
@@ -118,6 +126,7 @@ function getOrienteeringInfo(body,isRefresh) {
       body.setData({
         status: res.resultObj.status,
         startTime: res.resultObj.startTime,
+        endTime: res.resultObj.endTime,
         coupleNumber: res.resultObj.coupleNumber,
         totalScore: res.resultObj.score,
         A: res.resultObj.SINGLE_A,
@@ -143,9 +152,15 @@ function getOrienteeringInfo(body,isRefresh) {
 function submitCY(body){
   HttpUtils.yhjRequest(
     '/task/startTeam',
-    '',
+    {'chengyu':body.data.chengyu},
     function(res){
       getOrienteeringInfo(body,false);
+
+      wx.showModal({
+        title:'提示',
+        content:'成语输入正确，双人关卡已开启~',
+        showCancel:false
+      })
     }
   )
 }

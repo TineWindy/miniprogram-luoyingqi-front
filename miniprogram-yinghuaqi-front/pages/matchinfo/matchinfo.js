@@ -21,12 +21,30 @@ Page({
 
   /** 接受按钮  */
   acceptTap: function (e) {
-    agreeMatchInfo(this);
+    var this_ = this;
+    wx.showModal({
+      title: '提示',
+      content: '您正在接受契约，请谨慎操作!',
+      success(res) {
+        if (res.confirm) {
+          agreeMatchInfo(this_);
+        }
+      }
+    })
+
   },
 
   /** 拒绝按钮 */
   rejectTap: function (e) {
-    cancelMatchInfo();
+    wx.showModal({
+      title: '提示',
+      content: '您正在接受契约，请谨慎操作!',
+      success(res) {
+        if (res.confirm) {
+          cancelMatchInfo();
+        }
+      }
+    })
   },
 
   /**
@@ -62,34 +80,26 @@ function getMatchInfo(body) {
 
 // 取消匹配
 function cancelMatchInfo() {
-  wx.showModal({
-    title: '提示',
-    content: '您正在取消您的匹配，请谨慎操作',
-    success(res) {
-      if (res.confirm) {
-        httpFuncs.yhjRequest(
-          '/match/cancelMatch',
-          '',
-          function (res) {
-            wx.showModal({
-              title: '取消成功',
-              content: '您已取消此次匹配',
-              showCancel: false,
-              success(res) {
-                if (res.confirm) {
-                  //返回首页
-                  wx.reLaunch({
-                    url: '../qiyue/qiyue',
-                  })
-                }
-              }
-            });
-          },
-          'GET'
-        );
-      }
-    }
-  })
+  httpFuncs.yhjRequest(
+    '/match/cancelMatch',
+    '',
+    function (res) {
+      wx.showModal({
+        title: '取消成功',
+        content: '您已取消此次匹配',
+        showCancel: false,
+        success(res) {
+          if (res.confirm) {
+            //返回首页
+            wx.reLaunch({
+              url: '../qiyue/qiyue',
+            })
+          }
+        }
+      });
+    },
+    'GET'
+  );
 }
 
 // 同意匹配

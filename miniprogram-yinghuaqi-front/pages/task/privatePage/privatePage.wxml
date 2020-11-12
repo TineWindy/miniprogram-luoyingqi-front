@@ -2,7 +2,7 @@
 <view class='form-list'>
   <view class="inputId">
     <view class="inputIdA">伴侣编号:</view>
-    <input type='text' placeholder="请扫描以获取伴侣编号" value='{{coupleNumber}}'></input>
+    <input type='text' bindinput="getCoupleNumber" placeholder="请扫描以获取伴侣编号" value='{{coupleNumber}}'></input>
   </view>
   <view class="centerImg">
     <image class='scan' bindtap='scanCode' src='/images/scan.png' mode='widthFix'></image>
@@ -19,7 +19,7 @@
 
   <view class="inputId">
     <view class="inputIdA">分数</view>
-    <input type='text' bindinput="getScore" placeholder="请输入分数" value='{{score}}'></input>
+    <input type='number' bindinput="getScore" placeholder="请输入分数" value='{{score}}'></input>
   </view>
 
   <button class="submit" bindtap="submit">提交</button>

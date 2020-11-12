@@ -1,16 +1,3 @@
-<!--<view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[0]}})" bindtap="toOri">
-  <view class="cardTitle">
-    定向越野
-  </view>
-</view>
-
-<view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[1]}})" bindtap="toPri">
-  <view class="cardTitle">
-    管理入口
-  </view>
-</view>-->
-
-
 <view class="timeShow">
   <view class="timeShowDIv box-shadow">
     <view class="text_large">时间一览表</view>
@@ -27,7 +14,7 @@
   <!--定向越野-->
   <button class="marginTopAndSomeCommon" bindtap="toOri">
     <span class='wenzi'>
-      定向越野
+      高山流水歌
     </span>
     <image src='{{backImgs[0]}}' mode='widthFix'>
     </image>

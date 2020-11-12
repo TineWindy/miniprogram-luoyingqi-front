@@ -38,17 +38,17 @@
     <text>{{description}}</text>
   </view>
 
-  <view class="info" style="margin-top:360rpx">
+  <view class="info" style="margin-top:390rpx">
     <text>匹配分数</text>
   </view>
-  <view class="info_item_left margin-left" style="margin-top:360rpx">
+  <view class="info_item_left margin-left" style="margin-top:395rpx">
     <text>{{score}}</text>
   </view>
 
-  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:430rpx" >
+  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:455rpx" >
   <text>契约编号</text>
   </view>
-  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:430rpx">
+  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:460rpx">
     <text>{{coupleNumber}}</text>
   </view>
 
@@ -64,7 +64,8 @@
 
   </view>
   <view wx:else class="receive_text">
-    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n {{message}}</text>
+    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n </text>
+    <text>温馨提示：若有契约编号存在，则代表双方都接受了本次匹配哦 ~</text>
     <view class="bottom"></view>
   </view>
 

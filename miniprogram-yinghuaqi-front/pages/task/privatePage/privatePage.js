@@ -50,17 +50,22 @@ Page({
       success(res) {
         if (res.confirm){
           HttpUtils.yhjRequest(
-            'task/finishOri',
+            '/task/finishOri',
             {
               coupleNumber: this_.data.coupleNumber,
               taskId:  parseInt(this_.data.placeIndex) + 2,
               score: this_.data.score
             },
-  
             function (res) {
-              wx.showToast({
-                title: '提交成功',
-                duration: 2000
+              wx.showModal({
+                title:'操作成功',
+                content:'成绩已写入',
+                showCancel:false
+              })
+
+              // 清除
+              this_.setData({
+                coupleNumber:''
               })
             }
           )
@@ -72,6 +77,12 @@ Page({
   getScore:function(e){
     this.setData({
       score:e.detail.value
+    })
+  },
+
+  getCoupleNumber:function(e){
+    this.setData({
+      coupleNumber:e.detail.value
     })
   }
 })

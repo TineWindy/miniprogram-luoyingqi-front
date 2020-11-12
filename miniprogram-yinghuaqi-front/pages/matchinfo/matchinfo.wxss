@@ -53,14 +53,14 @@ page{
 
 .accept{
   position: absolute;
-  left: 140rpx;
+  left: 120rpx;
   top: 1220rpx;
   width: 30%;
 }
 
 .reject{
   position: absolute;
-  right: 140rpx;
+  right: 120rpx;
   top: 1220rpx;
   width: 30%;
 }
@@ -68,9 +68,9 @@ page{
 .receive_text{
   position: absolute;
   text-align: center;
-  top: 1220rpx;
-  left: 170rpx;
-  right: 170rpx;
+  top: 1270rpx;
+  left: 100rpx;
+  right: 100rpx;
   color: #f4acae;
 }
 

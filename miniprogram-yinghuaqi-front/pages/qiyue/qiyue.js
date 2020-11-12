@@ -17,13 +17,13 @@ Page({
 
   onLoad: function() {
     login();
+    getAnnouncement();
   },
 
   onShareAppMessage: function(options){
   },
 
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -78,5 +78,24 @@ function login(){
     },
     'get'
   );
+}
+
+function getAnnouncement(){
+  HttpUtils.yhjRequest(
+    '/system/getAnnouncement',
+    '',
+    function(res){
+      if (res.resultObj ==="NO"){
+        console.log('系统无公告');
+      }else{
+        wx.showModal({
+          title:'系统公告',
+          content: res.resultObj,
+          showCancel:false
+        })
+      }
+    },
+    'get'
+  ); 
 }
 

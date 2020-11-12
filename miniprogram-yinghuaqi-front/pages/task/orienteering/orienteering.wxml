@@ -3,6 +3,7 @@
   <view class="headDiv">
     <view class="headDivFirst">
       <text>开始时间：{{startTime}}</text>
+      <text>完成时间：{{endTime}}</text>
       <text>积分：{{totalScore}}</text>
     </view>
     <view class="headDivTwo">
@@ -90,18 +91,18 @@
     <view class="resultDivOne">
       成语：
     </view>
-    <input class="resultDivTwo" placeholder="请输入您的结果">
+    <input class="resultDivTwo" bindinput="getCY" value="{{chengyu}}" placeholder="请输入您的结果">
     </input>
     <button class="resultDivThree" style="width:160rpx;height:66rpx" bindtap="chengyuSubmit">提交</button>
   </view>
 
   <!--双人任务-->
-  <view class="titleText bigText" style="margin-top:30rpx;" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING'}}">
+  <view class="titleText bigText" style="margin-top:30rpx;" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING' || status == 'TEAM_FINISHED'}}">
     2.双人任务
   </view>
 
   <!--外部展示组队任务-->
-  <block wx:for="{{teamTask}}" wx:key="index" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING'}}">
+  <block wx:for="{{teamTask}}" wx:key="index" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING' || status == 'TEAM_FINISHED'}}">
   <view class="teamTask taskCommon" bindtap="changeTabCur" data-index="{{index+2}}">
     <view class="taskCommonOne">
       双人任务
