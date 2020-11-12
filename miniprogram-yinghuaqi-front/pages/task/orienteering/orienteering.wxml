@@ -9,8 +9,8 @@
       {{textStatus}}
     </view>
     <view class="headDivThree">
-      <view bindtap="showModal">契约二维码</view>
-      <view bindtap="taskBegin">开始越野</view>
+      <view bindtap="showModal" style="font-size:16px">契约二维码</view>
+      <view bindtap="taskBegin" style="font-size:16px">开始越野</view>
     </view>
   </view>
 </view>
@@ -18,7 +18,7 @@
 <view class="taskFlex" wx:if="{{status != 'NOT_RUNNING'}}">
   <!--单人任务-->
   <view class="titleText noPaddingBottom">
-    <view>1.单人任务</view>
+    <view class="bigText">1.单人任务</view>
     <view class="tab">
       <view class="tabItem {{tabIndex == 0?'selected':''}}" bindtap="changeTab" data-index="0">队员A的任务</view>
       <view class="tabItem {{tabIndex == 1?'selected':''}}" bindtap="changeTab" data-index="1">队员B的任务</view>
@@ -42,19 +42,15 @@
   <!--详细信息展示-->
   <view wx:if="{{tabBarIndex == index+1}}" class="taskInfo">
     <!--时间展示-->
-    <view class="timeInfo">
-      <view>
+    <view class="taskInfoItem">
         任务地点：{{item.taskLocal}}
-      </view>
-      <view>
+    </view>
+    <view class="taskInfoItem">
         完成时间：{{item.taskTime}}
-      </view>
     </view>
     <!--分数和获得奖励展示-->
-    <view class="scoreAndReward">
-      <view>
-        获得奖励：{{item.taskReward}}
-      </view>
+    <view class="taskInfoItem">
+      获得奖励：{{item.taskReward}}
     </view>
   </view>
   </block>
@@ -76,19 +72,15 @@
   <!--详细信息展示-->
   <view wx:if="{{tabBarIndex == index+1}}" class="taskInfo">
     <!--时间展示-->
-    <view class="timeInfo">
-      <view>
+    <view class="taskInfoItem">
         任务地点：{{item.taskLocal}}
-      </view>
-      <view>
+    </view>
+    <view class="taskInfoItem">
         完成时间：{{item.taskTime}}
-      </view>
     </view>
     <!--分数和获得奖励展示-->
-    <view class="scoreAndReward">
-      <view>
-        获得奖励：{{item.taskReward}}
-      </view>
+    <view class="taskInfoItem">
+      获得奖励：{{item.taskReward}}
     </view>
   </view>
   </block>
@@ -104,7 +96,7 @@
   </view>
 
   <!--双人任务-->
-  <view class="titleText" style="margin-top:30rpx;" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING'}}">
+  <view class="titleText bigText" style="margin-top:30rpx;" wx:if="{{status != 'SINGLE_RUNNING'}}" wx:if="{{status == 'TEAM_RUNNING'}}">
     2.双人任务
   </view>
 
@@ -125,19 +117,15 @@
   <!--详细信息展示-->
   <view wx:if="{{tabBarIndex == index+3}}" class="taskInfo">
     <!--时间展示-->
-    <view class="timeInfo">
-      <view>
+    <view class="taskInfoItem">
         任务地点：{{item.taskLocal}}
-      </view>
-      <view>
+    </view>
+    <view class="taskInfoItem">
         完成时间：{{item.taskTime}}
-      </view>
     </view>
     <!--分数和获得奖励展示-->
-    <view class="scoreAndReward">
-      <view>
-        获得奖励：{{item.taskReward}}
-      </view>
+    <view class="taskInfoItem">
+      获得奖励：{{item.taskReward}}
     </view>
   </view>
   </block>

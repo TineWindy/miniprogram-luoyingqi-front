@@ -46,14 +46,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -101,9 +93,8 @@
           "scene": null
         },
         {
-          "id": -1,
-          "name": "导航页面",
-          "pathName": "pages/navigation/navigation",
+          "name": "任务导航页面",
+          "pathName": "pages/task/taskNavigation/taskNavigation",
           "query": "",
           "scene": null
         },
@@ -129,9 +120,8 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "内部页面",
-          "pathName": "pages/privatePage/privatePage",
+          "pathName": "pages/task/privatePage/privatePage",
           "query": "",
           "scene": null
         },
@@ -139,6 +129,7 @@
           "id": -1,
           "name": "任务详情",
           "pathName": "pages/task/singleTask/singleTask",
+          "query": "",
           "scene": null
         }
       ]

@@ -1,10 +1,5 @@
-@import "../../../style//pageBg.wxss";
-.task {
-  margin-top: 600rpx;
-}
-
-.bg-littlePink{
-  background-color: rgb(252, 247, 247);
+page{
+  background-color: white;
 }
 
 .task-pic {
@@ -12,5 +7,5 @@
 }
 
 .bgGradientPink{
-  background: linear-gradient(to bottom right, #efcbcb,rgb(255, 160, 160));
+  background-color: #efcbcb;
 }

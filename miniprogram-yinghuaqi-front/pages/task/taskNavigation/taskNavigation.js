@@ -2,19 +2,16 @@ var httpFuncs = require("../../../utils/HttpUtils");
 Page({
   data: {
     backImgs: [
-      'https://i03piccdn.sogoucdn.com/88eeb995a481bd4f',
-      'https://i04piccdn.sogoucdn.com/46d11237e3fd5e0e',
-      'https://i03piccdn.sogoucdn.com/88eeb995a481bd4f',
-      'https://i04piccdn.sogoucdn.com/46d11237e3fd5e0e'
+      '../../../images/button1.png',
+      '../../../images/button2.png'
     ],
     backPic: '',
     taskList: [{
-      taskName: '定向越野'
+      taskName: '这是一个任务'
     },{
-      taskName: '定向越野'
-    },{
-      taskName: '定向越野'
-    }]
+      taskName: '这是一个任务'
+    }],
+    timeList:[]
   },
   toChild: function(e) {
     wx.navigateTo({
@@ -23,7 +20,7 @@ Page({
   },
 
   onLoad: function(e) {
-    //dataInit(this, e);
+    dataInit(this, e);
   },
 
   toOri: function(e){

@@ -37,7 +37,13 @@ Page({
 
   submit: function (e) {
     var this_ = this;
-
+    if(this_.data.score >20 || this_.data.score < 0 || this_.data.score == ''){
+      wx.showToast({
+        title: '请输入正确的分数~',
+        icon:'none'
+      })
+      return
+    }
     wx.showModal({
       title: '提示',
       content: '正在为' + this_.data.coupleNumber + '写入成绩，关卡:' + this_.data.place[this_.data.placeIndex],
@@ -62,6 +68,10 @@ Page({
       
       }
     })
+  },
+  getScore:function(e){
+    this.setData({
+      score:e.detail.value
+    })
   }
-
 })

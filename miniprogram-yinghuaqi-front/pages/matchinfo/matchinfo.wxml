@@ -27,28 +27,28 @@
   <view class="info" style="margin-top:80rpx">
     <text>联 络</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:125rpx">
+  <view class="info_item_bottom" style="margin-top:135rpx">
     <text>{{contact}}</text>
   </view>
 
-  <view class="info" style="margin-top:205rpx">
+  <view class="info" style="margin-top:225rpx">
     <text>个 人 描 述</text>
   </view>
-  <view class="info_item_bottom" style="margin-top:240rpx;color:#e55c4d">
+  <view class="info_item_bottom" style="margin-top:270rpx;color:#e55c4d">
     <text>{{description}}</text>
   </view>
 
-  <view class="info" style="margin-top:320rpx">
+  <view class="info" style="margin-top:360rpx">
     <text>匹配分数</text>
   </view>
-  <view class="info_item_left margin-left" style="margin-top:320rpx">
+  <view class="info_item_left margin-left" style="margin-top:360rpx">
     <text>{{score}}</text>
   </view>
 
-  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:390rpx" >
+  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:430rpx" >
   <text>契约编号</text>
   </view>
-  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:390rpx">
+  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:430rpx">
     <text>{{coupleNumber}}</text>
   </view>
 

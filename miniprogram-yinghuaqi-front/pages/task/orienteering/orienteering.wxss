@@ -1,11 +1,7 @@
-@import '../../../style//pageBg.wxss';
-page{
-  background-repeat: no-repeat;
-}
+
 .head{
-  margin-top: 580rpx;
   width: 100%;
-  height: 300rpx;
+  height: 360rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,18 +13,21 @@ page{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #fabbbb, #f58286); 
+  background-color:white; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(199, 199, 199);
 }
 .headDivFirst{
   width: 80%;
-  padding: 20rpx;
+  padding: 25rpx;
+  height: 170rpx;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 .headDivTwo{
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
 }
 .headDivThree{
@@ -40,21 +39,21 @@ page{
 /*单人任务头部tab*/
 .tab{
   margin-top: 10rpx;
+  padding-top: 10rpx;
   width: 80%;
+  font-size: 15px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  color: black;
 }
-
 .selected{
-  border-bottom:3px solid #fabbbb;
-  font-weight: 600;
-  color: #fabbbb;
+  border-bottom:4px solid rgb(94, 94, 94);
 }
 /*任务*/
 .taskFlex{
   width: 100%;
-  height: 1000rpx;
+  height: 1200rpx;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -62,8 +61,8 @@ page{
   margin-top: 30rpx;
 }
 .taskCommon{
-  width: 90%;
-  background: linear-gradient(to bottom right, #fabbbb, #f58286);
+  width: 95.5%;
+  background-color:white; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(199, 199, 199);
   display: flex;
@@ -91,23 +90,18 @@ page{
 }
 /*任务详细*/
 .taskInfo{
-  width: 80%;
-  background-color:#efcbcb;
+  width: 90%;
+  background-color:white; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(199, 199, 199);
-  padding: 20rpx;
-}
-.timeInfo{
+  padding: 30rpx;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20rpx 10rpx;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-.scoreAndReward{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20rpx 10rpx;
+.taskInfoItem{
+  margin:15rpx 0;
 }
 /*二维码图片*/
 .erweima{
@@ -115,7 +109,6 @@ page{
 }
 /*标题*/
 .titleText{
-  font-size: 17px;
   margin-bottom: 30rpx;
   width: 100%;
   display: flex;
@@ -125,9 +118,14 @@ page{
   padding: 20rpx 0;
   background-color: white;
 }
+.bigText{
+  font-size: 17px;
+  color: black;
+  font-weight: 600;
+}
 /*粉红色渐变背景*/
 .gradientPinkBg{
-  background: linear-gradient(to bottom right, #fabbbb, #f58286);
+  background-color:white; 
 }
 
 /*成语输入框*/
@@ -150,7 +148,7 @@ page{
   width: 25%;
   text-align: center;
   line-height:66rpx ;
-  background: linear-gradient(to bottom right, #fabbbb, #f58286);
+  background-color:white; 
 }
 .resultDivThree::after{
   border: none;

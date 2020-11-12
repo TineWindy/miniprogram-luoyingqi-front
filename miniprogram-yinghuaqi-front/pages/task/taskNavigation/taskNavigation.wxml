@@ -1,4 +1,4 @@
-<view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[0]}})" bindtap="toOri">
+<!--<view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[0]}})" bindtap="toOri">
   <view class="cardTitle">
     定向越野
   </view>
@@ -8,16 +8,48 @@
   <view class="cardTitle">
     管理入口
   </view>
+</view>-->
+
+
+<view class="timeShow">
+  <view class="timeShowDIv box-shadow">
+    <view class="text_large">时间一览表</view>
+    <block wx:for="{{timeList}}" wx:key="index">
+    <view class="timeShowItem margin-bottom">
+      <view class="timeShowItemOne">{{item.name}}:</view>
+      <view class="timeShowItemTwo"><text>{{item.time}}</text></view>
+    </view>
+    </block>
+  </view>
 </view>
 
-<!-- <scroll-view scroll-y class="scrollPage tasks">
-  <view class="cu-card">
-    <view class="cu-item bg-img shadow-blur" style="background-image:url({{backImgs[index%3]}})" bindtap="toChild"
-      data-taskId="{{item.id}}" wx:for="{{taskList}}" wx:key="index">
-      <view class="cardTitle">
+<view class="centerButton">
+  <!--定向越野-->
+  <button class="marginTopAndSomeCommon" bindtap="toOri">
+    <span class='wenzi'>
+      定向越野
+    </span>
+    <image src='{{backImgs[0]}}' mode='widthFix'>
+    </image>
+  </button>
+
+  <!--任务循环-->
+  <block wx:for="{{taskList}}" wx:key="index">
+    <button class="marginTopAndSomeCommon" data-taskid="{{item.id}}" bindtap="toChild">
+      <span class='wenzi'>
         {{item.taskName}}
-      </view>
-    </view>
-  </view>
-  <view class="cu-tabbar-height"></view>
-</scroll-view> -->
+      </span>
+      <image src='{{backImgs[(index+1)%2]}}' mode='widthFix'>
+      </image>
+    </button>
+  </block>
+
+  <!--管理入口-->
+  <button class="marginTopAndSomeCommon" bindtap="toPri">
+    <span class='wenzi'>
+      管理入口
+    </span>
+    <image  src='{{backImgs[1]}}' mode='widthFix'>
+    </image>
+  </button>
+</view>

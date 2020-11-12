@@ -10,9 +10,9 @@ Page({
     tabBarIndex: 0,
     modalShow: false,
     coupleNumber: '',
-    totalScore: '',
+    totalScore: '总成绩暂无',
     textStatus: '未开始',
-    startTime: ''
+    startTime: '2020-11-12 02:12'
   },
   onLoad: function (options) {
     getOrienteeringInfo(this,false);
@@ -115,7 +115,6 @@ function getOrienteeringInfo(body,isRefresh) {
     '',
     function (res) {
       var textStatus_ = statusCode2Text(res.resultObj.status);
-
       body.setData({
         status: res.resultObj.status,
         startTime: res.resultObj.startTime,
