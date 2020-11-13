@@ -5,7 +5,7 @@ Page({
     A: [],
     B: [],
     teamTask: [],
-    status: "TEAM_FINISHED",
+    status: "NOT_RUNNING",
     tabIndex: 0,
     tabBarIndex: 0,
     modalShow: false,

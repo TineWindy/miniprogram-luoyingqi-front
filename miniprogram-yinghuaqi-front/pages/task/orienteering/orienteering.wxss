@@ -56,12 +56,13 @@
 /*任务*/
 .taskFlex{
   width: 100%;
-  height: 1200rpx;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   margin-top: 30rpx;
+  margin-bottom: 100rpx;
 }
 .taskCommon{
   width: 95.5%;
@@ -94,13 +95,14 @@
 /*任务详细*/
 .taskInfo{
   width: 90%;
+  height: 300rpx;
   background-color:white; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(199, 199, 199);
   padding: 30rpx;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: flex-start;
 }
 .taskInfoItem{
@@ -126,7 +128,7 @@
   color: black;
   font-weight: 600;
 }
-/*粉红色渐变背景*/
+/*白色背景*/
 .gradientPinkBg{
   background-color:white; 
 }
