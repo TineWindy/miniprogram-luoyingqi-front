@@ -2,16 +2,16 @@
 <view class="head">
   <view class="headDiv">
     <view class="headDivFirst">
-      <text>开始时间：{{startTime}}</text>
-      <text>完成时间：{{endTime}}</text>
-      <text>积分：{{totalScore}}</text>
+      <text class="lightColor">开始时间：{{startTime}}</text>
+      <text class="lightColor">完成时间：{{endTime}}</text>
+      <text class="lightColor">积分：{{totalScore}}</text>
     </view>
     <view class="headDivTwo">
       {{textStatus}}
     </view>
     <view class="headDivThree">
-      <view bindtap="showModal" style="font-size:16px">契约二维码</view>
-      <view bindtap="taskBegin" style="font-size:16px">开始越野</view>
+      <view bindtap="showModal" style="font-size:17px;font-weight:500;">契约二维码</view>
+      <view bindtap="taskBegin" style="font-size:17px;font-weight:500;">开始越野</view>
     </view>
   </view>
 </view>

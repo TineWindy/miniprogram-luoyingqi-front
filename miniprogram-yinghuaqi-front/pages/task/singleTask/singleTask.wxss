@@ -9,3 +9,11 @@ page{
 .bgGradientPink{
   background-color: #efcbcb;
 }
+
+.boxShadow{
+  box-shadow:0 0 10px rgb(223, 205, 205) ;
+}
+
+.textCommen{
+  font-size: 15.5px;
+}

@@ -2,7 +2,7 @@
   <view class="cu-item text-pink">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-pink">活动名称</view>
+        <view class="cu-tag bg-white text-pink textCommen">活动名称</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>{{taskName}}</view>
@@ -12,7 +12,7 @@
   <view class="cu-item text-pink">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-pink">活动内容</view>
+        <view class="cu-tag bg-white text-pink textCommen">活动内容</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>{{taskDescription}}</view>
@@ -22,7 +22,7 @@
   <view class="cu-item text-pink">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-pink">活动规则</view>
+        <view class="cu-tag bg-white text-pink textCommen">活动规则</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>{{taskRule}}</view>
@@ -32,7 +32,7 @@
   <view class="cu-item text-pink">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-pink">活动奖励</view>
+        <view class="cu-tag bg-white text-pink textCommen">活动奖励</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>{{taskProfit}}</view>
@@ -42,7 +42,7 @@
   <view class="cu-item text-pink" wx:if="{{taskInfoUrl != ''}}" bindtap="toDetail">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-pink">活动链接</view>
+        <view class="cu-tag bg-white text-pink textCommen">活动链接</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>点击这里即可跳转到推文链接哦~</view>
@@ -52,8 +52,8 @@
   <view class="cu-item text-pink" wx:if="{{taskParticipateWay == 'ONLINE_UPLOAD'}}">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <button class="cu-tag bg-white text-pink" bindtap="uploadPic">上传图片</button>
-        <view class="cu-tag line-white" bindtap="confirmSubmit">确认提交</view>
+        <button class="cu-tag bg-white text-pink boxShadow textCommen"  bindtap="uploadPic">上传图片</button>
+        <view class="cu-tag line-white boxShadow textCommen" bindtap="confirmSubmit">确认提交</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>请点击“上传图片”上传活动图片，然后检查后点击“确认提交”</view>
@@ -63,7 +63,7 @@
   <view class="cu-item text-pink" wx:if="{{taskParticipateWay == 'ONLINE_UPLOAD'}}">
     <view class="bg-pink content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-pink">参与情况</view>
+        <view class="cu-tag bg-white text-pink textCommen">参与情况</view>
       </view>
       <view class="margin-top-sm text-content">
         <view>分数（刷新有一定延迟）：{{score}}</view>

@@ -1,7 +1,7 @@
 
 .head{
   width: 100%;
-  height: 360rpx;
+  height: 410rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,11 +20,14 @@
 .headDivFirst{
   width: 80%;
   padding: 25rpx;
-  height: 170rpx;
+  height: 200rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+.lightColor{
+  color: rgb(105, 105, 105);
 }
 .headDivTwo{
   font-size: 24px;
