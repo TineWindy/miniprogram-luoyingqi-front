@@ -56,7 +56,7 @@
         <view class="cu-tag line-white boxShadow textCommen" bindtap="confirmSubmit">确认提交</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>请点击“上传图片”上传活动图片，然后检查后点击“确认提交”</view>
+        <view>请点击“上传图片”上传活动图片，然后检查后点击“确认提交”. 如果对现有的活动图片不满意，可以重新上传图片后再提交哦~</view>
       </view>
     </view>
   </view>

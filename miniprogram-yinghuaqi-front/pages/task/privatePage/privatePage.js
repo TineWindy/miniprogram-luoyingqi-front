@@ -65,7 +65,8 @@ Page({
 
               // 清除
               this_.setData({
-                coupleNumber:''
+                coupleNumber:'',
+                score:''
               })
             }
           )

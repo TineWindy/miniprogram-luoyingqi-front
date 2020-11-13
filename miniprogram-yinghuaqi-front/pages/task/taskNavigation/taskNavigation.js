@@ -28,7 +28,7 @@ Page({
 
   toPri: function (e) {
     httpFuncs.yhjRequest(
-      '',
+      '/task/accessPrivate',
       '',
       function(res){
         if (res.resultObj ==="success"){
@@ -37,7 +37,7 @@ Page({
           })
         }else{
           wx.showToast({
-            title: '权限不足',
+            title: '访问权限不足',
             icon:'none',
             duration:2000
           })
