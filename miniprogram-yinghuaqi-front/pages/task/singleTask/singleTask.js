@@ -9,7 +9,7 @@ Page({
     taskDescription: '今天的活动是要干什么呢',
     taskRule: '今天的活动要怎么进行呢',
     taskProfit: '今天的活动有什么奖励呢',
-    taskParticipateWay: 'ONLINE_UPLOAD',
+    taskParticipateWay: '',
     taskInfoUrl: '',
     score: '暂无',
     taskPic: '',  //用户上传的图片链接
@@ -77,7 +77,8 @@ function getTaskInfo(body) {
         taskRule: res.resultObj.task.taskRule,
         taskProfit: res.resultObj.task.taskProfit,
         taskPic: res.resultObj.taskPic,
-        taskParticipateWay: res.resultObj.taskParticipateWay,
+        taskInfoUrl: res.resultObj.task.taskInfoUrl,
+        taskParticipateWay: res.resultObj.task.taskParticipateWay,
         score: res.resultObj.taskScore
       });
     }
@@ -95,6 +96,8 @@ function submit(body, e) {
         title: '操作成功',
         content: '上传图片成功',
       })
+
+      getTaskInfo(body);
     },
     'GET'
   );

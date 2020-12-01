@@ -35,12 +35,4 @@
     <image src='../../images/button1.png' mode='widthFix'>
     </image>
   </button>
-
-  <button class="marginTopAndSomeCommon" bindtap="toIceBreak">
-    <span class='wenzi'>
-      一见如故夜
-    </span>
-    <image src='../../images/button2.png' mode='widthFix'>
-    </image>
-  </button>
 </view>

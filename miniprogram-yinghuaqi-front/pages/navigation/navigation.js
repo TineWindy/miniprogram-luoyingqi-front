@@ -23,14 +23,6 @@ Page({
     getMyMatchInfo(this, e);
   },
 
-  //跳转到破冰活动
-  toIceBreak: function(e){
-    wx.navigateTo({
-      url: '../iceBreak/iceBreak',
-    })
-  },
-
-
   //跳转到定向越野活动
   toOrienteering: function (e) {
     wx.navigateTo({

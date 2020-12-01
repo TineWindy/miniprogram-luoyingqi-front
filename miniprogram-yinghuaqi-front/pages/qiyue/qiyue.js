@@ -20,6 +20,8 @@ Page({
     getAnnouncement();
   },
 
+  
+
   onShareAppMessage: function(options){
   },
 

@@ -1,6 +1,6 @@
 <view class="timeShow">
   <view class="timeShowDIv box-shadow">
-    <view class="text_large">时间一览表</view>
+    <view class="text_large">契约任务通知</view>
     <block wx:for="{{timeList}}" wx:key="index">
     <view class="timeShowItem margin-bottom">
       <view class="timeShowItemOne">{{item.name}}:</view>
