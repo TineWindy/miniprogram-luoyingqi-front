@@ -10,7 +10,7 @@
     </view>
     <!--附加备注-->
     <view wx:if="{{content.remark}}" class="chiceRemarks">
-      {{content.remark}}
+      <text class="{{content.questionHighlight?'redText':''}}">{{content.remark}}</text>
     </view>
     <!--题目选项-->
     <view class="choiceDivBody">
@@ -28,8 +28,8 @@
 <view class="div" wx:if="{{content.questionStyle == 'input'}}">
   <view class="inputDiv {{content.questionName=='Ta的个人标签'? 'flexDirection':' '}} {{content.questionFit?'':'redBorder'}}">
     <view class="inputDivLeft {{content.questionName=='Ta的个人标签'? 'flexDirectionTitle':' '}}">
-      <text class="choiceDivHeadOne">{{content.id}}.</text>
-      <text class="inputTextBig">{{content.questionName}}</text>
+      <text class="choiceDivHeadOne {{content.questionFit?'':'redBorder'}}">{{content.id}}.</text>
+      <text class="inputTextBig {{content.questionFit?'':'redBorder'}}">{{content.questionName}}</text>
       <!-- <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text> -->
     </view>
     <input class="inputDivRight border_bottom {{content.questionName=='Ta的个人标签'? 'flexDirectionInput':' '}}" bindinput="inputResult" placeholder="{{content.remark}} "></input>
@@ -40,8 +40,8 @@
 <view class="div" wx:if="{{content.questionStyle == 'picker'}}">
   <view class="pickerDiv {{content.questionFit?'':'redBorder'}}"> 
     <view class="pickerDivLeft">
-      <text class="choiceDivHeadOne">{{content.id}}.</text>
-      <text class="inputTextBig">{{content.questionName}}</text>
+      <text class="choiceDivHeadOne {{content.questionFit?'':'redBorder'}}">{{content.id}}.</text>
+      <text class="inputTextBig {{content.questionFit?'':'redBorder'}}">{{content.questionName}}</text>
       <!-- <text class="choiceDivHeadThree" wx:if="{{content.questionOptionsMinLimit == 0}}">*</text> -->
     </view>
     <view class="pickerDivRight">

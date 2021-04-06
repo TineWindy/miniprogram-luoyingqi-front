@@ -9,6 +9,7 @@ Page({
     bonusDemandArray: [],
     bonusDemandWeightArray: [],
     version:'',
+    baomingTop:'750rpx'
   },
 
   //初始加载用户报名信息
@@ -16,6 +17,8 @@ Page({
     this.setData({
       version: wx.getStorageSync('yhj_version')
     })
+
+    baomingTopFun(this);
 
     getApplyInfo(this);
   },
@@ -130,4 +133,17 @@ function cancelApply() {
       }
     }
   })
+}
+
+//确定个人报名按钮的固定定位
+function baomingTopFun(body){
+  if(body.data.version.property.teamApplyAccess){
+    body.setData({
+      baomingTop:'950rpx'
+    })
+  } else{
+    body.setData({
+      baomingTop:'750rpx'
+    })
+  }
 }

@@ -5,13 +5,13 @@
       抱歉，我们未找到您的报名信息！ \n 还请点击下方<text class="text_red">个人报名</text>填写报名表 \n
     </text>
   </view>
-  <button class="baoming" bindtap="singleTap">
+  <button class="baoming" style="top:{{baomingTop}};"  bindtap="singleTap">
     <span class='wenzi'>
       个人报名
     </span>
     <image src='../../images/button1.png' mode='widthFix'></image>
   </button>
-  <view class="wenan_apply" wx:if="{{version.property.teamApplyAccess}}">
+  <view class="wenan_apply" style="top:650rpx;" wx:if="{{version.property.teamApplyAccess}}">
     <text>
       如果想与自己的同伴一起参加，还请点击下方的缘分通道。但需要注意的是，<text class="text_red">非武汉大学</text>的用户若想参加本次活动，需要寻找一名<text
         class="text_red">武汉大学</text>的同伴通过<text class="text_red">缘分通道</text>报名哦~

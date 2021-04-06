@@ -102,6 +102,13 @@ Page({
     //前端数据整理 如果填写完整则返回数据结果，否则返回false
     var resultData = dataResult(this);
 
+    if(!resultData){
+      wx.pageScrollTo({
+        selector:'.titleToast',
+        duration: 0,
+      })
+    }
+
     if (resultData != false) {
       // 判断来源
       var src = this.data.source;
