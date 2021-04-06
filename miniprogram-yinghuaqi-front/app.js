@@ -52,9 +52,9 @@ App({
   },
 
   globalData: {
-    userInfo: null,
+    userWxInfo: null,
     basicUserInfo:'',
-    ApiHost: "https://127.0.0.1:8080",
-    //ApiHost: "https://www.luoyingqi.work:8080",
+    //ApiHost: "https://127.0.0.1:8080",
+    ApiHost: "https://www.luoyingqi.work:8080",
   }
 })

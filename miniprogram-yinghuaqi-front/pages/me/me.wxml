@@ -1,39 +1,47 @@
 <!--头部导航栏-->
 <cu-custom bgColor="bg-pink">
-	<view slot="content" class="text-black">{{hasUser?userInfo.nickName:'请先登陆哦~'}}</view>
+  <view slot="content" class="text-black">{{hasUser?userInfo.nickName:'请先登陆哦~'}}</view>
 </cu-custom>
 <!--头像展示区-->
 <view class="UCenter">
-		<image src="/images/meTopBox.jpeg" id="UCenter-bg"></image>
-		<image src="{{userInfo.avatarUrl}}" wx:if="{{hasUser}}" id="home-icon" mode="scaleToFill"></image>
-    <button size="mini" class="button" open-type="getUserInfo" wx:if="{{!hasUser}}" bindgetuserinfo="signOn">
-      <image src="../../images/iconForSignOn.png" bindtap=""></image>
-    </button>
-		<image src="https://s1.ax1x.com/2020/05/02/JxAJIK.gif" mode="scaleToFill" class="gif-wave"></image>
+  <image src="/images/meTopBox.jpeg" id="UCenter-bg"></image>
+  <image src="{{userInfo.avatarUrl}}" bindtap="getUserProfile" wx:if="{{hasUser}}" id="home-icon" mode="scaleToFill"></image>
+  
+  <button size="mini" class="button" bindtap="getUserProfile" wx:if="{{!hasUser}}" bindgetuserinfo="signOn">
+    <image src="../../images/iconForSignOn.png" bindtap=""></image>
+  </button>
+  <image src="https://s1.ax1x.com/2020/05/02/JxAJIK.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
 <!--底部二级页面入口-->
 <block wx:if="{{hasUser}}">
-<view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
+  <view class="cu-list menu card-menu margin-bottom-xl shadow-lg radius">
 
-  <view class="cu-item arrow" bindtap="changeUserInfo">
-    <view class="content">
-      <text class="cuIcon-profile text-yellow"></text>
-      <text class="text-grey">个人信息</text>
+    <view class="cu-item arrow" bindtap="changeUserInfo">
+      <view class="content">
+        <text class="cuIcon-profile text-yellow"></text>
+        <text class="text-grey">个人信息</text>
+      </view>
+    </view>
+
+    <button class="cu-item arrow" open-type="openSetting" bindopensetting="callback">
+      <view class="content butCenter">
+        <text class="cuIcon-info text-yellow"></text>
+        <text class="text-grey">隐私设置</text>
+      </view>
+    </button>
+
+    <button class="cu-item arrow" open-type="contact">
+      <view class="content butCenter">
+        <text class="cuIcon-favor text-yellow"></text>
+        <text class="text-grey">联系我们</text>
+      </view>
+    </button>
+
+    <view class="cu-item arrow" bindtap="aboutUs">
+      <view class="content">
+        <text class="cuIcon-appreciate text-yellow"></text>
+        <text class="text-grey">关于我们</text>
+      </view>
     </view>
   </view>
-
-  <button class="cu-item arrow" open-type="contact">
-    <view class="content butCenter">
-      <text class="cuIcon-favor text-yellow"></text>
-      <text class="text-grey">联系我们</text>
-    </view>
-  </button>
-
-  <view class="cu-item arrow" bindtap="aboutUs">
-    <view class="content">
-      <text class="cuIcon-appreciate text-yellow"></text>
-      <text class="text-grey">关于我们</text>
-    </view>
-  </view>
-</view>
 </block>

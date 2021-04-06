@@ -33,7 +33,7 @@
 
   <view wx:if="{{applySource=='PERSONAL'}}">
     <view class="weui-cells weui-cells_after-title weui-shadow">
-      <view class="weui-panel__hd">您的基本信息</view>
+      <view class="weui-panel__hd">您的个人描述</view>
       <block wx:for="{{personalDescriptionArray}}" wx:key="index">
         <view class="showRow">
           <view class="title margin-left">{{item.questionKey}}</view>

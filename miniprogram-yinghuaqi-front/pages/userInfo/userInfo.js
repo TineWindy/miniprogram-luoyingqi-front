@@ -8,33 +8,33 @@ Page({
     userInfo: {},
     genderList: ["男", "女"],
     genderIndex: 0,
-    school:"",
-    college:"",
+    school: "",
+    college: "",
     isUpdating: false,
     name: '',
     qq: '',
     phone: '',
     schoolNumber: '',
     birthday: '',
-    identifyCode:''
+    identifyCode: ''
   },
 
   onLoad: function (options) {
 
     this.setData({
-      userInfo: app.globalData.userInfo,
+      userInfo: app.globalData.userWxInfo,
       birthday: formatTime.formatTime(new Date()),
       isUpdating: false
     })
 
-    getUserBasicInfo(this,false);
+    getUserBasicInfo(this, false);
   },
 
   onPullDownRefresh: function () {
     // 加载动画
     wx.showNavigationBarLoading();
 
-    getUserBasicInfo(this,true);
+    getUserBasicInfo(this, true);
   },
 
   //改变性别
@@ -72,7 +72,7 @@ Page({
       success(res) {
         if (res.confirm) {
           postUserBasicInfo(e, body);
-        } 
+        }
       }
     })
 
@@ -157,7 +157,7 @@ function postUserBasicInfo(e, body) {
         showCancel: false
       })
 
-      getUserBasicInfo(body,false);
+      getUserBasicInfo(body, false);
     },
     'post'
   )
@@ -180,16 +180,16 @@ function getUserBasicInfo(body, isRefresh) {
         phone: res.resultObj.phone,
         schoolIndex: res.resultObj.school,
         collegeIndex: res.resultObj.college,
-        college:res.resultObj.college,
-        school:res.resultObj.school,
+        college: res.resultObj.college,
+        school: res.resultObj.school,
         schoolNumber: res.resultObj.schoolNumber,
-        identifyCode: res.resultObj.identifyCode
+        identifyCode: res.resultObj.identifyCode,
       })
 
-      if (isRefresh){
+      if (isRefresh) {
         wx.showToast({
           title: '刷新成功！',
-          duration:2000
+          duration: 2000
         });
 
         wx.hideNavigationBarLoading();

@@ -119,7 +119,7 @@ function cancelApply() {
                 if (res.confirm) {
                   //返回首页
                   wx.reLaunch({
-                    url: '../qiyue/qiyue',
+                    url: '../navigation/navigation?version=' + JSON.stringify(wx.getStorageSync('yhj_version')),
                   })
                 }
               }

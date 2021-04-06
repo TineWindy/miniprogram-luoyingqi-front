@@ -14,6 +14,12 @@ Page({
       JSON.parse(options.version);
 
     wx.setStorageSync('yhj_version', version);
+
+    if (version.property.hasOwnProperty('time')){
+      this.setData({
+        timeList: JSONObject2JSONArray(version.property.time)
+      })
+    }
   },
 
   // 查看我的报名

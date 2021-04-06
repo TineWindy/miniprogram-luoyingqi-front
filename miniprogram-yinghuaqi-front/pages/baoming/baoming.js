@@ -25,11 +25,11 @@ Page({
     upLoadCfg: '',
     defaultUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
     selfSchoolCardUrl: '',
-    selfSchoolCardUrlState: true,
+    selfSchoolCardState: true,
     selfPhotoUrl: '',
     selfPhotoState: true,
-    couplePhotoUrl: '',
-    couplePhotoState: true,
+    coupleSchoolCardUrl: '',
+    coupleSchoolCardState: true,
     verifyCode: '',
     verifyCodeState: true,
     basicPersonalInfo: {},
@@ -74,7 +74,7 @@ Page({
       version: wx.getStorageSync('yhj_version'),
       selfSchoolCardUrl: defaultUrl,
       selfPhotoUrl: defaultUrl,
-      couplePhotoUrl: defaultUrl
+      coupleSchoolCardUrl: defaultUrl
     });
 
     getQustionsLists(this);
@@ -98,8 +98,7 @@ Page({
 
   //上传图片
   upLoadImg: function (e) {
-    var target = e.currentTarget.target;
-
+    var target = e.currentTarget.dataset.target;
     upLoadImages(this, this.data.upLoadCfg, target);
   },
 
@@ -136,10 +135,9 @@ Page({
         var dataMap = {};
 
         // 补充验证信息
-        resultData.selfPhoto = this.data.selfPhotoUrl;
-        resultData.couplePhoto = this.data.couplePhotoUrl;
+        resultData.selfPhoto = this.data.selfSchoolCardUrl;
+        resultData.couplePhoto = this.data.coupleSchoolCardUrl;
         resultData.verifyCode = this.data.verifyCode;
-
         dataMap.otherInfo = resultData;
 
         postTeamApplyInfo(dataMap);
@@ -181,17 +179,37 @@ function postPersonalApplyInfo(data) {
         content: '报名成功, 请您留意后续的匹配结果!',
         showCancel: false,
         success(res) {
-          if (res.confirm) {
-            //返回首页
-            wx.reLaunch({
-              url: '../qiyue/qiyue',
-            })
-          }
+          subscribeMsg();
         }
       })
     },
     'post'
   )
+}
+
+// 接收订阅消息
+function subscribeMsg() {
+  wx.requestSubscribeMessage({
+    tmplIds: ['8OdMwIP8UzRJpQMePQjBJUQRVwcfipAIfUyZehcQFUc'],
+    success: function (res) {
+    },
+    fail: function (res) {
+      console.log(res);
+      if (res.errCode === 20004) {
+        wx.showModal({
+          title: '提示',
+          content: '您已拒绝接收订阅消息！如想重新订阅，请前往设置页面设置',
+          showCancel: false
+        })
+      }
+    },
+    complete: function (res) {
+      //返回首页
+      wx.reLaunch({
+        url: '../navigation/navigation?version=' + JSON.stringify(wx.getStorageSync('yhj_version')),
+      })
+    }
+  })
 }
 
 // 提交组队报名
@@ -230,7 +248,7 @@ function checkNeccssaryInfo(body) {
     flag = false;
   }
 
-  if (body.data.source === "TEAM" && assertStrNotEmpty(body.data.couplePhotoUrl) && body.data.couplePhotoUrl === body.data.defaultUrl) {
+  if (body.data.source === "TEAM" && assertStrNotEmpty(body.data.coupleSchoolCardUrl) && body.data.coupleSchoolCardUrl === body.data.defaultUrl) {
     flag = false;
   }
 
@@ -302,21 +320,20 @@ function upLoadImages(body, upLoadCfg, target) {
         upLoadCfg.domain,
         filePath,
         function (res) {
-          console.log('success');
           wx.showToast({
             title: '图片上传成功',
             icon: 'success'
           })
 
-          if (target === 'selfPhotoUrl') {
+          if (target === 'selfPhoto') {
             body.setData({
               selfPhotoUrl: res.imageURL
             })
-          } else if (target === 'couplePhotoUrl') {
+          } else if (target === 'coupleSchoolCard') {
             body.setData({
-              couplePhotoUrl: res.imageURL
+              coupleSchoolCardUrl: res.imageURL
             })
-          } else if (target === 'selfSchoolCardUrl') {
+          } else if (target === 'selfSchoolCard') {
             body.setData({
               selfSchoolCardUrl: res.imageURL
             })
@@ -454,34 +471,7 @@ function judgeFitTeam(body) {
     })
   }
 
-  if (body.data.selfPhotoUrl === body.data.defaultUrl) {
-    if (body.data.couplePhotoUrl === body.data.defaultUrl) {
-      body.setData({
-        selfPhotoState: false,
-        couplePhotoState: false
-      })
-      resultBoolen = false
-    } else {
-      body.setData({
-        selfPhotoState: false,
-        couplePhotoState: true
-      })
-      resultBoolen = false
-    }
-  } else {
-    if (body.data.couplePhotoUrl == body.data.defaultUrl) {
-      body.setData({
-        selfPhotoState: true,
-        couplePhotoState: false
-      })
-      resultBoolen = false
-    } else {
-      body.setData({
-        selfPhotoState: true,
-        couplePhotoState: true
-      })
-    }
-  }
+  resultBoolen = resultBoolen && judgePhoto(body.data.selfSchoolCardUrl,'selfSchoolCard',body) && judgePhoto(body.data.coupleSchoolCardUrl,'coupleSchoolCard',body);
 
   return resultBoolen
 }
@@ -582,17 +572,30 @@ function judgeFitPersonal(body) {
     })
   }
 
-  if (body.data.selfPhotoUrl == body.data.defaultUrl) {
+  resultBoolen = resultBoolen && judgePhoto(body.data.selfPhotoUrl,'selfPhoto',body) && judgePhoto(body.data.selfSchoolCardUrl,'selfSchoolCard',body);
+
+  return resultBoolen
+}
+
+function judgePhoto(photo,target,body) {
+  var result = true;
+  if (photo === body.data.defaultUrl) {
+    result = false;
+  }
+
+  if (target === 'selfPhoto') {
     body.setData({
-      selfPhotoState: false
+      selfPhotoState: result
     })
-    resultBoolen = false
-  } else {
+  } else if (target === 'coupleSchoolCard') {
     body.setData({
-      selfPhotoState: true
+      coupleSchoolCardState: result
+    })
+  } else if (target === 'selfSchoolCard') {
+    body.setData({
+      selfSchoolCardState: result
     })
   }
 
-
-  return resultBoolen
+  return result;
 }

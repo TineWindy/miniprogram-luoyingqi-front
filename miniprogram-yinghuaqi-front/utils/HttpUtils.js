@@ -1,4 +1,5 @@
 const baseUrl = getApp().globalData.ApiHost
+const app = getApp()
 
 module.exports = {
   userLogin: userLogin,
