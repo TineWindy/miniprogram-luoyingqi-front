@@ -58,13 +58,15 @@ Page({
       questionTotal: 0,
       questionFit: true,
       questionValue: null,
-    }]
+    }],
+    version:''
   },
 
   onLoad: function (options) {
     getUserBasicInfo(this);
     this.setData({
-      source: options.source
+      source: options.source,
+      version: wx.getStorageSync('yhj_version')
     });
     getQustionsLists(this);
     getToken(this);
@@ -236,9 +238,8 @@ function checkNeccssaryInfo(body) {
 // 请求问题列表
 function getQustionsLists(body) {
   HttpUtils.yhjRequest(
-    '/question/getQuestions', {
-    version: 'WHU-LOVER'
-  },
+    '/question/getQuestions', 
+    '',
     function (res) {
       var data = res.resultObj;
 

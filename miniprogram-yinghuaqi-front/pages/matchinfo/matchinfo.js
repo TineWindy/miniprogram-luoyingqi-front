@@ -38,7 +38,7 @@ Page({
   rejectTap: function (e) {
     wx.showModal({
       title: '提示',
-      content: '您正在接受契约，请谨慎操作!',
+      content: '您正在拒绝契约，请谨慎操作!',
       success(res) {
         if (res.confirm) {
           cancelMatchInfo();

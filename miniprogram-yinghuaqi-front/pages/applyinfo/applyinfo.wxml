@@ -2,26 +2,29 @@
 <view wx:if="{{!isApplied}}">
   <view class="wenan_apply">
     <text>
-      抱歉，我们未找到您的报名信息！ \n 还请点击下方<text class="text_red">个人报名</text>填写报名表 \n 若想和自己的同伴一起参加，还请点击<text class="text_red">缘分通道</text>
-      
-      需要注意的是，<text class="text_red">非武汉大学</text>的用户若想参加本次活动，需要寻找一名<text class="text_red">武汉大学</text>的同伴通过<text class="text_red">缘分通道</text>报名哦~
+      抱歉，我们未找到您的报名信息！ \n 还请点击下方<text class="text_red">个人报名</text>填写报名表 \n
     </text>
   </view>
-  <!--验证-->
-  <button class="verify" bindtap="groupTap">
-    <span class='wenzi'>
-      缘分通道
-    </span>
-    <image src='../../images/button2.png' mode='widthFix'></image>
-  </button>
-  <!--报名-->
   <button class="baoming" bindtap="singleTap">
     <span class='wenzi'>
       个人报名
     </span>
     <image src='../../images/button1.png' mode='widthFix'></image>
   </button>
+  <view class="wenan_apply" wx:if="{{version.property.teamApplyAccess}}">
+    <text>
+      如果想与自己的同伴一起参加，还请点击下方的缘分通道。但需要注意的是，<text class="text_red">非武汉大学</text>的用户若想参加本次活动，需要寻找一名<text
+        class="text_red">武汉大学</text>的同伴通过<text class="text_red">缘分通道</text>报名哦~
+    </text>
+  </view>
+  <button wx:if="{{version.property.teamApplyAccess}}" class="verify" bindtap="groupTap">
+    <span class='wenzi'>
+      缘分通道
+    </span>
+    <image src='../../images/button2.png' mode='widthFix'></image>
+  </button>
 </view>
+
 <!--找到报名信息之后-->
 <view wx:else>
   <view>
@@ -76,10 +79,10 @@
 
   <view wx:else>
     <view>
-    <text>\n\n\n\n\n\n\n\n\n\n\n\n\n</text>
+      <text>\n\n\n\n\n\n\n\n\n\n\n\n\n</text>
     </view>
     <view class="align_center">
-     您已通过组队报名的方式参与本次活动
+      您已通过组队报名的方式参与本次活动
     </view>
     <view class="align_center">
       请您在“查看我的契约”页面查看您的同伴信息！

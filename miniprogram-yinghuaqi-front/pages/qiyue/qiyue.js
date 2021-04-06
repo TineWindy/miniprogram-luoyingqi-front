@@ -9,15 +9,15 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    apply_end_time: '',
-    result_publish_time: '',
     week:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-    day:["8","9","10","11","12","13","14","15","16","17","18","19","20","21"]
+    day:["8","9","10","11","12","13","14","15","16","17","18","19","20","21"],
+    versions:[]
   },
 
   onLoad: function() {
     login();
     getAnnouncement();
+    getVersions(this);
   },
 
   
@@ -35,8 +35,10 @@ Page({
 
   //跳转到相应专场的导航页面
   toNavigationPage:function(e){    
+    var version = e.currentTarget.dataset.version;
+
     wx.navigateTo({
-      url:'../navigation/navigation'
+      url:'../navigation/navigation?version='+ JSON.stringify(version)
     })
   }
 })
@@ -80,6 +82,18 @@ function login(){
     },
     'get'
   );
+}
+
+function getVersions(body){
+  HttpUtils.yhjRequest(
+    '/version/getVersions',
+    '',
+    function(res){
+      body.setData({
+        versions: res.resultObj
+      })
+    }
+  )
 }
 
 function getAnnouncement(){

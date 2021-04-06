@@ -12,7 +12,7 @@
       拥抱这个世界 \n
       拥抱属于你的遇见
     </text>
-  </view> 
+  </view>
 
   <!-- 不滚动版本图片暂时隐藏 -->
 
@@ -27,19 +27,21 @@
   <view class="avtivityTime">
 
     <!--活动时间的头部 November-->
-    <view class="avtivityTimeHead">November.</view>
+    <view class="avtivityTimeHead">{{versions[0].property.month}}.</view>
 
     <!--活动时间的中间部分 星期名称-->
     <view class="activityTimeBody">
       <block wx:for="{{week}}" wx:key="index">
-      <text class="activityTimeItem activityTimeItemWeek">{{item}}</text>
+        <text class="activityTimeItem activityTimeItemWeek">{{item}}</text>
       </block>
     </view>
 
     <!--活动时间的尾部部分 日期-->
     <view class="activityTimeTail">
       <block wx:for="{{day}}" wx:key="index">
-        <view class="activityTimeItem activityTimeDay {{index==5?'left':''}} {{index>5&&index<6?'total':''}} {{index==6?'right':''}} {{index==7?'left':''}} {{index>7&&index<13?'total':''}} {{index==13?'right':''}}">{{item}}</view>
+        <view
+          class="activityTimeItem activityTimeDay {{index==5?'left':''}} {{index>5&&index<6?'total':''}} {{index==6?'right':''}} {{index==7?'left':''}} {{index>7&&index<13?'total':''}} {{index==13?'right':''}}">
+          {{item}}</view>
       </block>
     </view>
   </view>
@@ -47,13 +49,12 @@
 
 <!--跳转到相应专场的二级导航页面-->
 <!--按钮-->
-<button class="navigation" bindtap="toNavigationPage">
-  <span class='wenzi'>
-    武汉大学 五天·启缘
-  </span>
-  <image src='../../images/button1.png' mode='widthFix'>
-  </image>
-</button>
-
-
-
+<view wx:for="{{versions}}" >
+  <button class="navigation" bindtap="toNavigationPage" data-version="{{item}}">
+    <span class='wenzi'>
+      {{item.property.name}}
+    </span>
+    <image src='../../images/button1.png' mode='widthFix'>
+    </image>
+  </button>
+</view>

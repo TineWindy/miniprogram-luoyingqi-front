@@ -11,14 +11,6 @@
 </view>
 
 <view class="centerButton">
-  <!--定向越野-->
-  <button class="marginTopAndSomeCommon" bindtap="toOri">
-    <span class='wenzi'>
-      高山流水歌
-    </span>
-    <image src='{{backImgs[0]}}' mode='widthFix'>
-    </image>
-  </button>
 
   <!--任务循环-->
   <block wx:for="{{taskList}}" wx:key="index">

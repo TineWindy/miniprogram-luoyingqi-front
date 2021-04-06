@@ -34,27 +34,9 @@ Page({
   },
 
   aboutUs: function (e) {
-    HttpUtils.yhjRequest(
-      '/aboutUs',
-      '',
-      function (res) {
-        if (res.resultObj.url === "no" || res.resultObj.id === "-1") {
-          wx.showToast({
-            title: '敬请期待',
-            icon: 'none',
-            duration: 2000
-          })
-        } else {
-          // url较长,需要特殊处理
-          var url = encodeURIComponent(JSON.stringify(res.resultObj.url));
-          var id = res.resultObj.id;
-          wx.navigateTo({
-            url: '../detail/detail?url=' + url + '&id=' + id,
-          })
-        }
-      },
-      'get'
-    )
+    wx.navigateTo({
+      url: '../aboutUs/aboutUs',
+    })
 
   }
 })

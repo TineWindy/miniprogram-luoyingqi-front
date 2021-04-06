@@ -10,7 +10,10 @@ Page({
     timeList: []
   },
   onLoad: function (options) {
-    getVersionInfo(this);
+    var version =
+      JSON.parse(options.version);
+
+    wx.setStorageSync('yhj_version', version);
   },
 
   // 查看我的报名
@@ -45,25 +48,10 @@ function getMyMatchInfo(body, e) {
   })
 }
 
-function getVersionInfo(body) {
-  HttpUtils.yhjRequest(
-    '/version/getActivityInfo',
-    {'version':'WHU-LOVER'},
-    function (res) {
-      var version = res.resultObj.version;
-      wx.setStorageSync('yhj_version', version);
+function JSONObject2JSONArray(json) {
+  var array = new Array();
 
-      body.setData({
-        timeList : JSONObject2JSONArray(res.resultObj.time)
-      })
-    }
-  )
-}
-
-function JSONObject2JSONArray(json){
-  var array= new Array();
-
-  for(var key in json){
+  for (var key in json) {
     var data = {};
     data.name = key;
     data.time = json[key];

@@ -10,9 +10,9 @@
     "pages/matchinfo/matchinfo",
     "pages/baoming/baoming",
     "pages/navigation/navigation",
-    "pages/task/orienteering/orienteering",
     "pages/task/taskNavigation/taskNavigation",
-    "pages/task/singleTask/singleTask"
+    "pages/task/singleTask/singleTask",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "light",

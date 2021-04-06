@@ -7,11 +7,16 @@ Page({
     personalDescriptionArray: [],
     hardDemandArray: [],
     bonusDemandArray: [],
-    bonusDemandWeightArray: []
+    bonusDemandWeightArray: [],
+    version:'',
   },
 
   //初始加载用户报名信息
   onLoad: function (options) {
+    this.setData({
+      version: wx.getStorageSync('yhj_version')
+    })
+
     getApplyInfo(this);
   },
 

@@ -1,0 +1,32 @@
+<!--icon和name-->
+<view class="imgDiv">
+  <image class="imgIcon" src="https://i.loli.net/2021/04/06/Yics4h8yevb9WgI.png" mode="widthFix"></image>
+  <view class="iconText">珞樱契</view>
+</view>
+<!--文字-->
+<view class="headTextDiv">
+  <view><text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>珞樱契小程序是由<span
+      class="importance">武汉大学拾樱工作室</span>制作，它可以为高校内各种类型联谊活动提供包括报名、通知、匹配、活动打卡等技术支持。在为您提供便利的同时，我们将收集必要的个人信息来保证您身份的有效性，但我们向您承诺您的个人信息将只在该小程序内或您报名参加的对应活动中使用。如果您想修改或删除您的个人信息，请您通过客服向我们反馈。
+  </view>
+
+  <view><text
+      decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>武汉大学拾樱工作室由武汉大学学生自发创办，其初衷是为高校内各种类型的文体活动提供一定的技术支持，为组织或参与的同学们提供便利。除珞樱契小程序外，我们的工作室下还有<span
+      class="importance">追樱记小程序</span>。追樱记小程序已为武汉大学内各定向越野协会举办的定向越野活动提供了一定的技术支持，受到了主办方和使用者的一致好评。</view>
+
+  <view><text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>如果您是<span
+      class="importance">活动的组织者</span>，还苦于传统线下繁琐的事情，想得到一定的线上技术支持,那么请您联系我们。</view>
+
+  <view><text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>如果<span
+      class="importance">您对我们工作室感兴趣</span>，而恰好您会绘画或是UI设计，或是有过微信小程序前端开发的经验，亦或是了解并使用过java、springboot，mysql和redis（我们也可以帮助你快速入门哦~），那么我们非常欢迎收到您的简历。您可以在工作室里结交新的朋友，可以拥有一份很棒的项目经历，让更多的人用上您设计的程序! 
+  </view>
+  <view class="connectDiv">
+    <text>联系人：付同学</text>
+    <text>联系邮箱: limingfu@whu.edu.cn</text>
+    <text>请注明邮件主题哦~</text>
+  </view>
+</view>
+<!--版权备注-->
+<view class="copyrightDiv">
+  <view class="copyrightOne">武汉大学拾樱工作室 版权所有</view>
+  <view class="copyrightTwo">Copyright © 2019-2021 WHUSYS.All Right Reserved.</view>
+</view>
