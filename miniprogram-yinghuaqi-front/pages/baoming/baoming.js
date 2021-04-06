@@ -23,13 +23,15 @@ Page({
   data: {
     source: '', //判断报名的类型
     upLoadCfg: '',
-    defaultUrl:'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
-    selfPhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
-    selfPhotoState:true,
-    couplePhotoUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
-    couplePhotoState:true,
+    defaultUrl: 'i.loli.net/2020/11/03/bpWihgDE3zw96GN.png',
+    selfSchoolCardUrl: '',
+    selfSchoolCardUrlState: true,
+    selfPhotoUrl: '',
+    selfPhotoState: true,
+    couplePhotoUrl: '',
+    couplePhotoState: true,
     verifyCode: '',
-    verifyCodeState:true,
+    verifyCodeState: true,
     basicPersonalInfo: {},
     personalDescription: [],
     hardDemand: [],
@@ -59,15 +61,22 @@ Page({
       questionFit: true,
       questionValue: null,
     }],
-    version:''
+    version: '',
   },
 
   onLoad: function (options) {
     getUserBasicInfo(this);
+
+    var defaultUrl = this.data.defaultUrl;
+
     this.setData({
       source: options.source,
-      version: wx.getStorageSync('yhj_version')
+      version: wx.getStorageSync('yhj_version'),
+      selfSchoolCardUrl: defaultUrl,
+      selfPhotoUrl: defaultUrl,
+      couplePhotoUrl: defaultUrl
     });
+
     getQustionsLists(this);
     getToken(this);
   },
@@ -87,14 +96,11 @@ Page({
     })
   },
 
-  //上传自己的图片
-  upLoadSelfImg: function (e) {
-    upLoadImages(this, this.data.upLoadCfg, 'self');
-  },
+  //上传图片
+  upLoadImg: function (e) {
+    var target = e.currentTarget.target;
 
-  //上传同伴的图片
-  upLoadCoupleImg: function (e) {
-    upLoadImages(this, this.data.upLoadCfg, 'couple');
+    upLoadImages(this, this.data.upLoadCfg, target);
   },
 
   //提交按钮
@@ -125,7 +131,11 @@ Page({
         dataMap.personalBonusDemand = resultData.personalBonusDemand;
         dataMap.otherInfo = {
           'verifyCode': this.data.verifyCode,
-          'photo': this.data.selfPhotoUrl
+          'photo': {
+            'selfPhotoUrl': this.data.selfPhotoUrl,
+            'selfSchoolCardUrl': this.data.selfSchoolCardUrl
+          }
+
         };
 
         postPersonalApplyInfo(dataMap);
@@ -245,7 +255,7 @@ function checkNeccssaryInfo(body) {
 // 请求问题列表
 function getQustionsLists(body) {
   HttpUtils.yhjRequest(
-    '/question/getQuestions', 
+    '/question/getQuestions',
     '',
     function (res) {
       var data = res.resultObj;
@@ -274,7 +284,7 @@ function getToken(body) {
 }
 
 // 上传图片
-function upLoadImages(body, upLoadCfg, user) {
+function upLoadImages(body, upLoadCfg, target) {
   // 选择图片
   wx.chooseImage({
     count: 1,
@@ -291,7 +301,7 @@ function upLoadImages(body, upLoadCfg, user) {
         return;
       }
       var filePath = res.tempFilePaths[0];
-      
+
       // 上传图片
       qiniuUploader.uploadImage(
         upLoadCfg.region,
@@ -305,13 +315,17 @@ function upLoadImages(body, upLoadCfg, user) {
             icon: 'success'
           })
 
-          if (user === 'self') {
+          if (target === 'selfPhotoUrl') {
             body.setData({
               selfPhotoUrl: res.imageURL
             })
-          } else {
+          } else if (target === 'couplePhotoUrl') {
             body.setData({
               couplePhotoUrl: res.imageURL
+            })
+          } else if (target === 'selfSchoolCardUrl') {
+            body.setData({
+              selfSchoolCardUrl: res.imageURL
             })
           }
         },
@@ -344,9 +358,9 @@ function dataResult(body) {
       return resultData;
     } else {
       wx.showModal({
-        title:'提示',
-        content:'当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
-        showCancel:false
+        title: '提示',
+        content: '当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
+        showCancel: false
       })
       return false
     }
@@ -360,9 +374,9 @@ function dataResult(body) {
       return resultData;
     } else {
       wx.showModal({
-        title:'提示',
-        content:'当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
-        showCancel:false
+        title: '提示',
+        content: '当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
+        showCancel: false
       })
       return false
     }
@@ -436,42 +450,42 @@ function judgeFitTeam(body) {
     }
   }
 
-  if(body.data.verifyCode.length == 0){
+  if (body.data.verifyCode.length == 0) {
     body.setData({
-      verifyCodeState:false
+      verifyCodeState: false
     })
     resultBoolen = false
-  }else{
+  } else {
     body.setData({
-      verifyCodeState:true
+      verifyCodeState: true
     })
   }
 
-  if(body.data.selfPhotoUrl === body.data.defaultUrl){
-    if(body.data.couplePhotoUrl === body.data.defaultUrl){
+  if (body.data.selfPhotoUrl === body.data.defaultUrl) {
+    if (body.data.couplePhotoUrl === body.data.defaultUrl) {
       body.setData({
-        selfPhotoState:false,
-        couplePhotoState:false
+        selfPhotoState: false,
+        couplePhotoState: false
       })
       resultBoolen = false
-    }else{
+    } else {
       body.setData({
-        selfPhotoState:false,
-        couplePhotoState:true
+        selfPhotoState: false,
+        couplePhotoState: true
       })
       resultBoolen = false
     }
-  }else{
-    if(body.data.couplePhotoUrl == body.data.defaultUrl){
+  } else {
+    if (body.data.couplePhotoUrl == body.data.defaultUrl) {
       body.setData({
-        selfPhotoState:true,
-        couplePhotoState:false
+        selfPhotoState: true,
+        couplePhotoState: false
       })
       resultBoolen = false
-    }else{
+    } else {
       body.setData({
-        selfPhotoState:true,
-        couplePhotoState:true
+        selfPhotoState: true,
+        couplePhotoState: true
       })
     }
   }
@@ -564,28 +578,28 @@ function judgeFitPersonal(body) {
       }
     }
   }
-  if(body.data.verifyCode.length == 0){
+  if (body.data.verifyCode.length == 0) {
     body.setData({
-      verifyCodeState:false
+      verifyCodeState: false
     })
     resultBoolen = false
-  }else{
+  } else {
     body.setData({
-      verifyCodeState:true
+      verifyCodeState: true
     })
   }
 
-  if(body.data.selfPhotoUrl == body.data.defaultUrl){
+  if (body.data.selfPhotoUrl == body.data.defaultUrl) {
     body.setData({
-      selfPhotoState:false
+      selfPhotoState: false
     })
     resultBoolen = false
-  }else{
+  } else {
     body.setData({
-      selfPhotoState:true
+      selfPhotoState: true
     })
   }
-  
-  
+
+
   return resultBoolen
 }
