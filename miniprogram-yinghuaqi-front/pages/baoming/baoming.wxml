@@ -62,8 +62,7 @@
       </view>
     </view>
 
-    <view
-      class="verifyImgDiv {{source == 'PERSONAL' && !selfPhotoState?'border-red':'' && version.property.needPersonalPhoto}}">
+    <view class="verifyImgDiv {{source == 'PERSONAL' && !selfPhotoState?'border-red':'' && version.property.needPersonalPhoto}}">
       <view class="verifyImgDivLeft">请上传自己的生活照~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{selfPhotoUrl}}' mode='heightFix'

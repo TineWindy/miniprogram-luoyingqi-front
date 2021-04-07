@@ -55,7 +55,7 @@ App({
     userInfo: null,
     basicUserInfo:'',
     //ApiHost: "https://127.0.0.1:8080",
-    ApiHost: "https://10.132.152.69:8080",
-    //ApiHost: "https://www.luoyingqi.work:8080",
+    //ApiHost: "https://10.132.152.69:8080",
+    ApiHost: "https://www.luoyingqi.work:8080",
   }
 })
