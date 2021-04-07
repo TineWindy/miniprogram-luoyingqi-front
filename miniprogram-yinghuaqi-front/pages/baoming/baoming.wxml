@@ -54,11 +54,11 @@
     bindComponentTap="onGetVerifyCode"></verifyPhone>
 
   <view class="verifyImg">
-    <view class="verifyImgDiv {{source == 'PERSONAL' && !selfSchoolCardUrlState?'border-red':''}}">
+    <view class="verifyImgDiv {{source == 'PERSONAL' && !selfSchoolCardState?'border-red':''}}">
       <view class="verifyImgDivLeft">请上传自己的校园卡照片~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{selfSchoolCardUrl}}' mode='heightFix'
-          data-target="selfSchoolCardUrl"></image>
+          data-target="selfSchoolCard"></image>
       </view>
     </view>
 
@@ -66,7 +66,7 @@
       <view class="verifyImgDivLeft">请上传自己的生活照~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{selfPhotoUrl}}' mode='heightFix'
-          data-target="selfPhotoUrl"></image>
+          data-target="selfPhoto"></image>
       </view>
     </view>
   </view>
@@ -81,7 +81,6 @@
 
   <view class="uploadImg">
     <view class="uploadImgDiv">
-
     </view>
   </view>
   <!--第二部分 对方信息填写 可编辑  theOtherInfo-->
@@ -112,7 +111,7 @@
       <view class="verifyImgDivLeft">请上传自己的校园卡照片~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{selfSchoolCardUrl}}' mode='heightFix'
-          data-target="selfSchoolCardUrl"></image>
+          data-target="selfSchoolCard"></image>
       </view>
     </view>
   </view>
@@ -121,7 +120,7 @@
     <view class="verifyImgDiv {{source == 'TEAM' && !couplePhotoState?'border-red':''}}">
       <view class="verifyImgDivLeft">请上传对方的校园卡照片~</view>
       <view class="verifyImgDivRight">
-        <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{couplePhotoUrl}}' mode='heightFix' data-target="couplePhotoUrl">
+        <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{coupleSchoolCardUrl}}' mode='heightFix' data-target="coupleSchoolCard">
         </image>
       </view>
     </view>

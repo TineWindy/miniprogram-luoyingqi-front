@@ -28,12 +28,12 @@
 <!--找到报名信息之后-->
 <view wx:else>
   <view>
-    <text>\n\n\n\n</text>
+    <text>\n\n\n\n\n\n\n\n\n\n\n\n</text>
   </view>
 
   <view wx:if="{{applySource=='PERSONAL'}}">
     <view class="weui-cells weui-cells_after-title weui-shadow">
-      <view class="weui-panel__hd">您的基本信息</view>
+      <view class="weui-panel__hd">您的个人描述</view>
       <block wx:for="{{personalDescriptionArray}}" wx:key="index">
         <view class="showRow">
           <view class="title margin-left">{{item.questionKey}}</view>

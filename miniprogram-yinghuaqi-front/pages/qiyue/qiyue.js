@@ -78,7 +78,8 @@ function login(){
     '/user/login',
     '',
     function(res){
-      console.log('登录请求成功');
+      var otherData = JSON.parse(res.resultObj.params);
+      app.globalData.userWxInfo = otherData.userWxInfo;
     },
     'get'
   );

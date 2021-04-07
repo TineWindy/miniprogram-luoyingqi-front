@@ -52,7 +52,7 @@ App({
   },
 
   globalData: {
-    userInfo: null,
+    userWxInfo: null,
     basicUserInfo:'',
     //ApiHost: "https://127.0.0.1:8080",
     //ApiHost: "https://10.132.152.69:8080",

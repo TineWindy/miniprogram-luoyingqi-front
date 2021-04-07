@@ -27,10 +27,18 @@ Page({
   },
 
   toPri: function (e) {
+    wx.showToast({
+      title: '访问权限不足',
+      icon:'none',
+      duration:2000
+    })
+    
+    /*
     httpFuncs.yhjRequest(
       '/task/accessPrivate',
       '',
       function(res){
+        
         if (res.resultObj ==="success"){
           wx.navigateTo({
             url: '../privatePage/privatePage'
@@ -44,6 +52,7 @@ Page({
         }
       }
     )
+    */
   },
 
 })
