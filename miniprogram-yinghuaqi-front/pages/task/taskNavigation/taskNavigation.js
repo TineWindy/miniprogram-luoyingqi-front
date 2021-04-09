@@ -17,7 +17,14 @@ Page({
 
   onLoad: function (e) {
     taskInit(this, e);
-    getTaskTimeList(this);
+    
+    var version = wx.getStorageSync('yhj_version');
+
+    if (version.property.hasOwnProperty("taskTime")){
+      this.setData({
+        timeList: JSONObject2JSONArray(version.property.taskTime)
+      })
+    }
   },
 
   toOri: function (e) {
@@ -32,7 +39,7 @@ Page({
       icon:'none',
       duration:2000
     })
-    
+
     /*
     httpFuncs.yhjRequest(
       '/task/accessPrivate',
@@ -68,18 +75,6 @@ function taskInit(body, e) {
     },
     'get'
   );
-}
-
-function getTaskTimeList(body) {
-  httpFuncs.yhjRequest(
-    '/task/getTaskTimeList',
-    '',
-    function (res) {
-      body.setData({
-        timeList: JSONObject2JSONArray(res.resultObj)
-      })
-    }
-  )
 }
 
 function JSONObject2JSONArray(json) {

@@ -11,7 +11,7 @@
 <block wx:if="{{source == 'PERSONAL'}}">
 
   <!--第二部分 个人基本描述 可编辑  basicDescriptionList-->
-  <view class="titleToast">
+  <view id="description" class="titleToast">
     <view class="titleToastMain">第二部分 个人基本描述</view>
   </view>
 
@@ -21,7 +21,7 @@
   </block>
 
   <!--第三部分 个人硬性要求 可编辑   hardRequirementsList-->
-  <view class="titleToast">
+  <view id="hardDemand" class="titleToast">
     <view class="titleToastMain">第三部分 个人硬性要求</view>
     <view class="titleToastRemark">我们会在匹配过程中会<text class="text_red">完全</text>满足您的硬性要求</view>
   </view>
@@ -31,7 +31,7 @@
   </block>
 
   <!--第四部分 个人加分要求 可编辑 extraRequirementsList-->
-  <view class="titleToast">
+  <view id="bonusDemand" class="titleToast">
     <view class="titleToastMain">第四部分 个人加分要求</view>
     <view class="titleToastRemark">我们会在匹配过程中会<text class="text_red">尽量</text>满足您的加分要求</view>
   </view>
@@ -42,16 +42,19 @@
   </block>
 
   <!--第五部分 信息验证部分 可编辑  basicDescriptionList-->
-  <view class="titleToast">
+  <view id="msgVerify" class="titleToast">
     <view class="titleToastMain">第五部分 信息验证部分</view>
-    <view class="titleToastRemark">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n 此外请您上传校园卡<text
-        class="text_red">正面且包含个人信息</text>的清晰有效的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格。<text
-        wx:if="{{version.property.needPersonalPhoto}}">另外还需要上传一张您的<text class="text_red">生活照</text>哦~（仅向您匹配的对象展示）</text>
+    <view class="titleToastRemark">
+      <text wx:if="{{version.property.needVerifyPhone}}">我们将发送短信验证码至您<text
+          class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。此外</text>
+      请您上传校园卡<text class="text_red">正面且包含个人信息</text>的清晰有效的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格。
+      <text wx:if="{{version.property.needPersonalPhoto}}">另外还需要上传一张您的<text
+          class="text_red">生活照</text>哦~（仅向您匹配的对象展示）</text>
     </view>
   </view>
 
-  <verifyPhone phone="{{basicPersonalInfo.phone}}" verifyCodeState="{{verifyCodeState}}"
-    bindComponentTap="onGetVerifyCode"></verifyPhone>
+  <verifyPhone wx:if="{{version.property.needVerifyPhone}}" phone="{{basicPersonalInfo.phone}}"
+    verifyCodeState="{{verifyCodeState}}" bindComponentTap="onGetVerifyCode"></verifyPhone>
 
   <view class="verifyImg">
     <view class="verifyImgDiv {{source == 'PERSONAL' && !selfSchoolCardState?'border-red':''}}">
@@ -62,7 +65,8 @@
       </view>
     </view>
 
-    <view class="verifyImgDiv {{source == 'PERSONAL' && !selfPhotoState?'border-red':'' && version.property.needPersonalPhoto}}">
+    <view
+      class="verifyImgDiv {{source == 'PERSONAL' && !selfPhotoState?'border-red':'' && version.property.needPersonalPhoto}}">
       <view class="verifyImgDivLeft">请上传自己的生活照~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{selfPhotoUrl}}' mode='heightFix'
@@ -103,8 +107,8 @@
     </view>
   </view>
 
-  <verifyPhone phone="{{basicPersonalInfo.phone}}" verifyCodeState="{{verifyCodeState}}"
-    bindComponentTap="onGetVerifyCode"></verifyPhone>
+  <verifyPhone wx:if="{{version.property.needVerifyPhone}}" phone="{{basicPersonalInfo.phone}}"
+    verifyCodeState="{{verifyCodeState}}" bindComponentTap="onGetVerifyCode"></verifyPhone>
 
   <view class="verifyImg">
     <view class="verifyImgDiv {{source == 'TEAM' && !selfSchoolCardUrlState?'border-red':''}}">
@@ -120,7 +124,8 @@
     <view class="verifyImgDiv {{source == 'TEAM' && !couplePhotoState?'border-red':''}}">
       <view class="verifyImgDivLeft">请上传对方的校园卡照片~</view>
       <view class="verifyImgDivRight">
-        <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{coupleSchoolCardUrl}}' mode='heightFix' data-target="coupleSchoolCard">
+        <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{coupleSchoolCardUrl}}' mode='heightFix'
+          data-target="coupleSchoolCard">
         </image>
       </view>
     </view>

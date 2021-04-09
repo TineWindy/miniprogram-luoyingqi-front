@@ -105,58 +105,56 @@ Page({
   //提交按钮
   submit: function (e) {
     //前端数据整理 如果填写完整则返回数据结果，否则返回false
-    var resultData = dataResult(this);
+    var result = dataResult(this);
 
-    if(!resultData){
+    if (!result.res) {
       wx.pageScrollTo({
-        selector:'.titleToast',
+        selector: result.data,
         duration: 0,
+      })
+
+      return;
+    }
+
+    // 判断来源
+    var src = this.data.source;
+    var resultData = result.data;
+
+    if (src == 'PERSONAL') {
+      // 将数据str化
+      var dataMap = {};
+      dataMap.personalDescription = resultData.personalDescription;
+      dataMap.personalHardDemand = resultData.personalHardDemand;
+      dataMap.personalBonusDemand = resultData.personalBonusDemand;
+      dataMap.otherInfo = {
+        'verifyCode': this.data.verifyCode,
+        'photo': {
+          'selfPhotoUrl': this.data.selfPhotoUrl,
+          'selfSchoolCardUrl': this.data.selfSchoolCardUrl
+        }
+
+      };
+
+      postPersonalApplyInfo(dataMap);
+    } else if (src == 'TEAM') {
+      var dataMap = {};
+
+      // 补充验证信息
+      resultData.selfPhoto = this.data.selfSchoolCardUrl;
+      resultData.couplePhoto = this.data.coupleSchoolCardUrl;
+      resultData.verifyCode = this.data.verifyCode;
+      dataMap.otherInfo = resultData;
+
+      postTeamApplyInfo(dataMap);
+
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '报名失败!',
+        showCancel: false
       })
     }
 
-    if (resultData != false) {
-      // 判断来源
-      var src = this.data.source;
-
-      if (!checkNeccssaryInfo(this)) {
-        return;
-      }
-
-      if (src == 'PERSONAL') {
-        // 将数据str化
-        var dataMap = {};
-        dataMap.personalDescription = resultData.personalDescription;
-        dataMap.personalHardDemand = resultData.personalHardDemand;
-        dataMap.personalBonusDemand = resultData.personalBonusDemand;
-        dataMap.otherInfo = {
-          'verifyCode': this.data.verifyCode,
-          'photo': {
-            'selfPhotoUrl': this.data.selfPhotoUrl,
-            'selfSchoolCardUrl': this.data.selfSchoolCardUrl
-          }
-
-        };
-
-        postPersonalApplyInfo(dataMap);
-      } else if (src == 'TEAM') {
-        var dataMap = {};
-
-        // 补充验证信息
-        resultData.selfPhoto = this.data.selfSchoolCardUrl;
-        resultData.couplePhoto = this.data.coupleSchoolCardUrl;
-        resultData.verifyCode = this.data.verifyCode;
-        dataMap.otherInfo = resultData;
-
-        postTeamApplyInfo(dataMap);
-
-      } else {
-        wx.showModal({
-          title: '提示',
-          content: '报名失败!',
-          showCancel: false
-        })
-      }
-    }
   }
 })
 
@@ -242,32 +240,6 @@ function postTeamApplyInfo(data) {
     },
     'post'
   )
-}
-
-function checkNeccssaryInfo(body) {
-  var flag = true;
-
-  if (!assertStrNotEmpty(body.data.verifyCode)) {
-    flag = false;
-  }
-
-  if (assertStrNotEmpty(body.data.selfPhotoUrl) && body.data.selfPhotoUrl === body.data.defaultUrl) {
-    flag = false;
-  }
-
-  if (body.data.source === "TEAM" && assertStrNotEmpty(body.data.coupleSchoolCardUrl) && body.data.coupleSchoolCardUrl === body.data.defaultUrl) {
-    flag = false;
-  }
-
-  if (!flag) {
-    wx.showToast({
-      title: '您的信息验证部分还没有填写哦~',
-      icon: 'none',
-      duration: 2000
-    })
-  }
-
-  return flag;
 }
 
 // 请求问题列表
@@ -370,16 +342,21 @@ function dataResult(body) {
       personalBonusDemand: {}
     }
 
-    if (judgeFitPersonal(body)) {
+    var result = judgeFitPersonal(body);
+
+    if (result.res) {
       resultData = bodyData2resultData(body, resultData)
-      return resultData;
+      result.data = resultData;
+
+      return result;
     } else {
       wx.showModal({
         title: '提示',
-        content: '当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
+        content: '当前报名信息不符合要求，请您重新检查您的问卷(是否有被标红的问题)~',
         showCancel: false
       })
-      return false
+
+      return result;
     }
   } else if (body.data.source == 'TEAM') {
     var resultData = {
@@ -387,15 +364,19 @@ function dataResult(body) {
       coupleIdentifyCode: ""
     }
     if (judgeFitTeam(body)) {
-      resultData = bodyData2resultData(body, resultData)
-      return resultData;
+      resultData = bodyData2resultData(body, resultData);
+
+      result.res = true;
+      result.data = resultData;
     } else {
       wx.showModal({
         title: '提示',
-        content: '当前报名信息未填写完全，请您往上翻阅检查是否有被标红的问题~',
+        content: '当前报名信息不符合要求，请您重新检查您的问卷(是否有被标红的问题)~',
         showCancel: false
       })
-      return false
+
+      result.res = false;
+      return result;
     }
   }
 }
@@ -467,7 +448,7 @@ function judgeFitTeam(body) {
     }
   }
 
-  if (body.data.verifyCode.length == 0) {
+  if (body.data.version.property.needVerfiyPhone && body.data.verifyCode.length == 0) {
     body.setData({
       verifyCodeState: false
     })
@@ -478,7 +459,7 @@ function judgeFitTeam(body) {
     })
   }
 
-  resultBoolen = resultBoolen && judgePhoto(body.data.selfSchoolCardUrl,'selfSchoolCard',body) && judgePhoto(body.data.coupleSchoolCardUrl,'coupleSchoolCard',body);
+  resultBoolen = resultBoolen && judgePhoto(body.data.selfSchoolCardUrl, 'selfSchoolCard', body) && judgePhoto(body.data.coupleSchoolCardUrl, 'coupleSchoolCard', body);
 
   return resultBoolen
 }
@@ -486,7 +467,7 @@ function judgeFitTeam(body) {
 //个人报名检查答案函数
 function judgeFitPersonal(body) {
   var resultBoolen = true;
-
+  var firstError = null;
   var personalDescription_ = body.data.personalDescription;
   var hardDemand_ = body.data.hardDemand;
   var bonusDemand_ = body.data.bonusDemand;
@@ -497,7 +478,13 @@ function judgeFitPersonal(body) {
         body.setData({
           [`personalDescription[${i}].questionFit`]: false
         })
-        resultBoolen = false
+
+        resultBoolen = false;
+
+        if (firstError == null) {
+          firstError = '#description';
+        }
+
       } else {
         body.setData({
           [`personalDescription[${i}].questionFit`]: true
@@ -509,6 +496,9 @@ function judgeFitPersonal(body) {
           [`personalDescription[${i}].questionFit`]: false
         })
         resultBoolen = false
+        if (firstError == null) {
+          firstError = '#description';
+        }
       } else {
         body.setData({
           [`personalDescription[${i}].questionFit`]: true
@@ -523,7 +513,12 @@ function judgeFitPersonal(body) {
         body.setData({
           [`hardDemand[${i}].questionFit`]: false
         })
+
         resultBoolen = false
+
+        if (firstError == null) {
+          firstError = '#hardDemand';
+        }
       } else {
         body.setData({
           [`hardDemand[${i}].questionFit`]: true
@@ -534,7 +529,11 @@ function judgeFitPersonal(body) {
         body.setData({
           [`hardDemand[${i}].questionFit`]: false
         })
-        resultBoolen = false
+        resultBoolen = false;
+
+        if (firstError == null) {
+          firstError = '#hardDemand';
+        }
       } else {
         body.setData({
           [`hardDemand[${i}].questionFit`]: true
@@ -549,7 +548,12 @@ function judgeFitPersonal(body) {
         body.setData({
           [`bonusDemand[${i}].questionFit`]: false
         })
-        resultBoolen = false
+
+        resultBoolen = false;
+
+        if (firstError == null) {
+          firstError = '#bonusDemand';
+        }
       } else {
         body.setData({
           [`bonusDemand[${i}].questionFit`]: true
@@ -560,7 +564,11 @@ function judgeFitPersonal(body) {
         body.setData({
           [`bonusDemand[${i}].questionFit`]: false
         })
-        resultBoolen = false
+        resultBoolen = false;
+
+        if (firstError == null) {
+          firstError = '#bonusDemand';
+        }
       } else {
         body.setData({
           [`bonusDemand[${i}].questionFit`]: true
@@ -568,23 +576,28 @@ function judgeFitPersonal(body) {
       }
     }
   }
-  if (body.data.verifyCode.length == 0) {
+  if (body.data.version.property.needVerfiyPhone && body.data.verifyCode.length == 0) {
     body.setData({
       verifyCodeState: false
     })
-    resultBoolen = false
+    resultBoolen = false;
   } else {
     body.setData({
       verifyCodeState: true
     })
   }
 
-  resultBoolen = resultBoolen && judgePhoto(body.data.selfPhotoUrl,'selfPhoto',body) && judgePhoto(body.data.selfSchoolCardUrl,'selfSchoolCard',body);
+  resultBoolen = resultBoolen && judgePhoto(body.data.selfPhotoUrl, 'selfPhoto', body) && judgePhoto(body.data.selfSchoolCardUrl, 'selfSchoolCard', body);
 
-  return resultBoolen
+  var result = {
+    res: resultBoolen,
+    data: firstError
+  }
+
+  return result;
 }
 
-function judgePhoto(photo,target,body) {
+function judgePhoto(photo, target, body) {
   var result = true;
   if (photo === body.data.defaultUrl) {
     result = false;
