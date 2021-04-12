@@ -232,7 +232,7 @@ function postTeamApplyInfo(data) {
           if (res.confirm) {
             //返回首页
             wx.reLaunch({
-              url: '../qiyue/qiyue',
+              url: '../navigation/navigation?version=' + JSON.stringify(wx.getStorageSync('yhj_version')),
             })
           }
         }
@@ -363,6 +363,12 @@ function dataResult(body) {
       coupleName: "",
       coupleIdentifyCode: ""
     }
+
+    var result = {
+      res: true,
+      data: null
+    }
+
     if (judgeFitTeam(body)) {
       resultData = bodyData2resultData(body, resultData);
 
@@ -376,8 +382,9 @@ function dataResult(body) {
       })
 
       result.res = false;
-      return result;
     }
+
+    return result;
   }
 }
 

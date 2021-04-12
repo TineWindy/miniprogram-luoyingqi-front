@@ -40,7 +40,7 @@
     <view class="activityTimeTail">
       <block wx:for="{{day}}" wx:key="index">
         <view
-          class="activityTimeItem activityTimeDay {{index==5?'left':''}} {{index>5&&index<6?'total':''}} {{index==6?'right':''}} {{index==7?'left':''}} {{index>7&&index<13?'total':''}} {{index==13?'right':''}}">
+          class="activityTimeItem activityTimeDay {{index==6?'left':''}} {{index>5&&index<6?'total':''}} {{index==6?'right':''}} {{index==7?'left':''}} {{index>7&&index<13?'total':''}} {{index==13?'right':''}}">
           {{item}}</view>
       </block>
     </view>

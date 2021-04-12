@@ -51,6 +51,9 @@ page{
   margin-left: 40rpx;
 }
 
+.showPhotoText{
+  text-decoration:underline;
+}
 .accept{
   position: absolute;
   left: 120rpx;
@@ -68,7 +71,7 @@ page{
 .receive_text{
   position: absolute;
   text-align: center;
-  top: 1270rpx;
+  top: 1350rpx;
   left: 100rpx;
   right: 100rpx;
   color: #f4acae;

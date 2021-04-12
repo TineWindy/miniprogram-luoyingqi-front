@@ -38,17 +38,21 @@
     <text>{{description}}</text>
   </view>
 
-  <view class="info" style="margin-top:390rpx">
+  <view class="info" style="margin-top:400rpx">
+    <text bindtap="showPhoto" class="showPhotoText">查看对方照片</text><text>(珞樱契提醒您不要滥用对方的照片哦)</text>
+  </view>
+
+  <view class="info" style="margin-top:480rpx">
     <text>匹配分数</text>
   </view>
-  <view class="info_item_left margin-left" style="margin-top:395rpx">
+  <view class="info_item_left margin-left" style="margin-top:485rpx">
     <text>{{score}}</text>
   </view>
 
-  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:455rpx" >
+  <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:540rpx" >
   <text>契约编号</text>
   </view>
-  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:460rpx">
+  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:545rpx">
     <text>{{coupleNumber}}</text>
   </view>
 
@@ -64,7 +68,7 @@
 
   </view>
   <view wx:else class="receive_text">
-    <text>您已接受本次契约，欢迎您持续关注并参与后续的线下活动。\n </text>
+    <text>您已接受本次契约，欢迎您持续关注并参与后续的活动。\n </text>
     <text>温馨提示：若有契约编号存在，则代表双方都接受了本次匹配哦 ~</text>
     <view class="bottom"></view>
   </view>

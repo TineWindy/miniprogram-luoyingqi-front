@@ -15,8 +15,9 @@ Page({
     status: '',
     selfApplyStatus: '',
     messsage: '',
-    coupleNumber: '001',
+    coupleNumber: '',
     score: '99',
+    photo: ''
   },
 
   /** 接受按钮  */
@@ -53,6 +54,23 @@ Page({
   onLoad: function (options) {
     getMatchInfo(this);
   },
+
+  showPhoto: function (e) {
+    var url = this.data.photo;
+
+    if (typeof url != 'undefined' && url != '') {
+      wx.previewImage({
+        urls: [url]
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '暂无对方照片',
+        showCancel: false
+      })
+    }
+
+  }
 })
 
 //获取匹配结果
@@ -69,7 +87,8 @@ function getMatchInfo(body) {
         score: res.resultObj.matchScore,
         coupleNumber: res.resultObj.coupleNumber,
         selfApplyStatus: res.resultObj.selfApplyInfoStatus,
-        gender: res.resultObj.coupleGender
+        gender: res.resultObj.coupleGender,
+        photo: res.resultObj.couplePhoto
       })
     },
     'GET'

@@ -102,8 +102,8 @@
   <!--第三部分 信息验证部分 可编辑  basicDescriptionList-->
   <view class="titleToast">
     <view class="titleToastMain">第三部分 双方信息验证部分</view>
-    <view class="titleToastRemark">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n
-      此外请您上传您和您同伴校园卡<text class="text_red">正面且包含个人信息</text>的清晰有效的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格
+    <view class="titleToastRemark"><text wx:if="{{version.property.needVerifyPhone}}">我们将发送短信验证码至您<text class="text_red">个人信息</text>的手机号中，请您确保该短信不会被屏蔽。 \n
+      此外</text> 请您上传您和您同伴校园卡<text class="text_red">正面且包含个人信息</text>的清晰有效的照片，否则我们可能将<text class="text_red">取消</text>您的报名资格
     </view>
   </view>
 
@@ -111,7 +111,7 @@
     verifyCodeState="{{verifyCodeState}}" bindComponentTap="onGetVerifyCode"></verifyPhone>
 
   <view class="verifyImg">
-    <view class="verifyImgDiv {{source == 'TEAM' && !selfSchoolCardUrlState?'border-red':''}}">
+    <view class="verifyImgDiv {{source == 'TEAM' && !selfSchoolCardState?'border-red':''}}">
       <view class="verifyImgDivLeft">请上传自己的校园卡照片~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{selfSchoolCardUrl}}' mode='heightFix'
@@ -121,7 +121,7 @@
   </view>
 
   <view class="verifyImg">
-    <view class="verifyImgDiv {{source == 'TEAM' && !couplePhotoState?'border-red':''}}">
+    <view class="verifyImgDiv {{source == 'TEAM' && !coupleSchoolCardState?'border-red':''}}">
       <view class="verifyImgDivLeft">请上传对方的校园卡照片~</view>
       <view class="verifyImgDivRight">
         <image class='verifyImgDivRightImg' bindtap='upLoadImg' src='http://{{coupleSchoolCardUrl}}' mode='heightFix'
