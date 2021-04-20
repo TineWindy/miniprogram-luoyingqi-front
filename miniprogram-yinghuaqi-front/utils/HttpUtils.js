@@ -57,7 +57,8 @@ function yhjRequest(url, params, success, method) {
     'content-type': 'application/json',
     'session': session,
     'userId': openId,
-    'version':version
+    'version': version,
+    'miniprogram_version': app.globalData.miniprogram_version
   }
 
   let that = this;
@@ -75,10 +76,16 @@ function yhjRequest(url, params, success, method) {
             yhjRequest(url, params, success, method)
           }, 2000);
           resolve(null);
+        } else if (res.data.resultCode === 'SERVICE_DOWNGRADE') {
+          wx.showModal({
+            title: '应用错误',
+            content: '服务器正在维护升级,请留意公告哦~',
+            showCancel: false,
+          });
         } else if (res.data.resultCode !== 'SUCCESS') {
           wx.showModal({
             title: '应用错误',
-            content: res.data.resultDesc || '请求出错',
+            content: res.data.resultDesc || '服务器异常,如有疑问,请联系客服向我们反馈!',
             showCancel: false,
           });
         } else {

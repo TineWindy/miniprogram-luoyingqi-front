@@ -5,6 +5,7 @@ var app = getApp();
 Page({
   data: {
     taskId: '',
+    taskKey:'',
     taskName: '今天是个好日子',
     taskDescription: '今天的活动是要干什么呢',
     taskRule: '今天的活动要怎么进行呢',
@@ -13,7 +14,8 @@ Page({
     taskInfoUrl: '',
     score: '暂无',
     taskPic: '',  //用户上传的图片链接
-    upLoadCfg: ''
+    upLoadCfg: '',
+    withChildScores: []
   },
 
   uploadPic: function (e) {
@@ -47,11 +49,14 @@ Page({
       taskId: e.taskId
     });
     getTaskInfo(this);
-    getToken(this);
+
+    if (this.data.taskParticipateWay == 'ONLINE_UPLOAD') {
+      getToken(this);
+    }
   },
 
-  toDetail: function(e){
-    toDetailArticle(this,e);
+  toDetail: function (e) {
+    toDetailArticle(this, e);
   }
 
 })
@@ -72,6 +77,7 @@ function getTaskInfo(body) {
   },
     function (res) {
       body.setData({
+        taskKey: res.resultObj.task.taskKey,
         taskName: res.resultObj.task.taskName,
         taskDescription: res.resultObj.task.taskDescription,
         taskRule: res.resultObj.task.taskRule,
@@ -79,10 +85,28 @@ function getTaskInfo(body) {
         taskPic: res.resultObj.taskPic,
         taskInfoUrl: res.resultObj.task.taskInfoUrl,
         taskParticipateWay: res.resultObj.task.taskParticipateWay,
-        score: res.resultObj.taskScore
+        score: res.resultObj.taskScore,
       });
+
+      if (res.resultObj.task.params.withChildScores == 'YES') {
+        getChildTaskAndTeamTask(body);
+      }
     }
   );
+}
+
+function getChildTaskAndTeamTask(body) {
+  httpFuncs.yhjRequest(
+    '/task/getChildTaskAndTeamTask',
+    { taskKey: body.data.taskKey },
+
+    function (res) {
+      body.setData({
+        withChildScores: res.resultObj
+      })
+    }
+
+  )
 }
 
 function submit(body, e) {

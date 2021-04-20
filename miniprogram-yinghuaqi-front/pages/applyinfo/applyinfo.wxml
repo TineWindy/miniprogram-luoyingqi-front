@@ -79,7 +79,7 @@
 
   <view wx:else>
     <view>
-      <text>\n\n\n\n\n\n\n\n\n\n\n\n\n</text>
+      <text>\n\n\n\n\n\n\n</text>
     </view>
     <view class="align_center">
       您已通过组队报名的方式参与本次活动

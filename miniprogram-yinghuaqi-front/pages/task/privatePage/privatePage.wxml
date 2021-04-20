@@ -1,27 +1,56 @@
 <!--pages/privatePage/privatePage.wxml-->
 <view class='form-list'>
+  <view class="cu-form-group margin-top">
+		<view class="title">活动：</view>
+		<picker bindchange="bindPickerChange1" value="{{index1}}" range="{{days}}" range-key="taskName">
+			<view class="picker">
+				{{index1?days[index1].taskName:'请选择活动'}}
+			</view>
+		</picker>
+  </view>
+  <view class="cu-form-group">
+		<view class="title">任务：</view>
+		<picker bindchange="bindPickerChange2" value="{{index2}}" range="{{todayActivities}}" range-key="taskName">
+			<view class="picker">
+				{{index2?todayActivities[index2].taskName:'请选择游戏'}}
+			</view>
+		</picker>
+	</view>
+
   <view class="inputId">
-    <view class="inputIdA">伴侣编号:</view>
-    <input type='text' bindinput="getCoupleNumber" placeholder="请扫描以获取伴侣编号" value='{{coupleNumber}}'></input>
+    <view class="inputIdA">契约编号：</view>
+    <input type='text' bindinput="getCoupleNumber" placeholder="请扫描以获取契约编号" value='{{coupleNumber}}'></input>
   </view>
   <view class="centerImg">
     <image class='scan' bindtap='scanCode' src='/images/scan.png' mode='widthFix'></image>
   </view>
 
   <view class="inputId">
-    <view class="inputIdA">地点</view>
-    <picker name="place" bindchange="PickerChangePlace" value="{{placeIndex}}" range="{{place}}">
-        <view class="picker">
-          {{placeIndex == -1?'请选择打卡地点':place[placeIndex]}}
-        </view>
-      </picker>
+    <view class="inputIdA">任务状态：</view>
+    <input disabled="true" value='{{userTaskInfo.status == "STARTED"? "进行中":userTaskInfo.status == "FINISHED"? "已打卡":"未开始"}}'></input>
+  </view>
+  
+  <view class="inputId">
+    <view class="inputIdA">开始时间：</view>
+    <input disabled="true" value='{{userTaskInfo.taskStartTime}}' disabled="true"></input>
+  </view>
+  <view class="inputId">
+    <view class="inputIdA">结束时间：</view>
+    <input disabled="true" value='{{userTaskInfo.taskFinishTime}}' disabled="true"></input>
+  </view>
+  <view class="inputId">
+    <view class="inputIdA">任务积分：</view>
+    <input type='number' bindinput="getScore" placeholder="请输入积分" value='{{userTaskInfo.score}}'></input>
   </view>
 
   <view class="inputId">
-    <view class="inputIdA">分数</view>
-    <input type='number' bindinput="getScore" placeholder="请输入分数" value='{{score}}'></input>
+    <view class="inputIdA">任务罚时：</view>
+    <input type='number' bindinput="getPunlish" placeholder="请输入任务罚时(单位秒)" value='{{userTaskInfo.cheat}}'></input>
   </view>
 
-  <button class="submit" bindtap="submit">提交</button>
+  <view class="subBut">
+    <button class="submit" bindtap="submit" style="margin-bottom:80rpx;width:36%;height:92rpx;">提交</button>
+    <button class="submit" bindtap="reset" style="margin-bottom:80rpx;width:36%;height:92rpx;">重置</button>
+  </view>
 
 </view>

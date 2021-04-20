@@ -51,7 +51,7 @@ page{
   margin-left: 40rpx;
 }
 
-.showPhotoText{
+.underlineText{
   text-decoration:underline;
 }
 .accept{
@@ -93,4 +93,9 @@ page{
   left: 135rpx;
   right: 135rpx;
   top: 150rpx;
+}
+
+/*二维码*/
+.erweima{
+  width: 400rpx;
 }

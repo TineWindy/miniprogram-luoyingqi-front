@@ -62,5 +62,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  toMiniProgram: function(){
+    wx.navigateToMiniProgram({
+      appId: 'wx75fa254912f64a80',
+      success(res) {
+        // 打开成功
+      }
+    })
   }
 })

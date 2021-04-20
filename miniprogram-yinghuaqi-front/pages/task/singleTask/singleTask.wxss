@@ -17,3 +17,21 @@ page{
 .textCommen{
   font-size: 15.5px;
 }
+
+.totalScore{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+}
+
+/*参与情况*/
+.item{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 22rpx;
+  padding-top: 22rpx;
+  border-bottom: 1px white solid;
+}

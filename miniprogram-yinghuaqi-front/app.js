@@ -1,14 +1,37 @@
-//app.js
+const updateManager = wx.getUpdateManager()
+
 App({
-  onLaunch: function() {
+  onLaunch: function () {
 
     // 清空先前缓存
     wx.clearStorageSync();
 
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    updateManager.onCheckForUpdate(function (res) {
+      // 请求完新版本信息的回调
+      if (res.hasUpdate) {
+        updateManager.onUpdateReady(function () {
+          wx.showModal({
+            title: '更新提示',
+            content: '当前版本过低，是否重启以更新版本？',
+            success: function (res) {
+              if (res.confirm) {
+                // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                updateManager.applyUpdate()
+              }
+            }
+          })
+        })
+
+        updateManager.onUpdateFailed(function () {
+          // 新版本下载失败
+          wx.showModal({
+            title: '提示',
+            content: '下载失败,请通过客服联系工作人员',
+            showCancel: false
+          })
+        })
+      }
+    })
 
     // 登录
     wx.login({
@@ -53,9 +76,8 @@ App({
 
   globalData: {
     userWxInfo: null,
-    basicUserInfo:'',
+    basicUserInfo: '',
     ApiHost: "https://127.0.0.1:8080",
-    //ApiHost: "https://10.132.152.69:8080",
     //ApiHost: "https://www.luoyingqi.work:8080",
   }
 })

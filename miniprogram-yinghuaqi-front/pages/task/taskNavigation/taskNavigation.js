@@ -17,56 +17,49 @@ Page({
 
   onLoad: function (e) {
     taskInit(this, e);
-    
+
     var version = wx.getStorageSync('yhj_version');
 
-    if (version.property.hasOwnProperty("taskTime")){
+    if (version.property.hasOwnProperty("taskTime")) {
       this.setData({
         timeList: JSONObject2JSONArray(version.property.taskTime)
       })
     }
   },
 
-  toOri: function (e) {
-    wx.navigateTo({
-      url: '../orienteering/orienteering'
-    })
-  },
-
   toPri: function (e) {
     wx.showToast({
       title: '访问权限不足',
-      icon:'none',
-      duration:2000
+      icon: 'none',
+      duration: 2000
     })
 
-    /*
+
     httpFuncs.yhjRequest(
       '/task/accessPrivate',
       '',
-      function(res){
-        
-        if (res.resultObj ==="success"){
+      function (res) {
+        if (res.resultObj === "success") {
           wx.navigateTo({
             url: '../privatePage/privatePage'
           })
-        }else{
+        } else {
           wx.showToast({
             title: '访问权限不足',
-            icon:'none',
-            duration:2000
+            icon: 'none',
+            duration: 2000
           })
         }
       }
     )
-    */
+
   },
 
 })
 
 function taskInit(body, e) {
   httpFuncs.yhjRequest(
-    '/task/getAllTasks',
+    '/task/getAllParentTasks',
     '',
     function (res) {
       body.setData({

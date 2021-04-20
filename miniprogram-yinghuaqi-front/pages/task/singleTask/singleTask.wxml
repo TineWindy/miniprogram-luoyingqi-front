@@ -15,7 +15,7 @@
         <view class="cu-tag bg-white text-pink textCommen">活动内容</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>{{taskDescription}}</view>
+        <text>{{taskDescription}}</text>
       </view>
     </view>
   </view>
@@ -25,7 +25,7 @@
         <view class="cu-tag bg-white text-pink textCommen">活动规则</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>{{taskRule}}</view>
+        <text>{{taskRule}}</text>
       </view>
     </view>
   </view>
@@ -35,7 +35,7 @@
         <view class="cu-tag bg-white text-pink textCommen">活动奖励</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>{{taskProfit}}</view>
+        <text>{{taskProfit}}</text>
       </view>
     </view>
   </view>
@@ -58,18 +58,27 @@
       <view class="margin-top-sm text-content">
         <view>请点击“上传图片”上传活动图片，然后检查后点击“确认提交”。如果对现有的活动图片不满意，可以重新上传图片后再提交哦~</view>
       </view>
+      <view class="task-pic" wx:if="{{taskPic != ''}}">
+          <image src="{{taskPic}}" mode="widthFix"/>
+      </view>
     </view>
   </view>
-  <view class="cu-item text-pink" wx:if="{{taskParticipateWay == 'ONLINE_UPLOAD'}}">
-    <view class="bg-pink content shadow">
+
+  <!--参与情况-->
+  <view class="cu-item text-pink bg">
+    <view class="bg-pink content">
       <view class="cu-capsule radius">
         <view class="cu-tag bg-white text-pink textCommen">参与情况</view>
       </view>
       <view class="margin-top-sm text-content">
-        <view>分数：{{score}}</view>
-        <view class="task-pic" wx:if="{{taskPic != ''}}">
-          <image src="{{taskPic}}" mode="widthFix"/>
-        </view>
+        <block wx:for="{{withChildScores}}" wx:key="indx" wx:if="{{withChildScores.length != 0}}">
+          <view class="item">
+            <view>{{item.taskName}}</view>
+            <view>完成时间：{{item.time}}</view>
+          </view>
+        </block>
+        <view class="totalScore" wx:if="{{withFinishTime}}"> 完成时间：{{teamTask.params}}</view>
+        <view class="totalScore">总分(更新有延迟)：{{score !=''?score:'暂无'}}</view>
       </view>
     </view>
   </view>

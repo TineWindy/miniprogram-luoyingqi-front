@@ -70,7 +70,21 @@ Page({
       })
     }
 
-  }
+  },
+
+  //展示队伍二维码
+  showQRcode(e) {
+    this.setData({
+      modalShow: true
+    })
+  },
+
+  //取消展示队伍二维码
+  hideModal(e) {
+    this.setData({
+      modalShow: false
+    })
+  },
 })
 
 //获取匹配结果

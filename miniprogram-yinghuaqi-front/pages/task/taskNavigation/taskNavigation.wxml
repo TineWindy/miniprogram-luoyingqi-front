@@ -28,7 +28,7 @@
     <span class='wenzi'>
       管理入口
     </span>
-    <image  src='{{backImgs[1]}}' mode='widthFix'>
+    <image  src='{{backImgs[(taskList.length+1)%2]}}' mode='widthFix'>
     </image>
   </button>
 </view>

@@ -39,20 +39,20 @@
   </view>
 
   <view class="info" style="margin-top:400rpx">
-    <text bindtap="showPhoto" class="showPhotoText">查看对方照片</text><text>(珞樱契提醒您不要滥用对方的照片哦)</text>
+    <text bindtap="showPhoto" class="underlineText">查看对方照片</text><text>(珞樱契提醒您不要滥用对方的照片哦)</text>
   </view>
 
   <view class="info" style="margin-top:480rpx">
     <text>匹配分数</text>
   </view>
-  <view class="info_item_left margin-left" style="margin-top:485rpx">
+  <view class="info_item_left margin-left" style="margin-top:482rpx">
     <text>{{score}}</text>
   </view>
 
   <view class="info" wx:if="{{status=='BOTH_AGREED'}}" style="margin-top:540rpx" >
-  <text>契约编号</text>
+  <text>契约编号</text><text class="underlineText" bindtap="showQRcode">(点击查看二维码)</text>
   </view>
-  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:545rpx">
+  <view class="info_item_left margin-left" wx:if="{{status=='BOTH_AGREED'}}"  style="margin-top:545rpx;margin-left:260rpx">
     <text>{{coupleNumber}}</text>
   </view>
 
@@ -80,4 +80,20 @@
   <text>
     本次活动匹配暂未开始或您在本次活动中没有匹配对象！请您持续关注我们小程序以及匹配结果的通知时间。如有疑问，请联系我们或活动工作人员。
   </text>
+</view>
+
+<!--队伍二维码-->
+<view class="cu-modal {{modalShow?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">队伍二维码</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <image wx:if="{{coupleNumber!= ''}}" class="erweima" src="http://qrbxf3lia.hn-bkt.clouddn.com/QR_CODE_IMG_{{coupleNumber}}"
+        mode="widthFix"></image>
+    </view>
+  </view>
 </view>

@@ -11,13 +11,14 @@
 
   <view><text
       decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>武汉大学拾樱工作室由武汉大学学生自发创办，其初衷是为高校内各种类型的文体活动提供一定的技术支持，为组织或参与的同学们提供便利。除珞樱契小程序外，我们的工作室下还有<span
-      class="importance">追樱记小程序</span>。追樱记小程序已为武汉大学内各定向越野协会举办的定向越野活动提供了一定的技术支持，受到了主办方和使用者的一致好评。</view>
+      class="importance" bindtap="toMiniProgram">追樱记小程序(点击可跳转哦)</span>。追樱记小程序已为武汉大学内各定向越野协会举办的定向越野活动提供了一定的技术支持，受到了主办方和使用者的一致好评。</view>
 
   <view><text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>如果您是<span
       class="importance">活动的组织者</span>，还苦于传统线下繁琐的事情，想得到一定的线上技术支持,那么请您联系我们。</view>
 
   <view><text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>如果<span
-      class="importance">您对我们工作室感兴趣</span>，而恰好您会绘画或是UI设计，或是有过微信小程序前端开发的经验，亦或是了解并使用过java、springboot，mysql和redis（我们也可以帮助你快速入门哦~），那么我们非常欢迎收到您的简历。您可以在工作室里结交新的朋友，可以拥有一份很棒的项目经历，让更多的人用上您设计的程序! 
+      class="importance">您对我们工作室感兴趣</span>，而恰好您会绘画或是UI设计，或是有过微信小程序前端开发的经验，亦或是了解并使用过java、springboot，mysql和redis（我们也可以帮助你快速入门哦~），那么我们非常欢迎收到您的简历。如果您可以在工作室里结交新的朋友，可以拥有一份很棒的项目经历，让更多的人用上您设计的程序! 如果您对珞樱契的<span
+      class="importance">问卷调查、匹配算法</span>等有什么想法或者反馈，也欢迎联系我们哦!
   </view>
   <view class="connectDiv">
     <text>联系人：付同学</text>
