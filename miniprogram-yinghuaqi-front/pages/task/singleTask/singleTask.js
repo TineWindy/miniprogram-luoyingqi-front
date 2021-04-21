@@ -49,10 +49,6 @@ Page({
       taskId: e.taskId
     });
     getTaskInfo(this);
-
-    if (this.data.taskParticipateWay == 'ONLINE_UPLOAD') {
-      getToken(this);
-    }
   },
 
   toDetail: function (e) {
@@ -88,9 +84,15 @@ function getTaskInfo(body) {
         score: res.resultObj.taskScore,
       });
 
+      if (res.resultObj.task.taskParticipateWay == 'ONLINE_UPLOAD') {
+        getCfg(body);
+      }
+
       if (res.resultObj.task.params.withChildScores == 'YES') {
         getChildTaskAndTeamTask(body);
       }
+
+
     }
   );
 }
@@ -127,7 +129,7 @@ function submit(body, e) {
   );
 }
 
-function getToken(body) {
+function getCfg(body) {
   httpFuncs.yhjRequest(
     '/task/getCfg',
     '',

@@ -58,9 +58,6 @@
       <view class="margin-top-sm text-content">
         <view>请点击“上传图片”上传活动图片，然后检查后点击“确认提交”。如果对现有的活动图片不满意，可以重新上传图片后再提交哦~</view>
       </view>
-      <view class="task-pic" wx:if="{{taskPic != ''}}">
-          <image src="{{taskPic}}" mode="widthFix"/>
-      </view>
     </view>
   </view>
 
@@ -78,6 +75,9 @@
           </view>
         </block>
         <view class="totalScore" wx:if="{{withFinishTime}}"> 完成时间：{{teamTask.params}}</view>
+        <view class="task-pic" wx:if="{{taskPic != ''}}">
+          <image src="{{taskPic}}" mode="widthFix"/>
+        </view>
         <view class="totalScore">总分(更新有延迟)：{{score !=''?score:'暂无'}}</view>
       </view>
     </view>
